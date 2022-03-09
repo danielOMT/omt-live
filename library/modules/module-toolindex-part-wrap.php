@@ -1,4 +1,4 @@
-<div class="toolindex-wrap">
+<div class="toolindex-wrap tool-archive-wrap">
     <?php if (1 == $mit_filter) { ?>
         <div class="toolindex-filter-wrap">
             <div class="toolindex-filter">
