@@ -1,0 +1,224 @@
+.seminar-single, .agenturen-single {
+  width: 100% !important;
+  .seminare-content-wrap, .agenturen-content-wrap {
+    //width:100%;
+    margin-top: 30px;
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .module-with-sidebar {
+      width: 66% !important;
+      margin: 0;
+      float:none !important;
+    }
+    .sidebar {
+      width: 33% !important;
+      max-width: 370px;
+      margin: 0;
+      align-self: baseline;
+    }
+  }
+}
+
+.tool-header {
+  .wrap {
+    padding: 30px 0px 0 0;
+    align-content: inherit;
+    justify-content: inherit;
+    .tool-logo-wrap {
+      width: 120px;
+      height: 120px;
+      margin-right: 30px;
+      margin-bottom: 0px;
+    }
+    .tool-about {
+      width: calc(~'100% - 375px');
+      padding-right: 10px;
+      text-align: left;
+
+      .bewertungen {
+        margin-top: 30px;
+      }
+      .header-bewerten {
+        display: inline-block;
+        margin-left: 10px;
+        color: @omt_red;
+        font-family: "Sanuk W01 Black", sans-serif;
+      }
+    }
+    .buttons-wrap {
+      margin-top: 00px;
+      width: 225px;
+      padding:0px;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: flex-start;
+      .button {
+        width: 100%;
+        margin: 0 auto 15px auto;
+        padding: 12px 30px;
+        align-self: baseline;
+      }
+    }
+  }
+  .tool-navigation-wrap {
+    margin-top: 30px;
+    .tool-navigation {
+      padding: 15px 0px 17px 0;
+      li {
+        display: inline-block;
+        margin-right: 30px;
+        margin-left: 0px;
+      }
+    }
+  }
+}
+
+.tool-scrolled {
+  .wrap {
+    padding: 10px 0;
+    .tool-about {
+      padding: 5px 0;
+      .bewertungen {
+        margin-top: 0;
+      }
+    }
+  }
+  .tool-navigation-wrap {
+    margin-top: 0px;
+
+  }
+  .tool-scrolled-links-wrap {
+    display: none!important;
+    padding: 15px 0 17px 0;
+    ul {
+      li {
+        margin: 0 30px 0 0;
+        a {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+.single-tool, .single-tool #content {
+  .tool-details {
+    .details-box {
+      p {
+        width: calc(~'33% - 15px');
+        &:nth-last-child(3) {
+          margin: 0 0 0 15px;
+        }
+      }
+    }
+  }
+}
+
+.seminar-buttons-mobile {
+  display: none;
+}
+
+#content {
+  .full-width-promo-wrap {
+    .full-width-promo {
+      .full-width-promo-content {
+        h4 {
+          font-size: 52px;
+          line-height: 64px;
+        }
+
+        .full-width-promo-items {
+          .full-width-promo-item {
+            .full-width-promo-item-icon {
+              flex: 0 0 45px;
+            }
+
+            .full-width-promo-item-content {
+              font-size: 22px;
+              line-height: 26px;
+            }
+          }
+        }
+
+        .full-width-promo-headline-2 {
+          font-size: 28px;
+        }
+
+        .full-width-promo-headline-content {
+          font-size: 20px;
+          margin-left: 30px;
+          line-height: 26px;
+        }
+      }
+
+      .full-width-promo-image-container {
+        flex: 0 0 350px;
+
+        .full-width-promo-image {
+          top: 0;
+        }
+
+        .full-width-promo-image-text {
+          top: -15px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .inhaltseditor  {
+	  .woocommerce-MyAccount-navigation {
+		  > ul {
+			  display: flex;
+        padding: 0;
+        width: 100%;
+        justify-content: space-between;
+
+        > li {
+          flex: 1 0 auto;
+
+          &::before {
+            content: "";
+          }
+
+          &.is-active {
+            > a{
+              background: @omt_blue;
+              color: #fff
+            }
+          }
+
+          > a {
+            display: block;
+            background: #eff2f5;
+            color: #31bbda;
+            font-family: "Sanuk W01 Black",sans-serif;
+            font-size: 1.2rem;
+            padding: 9px 5px;
+            font-weight: 300;
+            text-align: center;
+            border: none;
+
+            &:hover {
+              background: @omt_blue;
+              color: #fff
+            }
+          }
+        }
+		  }
+	  }
+  }
+
+  .card-data-table {
+    tr {
+      td {
+        .card-data-table-header {
+          display: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,323 @@
+.wrap {
+  width: 930px;
+}
+
+main, #main {
+  float: left;
+  width: 540px;
+}
+.single-webinare,
+.single-omt_downloads,
+.single-omt_ebook,
+.single-omt_student,
+.single-omt_magazin {
+  main, #main {
+    float: none;
+    width: 100%;
+  }
+}
+aside, #sbar, .sidebar {
+  float: right;
+  width: 350px;
+}
+
+footer {
+  aside {
+    float: none;
+    width: auto;
+  }
+}
+
+#content {
+  .omt-row {
+    .teaser-modul {
+      .teaser-small {
+        width: 290px;
+      }
+
+      .teaser-large {
+        margin-bottom: 0;
+
+        &:nth-child(2n) {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+.blog-single {
+  padding: 30px;
+}
+
+
+#content .omt-row .teaser-modul-highlight .textarea {
+  top: 0;
+  margin: 15px 0;
+  padding-left: 0;
+}
+
+.module-tabs {
+  .termine-sticky {
+    .seminar-header-sticky {
+      padding-left: 30px;
+      padding-right: 30px;
+      h3.sticky-title {
+        margin-bottom: 2px;
+        hyphens: auto;
+        padding-bottom:0;
+        .title-span {
+          hyphens: auto;
+          font-size: 20px;
+        }
+      }
+      .sticky-buttons {
+        padding-top: 2px;
+        a {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+
+
+.hide-on-mobile{
+  display: none;
+}
+
+.visible-on-mobile{
+  display: block;
+}
+
+#mega-dropnav {
+  .nav {
+    display: block !important;
+    width: 90%;
+    margin: 0 auto;
+    height: 250px;
+    overflow: auto;
+    li {
+      display: block;
+      width:100%;
+      li a{
+        font-family:"Sanuk W01 Light";
+      }
+    }
+  }
+}
+
+#content .category-menu-sticky {
+  width: 100% !important;
+  left:0px !important;
+}
+
+.table-100 {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  td {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+    border-bottom: none !important;
+    display: block !important;
+  }
+}
+
+.tabelle {
+  tr, th, td, table, tbody, thead {
+    display: block;
+    width: 100%;
+    min-width: inherit;
+  }
+
+  th.time {
+    display: none;
+  }
+  th.room {
+    br { display: none; }
+    b {
+      margin-right: 30px;
+    }
+    padding: 10px 15px;
+  }
+  tr {
+    margin-bottom: 30px;
+    padding: 0px 0px 0px 0px;
+    border: 2px solid @tool_grey;
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
+  thead {
+    overflow-y: scroll;
+    tr {
+      border: none;
+    }
+  }
+  td {
+    &:last-child {
+      border-bottom: 0px;
+    }
+  }
+}
+
+.tablewrap {
+      &:before {
+        content: "Bitte im Querformat betrachten ( Tabelle ist Scrollbar )";
+        padding: 0;
+        display: block;
+        width: 100%;
+        font-family: "Sanuk W01 Bold", sans-serif;
+      }
+}
+
+.hero-countdown-wrap {
+  padding: 30px 10px;
+
+  .countdown-wrap {
+    flex-basis: 100%;
+  }
+}
+
+#content .omt-row .teaser-modul {
+  margin: 0;
+  padding-left: 10px;
+}
+
+.tool-kategorien {
+  width: 100% !important;
+  margin: 0px 0px 30px 0px !important;
+
+}
+.tool-kategorie-content {
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  .link-wrap, .tool-teaser-single {
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+  }
+}
+
+.bid-history {
+  min-width: 1200px !Important;
+  overflow-y: scroll !important;
+}
+
+#content {
+  .icon-links-2-column-wrap,
+  .full-width-promo-wrap {
+    .wrap {
+      padding: 0 15px;
+    }
+  }
+
+  .inhaltseditor  {
+    .woocommerce {
+      .woocommerce-MyAccount-navigation {
+        > ul {
+          padding-right: 15px;
+          padding-left: 15px;
+        }
+      }
+    }
+  }
+
+  .download-items-wrap {
+    &.omt-row {
+      .teaser-modul {
+        .card {
+          &.download-featured-item {
+            margin-left: -10px;
+            max-width: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+/*********************
+14. TABS STYLES
+*********************/
+.navigation-tabs-section {
+  .navigation-tabs {
+    .navigation-tab {
+      padding-left: 15px;
+      padding-right: 15px;  
+    }
+  }
+}
+
+.omt-modal-window {
+  .omt-modal-content {
+    width: 65%;
+  }
+}
+
+.omt-downloads-content {
+  .downloads-sticky-buttons-wrap:not(.wrap) {
+    .downloads-buttons-top {
+      flex-direction: column;
+
+      .downloads-button {
+        width: 100%;
+      }
+
+      > div {
+        margin-left: 0;
+        margin-bottom: 0.5rem;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+
+  .downloads-people-container {
+    .person-section {
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+}
+
+.reviews-section {
+  .review-section {
+    margin-right: 1rem;
+    padding-bottom: 95px;
+
+    &:nth-child(odd) {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.omt-gravity-forms-container {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.page-id-36355 {
+  #content .grid-wrap  .podcast-abonnieren {
+    .abonnieren {
+      &:first-child {
+        margin-left: 30px !important;
+      }
+    }
+  }
+  // margin-top:80px !important;
+}
+
+.body-flat #content .inhaltseditor .button-three-wrap {
+  a {
+    margin-bottom: 30px !important;
+    &:last-child {
+      margin-right:30px !important;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+<?php
+
+namespace OMT\Job\Sync;
+
+use OMT\Job\Job;
+use OMT\Model\Datahost\MarketingTool;
+use OMT\Model\Tool;
+use OMT\Services\Roles;
+use WP_Post;
+
+class ToolsSync extends Job
+{
+    public function __construct()
+    {
+        // Sync tool when the corresponding post has been saved
+        // Initialize hook later (priority = 15) to have all the actual data from other plugins like ACF
+        add_action('save_post', [$this, 'save'], 15, 3);
+
+        // Sync deletion (destroy) when the corresponding post has been deleted
+        add_action('deleted_post', [$this, 'destroy'], 15, 2);
+
+        // Sync all tools manually running /wp-admin/admin-ajax.php?action=sync_all_tools
+        add_action('wp_ajax_sync_all_tools', [$this, 'saveAll']);
+    }
+
+    public function save($postId, WP_Post $post, bool $update)
+    {
+        if (defined('DOING_AJAX') && DOING_AJAX) {
+            return;
+        }
+
+        if ($post->post_type !== Tool::init()->getPostTypeName()) {
+            return;
+        }
+
+        if (wp_is_post_revision($post)) {
+            return;
+        }
+
+        if (isset($post->post_status) && $post->post_status == 'auto-draft') {
+            return;
+        }
+
+        // Tool 191511 has been excluded from sync, logic is taken from JSON solution
+        if ($post->ID == 191511) {
+            return;
+        }
+
+        Tool::init()->sync($post);
+    }
+
+    public function destroy($postid, WP_Post $post)
+    {
+        if (defined('DOING_AJAX') && DOING_AJAX) {
+            return;
+        }
+
+        if ($post->post_type !== Tool::init()->getPostTypeName()) {
+            return;
+        }
+
+        MarketingTool::init()->destroy($post->ID);
+    }
+
+    public function saveAll()
+    {
+        if (!Roles::isAdministrator()) {
+            return false;
+        }
+
+        $model = Tool::init();
+
+        $posts = $model->items(['status' => [
+            Tool::POST_STATUS_PUBLISH,
+            Tool::POST_STATUS_DRAFT,
+            Tool::POST_STATUS_PRIVATE
+        ]]);
+
+        foreach ($posts as $post) {
+            // Tool 191511 has been excluded from sync, logic is taken from JSON solution
+            if ($post->ID == 191511) {
+                continue;
+            }
+
+            $model->sync($post);
+        }
+
+        echo 'Done!';
+        exit;
+    }
+}

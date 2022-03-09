@@ -1,0 +1,61 @@
+<?php
+$zeilen = get_field('zeilen');
+foreach ($zeilen as $zeile) { ?>
+    <?php $rowclass = ""; ?>
+    <?php $color_area = true;
+    $headline = $zeile['headline'];
+    $headline_typ = $zeile['headline_typ'];
+    $introtext = $zeile['introtext'];
+    $headline_noindex = $zeile['headline_noindex'];
+    $headline_set = $zeile['headline_&_introtext_vor_dem_modul'];
+    if ($headline_set!=true) {
+        $headline = "";
+        $headline_typ = "";
+        $introtext = "";
+    }
+    if (true == $headline_noindex ){ $headline_class = "class='no-ihv'"; } else { $headline_class=""; }
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////SET UP CLASS FOR EACH ROW//////////////////////////////////////
+    include( get_template_directory() . '/library/modules/modules-rowclass.php');
+    //////////////////////////////////////SET UP CLASS FOR EACH ROW//////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    if ($zeile['no_margin_bottom'] != false) { $rowclass .= " no-margin-bottom"; }
+    ?>
+<section class="wrapper omt-row <?php print $rowclass;?> <?php print $class_themenwelt;?> <?php if (false != $color_area ) { ?>color-area-<?php print $zeile['color_embed']; } ?> <?php if (1==$zeile['content_rotate']) { print "content-rotate"; } ?>">
+    <?php if (false != $color_area ) { ?><div class="color-area-inner"></div><?php } ?>
+    <?php
+if (strlen($headline)>0 OR strlen($introtext)>0) { ?><div class="wrap module-headline-wrap"><?php }
+if (strlen($headline)>0) { ?>
+    <<?php print $headline_typ;?> <?php print $headline_class;?>>
+    <?php print $headline;?>
+    </<?php print $headline_typ;?>>
+<?php } ?>
+    <?php if (strlen($introtext)>0) { print $introtext; }
+if (strlen($headline)>0 OR strlen($introtext)>0) { ?></div><?php } ?>
+    <?php $i=0;?>
+    <?php $i++;
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////SET UP CLASS FOR EACH COLUMN//////////////////////////////////////
+    include( get_template_directory() . '/library/modules/modules-columnclass.php');
+    //////////////////////////////////////SET UP CLASS FOR EACH COLUMN//////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////
+    ?>
+    <div class="omt-module <?php print $columnclass . " "; ?>"
+         <?php if ($columnclass == "header_hero_modul") { ?>style="background: url('<?php print $zeile['inhaltstyp'][0]['hero_background_image']['url'];?>');" <?php } ?>
+    >
+        <?php
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////SET UP COMPLETE MODULES FOR EACH INPUT/////////////////////////
+        include( get_template_directory() . '/library/modules/modules_modultyp.php');
+        //////////////////////////////////////SET UP COMPLETE MODULES FOR EACH INPUT/////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////
+        ?>
+    </div>  <?php  //end of foreach COLUMN ?>
+</section><?php } // end of foreach ROW ?>

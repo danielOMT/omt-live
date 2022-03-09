@@ -1,0 +1,15 @@
+{
+    "require": {
+        "google/apiclient": "^2.0",
+        "league/csv": "^9.7",
+        "rakit/validation": "^1.4"
+    },
+    "scripts": {
+        "post-update-cmd": "Google\\Task\\Composer::cleanup"
+    },
+    "extra": {
+        "google/apiclient-services": [
+            "Sheets"
+        ]
+    }
+}

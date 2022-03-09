@@ -1,0 +1,1 @@
+<h1><?php print $zeile['inhaltstyp'][0]['hero_title_h1'];?></h1>

@@ -1,0 +1,73 @@
+.sidebar-sticky {
+  z-index: 200 !important;
+  opacity: 1 !important;
+  position: fixed !important;
+  width: 362px !important;
+  transition: none !important;
+  top: 132px;
+  right: 15px;
+}
+
+.content-themenwelt-layout {
+  .tool-info-image {
+    display: block !important;
+  }
+  .tool-info-mobile {
+    display: none !important;
+  }
+}
+
+.characteristics-section-wrap {
+  position: fixed;
+  top: 80px;
+  right: 30px;
+}
+
+#content {
+  .fixed-reviews-section {
+    position: fixed;
+    top: 550px;
+    right: 30px;
+    width: 350px;
+    z-index: 999;
+    background: @white;
+    padding: 10px;
+
+    &.reviews-section {
+      .review-section {
+        flex-direction: column;
+        padding-bottom: 0;
+        margin-left: 0;
+        margin-top: 0;
+        margin-right: 0;
+    
+        .review-avatar-container {
+          flex: 0 0 140px;
+          order: 1;
+    
+          .review-avatar-section {
+            top: 0;
+            position: relative;
+    
+            .avatar-image-section {
+              max-width: 140px;
+              margin: 0 auto;
+              padding-left: 0;
+              padding-right: 0;
+            }
+          }
+        }
+    
+        > div:first-child {
+          order: 2;
+        }
+
+        .review-content-section {
+          margin-left: 2rem;
+          padding-left: 1.5rem;
+          padding-right: 1.5rem;
+        }
+      }
+    }
+  }
+}

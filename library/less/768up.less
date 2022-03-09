@@ -1,0 +1,289 @@
+/******************************************************************
+Stylesheet: Tablet & Small Desktop Stylesheet
+This size will work on iPads, other tablets, and desktops. You'll also notice the grid starts to come into play.
+******************************************************************/
+
+
+/*********************
+LAYOUT & GRID STYLES
+*********************/
+
+/*********************
+SIDEBARS & ASIDES
+*********************/
+
+.header {
+  #inner-header {
+    nav {
+      li {
+        line-height: 46px;
+      }
+    }
+  }
+}
+
+.copyright {
+	padding: 0 10px;
+}
+
+.sticky-footer
+{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.col_divider {
+	display: none;
+}
+
+br.mobile, span.mobile {
+	display: none;
+}
+
+.module-with-sidebar {
+	float: left;
+}
+
+.agenturfinder-prozess {
+	margin-top: 30px;
+	.prozess-schritt {
+		display: flex;
+		flex-wrap: wrap;
+		.schritt-content {
+			width: 33%;
+			margin:0;
+		}
+		.schritt-infotext {
+			order: 1;
+			position: relative;
+			bottom:9px;
+			.divider-wrap {
+				display: none;
+			}
+		}
+		.schritt-infografik {
+			order: 2;
+			.divider-wrap {
+				display: flex !important;
+			}
+		}
+		.schritt-placeholder {
+			order: 3;
+		}
+		&:nth-child(2n) {
+			.schritt-infotext {
+				order:3;
+				h4, p {
+					float:right;
+				}
+			}
+			.schritt-placeholder {
+				order:1;
+			}
+		}
+	}
+	.divider-wrap {
+		width: 100%;
+		height: 100px;
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		padding: 20px 0;
+		.schritt-divider {
+			display: block;
+			margin-left:3px;
+			width: 5px;
+			height: 100%;
+			background: @omt_lightblue;
+		}
+	}
+}
+
+.button-730px {
+	width: 730px;
+	max-width: 100%;
+}
+
+.tabbutton-infopaket {
+	margin-left: 10px;
+}
+
+.single-tool, .single-tool #content {
+	.rezensionen-wrap {
+		.bewertung-zeile {
+			justify-content: space-between;
+		}
+	}
+}
+
+.page, .single {
+	#content .toolindex-row-wrap {
+		.toolindex-column-wrap {
+			.toolindex-wrap {
+				.toolindex {
+					.tool-sort {
+						width: 100%;
+						background: @tool_greybg;
+						color: @omt_blue;
+						margin-bottom: 60px;
+						padding: 30px;
+						display: block;
+						font-family: "Sanuk W01 Bold", sans-serif;
+						position: relative;
+
+						.sort-label {
+							display: inline-block;
+							width: 130px;
+							margin-right: 0px;
+							margin-bottom: 0px;
+						}
+
+						.tool-sort-options {
+							margin: 0 0 0 30px;
+							padding: 10px;
+							width: calc(~'100% - 164px');
+							min-width: 330px;
+							background: @white;
+							color: @omt_lightblue;
+							border-bottom: 1px solid @omt_lightblue !important;
+							font-family: "Sanuk W01 Bold", sans-serif;
+							position: relative;
+						}
+						&:after {
+							content: "\f053\f053";
+							display: block;
+							position: absolute;
+							top: 50%;
+							transform: translateY(-50%);
+							letter-spacing: -3px;
+							right: 50px;
+							color: @omt_lightblue;
+							font-family: 'FontAwesome';
+						}
+					}
+					.tool {
+						.tool-buttons {
+							.button {
+								margin: 0 30px 0 0;
+
+								&:last-child {
+									margin-right: 0px;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+#content {
+	.omt-row {
+		.teaser-modul {
+			.card {
+				margin-left: 30px;
+			}
+
+			.teaser {
+				.teaser-two-lines-title {
+					min-height: 75px;
+				}
+			}
+		}
+	}
+}
+
+.body-flat .header-flat, .header-flat {
+	margin-top: 80px !important;
+}
+
+#content {
+  .icon-links-2-column-wrap {
+    .icon-links-2-column {
+      .icon-links-2-column-section {
+        flex: 1 0 50%;
+      }
+    }
+  }
+
+  .full-width-promo-wrap {
+    .full-width-promo {
+      .full-width-promo-content {
+        h4 {
+          font-size: 46px;
+          line-height: 56px;
+        }
+
+        .full-width-promo-items {
+          .full-width-promo-item {
+            .full-width-promo-item-icon {
+              flex: 0 0 45px;
+            }
+
+            .full-width-promo-item-content {
+              font-size: 20px;
+              line-height: 24px;
+            }
+          }
+        }
+
+        .full-width-promo-headline-2 {
+          font-size: 24px;
+        }
+
+        .full-width-promo-headline-content {
+          font-size: 18px;
+          margin-left: 25px;
+          line-height: 24px;
+        }
+      }
+
+      .full-width-promo-image-container {
+        flex: 0 0 300px;
+      
+        .full-width-promo-image {
+          position: absolute;
+          top: 0;
+        }
+      
+        .full-width-promo-image-text {
+          position: absolute;
+          top: -15px;
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .download-items-wrap {
+    .teaser-modul {
+      .teaser-matchbuttons {
+        .h4 {
+          margin-bottom: 15px;
+        }
+
+        .button {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+.team-members-gallery {
+  .team-gallery-items {
+    .team-gallery-item {
+      width: calc(~'1/4 * 100% - (1 - 1/4) * 10px');
+
+      &:nth-child(4n) {
+        margin-right: 0;
+      }
+
+      &:nth-child(-n+4) {
+        margin-top: 0;
+      }
+    }
+  }
+}

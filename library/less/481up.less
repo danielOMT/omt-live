@@ -1,0 +1,123 @@
+/******************************************************************
+Stylesheet: 481px and Up Stylesheet
+This stylesheet is loaded for larger devices. It's set to 481px because at 480px it would load on a landscaped iPhone.
+A word of warning. This size COULD be a larger mobile device, so you still want to keep it pretty light.
+******************************************************************/
+
+
+/*********************
+POSTS & CONTENT STYLES
+*********************/
+
+.entry-content {
+	.alignleft, img.alignleft {
+		margin-right: 1.5em;
+		display: inline;
+		float: left;
+	}
+	.alignright, img.alignright {
+		margin-left: 1.5em;
+		display: inline;
+		float: right;
+	}
+	.aligncenter, img.aligncenter {
+		margin-right: auto;
+		margin-left: auto;
+		display: block;
+		clear: both;
+	}
+}
+
+
+.single-tool, .single-tool #content {
+	.tool-details {
+		.details-box {
+			p {
+				width: calc(~'50% - 25px');
+				&:nth-last-child(2) {
+					margin: 0 0 0 15px;
+				}
+			}
+		}
+	}
+}
+
+.page, .single {
+	#content .toolindex-row-wrap {
+		.toolindex-column-wrap {
+			.toolindex-wrap {
+				.toolindex {
+					.tool {
+						.tool-top {
+							.tool-name {
+								width: 38%;
+								max-width: 100%;
+								margin-top: 0px;
+								p, span {
+									margin: 0;
+								}
+							}
+							.tool-details {
+								width: calc(~'62% - 150px');
+							}
+						}
+						.button {
+							margin: 0 0 10px auto;
+							width: 200px;
+							max-width: 100%;
+							&:last-child {
+								margin: 0 0 10px auto;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+.tool-header {
+	.wrap {
+		align-content: inherit;
+		justify-content: inherit;
+		.tool-logo-wrap {
+			margin-right: 30px;
+			margin-bottom: 0px;
+		}
+		.tool-about {
+			width: calc(~'100% - 110px');
+			padding-right: 0;
+			text-align: left;
+		}
+		.buttons-wrap {
+			margin-top: 10px;
+			.button {
+			width: calc(~'50% - 20px');
+				margin: 0 10px 0px 10px;
+				padding: 12px 30px;
+				align-self: baseline;
+				font-size: 18px;
+			}
+		}
+	}
+	.tool-navigation-wrap {
+		.tool-navigation {
+			li {
+				a {
+					font-size: 18px;
+					&:hover {
+						color: @omt_blue;
+					}
+				}
+			}
+		}
+	}
+}
+
+.tool-scrolled {
+	.wrap {
+		.tool-about {
+			width: 100%;
+		}
+	}
+}

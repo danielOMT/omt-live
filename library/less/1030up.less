@@ -1,0 +1,103 @@
+/******************************************************************
+Stylesheet: Desktop Stylsheet
+This is the desktop size. It's larger than an iPad so it will only be seen on the Desktop.
+******************************************************************/
+
+/*********************
+NAVIGATION STYLES
+*********************/
+
+.agentur-info, #content .agentur-info {
+  .webinar-teaser-img,
+  .ebook-teaser-img{
+    margin-right: 160px !important;
+  }
+  .webinar-teaser-text,
+  .ebook-teaser-text {
+    width: 510px !important;
+  }
+}
+
+
+.kapitel-wrap {
+  .kapitelnavigation-wrap {
+    width: 350px !important;
+    margin-right: 30px !important;
+    display: block;
+  }
+  .kapitel-items-wrap {
+    width: calc(~'100% - 380px') !important;
+  }
+}
+
+
+
+.tool-scrolled {
+  .wrap {
+    padding: 10px 0 10px 0;
+    .tool-about {
+      padding: 5px 0;
+      width: calc(~'100% - 460px');
+    }
+
+    .buttons-wrap {
+      width: 460px;
+      .button {
+        width: 225px;
+        margin-right: 10px;
+        margin-bottom: 0px;
+        &:last-of-type {
+          margin-right: 0px !important;
+        }
+      }
+    }
+  }
+}
+
+#content {
+  .full-width-promo-wrap {
+    .full-width-promo {
+      .full-width-promo-content {
+        h4 {
+          font-size: 62px;
+          line-height: 80px;
+        }
+
+        .full-width-promo-items {
+          .full-width-promo-item {
+            .full-width-promo-item-icon {
+              flex: 0 0 50px;
+            }
+
+            .full-width-promo-item-content {
+              font-size: 26px;
+              line-height: 30px;
+            }
+          }
+        }
+
+        .full-width-promo-headline-2 {
+          font-size: 32px;
+        }
+
+        .full-width-promo-headline-content {
+          font-size: 24px;
+          margin-left: 35px;
+          line-height: 30px;
+        }
+      }
+
+      .full-width-promo-image-container {
+        flex: 0 0 415px;
+
+        .full-width-promo-image {
+          top: -40px;
+        }
+
+        .full-width-promo-image-text {
+          top: -55px;
+        }
+      }
+    }
+  }
+}

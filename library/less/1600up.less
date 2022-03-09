@@ -1,0 +1,99 @@
+.socials-floatbar-left {
+  left: 100px;
+}
+
+.tool-info-image {
+  width:350px;
+  img {
+    width: 350px;
+  }
+}
+
+.page, .single {
+  #content .toolindex-row-wrap {
+    .toolindex-column-wrap {
+      .toolindex-wrap {
+        max-width: 1110px;
+        .toolindex-filter-wrap {
+          width: 350px;
+          margin-right: 30px;
+          margin-bottom: 30px;
+          display: block;
+          max-height: none;
+
+          .toolindex-filter {
+            z-index: 100;
+            display: block;
+            width: 100%;
+            font-weight: 700;
+            position: relative;
+
+            .filter-headline {
+              background: @omt_lightblue;
+              color: white;
+              padding: 10px;
+              margin: 0 0 00px 0;
+              font-size: 18px;
+              font-family: "Sanuk W01 Bold", sans-serif;
+              position: relative;
+
+              &:after {
+                content: "\f053\f053";
+                display: block;
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                letter-spacing: -3px;
+                right: 30px;
+                color: @white;
+                font-family: 'FontAwesome';
+              }
+            }
+
+            .filter-wrap {
+              margin: 0;
+              padding: 30px;
+              border-top: 1px solid @omt_lightblue !important;
+              background: @tool_greybg;
+
+              &:last-child {
+                border-bottom: 1px solid @omt_lightblue;
+              }
+
+              &:nth-child(2n) {
+                background: white;
+              }
+
+              p {
+                margin: 0 0 5px 0;
+              }
+
+              h4 {
+                margin: 0 0 10px 0;
+              }
+
+              p {
+                cursor: pointer;
+              }
+
+              i {
+                margin-right: 10px;
+                color: @omt_lightblue;
+              }
+
+              .filter {
+                &:hover {
+                  color: @omt_lightblue;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.top-left-banner-section {
+  width: 350px;
+}

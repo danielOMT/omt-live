@@ -1,0 +1,155 @@
+/******************************************************************
+Stylesheet: Super Large Monitor Stylesheet
+******************************************************************/
+
+.header, body {
+  max-width: 1920px;
+}
+
+.weitere-vergleiche {
+  .button {
+    width: calc(~'50% - 30px');
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+}
+
+.single-tool, .single-tool #content {
+  .tool-uebersicht {
+    .half {
+      display: block;
+      h2 {
+        .h3;
+        -webkit-text-fill-color: @headline;
+        display: inline-block;
+      }
+      .slider-image {
+        width: 100%;
+      }
+    }
+    .left-half {
+      width: 540px;
+      position: relative;
+      margin-right: 30px;
+      margin-bottom: 0px;
+      h1 {
+        margin-bottom: 30px;
+      }
+      .wer-verwendet {
+        p {
+          &:last-child {
+            margin-bottom: 0px;
+          }
+        }
+      }
+    }
+    .right-half {
+      width: 540px;
+    }
+  }
+  .tool-rezensionen {
+    .rezension {
+      .half {
+        display: flex;
+        flex-wrap: wrap;
+        align-content: baseline;
+        justify-content: inherit;
+        h2 {
+          .h3;
+          -webkit-text-fill-color: @headline;
+          display: inline-block;
+        }
+        .slider-image {
+          width: 100%;
+        }
+      }
+      .left-half {
+        width: calc(~'40% - 30px');
+        position: relative;
+        margin-right: 30px;
+        margin-bottom: 0px;
+        text-align: left;
+        ul {
+          display: block;
+          li {
+            display: block;
+            width: 100%;
+          }
+        }
+        h1 {
+          margin-bottom: 30px;
+        }
+        .wer-verwendet {
+          p {
+            &:last-child {
+              margin-bottom: 0px;
+            }
+          }
+          margin-bottom: 60px;
+        }
+      }
+      .right-half {
+        width: 60%;
+      }
+    }
+  }
+}
+
+.page, .single {
+  #content .toolindex-row-wrap {
+    .toolindex-column-wrap {
+      .toolindex-wrap {
+        .toolindex {
+          .tool-sort {
+            width: 100%;
+            background: @tool_greybg;
+            color: @omt_blue;
+            margin-bottom: 60px;
+            padding: 30px;
+            display: block;
+            font-family: "Sanuk W01 Bold", sans-serif;
+            position: relative;
+
+            .sort-label {
+              display: inline-block;
+              width: 130px;
+              margin-right: 0px;
+              margin-bottom: 0px;
+            }
+
+            .tool-sort-options {
+              margin: 0 0 0 30px;
+              padding: 10px;
+              width: calc(~'100% - 164px');
+              min-width: 330px;
+              background: @white;
+              color: @omt_lightblue;
+              border-bottom: 1px solid @omt_lightblue !important;
+              font-family: "Sanuk W01 Bold", sans-serif;
+              position: relative;
+            }
+            &:after {
+              content: "\f053\f053";
+              display: block;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              letter-spacing: -3px;
+              right: 50px;
+              color: @omt_lightblue;
+              font-family: 'FontAwesome';
+            }
+          }
+          .tool {
+            .tool-buttons {
+              .button {
+                width: calc(~'33% - 20px');
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

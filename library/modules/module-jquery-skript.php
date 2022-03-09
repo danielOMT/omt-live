@@ -1,0 +1,1 @@
+<?php print $zeile['inhaltstyp'][0]['skript'];?>

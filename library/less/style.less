@@ -1,0 +1,97 @@
+/******************************************************************
+Stylesheet: Main Stylesheet
+Here we are calling the separate media queries. The base mobile goes outside any query
+and is called at the beginning, after that we call the rest of the styles inside media queries.
+******************************************************************/
+
+
+@import "normalize.less";
+@import "utilities/main.less";
+@import "mixins.less";
+@import "base.less";
+@import "shortcodes.less";
+@import "magnific-popups.less";
+@import "darkmode.less";
+
+//get font-awesome:
+@import "../font-awesome-4.6.3/less/font-awesome.less";
+
+//slick Slider Styles:
+//@import "../js/slick/slick-theme.less";
+@import "../js/slick/slick.less";
+
+// Average viewing window. Tablets, Laptops, and in general anyone not viewing on a mobile device.
+@media only screen and (max-width: 1200px) {
+	@import "upto1200.less";
+}
+
+// Average viewing window. Tablets, Laptops, and in general anyone not viewing on a mobile device.
+@media only screen and (max-width: 960px) {
+	@import "upto960.less";
+}
+
+// Average viewing window. Tablets, Laptops, and in general anyone not viewing on a mobile device.
+@media only screen and (max-width: 767px) {
+  @import "upto768.less";
+}
+
+// Average viewing window. Tablets, Laptops, and in general anyone not viewing on a mobile device.
+@media only screen and (max-width: 600px) {
+	@import "upto600.less";
+}
+
+// Small devices
+@media only screen and (max-width: 481px) {
+	@import "upto481.less";
+}
+
+// Devices like the Galaxy Note or something that's larger than an iPhone but smaller than a tablet.
+@media only screen and (min-width: 481px) {
+	@import "481up.less";
+}
+
+// Average viewing window. Tablets, Laptops, and in general anyone not viewing on a mobile device.
+@media only screen and (min-width: 768px) {
+	@import "768up.less";
+}
+
+// Average viewing window. Tablets, Laptops, and in general anyone not viewing on a mobile device.
+@media only screen and (min-width: 960px) {
+	@import "960up.less";
+}
+
+// Desktops, Laptops, etc.
+@media only screen and (min-width: 1030px) {
+	@import "1030up.less";
+}
+
+// Desktop full screen viewers.
+@media only screen and (min-width: 1240px) {
+	@import "grid.less";
+	@import "1240up.less";
+}
+
+// Desktops, Laptops, etc.
+@media only screen and (min-width: 1400px) {
+	@import "1400up.less";
+}
+
+// Desktops, Laptops, etc.
+@media only screen and (min-width: 1600px) {
+	@import "1600up.less";
+}
+
+// Desktops, Laptops, etc.
+@media only screen and (min-width: 1900px) {
+	@import "1900up.less";
+}
+
+// Retina iPhone (4s) and iPad (2,3) along with other displays with a 2x resolution
+@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min--moz-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+	@import "2x.less";
+}
+
+// Print. Remember to add things that won't make sense to print at the bottom.
+@media print {
+	@import "print.less";
+}
