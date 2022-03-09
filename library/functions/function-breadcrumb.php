@@ -210,6 +210,10 @@ function custom_breadcrumbs() {
                         $post_type_name = "WordPress";
                         $post_type_archive = "/wordpress";
                         break;
+                    case "omt_magazin":
+                        $post_type_name = "OMT-Magazin";
+                        $post_type_archive = "/downloads/magazin";
+                        break;
                 }
                 if (strlen ($post_type_archive)<1) { $post_type_archive = "/" . $post_type; } //if we dont have an archive due to parent pages
 
