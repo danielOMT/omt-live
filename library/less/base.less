@@ -1452,9 +1452,29 @@ form p {
   margin-bottom: 5px;
   width: 888px !important;
 }
-#article_select{
-  margin-top: 0px;
+
+.artikel-select-wrap {
+  margin-top: 27px;
   height: 40px;
+  width: 600px;
+  max-width: 100%;
+  position: relative;
+  &:after {
+    font-family: 'FontAwesome';
+    content: '\f107';
+    margin: 0 5px 0 -15px;
+    position: absolute;
+    right: 10px;
+    color: white;
+    font-size: 30px;
+    top: -2px;
+  }
+}
+#article_select{
+  max-width: 100%;
+  height: 40px;
+  width: 600px;
+
   option  {
     color: white;
   }

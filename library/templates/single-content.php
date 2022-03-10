@@ -87,16 +87,18 @@ $horen = get_field('spotify_id');
                             </div>
                             <?php if(isset($schauen) && $schauen != '' || isset($horen) && $horen):?>
                                 <h3 class="article_select_headline">Wie möchtest Du den Artikel konsumieren?</h3>
-                                <select id="article_select">
-<!--                                    <option value="0">Möchtest Du den Artikel Lesen, Schauen oder Hören?</option>-->
-                                    <option value="Lesen">Artikel Lesen</option>
-                                    <?php if(isset($schauen) && $schauen != ''): ?>
-                                        <option value="schauen">Video schauen</option>
-                                     <?php endif;?>
-                                     <?php if(isset($horen) && $horen != ''): ?>
-                                        <option value="horen">Tonspur hören</option>
-                                     <?php endif;?>
-                                </select>
+                                <label class="artikel-select-wrap">
+                                    <select id="article_select">
+                                        <option value="auswahlen">Bitte auswählen</option>
+                                        <option value="Lesen">Artikel Lesen</option>
+                                        <?php if(isset($schauen) && $schauen != ''): ?>
+                                            <option value="schauen">Video schauen</option>
+                                        <?php endif;?>
+                                        <?php if(isset($horen) && $horen != ''): ?>
+                                            <option value="horen">Tonspur hören</option>
+                                        <?php endif;?>
+                                    </select>
+                                </label>
 
                             <?php endif;?>
                         </div>
