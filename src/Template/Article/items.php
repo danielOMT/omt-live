@@ -26,26 +26,20 @@ $itemsDisplayed = 1;
     <?php endforeach ?>
 
     <?php if (isset($this->loadMoreArticles) && $this->loadMoreArticles) : ?>
-        <div class="x-w-full" x-data="xLoadMoreArticles()">
-            <button
-                x-show="showLoadMoreBtn"
+        <button id="load_more_article"
                 type="button"
-                @click="load"
+                onclick="omtLoadMore()"
                 data-format="<?php echo $this->format ?>" 
                 data-offset="<?php echo $this->loadMoreOffset ?? 0 ?>" 
-                data-types="<?php echo $this->postTypes ? htmlspecialchars(json_encode($this->postTypes)) : '' ?>"
+                data-types="<?php echo $this->postTypes[0] ?>"
                 class="button button-gradient button-730px button-center button-loadmore" 
-            >
-                Weitere Artikel
+            > 
+                <span id="load_more_button_text">Weitere Artikel</span> <img id="spinner_l" class="loader_spin_" src="https://www.omt.de/uploads/2022/03/loader_.svg">
             </button>
 
-            <div x-show="loading" class="x-font-sanuk-bold x-text-center" x-cloak>
-                <i class="fa fa-circle-o-notch fa-spin fa-fw" style="vertical-align:middle;"></i>Artikel werden geladen
-            </div>
-        
-            <div x-ref="results"></div>
-        </div>
+        <div id="results"></div>
     <?php endif ?>
 <?php else : ?>
     Leider keine artikel gefunden.
 <?php endif ?>
+
