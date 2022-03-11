@@ -1916,6 +1916,8 @@ function omtLoadMore(){
     var dataFormat = element.getAttribute('data-format');
     var dataOffset = element.getAttribute('data-offset');
     var dataTypes = element.getAttribute('data-types');
+    $( "#load_more_button_text" ).hide( "slow");
+    $( "#spinner_l" ).removeClass( "loader_spin_" );
     var url = "/wp-admin/admin-ajax.php?action=omt_load_articles&format="+dataFormat+"&offset="+dataOffset+"&post_type[]="+dataTypes;
     $.ajax({
         type: "GET",
@@ -1924,6 +1926,8 @@ function omtLoadMore(){
         success: function(data){
             //if request if made successfully then the response represent the data
             var result = data[Object.keys(data)[0]];
+            
+            $("#load_more_article").hide();
             $("#results").html(result.content);
         }
             
