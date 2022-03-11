@@ -1,6 +1,7 @@
 <style>
     .artikel-wrap .teaser{
         padding-bottom: 10px;
+            min-height: 455px;
     } 
 </style>
 <?php
