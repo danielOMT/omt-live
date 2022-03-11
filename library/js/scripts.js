@@ -1910,6 +1910,26 @@ $('#article_select').change(function(){
         $("#webinar_content").hide();
     }
 });
+
+function omtLoadMore(){
+    var element = document.getElementById('load_more_article');
+    var dataFormat = element.getAttribute('data-format');
+    var dataOffset = element.getAttribute('data-offset');
+    var dataTypes = element.getAttribute('data-types');
+    var url = "/wp-admin/admin-ajax.php?action=omt_load_articles&format="+dataFormat+"&offset="+dataOffset+"&post_type[]="+dataTypes;
+    $.ajax({
+        type: "GET",
+        url: url,
+        dataType: 'json',
+        success: function(data){
+            //if request if made successfully then the response represent the data
+            var result = data[Object.keys(data)[0]];
+            $("#results").html(result.content);
+        }
+            
+    });
+}
+
 /*excludes wprocket
 
 wp-includes/js/dist/
