@@ -1,3 +1,8 @@
+<style>
+    .artikel-wrap .teaser{
+        padding-bottom: 10px;
+    } 
+</style>
 <?php
 
 use OMT\View\ArticleView;
