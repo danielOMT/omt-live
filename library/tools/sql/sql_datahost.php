@@ -188,8 +188,8 @@ function sql_tools()
                         while ($bidrow = mysqli_fetch_assoc($query)) {
                             $is_active = $bidrow['is_active'];
                             if (1 == $is_active) {
-                                print $bid;
                                 $bid = $bidrow['bid_kosten'];
+                                print $bid;
                                 update_tool_bids($tool_id, $toolkategorie_id, $bid);
                             }
                         }
