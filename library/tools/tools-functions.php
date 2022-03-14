@@ -38,6 +38,7 @@ function update_tool_bids(int $tool_id = 0, int $catid = 0, int $gebot = 0)
 //update_sub_field( array("repeater_field_key", $row+1, "repeater_sub_field_key"), $new_value, $post_id);
     if ($kategorierow>0) {
         update_sub_field(array($tool_kategorien_key, $kategorierow, $gebotskey), $gebot, $tool_id);
+        print "updating...";
     }
 }
 
