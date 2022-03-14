@@ -137,6 +137,7 @@ require_once('library/shortcodes/shortcode-bewertungen.php');
 require_once('library/shortcodes/shortcode-magazin.php');
 require_once('library/shortcodes/shortcode-ebook.php');
 require_once('library/shortcodes/shortcode-ebook-teaser.php');
+require_once('library/shortcodes/optionebooks.php');
 
 //ajax ressources
 require_once('library/ajax/ajax-ressources.php');
