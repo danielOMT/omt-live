@@ -189,7 +189,7 @@ function sql_tools()
                             $is_active = $bidrow['is_active'];
                             if (1 == $is_active) {
                                 $bid = $bidrow['bid_kosten'];
-                                print $bid;
+                                if (265747 = $tool_id) { print $bid; }
                                 update_tool_bids($tool_id, $toolkategorie_id, $bid);
                             }
                         }
