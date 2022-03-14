@@ -4,24 +4,24 @@ use OMT\Model\User;
 
 function update_tool_bids(int $tool_id = 0, int $catid = 0, float $gebot = 0)
 {
-    $tool_kategorien_content = get_field('tool_kategorien', $tool_id);
-    $i=0;
-    foreach ($tool_kategorien_content as $category) {
-        $i++;
-        if ($catid == $category['kategorie']) {
-            $kategorierow = $i;
-        }
+$tool_kategorien_content = get_field('tool_kategorien', $tool_id);
+$i=0;
+foreach ($tool_kategorien_content as $category) {
+    $i++;
+    if ($catid == $category['kategorie']) {
+        $kategorierow = $i;
     }
+}
 
 //=> NOW WE WRITE THE NEW BID AMOUNT INTO THE CORRESPONDING TOOL / TOOLCAT INFORMATION
 //updating ACF COMPLETE SUB ROWS VIA CODE TESTING
-    $tool_kategorien_key = "field_5f4632583c143";
-    $gebotskey = "field_5f4633083c147";
-    $kategorie = "field_5f4632583c144";
+$tool_kategorien_key = "field_5f4632583c143";
+$gebotskey = "field_5f4633083c147";
+$kategorie = "field_5f4632583c144";
 //$kategorie_zur_website_link = "field_5f4633943c14b";
 //$kategorie_zur_website_clickmeter_link_id = "field_5f46339d3c14c";
 //$kategorie_preisubersicht_link = "field_5f46336e3c149";
-//$kategorie_preisubersicht_clickmeter_link_id = "field_5f4633833c14a"; 
+//$kategorie_preisubersicht_clickmeter_link_id = "field_5f4633833c14a";
 //$kategorie_tool_testen_link = "field_5f4633e03c14d";
 //$kategorie_tool_testen_clickmeter_link_id = "field_5f4634293c14e";
 ///                     foreach ($vortrage as $vortrag) {
@@ -36,9 +36,25 @@ function update_tool_bids(int $tool_id = 0, int $catid = 0, float $gebot = 0)
 //                        }
 //                    }
 //update_sub_field( array("repeater_field_key", $row+1, "repeater_sub_field_key"), $new_value, $post_id);
-    if ($kategorierow>0) {
-        update_sub_field(array($tool_kategorien_key, $kategorierow, $gebotskey), $gebot, $tool_id);
-    }
+if ($kategorierow>0) {
+    update_sub_field(array($tool_kategorien_key, $kategorierow, $gebotskey), $gebot, $tool_id);
+}
+
+///ADDITIONALLY, NEED TO UPDATE THE TOOLS ROW FROM MAXX MARKETING TABLE IF WE WANT TO USE THEIR OUTPUT!!!
+///  IN THEIR SYSTEM, BIDS ARE BEING STORED IN THE TABLE "ef2sv_tool_category" USING THE COLUMN "WORTH", WHICH NEEDS TO GET THE VALUE OF THE CURRENT BID AS WELL THEN!
+$conn = new mysqli(DATAHOST_DB_HOST, DATAHOST_DB_USER, DATAHOST_DB_PASSWORD, DATAHOST_DB_NAME);
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} else { "connection established!"; }
+
+//set up and run query:
+$update_ef2sv_tool_category_worth = "UPDATE `ef2sv_tool_category` SET `worth` = " . $gebot .  " WHERE `tool_id` = " . $tool_id ." AND `category_id` = " . $catid;
+if ($conn->query($update_ef2sv_tool_category_worth) === false) {
+    echo "Error: " . $conn->error;
+} else { //echo "success!"; }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
 
 ////////FUNCTION TO LOOP THROUGH ALL USERS WITH ROLE "TOOLANBIETER", CHECK THEIR BUDGETS VS. THEIR TOOLCOST AND ACT ACCORDINGLY

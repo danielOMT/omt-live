@@ -185,13 +185,13 @@ function sql_tools()
                 $bidcheck = "SELECT * FROM `omt_bids` WHERE `tool_id`=$tool_id AND `toolkategorie_id`=$toolkategorie_id";
                 $query = $conn->query($bidcheck);
                 if(mysqli_num_rows($query) > 0){
-                        while ($bidrow = mysqli_fetch_assoc($query)) {
-                            $is_active = $bidrow['is_active'];
-                            if (1 == $is_active) {
-                                $bid = $bidrow['bid_kosten'];
-                                update_tool_bids($tool_id, $toolkategorie_id, $bid);
-                            }
+                    while ($bidrow = mysqli_fetch_assoc($query)) {
+                        $is_active = $bidrow['is_active'];
+                        if (1 == $is_active) {
+                            $bid = $bidrow['bid_kosten'];
+                            update_tool_bids($tool_id, $toolkategorie_id, $bid);
                         }
+                    }
                     // print "BID EXISTS ALREADY";
                 } else {
                     // print "DOES NOT EXIST, CREATING...";
@@ -203,6 +203,6 @@ function sql_tools()
             }
         }
     endwhile;
-        wp_reset_postdata();
+    wp_reset_postdata();
     $conn->close();
 }

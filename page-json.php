@@ -26,7 +26,7 @@ $hero_background = get_field('standardseite', 'options');
                 <?php
                 require_once('library/tools/cronjobs/run-cronjob-toolfunctions.php');
                 require_once('library/tools/tools-functions.php');
-                run_cronjob_toolfunctions();
+                //run_cronjob_toolfunctions();
                 ?>
             </div>
         </div>
