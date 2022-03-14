@@ -2,7 +2,7 @@
 
 use OMT\Model\User;
 
-function update_tool_bids(int $tool_id = 0, int $catid = 0, int $gebot = 0)
+function update_tool_bids(int $tool_id = 0, int $catid = 0, float $gebot = 0)
 {
     $tool_kategorien_content = get_field('tool_kategorien', $tool_id);
     $i=0;

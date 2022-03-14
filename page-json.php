@@ -15,19 +15,20 @@ Throttle Factor: 10 requests/sec
 <?php //api@clickmeter.com
 $hero_background = get_field('standardseite', 'options');
 ?>
-<div id="content" class="<?php print "";?>" xmlns:background="http://www.w3.org/1999/xhtml">
-    <div id="inner-content" class="wrap">
-        <div class="omt-row hero-header" style="background: url('<?php print $hero_background['url'];?>') no-repeat 50% 0;">
-            <div class="wrap">
-                <h1><?php print get_the_title();?></h1>
+    <div id="content" class="<?php print "";?>" xmlns:background="http://www.w3.org/1999/xhtml">
+        <div id="inner-content" class="wrap">
+            <div class="omt-row hero-header" style="background: url('<?php print $hero_background['url'];?>') no-repeat 50% 0;">
+                <div class="wrap">
+                    <h1><?php print get_the_title();?></h1>
+                </div>
+            </div>
+            <div class="omt-row">
+                <?php
+                require_once('library/tools/cronjobs/run-cronjob-toolfunctions.php');
+                require_once('library/tools/tools-functions.php');
+                run_cronjob_toolfunctions();
+                ?>
             </div>
         </div>
-        <div class="omt-row">
-           <?php
-           require_once('library/tools/cronjobs/run-cronjob-toolfunctions.php');
-           require_once('library/tools/tools-functions.php');
-           ?>
-        </div>
     </div>
-</div>
 <?php get_footer(); ?>
