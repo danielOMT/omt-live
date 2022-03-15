@@ -42,7 +42,7 @@ $itemsDisplayed = 1;
             > 
                 <span id="load_more_button_text">Weitere Artikel</span> <img id="spinner_l" class="loader_spin_" src="https://www.omt.de/uploads/2022/03/loader_.svg">
             </button>
-        <div class="loading-content loader_spin_">
+        <div id="loading-content" class=" loader_spin_">
             <span>Artikel werden geladen</span>
             <img id="spinner_l"  src="/uploads/2022/03/loader_.svg">
         </div>
