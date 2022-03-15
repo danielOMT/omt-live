@@ -568,5 +568,3 @@ if (0 != $i) { $hat_termine = true; } else { $hat_termine = false; }
 </div>
 
 <?php get_footer(); ?>
-
-
