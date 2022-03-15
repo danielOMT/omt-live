@@ -1917,7 +1917,8 @@ function omtLoadMore(){
     var dataOffset = element.getAttribute('data-offset');
     var dataTypes = element.getAttribute('data-types');
     $("#load_more_article").hide();
-    $( "#loading_content" ).attr( "class","" );
+    $( "#loading_content" ).removeClass("loader_spin_");
+    
     var url = "/wp-admin/admin-ajax.php?action=omt_load_articles&format="+dataFormat+"&offset="+dataOffset+"&post_type[]="+dataTypes;
     $.ajax({
         type: "GET",
