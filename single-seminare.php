@@ -401,7 +401,7 @@ if (0 != $i) { $hat_termine = true; } else { $hat_termine = false; }
                                                         </div>
                                                     </li>
                                                     <?php //if ($next_price>0) { ?>
-                                                        <li><b>Preis: </b><?php print $next_price;?></li>
+                                                        <li>Preis: <?php print $next_price;?> &euro;</li>
                                                     <?php //} ?>
                                                     <?php if (strlen($next_date)>0) {?>
                                                         <li><b>Nächster Termin am:</b><br/>
