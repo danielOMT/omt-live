@@ -332,7 +332,7 @@ if (0 != $i) { $hat_termine = true; } else { $hat_termine = false; }
                                                                     Jetzt <?php if (strlen($seminar['online_id'])>0) { print "vor Ort-Teilnahme "; } ?>Buchen
                                                                 </a>
                                                                 <?php if (strlen($seminar['online_id'])>0) {?>
-                                                                    <a class="button button-730px button-blue no-margin-top hybrid-buchen-button" style="padding-right:0px !important;" id="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>" href="/kasse/?add-to-cart=<?php print $seminar['online_id'];?>" title="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>">
+                                                                    <a class="button button-730px button-blue no-margin-top hybrid-buchen-button" style="" id="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>" href="/kasse/?add-to-cart=<?php print $seminar['online_id'];?>" title="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>">
                                                                         Jetzt Online-Teilnahme Buchen <span class="discountbadge">10%</span>
                                                                     </a>
                                                                 <?php } ?>
@@ -400,6 +400,9 @@ if (0 != $i) { $hat_termine = true; } else { $hat_termine = false; }
                                                             </div>
                                                         </div>
                                                     </li>
+                                                    <?php //if ($next_price>0) { ?>
+                                                        <li>Preis: <?php print $next_price;?> &euro;</li>
+                                                    <?php //} ?>
                                                     <?php if (strlen($next_date)>0) {?>
                                                         <li><b>Nächster Termin am:</b><br/>
                                                             <?php if ($next_date == $next_date_end) {
