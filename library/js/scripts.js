@@ -1917,7 +1917,8 @@ function omtLoadMore(){
     var dataOffset = element.getAttribute('data-offset');
     var dataTypes = element.getAttribute('data-types');
     $("#load_more_article").hide();
-    $( "#loading_content" ).removeClass("loader_spin_");
+    $( "#after_load" ).removeClass('hide_loading');
+    //document.getElementById("loading-content").style.display = "block";
     
     var url = "/wp-admin/admin-ajax.php?action=omt_load_articles&format="+dataFormat+"&offset="+dataOffset+"&post_type[]="+dataTypes;
     $.ajax({
@@ -1927,7 +1928,8 @@ function omtLoadMore(){
         success: function(data){
             //if request if made successfully then the response represent the data
             var result = data[Object.keys(data)[0]];
-            //$( "#loading_content" ).addClass( "loader_spin_" );
+            //$("#loading-content").attr("class", "loader_spin_");
+            $( "#after_load" ).addClass('hide_loading');
             $("#results").html(result.content);
         }
             
