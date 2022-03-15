@@ -347,7 +347,7 @@ if (0 != $i) { $hat_termine = true; } else { $hat_termine = false; }
                                                 ?>
                                             </div>
                                             <?php if ($i == 0 AND $countonly == false) { ?>
-                                                <div class="testimonial card clearfix">
+                                                <div class="testimonial card clearfix warteliste-wrap">
                                                     <div class="testimonial-text" style="width:100%;">
                                                         <h4 class="no-margin-bottom" style="width:100%;text-align:center;">Die neuen Seminartermine präsentieren wir hier in Kürze</h4>
                                                         <?php echo do_shortcode( '[gravityform id="30" title="false" description="false" tabindex="0"]' ); ?>
