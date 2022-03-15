@@ -316,15 +316,15 @@ if (0 != $i) { $hat_termine = true; } else { $hat_termine = false; }
                                                                     <b>
                                                                         <?php $location_stadtname = get_field('location_stadtname', $seminar['location']);
                                                                         if ($location_stadtname != "Online Seminar") { ?>
-                                                                        in&nbsp;<a href="<?php print get_the_permalink($seminar['location']); ?>">
+                                                                        <span style="display:block;width:100%;">in&nbsp;<a href="<?php print get_the_permalink($seminar['location']); ?>">
                                                                             <?php } ?>
                                                                             <div class="tooltip"><?php print get_field('location_stadtname', $seminar['location']); ?><span class="tooltiptext"><h4><?php print get_the_title($seminar['location']);?></h4><?php print $hotel_adresse['address'];?></span></div>
                                                                             <?php if ($location_stadtname != "Online Seminar") { ?>
-                                                                        </a>
+                                                                            </a></span>
                                                                     <?php } ?></b>
-                                                                    <?php if ($seminar['regularprice'] != $seminar['price']) { ?><span class="discountbadge">10%</span><?php } ?>
+                                                                    <span style="display:block;width:100%;"><?php if ($seminar['regularprice'] != $seminar['price']) { ?><span class="discountbadge">10%</span><?php } ?>
                                                                 <?php if ($seminar['regularprice'] != $seminar['price']) { print "<del>" . $seminar['regularprice'] . "  €</del>";}?>
-                                                                <?php print $seminar['price'];?> € <span class="small">zzgl. 19% MwSt.</span>
+                                                                        <?php print $seminar['price'];?> € <span class="small">zzgl. 19% MwSt.</span></span>
                                                                 </div>
                                                                 <?php /* <a class="a a-730px a-blue" id="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>" href="/kasse/?add-to-cart=<?php print $seminar_woocommerce->ID;?>&variation_id=<?php print $seminar['vid'];?>" title="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>">*/ ?>
                                                                 <?php /* <a class="button button-730px button-blue" id="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>" href="/kasse/?add-to-cart=<?php print $seminar_woocommerce->ID;?>&attribute_pa_startdatum=<?php print $seminar['day_start'];?>&attribute_pa_enddatum=<?php print $seminar['day_end'];?>&attribute_pa_startuhrzeit=<?php print $seminar['time_start'];?>&attribute_pa_enduhrzeit=<?php print $seminar['time_end'];?>&attribute_pa_location=<?php print $seminar['location'];?>&speaker_id=<?php print $speakerid;?>" title="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>">*/?>
