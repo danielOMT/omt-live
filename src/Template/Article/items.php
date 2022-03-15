@@ -38,13 +38,12 @@ $itemsDisplayed = 1;
                 data-format="<?php echo $this->format ?>" 
                 data-offset="<?php echo $this->loadMoreOffset ?? 0 ?>" 
                 data-types="<?php echo $this->postTypes[0] ?>"
-                class="button button-gradient button-730px button-center button-loadmore" 
-            > 
-                <span id="load_more_button_text">Weitere Artikel</span> <img id="spinner_l" class="loader_spin_" src="https://www.omt.de/uploads/2022/03/loader_.svg">
+                class="button button-gradient button-730px button-center button-loadmore">       
+                <span id="load_more_button_text">Weitere Artikel</span>
             </button>
-        <div id="loading-content" class=" loader_spin_">
+        <div id="after_load" class="hide_loading">
             <span>Artikel werden geladen</span>
-            <img id="spinner_l"  src="/uploads/2022/03/loader_.svg">
+            <img id="spinner_l"  src="/uploads/2022/03/loader_-1.svg">
         </div>
         <div id="results"></div>
     <?php endif ?>
