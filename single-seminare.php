@@ -214,7 +214,7 @@ if (0 != $i) { $hat_termine = true; } else { $hat_termine = false; }
                                         </section>
                                         </div><?php } ?>
                                     <div id="termine" class="tabcontent tab-termine untabbed">
-                                        <section class="omt-module seminare-wrap">
+                                        <section class="omt-module seminare-wrap  warteliste-wrap">
                                             <?php if (false != $hat_termine) { ?>
                                                 <h2>Die nächsten Termine:</h2>
                                             <?php } ?>
