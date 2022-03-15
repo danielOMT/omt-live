@@ -402,7 +402,7 @@ if (0 != $i) { $hat_termine = true; } else { $hat_termine = false; }
                                                     </li>
                                                     <?php //if ($next_price>0) { ?>
                                                         <li><b>Preis: </b><?php print $next_price;?></li>
-                                                    <?php } ?>
+                                                    <?php //} ?>
                                                     <?php if (strlen($next_date)>0) {?>
                                                         <li><b>Nächster Termin am:</b><br/>
                                                             <?php if ($next_date == $next_date_end) {
@@ -410,7 +410,7 @@ if (0 != $i) { $hat_termine = true; } else { $hat_termine = false; }
                                                             } else {
                                                                 print str_replace('-','.',$next_date) . " - " . str_replace('-','.',$next_date_end);
                                                             } ?> in <?php print $next_location_stadt;?></li>
-                                                    <?php //} ?>
+                                                    <?php } ?>
                                                 </ul>
                                                 <?php if (strlen($next_date)>0) {?>
                                                     <a href="#selected" class="button button-red" style="margin-top: 10px;" onclick="openTab(event, 'termine')">Alle Termine</a>
