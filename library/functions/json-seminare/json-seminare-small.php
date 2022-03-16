@@ -6,7 +6,7 @@
         </a>
     </h4>
     <div class="webinar-meta">
-        <p class="teaser-cat">
+        <p class="teaser-cat" style="padding-left:0px;">
             <?php if ($seminar['day_start'] == $seminar['day_end']) {
                 print $seminar['day_start'];
             } else {
