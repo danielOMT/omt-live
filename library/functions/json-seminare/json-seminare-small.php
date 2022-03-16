@@ -23,7 +23,7 @@
             <?php } ?>
         </p>
     </div>
-    <?php showBeforeMore($seminar['vorschautext']); ?>
+    <span style="padding-left:10px;padding-right:10px;display:block;width:100%;"><?php showBeforeMore($seminar['vorschautext']); ?></span>
     
     <a class="button button-730px button-blue" href="/kasse/?add-to-cart=<?php echo $seminar['vid'];?>" title="<?php echo strip_tags($seminar['name']) ?>">
         Jetzt <?php if (strlen($seminar['online_id']) > 0) { print "vor Ort "; } ?>Buchen
