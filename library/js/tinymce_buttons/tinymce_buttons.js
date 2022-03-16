@@ -220,6 +220,13 @@
                         },
                         {
                             type   : 'textbox',
+                            name   : 'author_link',
+                            label  : 'Author Link',
+                            tooltip: 'Vollständiger Link für den Author des Zitats',
+                            value  : ''
+                        },
+                        {
+                            type   : 'textbox',
                             name   : 'author',
                             label  : 'Author',
                             tooltip: 'Author des Zitats',
@@ -227,7 +234,7 @@
                         }
                     ],
                     onsubmit: function( e ) {
-                        editor.insertContent( '[zitat text="' + e.data.text + '" farbe="' + e.data.farbe + '" author="' + e.data.author + '"]');
+                        editor.insertContent( '[zitat text="' + e.data.text + '" farbe="' + e.data.farbe + '" author="' + e.data.author + '" link="' + e.data.author_link + '"]');
                     }
                 });
             },

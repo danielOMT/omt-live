@@ -5,6 +5,7 @@ function omt_zitat_shortcode( $atts ) {
         'text' => 'Zitat',
         'author' => '',
         'farbe' => 'blue',
+        'link' => '',
     ), $atts );
 
     ob_start();?>
@@ -16,7 +17,7 @@ function omt_zitat_shortcode( $atts ) {
                         </div>
         <div>
             <p class="citation style-<?php print $atts['farbe'];?>">&#8222;<?php print $atts['text'];?>&#8221;</p>
-        <p class="citation-author"><?php print $atts['author'];?></p>
+        <p class="citation-author"><?php if (strlen($atts['link'])>0) { ?><a href="<?php print $atts['link'];?>"><?php } ?><?php print $atts['author'];?><?php if (strlen($atts['link'])>0) { print "</a>"; }?></p>
         </div>
     </div>
     <?php $result = ob_get_clean();
