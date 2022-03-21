@@ -214,6 +214,26 @@ function custom_breadcrumbs() {
                         $post_type_name = "OMT-Magazin";
                         $post_type_archive = "/downloads/magazin";
                         break;
+                    case "omt_ebook":
+                        $post_type_name = "OMT-eBooks";
+                        $post_type_archive = "/downloads/ebooks";
+                        break;
+                    case "omt_student":
+                        $post_type_name = "OMT-Studentenarbeiten";
+                        $post_type_archive = "/downloads/studentenarbeiten";
+                        break;
+                    case "omt_downloads":
+                        $post_type_name = "OMT-Leadmagneten";
+                        $post_type_archive = "/downloads/leadmagneten";
+                        break;
+                    case "podcasts":
+                        $post_type_name = "OMT-Podcast";
+                        $post_type_archive = "/podcast";
+                        break;
+                    case "agenturen":
+                        $post_type_name = "OMT-Agenturfinder";
+                        $post_type_archive = "/agenturfinder/agentur";
+                        break;
                 }
                 if (strlen ($post_type_archive)<1) { $post_type_archive = "/" . $post_type; } //if we dont have an archive due to parent pages
 
