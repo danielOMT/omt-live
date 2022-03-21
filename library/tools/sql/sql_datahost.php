@@ -189,6 +189,20 @@ function sql_tools()
                         $is_active = $bidrow['is_active'];
                         if (1 == $is_active) {
                             $bid = $bidrow['bid_kosten'];
+
+                            //check budgets before running the bids, set to 0 if no budget! //note: not synced yet, testing after appointment!
+                            $gesamtbudget = "SELECT * FROM `omt_budgets` WHERE `tool_id`=$tool_id";
+                            $querybudget = $conn->query($gesamtbudget);
+                            if(mysqli_num_rows($querybudget) > 0){
+                                while($rowbudget = mysqli_fetch_assoc($querybudget)) {
+                                    $currentbid = $rowbudget['budget'];
+                                }
+                            } else { $currentbid = 0; }
+
+                            if (0 == $currentbid) { $bid = 0; }
+                            //
+
+
                             update_tool_bids($tool_id, $toolkategorie_id, $bid);
                         }
                     }
