@@ -232,7 +232,7 @@ if (!$current_fp) { ?>
 
         <?php //Make a Linklist of all Tools with zeilen-content AKA Tool-Testberichte! ?>
         <section  class="omt-row wrap weitere-vergleiche <?php if (1 == $alles_730) { print "layout-730"; } ?>">
-            <h2>Weitere Tool-Vergleiche findest Du hier:</h2>
+            <h2 class="no-ihv">Weitere Tool-Vergleiche findest Du hier:</h2>
             <?php
             $tools_links = get_posts(array(
                 'post_type' => 'tool',
