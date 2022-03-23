@@ -649,10 +649,7 @@ function update_json_files( $post_id, $post ) {
             json_webinare();
         }
 
-        if ($post_type == "tool") {
-            require_once('library/json/json_tools.php');
-            json_tools();
-        }
+
 
         if ($post_type == "toolrezension") {
             require_once ('library/tools/json-rezensionen.php');
@@ -663,6 +660,11 @@ function update_json_files( $post_id, $post ) {
             require_once('library/json/json_magazinartikel.php');
             json_artikel();
         }
+    }
+
+    if ($post_type == "tool") {
+        require_once('library/json/json_tools.php');
+        json_tools();
     }
 
     if ("seminare" == $post_type || "product" == $post_type) {
