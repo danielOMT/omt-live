@@ -119,7 +119,7 @@ function compare_budgets_costs()
                         $update_ef2sv_tool_category_worth = "UPDATE `ef2sv_tool_category` SET `worth` = 0 WHERE `tool_id` = " . $tool_id;
                         if ($conn->query($update_ef2sv_tool_category_worth) === false) {
                             echo "Error: " . $conn->error;
-                        } else { echo "success!";}
+                        } else { /*echo "success!";*/}
                         //set worth to zero on tool table
                         $update_ef2sv_tools_worth = "UPDATE `ef2sv_tools` SET `worth` = 0 WHERE `id` = " . $tool_id;
                         if ($conn->query($update_ef2sv_tools_worth) === false) {
