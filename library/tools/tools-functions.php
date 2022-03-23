@@ -61,7 +61,8 @@ function update_tool_bids(int $tool_id = 0, int $catid = 0, float $gebot = 0)
 }
 
 ////////FUNCTION TO LOOP THROUGH ALL USERS WITH ROLE "TOOLANBIETER", CHECK THEIR BUDGETS VS. THEIR TOOLCOST AND ACT ACCORDINGLY
-function compare_budgets_costs() {
+function compare_budgets_costs()
+{
     //SQL CONNECTION COMES FIRWST
     $conn = new mysqli(DATAHOST_DB_HOST, DATAHOST_DB_USER, DATAHOST_DB_PASSWORD, DATAHOST_DB_NAME);
     // Check connection
@@ -70,9 +71,9 @@ function compare_budgets_costs() {
     }
 
     $users = get_users([
-        'role'    => 'um_toolanbieter',
+        'role' => 'um_toolanbieter',
         'orderby' => 'user_nicename',
-        'order'   => 'ASC'
+        'order' => 'ASC'
     ]);
 
     foreach ($users as $user) {
@@ -88,7 +89,7 @@ function compare_budgets_costs() {
         }
 
         //need to loop the toolsql one more to combine tool/overall budget insights
-        foreach (User::init()->tools((int) $user->ID) as $tool) {
+        foreach (User::init()->tools((int)$user->ID) as $tool) {
             $qry = $conn->query("SELECT * FROM `omt_tools` WHERE `id` = " . $tool->ID);
 
             if (mysqli_num_rows($qry) > 0) {
@@ -112,6 +113,18 @@ function compare_budgets_costs() {
                     } else {
                         // Disable ACF "Buttons anzeigen" (buttons_anzeigen) field
                         update_field("field_5e9db691d44b0", false, $tool->ID);
+                        //set worth to 0 on ef2sv_tools table to make sure tool gets sorted as with 0!
+                        $tool_id = $tool->ID;
+                        /////Set worth to zero for all categories!
+                        $update_ef2sv_tool_category_worth = "UPDATE `ef2sv_tool_category` SET `worth` = 0 WHERE `tool_id` = " . $tool_id;
+                        if ($conn->query($update_ef2sv_tool_category_worth) === false) {
+                            echo "Error: " . $conn->error;
+                        } else { echo "success!";}
+                        //set worth to zero on tool table
+                        $update_ef2sv_tools_worth = "UPDATE `ef2sv_tools` SET `worth` = 0 WHERE `id` = " . $tool_id;
+                        if ($conn->query($update_ef2sv_tools_worth) === false) {
+                            echo "Error: " . $conn->error;
+                        } else { /*echo "success!";*/}
                     }
                 }
             }
