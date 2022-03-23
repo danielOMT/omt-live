@@ -85,6 +85,6 @@ function run_cronjob_toolfunctions()
 
 
 ///WHEN ALL DONE, WE NEED TO RE-SYNC THE JSON FILE!
-  // json_tools();
+   json_tools();
 }
 ?>
