@@ -31,11 +31,11 @@ switch ($zeile['inhaltstyp'][0]['acf_fc_layout']) {
         break;
 
     case "toolindex":
-        if (USE_JSON_POSTS_SYNC) {
+        //if (USE_JSON_POSTS_SYNC) {
             include ('module-toolindex.php');
-        } else {
-            echo (new Tools($zeile['inhaltstyp'][0]))->render();
-        }
+       // } else {
+       //     echo (new Tools($zeile['inhaltstyp'][0]))->render();
+       // }
 
         break;
 
