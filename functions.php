@@ -127,6 +127,7 @@ require_once('library/shortcodes/shortcode-inhaltsverzeichnis-sidebar.php');
 require_once('library/shortcodes/shortcode-ctawidget.php');
 require_once('library/shortcodes/shortcode-zitat.php');
 require_once('library/shortcodes/shortcode-youtube.php');
+require_once('library/shortcodes/shortcode-wistia.php');
 require_once('library/shortcodes/shortcode-webinarcount.php');
 require_once('library/shortcodes/shortcode-podcast.php');
 //require_once('library/shortcodes/shortcode-podigee.php');

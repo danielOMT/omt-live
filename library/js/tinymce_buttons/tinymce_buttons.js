@@ -343,6 +343,34 @@
 })();
 //END of Shortcode YOUTUBE WIDGET
 
+////Wistia Widget
+(function() {
+    tinymce.PluginManager.add('shortcode_wistia', function( editor, url ) { //ADD SHORTCODE BUTTONS
+        editor.addButton( 'shortcode_wistia', {
+            text: shortcode_wistia.button_name,
+            icon: false,
+            onclick: function() {
+                editor.windowManager.open( {
+                    title: shortcode_wistia.button_title,
+                    body: [
+                        {
+                            type   : 'textbox',
+                            name   : 'id',
+                            label  : 'Wistia Embed ID',
+                            tooltip: 'Code hinter dem "v=" im Wistia-Video, zum Beispiel 58nDHhOp2cA für das Video https://www.youtube.com/watch?v=58nDHhOp2cA',
+                            value  : 'gd2d072i1e'
+                        }
+                    ],
+                    onsubmit: function( e ) {
+                        editor.insertContent( '[wistia id="' + e.data.id + '"]');
+                    }
+                });
+            },
+        });
+    });
+})();
+//END of Shortcode Wistia WIDGET
+
 //Podcast Widget
 (function() {
     tinymce.PluginManager.add('shortcode_podcast', function( editor, url ) { //ADD SHORTCODE BUTTONS

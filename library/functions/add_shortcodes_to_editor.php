@@ -35,6 +35,7 @@ if ( ! function_exists( 'mytheme_add_buttons' ) ) {
         $plugin_array['shortcode_zitat'] = get_template_directory_uri().'/library/js/tinymce_buttons/tinymce_buttons.js';
         $plugin_array['shortcode_titlebox'] = get_template_directory_uri().'/library/js/tinymce_buttons/tinymce_buttons.js';
         $plugin_array['shortcode_youtube'] = get_template_directory_uri().'/library/js/tinymce_buttons/tinymce_buttons.js';
+        $plugin_array['shortcode_wistia'] = get_template_directory_uri().'/library/js/tinymce_buttons/tinymce_buttons.js';
         $plugin_array['shortcode_podcast'] = get_template_directory_uri().'/library/js/tinymce_buttons/tinymce_buttons.js';
         $plugin_array['shortcode_tiktok'] = get_template_directory_uri().'/library/js/tinymce_buttons/tinymce_buttons.js';
         $plugin_array['shortcode_spotify'] = get_template_directory_uri().'/library/js/tinymce_buttons/tinymce_buttons.js';
@@ -51,6 +52,7 @@ if ( ! function_exists( 'mytheme_register_buttons' ) ) {
         array_push( $buttons, 'shortcode_zitat' );
         array_push( $buttons, 'shortcode_titlebox' );
         array_push( $buttons, 'shortcode_youtube' );
+        array_push( $buttons, 'shortcode_wistia' );
         array_push( $buttons, 'shortcode_podcast' );
         array_push( $buttons, 'shortcode_tiktok' );
         array_push( $buttons, 'shortcode_spotify' );
@@ -111,6 +113,13 @@ if ( !function_exists( 'mytheme_tinymce_extra_vars' ) ) {
                     array(
                         'button_name' => esc_html__('Youtube', 'mythemeslug'),
                         'button_title' => esc_html__('Youtube Video einfügen', 'mythemeslug'),
+                    )
+                );
+                ?>; //letztes Semikolon hinter dem ?> bezieht sich auf "var ..." => nichtvergessen!
+            var shortcode_wistia = <?php echo json_encode(
+                    array(
+                        'button_name' => esc_html__('Wistia', 'mythemeslug'),
+                        'button_title' => esc_html__('Wistia Video einfügen', 'mythemeslug'),
                     )
                 );
                 ?>; //letztes Semikolon hinter dem ?> bezieht sich auf "var ..." => nichtvergessen!
