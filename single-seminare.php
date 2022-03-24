@@ -164,7 +164,7 @@ if (strlen($seminar_preis)>0) { $next_price = $seminar_preis; }
                                             <?php if (strlen($seminar_beschreibung)>0) { ?><a href="#selected" class="tablinks " onclick="openTab(event, 'beschreibung')">Beschreibung</a><?php } ?>
                                             <a href="#selected" class="tablinks" onclick="openTab(event, 'experte')">Experte</a>
                                             <?php if (strlen($stimmen_zum_seminar[0]['teilnehmer_stimme'])>0) { ?><a href="#selected" class="tablinks " onclick="openTab(event, 'teilnehmerstimmen')">Teilnehmerstimmen</a><?php } ?>
-                                            <?php if ( (strlen($next_date)>0) AND ( strlen($seminar_infopaket )<1) ) {?><a class="tablinks tablinks-termine stayvisible" href="#selected" onclick="openTab(event, 'termine')">Termine</a><?php } ?>
+                                            <?php if ( (strlen($next_date)>0) OR ( strlen($seminar_infopaket )<1) ) {?><a class="tablinks tablinks-termine stayvisible" href="#selected" onclick="openTab(event, 'termine')">Termine</a><?php } ?>
                                             <?php if (strlen($seminar_infopaket)>0) {?><a class="tablinks tablinks-infopaket"  style="" target="_blank" href="<?php print $seminar_infopaket;?>">Infopaket</a><?php } ?>
                                         </div>
                                         <?php if (strlen($seminar_ubersicht)>0) { ?><a href="#selected" class="no-sticky tablinks active" onclick="openTab(event, 'ubersicht')">Übersicht</a><?php } ?>
