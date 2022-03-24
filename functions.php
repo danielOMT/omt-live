@@ -1010,4 +1010,4 @@ if ( $the_query->have_posts() ) {
 wp_reset_postdata();
 return ob_get_clean();
 }
-add_shortcode('shortcodefinder', 'wpb_find_shortcode');
+add_shortcode('shortcodefinder', 'wpb_find_shortcode'); 
