@@ -58,7 +58,7 @@ if ( "mentoren" == $zeile['inhaltstyp'][0]['alle_botschafter_anzeigen'] ) {
         $alternatives_vorschaubild = get_field('alternatives_vorschaubild_fur_botschafter', $experte_ID);
         if (strlen($alternatives_vorschaubild['url'])>0) { $imgurl = $alternatives_vorschaubild['sizes']['350-180']; }
         ?>
-        <a href="<?php print get_the_permalink(); ?>"title="<?php print get_the_title(); ?>" class="teaser teaser-small teaser-matchbuttons botschafter-teaser-small">
+        <a href="<?php print get_the_permalink(); ?>"title="<?php print get_the_title(); ?>" class="teaser teaser-small teaser-matchbuttons botschafter-teaser-small" style="padding-bottom:10px;">
             <div class="teaser-image-wrap botschafter-info" style="">
                 <img class="webinar-image teaser-img" alt="<?php print get_the_title(); ?>"
                      title="<?php print get_the_title(); ?>"
