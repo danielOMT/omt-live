@@ -261,6 +261,7 @@ if (!$current_fp) { ?>
         ///CLOSING OF ALL SECTIONS
         include('library/templates/single-as-page-contentparts-bottom.php');
 
+
         ///BANNERWERBUNG
         $bannerbild = get_field('bannerbild');
         $bannerlink = get_field('bannerlink');
@@ -278,9 +279,25 @@ if (!$current_fp) { ?>
         }
         ?>
         <?php if (!empty($bannerlink)) : ?>
-            <a class="tool-info-image" href="<?php print $bannerlink;?>" target="_blank" rel="nofollow">
-                <img src="<?php print $bannerbild['url'];?>" alt="<?php print $bannerbild['alt'];?>" title="<?php print $bannerbild['alt'];?>"/>
-            </a>
+            <div class="tool-info-image">
+                <?php
+                $tool_steckbrief_headline_name = get_field('tool_steckbrief_headline_name', 'options');
+                $profilbild = get_field('profilbild', 'options');
+                $toolsteckbrief_button_linkziel = get_field('toolsteckbrief_button_linkziel', 'options');
+                $toolsteckbrief_button_label = get_field('toolsteckbrief_button_label', 'options');
+                ?>
+                <div class="tools-contact">
+                    <div class="widget widget-nochfragen">
+                        <?php if (strlen($tool_steckbrief_headline_name)>0) { ?><h4 class="widgettitle"><?php print $tool_steckbrief_headline_name;?></h4><?php } ?>
+                        <?php if (strlen($profilbild['url'])>0) { ?><img class="noch-fragen-kontakt" alt="<?php print $profilbild['alt'];?>" title="<?php print $profilbild['alt'];?>" src="<?php print $profilbild['sizes']['350-180'];?>"/><?php } ?>
+                        <?php if (strlen($toolsteckbrief_button_linkziel)>0) { ?><a class="button button-350 button-red" href="<?php print $toolsteckbrief_button_linkziel;?>"><?php print $toolsteckbrief_button_label;?></a><?php } ?>
+                    </div>
+                </div>
+                <a class="" href="<?php print $bannerlink;?>" target="_blank" rel="nofollow">
+                    <img src="<?php print $bannerbild['url'];?>" alt="<?php print $bannerbild['alt'];?>" title="<?php print $bannerbild['alt'];?>"/>
+                </a>
+            </div>
+
         <?php endif ?>
     <?php }
     if ( ( strlen($produktubersicht)>0 ) OR (strlen($wer_verwendet)>0) OR (1 == $neue_ansicht_auch_ohne_content_verwenden) )  {
@@ -302,11 +319,11 @@ if (!$current_fp) { ?>
         <div class="tool-header">
             <div id="inner-content" class="wrap clearfix">
                 <div class="tool-logo-wrap">
-                    <img 
-                        class="tool-logo" 
-                        alt="<?php echo get_the_title();?>" 
-                        title="<?php echo get_the_title();?>" 
-                        src="<?php echo $logo['url'] ? $logo['url'] : placeholderImage() ?>" 
+                    <img
+                            class="tool-logo"
+                            alt="<?php echo get_the_title();?>"
+                            title="<?php echo get_the_title();?>"
+                            src="<?php echo $logo['url'] ? $logo['url'] : placeholderImage() ?>"
                     />
                 </div>
                 <div class="tool-about">
@@ -398,20 +415,28 @@ if (!$current_fp) { ?>
                             break;
                     }
                 } else {
-                                       
+
                     if (1 == $buttons_anzeigen) { ?>
                         <div class="buttons-wrap">
                             <?php if (strlen($tool_gratis_testen_link)>0) { ?><a rel="nofollow" id="<?php print get_the_title();?>"  target="_blank" class="button button-testen button-red button-350px"  href="<?php print $tool_gratis_testen_link;?>"><?php print $testen_label;?></a><?php } ?>
                             <?php if (strlen($tool_preisubersicht)>0) { ?><a rel="nofollow" id="<?php print get_the_title();?>" target="_blank" class="button button-pricing button-lightgrey button-350px"  href="<?php print $tool_preisubersicht;?>"><?php print $preise_label;?></a><?php } ?>
                         </div>
                     <?php }
-                } 
-                if( strlen($buttons_anzeigen) == 0 && (strlen($zum_toolanbieter) == '' || strlen($zum_toolanbieter) > 0)){
-                    echo '<div class="buttons-wrap">
-                            <a class="button button-testen button-red button-350px" href="mailto:christos.pipsos@omt.de?cc=mario@omt.de&subject=Ich%20möchte%20mein%20Tool%20beim%20OMT%20Toolvergleich%20anpassen">Dein Tool?</a>
-                        </div>';
                 }
-              ?>
+                if( strlen($buttons_anzeigen) == 0 ) { ?>
+                    <div class="widget widget-nochfragen widget-toolskontakt">
+                        <h4 class="widgettitle">Ist das Dein Tool?<br>Möchtest Du es aktualisieren oder vermarkten?</h4>
+                        <div class="buttons-wrap">
+                            <a class="button button-testen button-red button-350px" href="/online-marketing-tools/kontakt/">Schick uns eine E-Mail</a>
+                        </div>
+                    </div>
+
+                    <?php
+                    /* echo '<div class="buttons-wrap">
+                             <a class="button button-testen button-red button-350px" href="mailto:christos.pipsos@omt.de?cc=mario@omt.de&subject=Ich%20möchte%20mein%20Tool%20beim%20OMT%20Toolvergleich%20anpassen">Dein Tool?</a>
+                         </div>' ;*/
+                }
+                ?>
             </div>
             <div class="tool-navigation-wrap">
                 <ul class="tool-navigation wrap">
@@ -472,7 +497,7 @@ if (!$current_fp) { ?>
                         $alternativeTools = MarketingTool::init()->alternatives($post_id, $termids);
                         $show = count($alternativeTools) ?: 0;
                     }
-                    
+
                     if ($show > 0) {?><li class="<?php if ( is_array($anwendungstipps) ) { print "ipadup"; }?>"><a href="#alternativen">Alternativen</a></li><?php } ?>
                     <?php if ( ( ( strlen($h1)>0 ) AND (strlen($inhalt)>0) ) OR ( is_array($testbericht_zeilen)) ) { ?>
                         <li><a href="#testbericht"><?php print $testbericht_menu_title;?></a></li>
@@ -495,142 +520,142 @@ if (!$current_fp) { ?>
             <?php  } ?>
         </div>
         <div id="content" xmlns:background="http://www.w3.org/1999/xhtml">
-            <div id="inner-content" class="wrap clearfix no-hero">
-                <div class="omt-row tool-abschnitt tool-uebersicht">
-                    <span class="anchor" id="ubersicht"></span>
-                    <div class="half left-half">
-                        <div class="info-container half-reduced">
-                            <div class="wer-verwendet">
-                                <?php if (strlen($wer_verwendet)>0) {?>
-                                    <h2 class="no-ihv">Wer verwendet <?php print get_the_title();?>?</h2>
-                                    <?php
-                                    $cleaned_wer_verwendet = removeLink($wer_verwendet);
-                                    print $cleaned_wer_verwendet;
-                                }
-                                ?><?php
-                                if (strlen($produktubersicht)>0) { ?>
-                                    <h2 class="no-ihv">Was ist <?php print get_the_title(); ?>?</h2>
-                                    <?php
-                                    $cleaned_produktubersicht = removeLink($produktubersicht);
-                                    print $cleaned_produktubersicht;
-                                } ?>
-                            </div>
+        <div id="inner-content" class="wrap clearfix no-hero">
+            <div class="omt-row tool-abschnitt tool-uebersicht">
+                <span class="anchor" id="ubersicht"></span>
+                <div class="half left-half">
+                    <div class="info-container half-reduced">
+                        <div class="wer-verwendet">
+                            <?php if (strlen($wer_verwendet)>0) {?>
+                                <h2 class="no-ihv">Wer verwendet <?php print get_the_title();?>?</h2>
+                                <?php
+                                $cleaned_wer_verwendet = removeLink($wer_verwendet);
+                                print $cleaned_wer_verwendet;
+                            }
+                            ?><?php
+                            if (strlen($produktubersicht)>0) { ?>
+                                <h2 class="no-ihv">Was ist <?php print get_the_title(); ?>?</h2>
+                                <?php
+                                $cleaned_produktubersicht = removeLink($produktubersicht);
+                                print $cleaned_produktubersicht;
+                            } ?>
                         </div>
-                        <div class="more-info">Mehr Infos</div>
                     </div>
-                    <?php if ( (strlen($info_slider[0]['bild']['url'])>0) OR ( strlen($info_slider[0]['youtube_code']) >0) OR ( strlen($info_slider[0]['wistia_code']) >0) ) { ?>
-                        <div class="half right-half">
-                            <div class="tool-slider">
-                                <?php foreach ($info_slider as $key => $slide) {
-                                    if (strlen($slide['bild']['url']) > 0) { $type = "image"; }
-                                    if (strlen($slide['youtube_code'])>0) { $type="youtube"; }
-                                    if (strlen($slide['wistia_code'])>0) { $type="wistia"; }
-                                    if (strlen($slide['wistia_code_emailschranke'])>0) { $type="wistia"; }
+                    <div class="more-info">Mehr Infos</div>
+                </div>
+                <?php if ( (strlen($info_slider[0]['bild']['url'])>0) OR ( strlen($info_slider[0]['youtube_code']) >0) OR ( strlen($info_slider[0]['wistia_code']) >0) ) { ?>
+                <div class="half right-half">
+                    <div class="tool-slider">
+                        <?php foreach ($info_slider as $key => $slide) {
+                        if (strlen($slide['bild']['url']) > 0) { $type = "image"; }
+                        if (strlen($slide['youtube_code'])>0) { $type="youtube"; }
+                        if (strlen($slide['wistia_code'])>0) { $type="wistia"; }
 
-                                    switch ($type) {
-                                        case "image": ?>
-                                            <div class="slide">
-                                                <img
-                                                        class="no-ll tool-slider-image"
-                                                        alt="<?php print $slide['bild']['alt'];?>"
-                                                        title="<?php print $slide['bild']['alt'];?>"
+                        switch ($type) {
+                        case "image": ?>
+                            <div class="slide">
+                                <img
+                                        class="no-ll tool-slider-image"
+                                        alt="<?php print $slide['bild']['alt'];?>"
+                                        title="<?php print $slide['bild']['alt'];?>"
 
-                                                    <?php if ($key == 0) : ?>
-                                                        src="<?php print $slide['bild']['sizes']['550-290'];?>"
-                                                    <?php else : ?>
-                                                        data-lazy="<?php print $slide['bild']['sizes']['550-290'];?>"
-                                                    <?php endif; ?>
-                                                />
-                                            </div>
-                                            <?php break; ?>
-
-                                        <?php case "youtube": ?>
-                                        <div class="slide">
-                                            <div class="vidembed_wrap">
-                                                <div class="tool-youtube-wrap">
-                                                    <div class="tool-youtube" data-embed="<?php echo $slide['youtube_code'] ?>">
-                                                        <div class="play-button"></div>
-                                                        <img
-                                                                class="no-ll tool-slider-image"
-
-                                                            <?php if ($key == 0) : ?>
-                                                                src="<?php echo getYoutubeThumb($slide['youtube_code']) ?>"
-                                                            <?php else : ?>
-                                                                data-lazy="<?php echo getYoutubeThumb($slide['youtube_code']) ?>"
-                                                            <?php endif; ?>
-                                                        />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php break; ?>
-
-                                    <?php case "wistia": ?>
-                                        <div class="slide">
-                                            <div class="video_wrap">
-                                                <div class="webinar-video">
-                                                    <div class="video-wrap">
-                                                        <?php if ( ( !is_user_logged_in() ) AND (strlen($slide['wistia_code_emailschranke'])>0) ) { ?>
-                                                            <div class="slide-nav tool-wistia" data-embed="<?php print $slide['wistia_code_emailschranke'];?>">
-                                                        <?php } else { ?>
-                                                        <div class="slide-nav tool-wistia" data-embed="<?php print $slide['wistia_code'];?>">
-                                                            <?php } ?>
-                                                            <div class="play-icon-wrapper">
-                                                                <div class="tri"></div>
-                                                            </div>
-                                                            <?php if (strlen($slide['bild']['url']) > 0) : ?>
-                                                                <img
-                                                                        class="no-ll tool-slider-image"
-                                                                        alt="<?php print $slide['bild']['alt'];?>"
-                                                                        title="<?php print $slide_nav['bild']['alt'];?>"
-                                                                        width="<?php print $slide['bild']['sizes']['550-290-width'];?>"
-                                                                        height="<?php print $slide['bild']['sizes']['550-290-height'];?>"
-
-                                                                    <?php if ($key == 0) : ?>
-                                                                        src="<?php print $slide['bild']['sizes']['550-290'];?>"
-                                                                    <?php else : ?>
-                                                                        data-lazy="<?php print $slide['bild']['sizes']['550-290'];?>"
-                                                                    <?php endif; ?>
-                                                                />
-                                                            <?php else : ?>
-                                                                <img
-                                                                        class="no-ll tool-slider-image"
-
-                                                                    <?php if ($key == 0) : ?>
-                                                                        src="/uploads/OMT-Videoplayer-Screen-290x150px.jpg"
-                                                                    <?php else : ?>
-                                                                        data-lazy="/uploads/OMT-Videoplayer-Screen-290x150px.jpg"
-                                                                    <?php endif; ?>
-                                                                />
-                                                            <?php endif ?>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <?php break; ?>
-                                    <?php } ?>
-                                <?php } ?>
+                                    <?php if ($key == 0) : ?>
+                                        src="<?php print $slide['bild']['sizes']['550-290'];?>"
+                                    <?php else : ?>
+                                        data-lazy="<?php print $slide['bild']['sizes']['550-290'];?>"
+                                    <?php endif; ?>
+                                />
                             </div>
-                            <div class="tool-slider-nav">
-                                <?php foreach ( $info_slider as $slide_nav) {
-                                    if (strlen($slide_nav['bild']['url']) > 0) { ?>
-                                        <div class="slide-nav">
+                            <?php break; ?>
+
+                        <?php case "youtube": ?>
+                            <div class="slide">
+                                <div class="vidembed_wrap">
+                                    <div class="tool-youtube-wrap">
+                                        <div class="tool-youtube" data-embed="<?php echo $slide['youtube_code'] ?>">
+                                            <div class="play-button"></div>
+
                                             <img
-                                                    class="no-ll tool-slider-image nav-slider-image"
-                                                    alt="<?php print $slide_nav['bild']['alt'];?>"
-                                                    title="<?php print $slide_nav['bild']['alt'];?>"
-                                                    src="<?php print $slide_nav['bild']['sizes']['350-180'];?>"
-                                                    width="<?php print $slide['bild']['sizes']['350-180-width'];?>"
-                                                    height="<?php print $slide['bild']['sizes']['350-180-height'];?>"
+                                                    class="no-ll tool-slider-image"
+
+                                                <?php if ($key == 0) : ?>
+                                                    src="<?php echo getYoutubeThumb($slide['youtube_code']) ?>"
+                                                <?php else : ?>
+                                                    data-lazy="<?php echo getYoutubeThumb($slide['youtube_code']) ?>"
+                                                <?php endif; ?>
                                             />
                                         </div>
-                                    <?php } else { ?>
-                                        <div class="slide-nav"><img class="no-ll tool-slider-image nav-slider-image" src="/uploads/OMT-Videoplayer-Screen-290x150px.jpg"/></div>
-                                    <?php } ?>
-                                <?php }?>
+                                    </div>
+                                </div>
                             </div>
+                            <?php break; ?>
+
+                        <?php case "wistia": ?>
+                        <div class="slide">
+                            <div class="video_wrap">
+                                <div class="webinar-video">
+                                    <div class="video-wrap">
+                                        <?php if ( ( !is_user_logged_in() ) AND (strlen($slide['wistia_code_emailschranke'])>0) ) { ?>
+                                        <div class="slide-nav tool-wistia" data-embed="<?php print $slide['wistia_code_emailschranke'];?>">
+                                            <?php } else { ?>
+                                            <div class="slide-nav tool-wistia" data-embed="<?php print $slide['wistia_code'];?>">
+                                                <?php } ?>
+                                                <div class="play-icon-wrapper">
+                                                    <div class="tri"></div>
+                                                </div>
+                                                <?php if (strlen($slide['bild']['url']) > 0) : ?>
+                                                    <img
+                                                            class="no-ll tool-slider-image"
+                                                            alt="<?php print $slide['bild']['alt'];?>"
+                                                            title="<?php print $slide_nav['bild']['alt'];?>"
+                                                            width="<?php print $slide['bild']['sizes']['550-290-width'];?>"
+                                                            height="<?php print $slide['bild']['sizes']['550-290-height'];?>"
+
+                                                        <?php if ($key == 0) : ?>
+                                                            src="<?php print $slide['bild']['sizes']['550-290'];?>"
+                                                        <?php else : ?>
+                                                            data-lazy="<?php print $slide['bild']['sizes']['550-290'];?>"
+                                                        <?php endif; ?>
+                                                    />
+                                                <?php else : ?>
+                                                    <img
+                                                            class="no-ll tool-slider-image"
+
+                                                        <?php if ($key == 0) : ?>
+                                                            src="/uploads/OMT-Videoplayer-Screen-290x150px.jpg"
+                                                        <?php else : ?>
+                                                            data-lazy="/uploads/OMT-Videoplayer-Screen-290x150px.jpg"
+                                                        <?php endif; ?>
+                                                    />
+                                                <?php endif ?>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php break; ?>
+                            <?php } ?>
+                            <?php } ?>
                         </div>
+                        <div class="tool-slider-nav">
+                            <?php foreach ( $info_slider as $slide_nav) {
+                                if (strlen($slide_nav['bild']['url']) > 0) { ?>
+                                    <div class="slide-nav">
+                                        <img
+                                                class="no-ll tool-slider-image nav-slider-image"
+                                                alt="<?php print $slide_nav['bild']['alt'];?>"
+                                                title="<?php print $slide_nav['bild']['alt'];?>"
+                                                src="<?php print $slide_nav['bild']['sizes']['350-180'];?>"
+                                                width="<?php print $slide['bild']['sizes']['350-180-width'];?>"
+                                                height="<?php print $slide['bild']['sizes']['350-180-height'];?>"
+                                        />
+                                    </div>
+                                <?php } else { ?>
+                                    <div class="slide-nav"><img class="no-ll tool-slider-image nav-slider-image" src="/uploads/OMT-Videoplayer-Screen-290x150px.jpg"/></div>
+                                <?php } ?>
+                            <?php }?>
+                        </div>
+                    </div>
                     <?php } ?>
                 </div>
 
@@ -1040,14 +1065,14 @@ if (!$current_fp) { ?>
                                     $content_json = file_get_contents($url);
                                     $json = json_decode($content_json, true);
                                     $show = 0;
-    
+
                                     ArraySort::toolsBySponsored($json);
 
                                     foreach ($json as $jsontool) {
                                         $post_status = $jsontool['$post_status'];
                                         $jsonID = $jsontool['ID'];
                                         $is_term = 0;
-    
+
                                         if (is_array($jsontool['$terms'])) {
                                             foreach ($jsontool['$terms'] as $term) {
                                                 if (in_array($term['term_id'], $termids)) {
@@ -1055,7 +1080,7 @@ if (!$current_fp) { ?>
                                                 }
                                             }
                                         }
-                                        
+
                                         if ((1 == $is_term) AND ($show < 3) AND ("private" != $post_status) AND ($jsonID != $post_id)) {
                                             $show++;
                                             $logo = $jsontool['$logo'];
