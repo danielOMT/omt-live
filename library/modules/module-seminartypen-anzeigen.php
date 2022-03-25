@@ -57,7 +57,7 @@ foreach ($seminare as $seminar) {
         ?>
             <?php if($count == 4):
                 echo $promotional;
-            else:?>
+            endif;?>
             
             <div class="teaser teaser-small box-col">
                 <a href="<?php print $seminar_link ?>">
@@ -70,7 +70,7 @@ foreach ($seminare as $seminar) {
                 </div>
                 <a class="button"  href="<?php print $seminar_link ?>" title="<?php print $seminar_title; ?>">Termine & Anmeldung</a>
             </div>
-            <?php endif;?>
+            
         
     <?php }
     $count++;
