@@ -14,6 +14,8 @@ if ( "mentoren" == $zeile['inhaltstyp'][0]['alle_botschafter_anzeigen'] ) {
     $speakerloop = new WP_Query( $speakerargs );
     while ( $speakerloop->have_posts() ) : $speakerloop->the_post();
         $expertenprofil = get_field('expertenprofil');
+        $botschafter_info_zeile_1 = get_field('botschafter_info_zeile_1');
+        $botschafter_info_zeile_2 = get_field('botschafter_info_zeile_2');
         $experte_ID = $expertenprofil->ID;
         $profilbild = get_field('profilbild', $experte_ID);
         $imgurl = $profilbild['sizes']['350-180'];
@@ -66,7 +68,9 @@ if ( "mentoren" == $zeile['inhaltstyp'][0]['alle_botschafter_anzeigen'] ) {
                 <div class="ribbon"><span>OMT-Botschafter</span></div>
             </div>
             <h2 class="h4 no-ihv no-margin-bottom"><?php print get_the_title(); ?></h2>
-            <span class="teaser-cat category-link">OMT-Botschafter</span>
+            <?php if (strlen($botschafter_info_zeile_1)>0) { ?><span class="teaser-cat category-link"><?php print $botschafter_info_zeile_1;?></span><?php } ?>
+            <?php if (strlen($botschafter_info_zeile_2)>0) { ?><span class="teaser-cat category-link"><?php print $botschafter_info_zeile_2;?></span><?php } ?>
+            <?php if (strlen($botschafter_info_zeile_1)<1 AND strlen($botschafter_info_zeile_2)<1) { ?><span class="teaser-cat category-link">OMT-Botschafter</span><?php } ?>
         </a>
 
         <?php /*<a class="button" href="<?php print get_the_permalink();?>" title="<?php print get_the_title(); ?>">Artikel lesen</a>*/ ?>
