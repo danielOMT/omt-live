@@ -9557,3 +9557,49 @@ input {
 .hide_loading{
     display: none ;
 }
+
+/* promo seminare */
+.bottom-button{
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+.box-col{
+    position: relative;
+    height: 355px;
+}
+.seminar-img{
+  max-height: 184px;
+}
+.box-col {
+  >.article-title {
+    min-height: 90px !important;
+  }
+}
+.promo-desc{
+  padding-left:10px;
+  padding-right:10px;
+}
+@media {
+  only {
+    screen {
+      and {
+        (max-width {
+          &:1200px) {
+            .box-col{ height: 313px};
+          }
+          &:960px) {
+            .box-col { height: 343px};
+            .seminar-img{ max-height:auto};
+          }
+        }
+      }
+    }
+  }
+}
+.promo-title{
+  padding-top:10px;
+}
+/* promo seminare end */
