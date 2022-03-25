@@ -14,8 +14,6 @@ if ( "mentoren" == $zeile['inhaltstyp'][0]['alle_botschafter_anzeigen'] ) {
     $speakerloop = new WP_Query( $speakerargs );
     while ( $speakerloop->have_posts() ) : $speakerloop->the_post();
         $expertenprofil = get_field('expertenprofil');
-        $botschafter_info_zeile_1 = get_field('botschafter_info_zeile_1');
-        $botschafter_info_zeile_2 = get_field('botschafter_info_zeile_2');
         $experte_ID = $expertenprofil->ID;
         $profilbild = get_field('profilbild', $experte_ID);
         $imgurl = $profilbild['sizes']['350-180'];
@@ -52,6 +50,8 @@ if ( "mentoren" == $zeile['inhaltstyp'][0]['alle_botschafter_anzeigen'] ) {
     $speakerloop = new WP_Query( $speakerargs );
     while ( $speakerloop->have_posts() ) : $speakerloop->the_post();
         $expertenprofil = get_field('expertenprofil');
+        $botschafter_info_zeile_1 = get_field('botschafter_info_zeile_1');
+        $botschafter_info_zeile_2 = get_field('botschafter_info_zeile_2');
         $experte_ID = $expertenprofil->ID;
         $profilbild = get_field('profilbild', $experte_ID);
         $imgurl = $profilbild['sizes']['350-180'];
