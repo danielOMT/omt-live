@@ -68,8 +68,8 @@ if ( "mentoren" == $zeile['inhaltstyp'][0]['alle_botschafter_anzeigen'] ) {
                 <div class="ribbon"><span>OMT-Botschafter</span></div>
             </div>
             <h2 class="h4 no-ihv no-margin-bottom"><?php print get_the_title(); ?></h2>
-            <?php if (strlen($botschafter_info_zeile_1)>0) { ?><span class="teaser-cat category-link" style="margin-bottom:0px;"><?php print $botschafter_info_zeile_1;?></span><?php } ?>
-            <?php if (strlen($botschafter_info_zeile_2)>0) { ?><span class="teaser-cat category-link"><?php print $botschafter_info_zeile_2;?></span><?php } ?>
+            <?php if (strlen($botschafter_info_zeile_1)>0) { ?><span class="teaser-cat category-link"><?php print $botschafter_info_zeile_1;?></span><?php } ?>
+            <?php if (strlen($botschafter_info_zeile_2)>0) { ?><span class="teaser-cat category-link" style="margin-top:0px;"><?php print $botschafter_info_zeile_2;?></span><?php } ?>
             <?php if (strlen($botschafter_info_zeile_1)<1 AND strlen($botschafter_info_zeile_2)<1) { ?><span class="teaser-cat category-link">OMT-Botschafter</span><?php } ?>
         </a>
 
