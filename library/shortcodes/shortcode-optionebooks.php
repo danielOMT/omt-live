@@ -25,19 +25,15 @@ function omt_optionebooks( $atts ) {
             $eBookAuthor = get_field("experte", $ebookID);?>
 
             <div class="teaser teaser-small teaser-matchbuttons short_book">
-                <div class="teaser-image-wrap">
+                <div class="teaser-image-wrap opt_book-wrap">
                     <a href="<?php echo $ebookUrl ?>" title="#">
                         <img width="350" height="180" class="teaser-img" alt="<?php echo $ebookTitle ?>" title="<?php echo $ebookUrl ?>" src="<?php echo $ebookImage['sizes']['350-180']; ?>" />
                         <img width="350" height="42" alt="OMT Download" title="OMT Download" class="teaser-image-overlay" src="/uploads/omt-banner-overlay-350.png">
                     </a>
                 </div>
                 <h2 class="h4 no-ihv teaser-two-lines-title">
-                    <a href="<?php echo $ebookUrl ?>" title="<?php echo $ebookTitle ?>" ><?php echo $ebookTitle; ?></a>
+                    <a href="<?php echo $ebookUrl ?>" title="<?php echo $ebookTitle ?>" ><?php echo substr($ebookTitle, 0, 39);?></a>
                 </h2>
-                    <p class="experte no-margin-top no-margin-bottom">
-                          <a href="<?php echo get_the_permalink($eBookAuthor->ID) ?>"><?php echo get_the_title($eBookAuthor->ID) ?></a>
-                    </p>
-
                 <div class="x-mt-2">
                     <?php
                     $deactivate_downloading_until = get_field('deactivate_downloading_until', $ebookID);
@@ -51,10 +47,6 @@ function omt_optionebooks( $atts ) {
                             <?php endif; ?>
                         </a>
                     <?php } ?>
-
-                    <?php if ($eBookOrderProductID) : ?>
-                        <a class="button button-red download-checkout-url" href="/?add-to-cart=<?=$eBookOrderProductID?>">Printausgabe bestellen</a>
-                    <?php endif; ?>
                 </div>
             </div>
 
