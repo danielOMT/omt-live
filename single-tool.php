@@ -240,8 +240,9 @@ if (!$current_fp) { ?>
                 'post_status' => array( 'publish'),
                 'orderby'           => 'title',
                 'order'				=> 'ASC',
+                'post__not_in' => array(310736, 310740),
             ));
-
+//310736 310740
             foreach ($tools_links as $tool_loop) {
                 $ID = $tool_loop->ID;
                 $vorschautitel_fur_index = get_field('vorschautitel_fur_index', $ID);
