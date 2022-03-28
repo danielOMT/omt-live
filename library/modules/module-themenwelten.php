@@ -2,20 +2,22 @@
 <?php
 if (1 == $zeile['inhaltstyp'][0]['alle_tooltests']) {
     $tools_links = get_posts(array(
-                'post_type' => 'tool',
-                'posts_per_page'    => -1,
-                'post_status' => array( 'publish'),
-                'orderby'           => 'title',
-                'order'				=> 'ASC',
-            ));
-            $seiten_auswahlen = array();
-            foreach ($tools_links as $tool_loop) {
-                $ID = $tool_loop->ID;
-                $zeilen = get_field('zeilen', $ID);
-                if (is_array($zeilen) AND $ID != get_the_ID()) { // check if this is a regular tool or a page-like build
-                    $seiten_auswahlen[]  = $ID;
-                }
-            }
+        'post_type' => 'tool',
+        'posts_per_page'    => -1,
+        'post_status' => array( 'publish'),
+        'orderby'           => 'title',
+        'order'				=> 'ASC',
+        'post__not_in' => array(310736, 310740),
+
+    ));
+    $seiten_auswahlen = array();
+    foreach ($tools_links as $tool_loop) {
+        $ID = $tool_loop->ID;
+        $zeilen = get_field('zeilen', $ID);
+        if (is_array($zeilen) AND $ID != get_the_ID()) { // check if this is a regular tool or a page-like build
+            $seiten_auswahlen[]  = $ID;
+        }
+    }
 } else {
     $seiten_auswahlen = $zeile['inhaltstyp'][0]['seiten_auswahlen'];
 }
