@@ -566,7 +566,7 @@ if (strlen($seminar_preis)>0) { $next_price = $seminar_preis; }
                                                                             <?php if ($location_stadtname != "Online Seminar") { ?>
                                                                         </a>
                                                                     <?php } ?></b>
-                                                                    <?php if ($seminar['regularprice'] != $seminar['price']) { ?><span class="discountbadge" style="<?php if ($location_stadtname != "Online Seminar") { print "margin-left:0px;!important"; } ?>">10%</span><?php } ?>
+                                                                    <?php if ($seminar['regularprice'] != $seminar['price']) { ?><span class="discountbadge" style="<?php if ($location_stadtname == "Online Seminar") { print "margin-left:0px;!important"; } ?>">10%</span><?php } ?>
                                                                     <p><?php if ($seminar['regularprice'] != $seminar['price']) { print "<del>" . $seminar['regularprice'] . "  €</del>";}?>
                                                                         <?php print $seminar['price'];?> € <span class="small">zzgl. 19% MwSt.</span></p>
                                                                     <?php /* <a class="a a-730px a-blue" id="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>" href="/kasse/?add-to-cart=<?php print $seminar_woocommerce->ID;?>&variation_id=<?php print $seminar['vid'];?>" title="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>">*/ ?>
