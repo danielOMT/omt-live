@@ -104,7 +104,7 @@ function display_jobs(int $anzahl = 99) { ?>
                     </div>
                     <div class="job-content">
 
-                        <div class="job-date"><?php if ($i == 1 || $job_hervorheben == 1) { ?><span class="text-red">NEU</span><?php } ?><?php print $date;?></div>
+                        <div class="job-date"><?php if ($i == 1) { ?><span class="text-red">NEU</span><?php } ?><?php print $date;?></div>
                         <div class="job-title"><?php print get_the_title(); ?></div>
                         <div class="job-company"><?php print $arbeitgeber_name;?></div>
                         <div class="job-location"><?php print $stadt;?></div>
