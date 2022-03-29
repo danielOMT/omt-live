@@ -97,6 +97,9 @@ $today_date = date(strtotime("now"));  ////****get current time as unix string f
 /// FINDING THE NEXT SEMINAR DATE FOR THE SIDEBAR
 ///
 $i = 0;
+$has_online = 0;
+$has_offline = 0;
+
 foreach ($seminar_array as $seminar){
     if (0 == $i) {
         ///****foreach entry in the array go into the foreach loop***/ ?>
@@ -107,19 +110,21 @@ foreach ($seminar_array as $seminar){
             $next_date_end = $seminar['day_end'];
             $next_time = $seminar['time_start'];
             $next_time_end = $seminar['time_end'];
-            $has_online = 0;
             $next_location_url = get_the_permalink($seminar['location']);
             $next_location_stadt_placeholder = get_field('location_stadtname', $seminar['location']);
             if (!strstr($next_location_stadt_placeholder, "Online")) {
+                $has_offline++;
                 $next_location_stadt = get_field('location_stadtname', $seminar['location']);
                 if (strlen($seminar['online_id'])>0) {
                     $next_location_stadt .= " / Online";
                 }
             } else { //next termin is an online date, find out if it has offline variation attached
+                $has_online++;
                 if (strlen($seminar['offline_id'])>0) {
                     foreach ($seminar_array as $seminar_offline) { //search the array for offline id variation
                         if ($seminar_offline['offline_id'] == $seminar['online_id'])
                             $next_location_stadt = get_field('location_stadtname', $seminar_offline['location']) . " / Online";
+                        $has_offline++;
                     }
                 } else { //only online dates available
                     $next_location_stadt = get_field('location_stadtname', $seminar['location']);
@@ -129,6 +134,12 @@ foreach ($seminar_array as $seminar){
         } //end of if query for future-check
     } //end of if query for future-check
 } //end of loop through foreach seminar item
+$terminlocations_label = 'Remote oder "vor Ort" buchbar';
+if ( ($has_offline>0) AND ($has_online<1)) {
+    $terminlocations_label = "Nur als Offline-Seminar buchbar";
+} elseif (($has_offline<1) AND ($has_online>0)) {
+    $terminlocations_label = "Nur als Online-Seminar buchbar";
+}
 if (0 != $i) { $hat_termine = true; } else { $hat_termine = false; }
 ///
 /// FINDING THE NEXT SEMINAR DATE FOR THE SIDEBAR
@@ -402,6 +413,7 @@ if (strlen($seminar_preis)>0) { $next_price = $seminar_preis; }
                                                 <?php if (strlen($vorteile_auf_einen_blick[0]['stichpunkt'])>0) { ?>
                                                     <ul class="check">
                                                         <?php foreach($vorteile_auf_einen_blick as $vorteil) { ?><li><?php print $vorteil['stichpunkt'];?></li><?php } ?>
+                                                        <li><?php print $terminlocations_label;?></li>
                                                         <li>
                                                             <div style="display:flex;flex-wrap:wrap;">
                                                                 <div style="margin-right:10px;">Referent<?php if(count($seminar_speaker)>1){print"en";}?>:</div>
