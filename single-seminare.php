@@ -557,11 +557,13 @@ if (strlen($seminar_preis)>0) { $next_price = $seminar_preis; }
                                                                         <?php $location_stadtname = get_field('location_stadtname', $seminar['location']);
                                                                         if ($location_stadtname != "Online Seminar") { ?>
                                                                         in&nbsp;<a href="<?php print get_the_permalink($seminar['location']); ?>">
+                                                                            <?php } else { ?>
+                                                                            <span style="display:block;width:100%;padding-left:10px;padding-right:10px;">
                                                                             <?php } ?>
                                                                             <div class="tooltip"><?php print get_field('location_stadtname', $seminar['location']); ?><span class="tooltiptext"><h4><?php print get_the_title($seminar['location']);?></h4><?php print $hotel_adresse['address'];?></span></div>
                                                                             <?php if ($location_stadtname != "Online Seminar") { ?>
                                                                         </a>
-                                                                    <?php } ?></b>
+                                                                    <?php } else {?></span><?php } ?></b>
                                                                     <?php if ($seminar['regularprice'] != $seminar['price']) { ?><span class="discountbadge">10%</span><?php } ?>
                                                                     <p><?php if ($seminar['regularprice'] != $seminar['price']) { print "<del>" . $seminar['regularprice'] . "  €</del>";}?>
                                                                         <?php print $seminar['price'];?> € <span class="small">zzgl. 19% MwSt.</span></p>
