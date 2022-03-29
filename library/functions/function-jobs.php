@@ -23,22 +23,27 @@ function display_jobs(int $anzahl = 99) { ?>
                 'after'  => '180 days ago',
             )
         ),
-        'order'				=> 'DESC',
+        'order'             => 'DESC',
     );
     ?>
+
     <div id="jobs" class="has-margin-bottom-30">
         <?php
         $loop = new WP_Query($args);
+        $job_hervorheben_class = '';
+        $no_border = '';
         $i=0;
         while ($loop->have_posts()) : $loop->the_post();
             $id = get_the_ID();
             $featured_image = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'full');
             $image = $featured_image[0];
             $arbeitgeber_name = get_field('arbeitgeber_name');
+            $job_hervorheben = get_field('job_hervorheben');
             $arbeitgeber_logo = get_field('arbeitgeber_logo');
             $arbeitgeber_logo_id = get_field('arbeitgeber_logo_id');
             $stadt = get_field('stadt');
             $date = get_the_date();
+            if($job_hervorheben == 1){ $job_hervorheben_class = 'ribbon_'; $no_border = 'ribbon_link';}else{$job_hervorheben_class = ''; $no_border = '';}
             if (strlen($arbeitgeber_logo_id)>0) { $arbeitgeber_logo['url'] = $arbeitgeber_logo_id; }
             /////////************************************************************************************/////////////////////////////////////////
             /////////************************************************************************************/////////////////////////////////////////
@@ -92,16 +97,18 @@ function display_jobs(int $anzahl = 99) { ?>
         ?>  
 
            
-            <div class="omt-job-box jobs">
-                <a href="<?php the_permalink() ?>" class="clearfix omt-job" title="<?php the_title_attribute(); ?>">
+            <div class="omt-job-box jobs <?=$job_hervorheben_class;?>" data-ribbon="Hot Job" >
+                <a href="<?php the_permalink() ?>" class="clearfix omt-job <?=$no_border;?>" title="<?php the_title_attribute(); ?>">
                     <div class="omt-job-img">
                       <img title="<?php the_title(); ?>" alt="<?php the_title(); ?>" src="<?php print $arbeitgeber_logo['url']; ?>">
                     </div>
                     <div class="job-content">
-                        <div class="job-date"><?php if (1==$i) { ?><span class="text-red">NEU</span><?php } ?><?php print $date;?></div>
+
+                        <div class="job-date"><?php if ($i == 0 || $i == 1 || $i == 2 || $job_hervorheben == 1) { ?><span class="text-red">NEU</span><?php } ?><?php print $date;?></div>
                         <div class="job-title"><?php print get_the_title(); ?></div>
                         <div class="job-company"><?php print $arbeitgeber_name;?></div>
                         <div class="job-location"><?php print $stadt;?></div>
+
                     </div>
                 </a>
             </div>
