@@ -351,7 +351,7 @@ if (strlen($seminar_preis)>0) { $next_price = $seminar_preis; }
                                                                             <?php if ($location_stadtname != "Online Seminar") { ?>
                                                                             </a></span>
                                                                         <?php } ?></b>
-                                                                        <span style="display:block;width:100%;padding-right:10px; style="<?php if ($location_stadtname == "Online Seminar") { print "padding-left:0px;"; } else { print "padding-left:10px;"; } ?>><?php if ($seminar['regularprice'] != $seminar['price']) { ?><span class="discountbadge">10%</span><?php } ?>
+                                                                        <span style="display:block;width:100%;padding-right:10px;<?php if ($location_stadtname == "Online Seminar") { print "padding-left:0px;"; } else { print "padding-left:10px;"; } ?>"><?php if ($seminar['regularprice'] != $seminar['price']) { ?><span class="discountbadge">10%</span><?php } ?>
                                                                             <?php if ($seminar['regularprice'] != $seminar['price']) { print "<del>" . $seminar['regularprice'] . "  €</del>";}?>
                                                                             <?php print $seminar['price'];?> € <span class="small">zzgl. 19% MwSt.</span></span>
                                                                     </div>
