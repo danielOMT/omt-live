@@ -117,6 +117,7 @@ foreach ($seminar_array as $seminar){
                 $next_location_stadt = get_field('location_stadtname', $seminar['location']);
                 if (strlen($seminar['online_id'])>0) {
                     $next_location_stadt .= " / Online";
+                    $has_online++;
                 }
             } else { //next termin is an online date, find out if it has offline variation attached
                 $has_online++;
