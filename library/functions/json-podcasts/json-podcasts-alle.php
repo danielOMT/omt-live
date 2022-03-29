@@ -274,7 +274,7 @@ function display_podcasts_json(int $anzahl = 9999, string $kategorie_id=NULL, in
                                 </div>
                             </div>
 
-                            <a data-podcast-count="<?php print $podinar_count_id;?>" class="button" href="<?php $podcast['$link']?>" title="<?php print $podcast['$title']; ?>">Jetzt reinhören</a>
+                            <a data-podcast-count="<?php print $podinar_count_id;?>" class="button" href="<?php print $podcast['$link']?>" title="<?php print $podcast['$title']; ?>">Jetzt reinhören</a>
                         </div>
                     <?php } ?>
                 <?php } ?>
