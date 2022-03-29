@@ -103,8 +103,14 @@ function display_jobs(int $anzahl = 99) { ?>
                       <img title="<?php the_title(); ?>" alt="<?php the_title(); ?>" src="<?php print $arbeitgeber_logo['url']; ?>">
                     </div>
                     <div class="job-content">
-
-                        <div class="job-date"><?php if ($i == 0 || $i == 1 || $i == 2 || $job_hervorheben == 1) { ?><span class="text-red">NEU</span><?php } ?><?php print $date;?></div>
+                        <?php 
+                            $currentDate = date("Y-m-d");
+                            $jobDate = get_the_date("Y-m-d");
+                            $start_date = strtotime($jobDate);
+                            $end_date = strtotime($currentDate);
+                            $diff =  ($end_date - $start_date)/60/60/24;
+                        ?> 
+                        <div class="job-date"><?php if ($i == 0 || $diff < 8) { ?><span class="text-red">NEU</span><?php } ?><?php print $date;?></div>
                         <div class="job-title"><?php print get_the_title(); ?></div>
                         <div class="job-company"><?php print $arbeitgeber_name;?></div>
                         <div class="job-location"><?php print $stadt;?></div>
