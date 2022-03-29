@@ -558,7 +558,7 @@ if (strlen($seminar_preis)>0) { $next_price = $seminar_preis; }
                                                                         if ($location_stadtname != "Online Seminar") { ?>
                                                                         in&nbsp;<a href="<?php print get_the_permalink($seminar['location']); ?>">
                                                                             <?php } ?>
-                                                                            <div class="tooltip"><?php print get_field('location_stadtname', $seminar['location']); ?><span class="tooltiptext"><h4><?php print get_the_title($seminar['location']);?></h4><?php print $hotel_adresse['address'];?></span></div>
+                                                                            <div <?php if ($location_stadtname != "Online Seminar") { ?>class="tooltip"<?php } ?>><?php print get_field('location_stadtname', $seminar['location']); ?><span class="tooltiptext"><h4><?php print get_the_title($seminar['location']);?></h4><?php print $hotel_adresse['address'];?></span></div>
                                                                             <?php if ($location_stadtname != "Online Seminar") { ?>
                                                                         </a>
                                                                     <?php } ?></b>
