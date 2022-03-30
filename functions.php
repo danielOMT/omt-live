@@ -368,7 +368,6 @@ function bones_wpsearch($form) {
     return $form;
 }
 
-
 if (function_exists( "acf_add_options_page" )) {
     acf_add_options_page(array(
             'page_title' => 'Clubtreffen',
