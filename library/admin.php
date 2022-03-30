@@ -87,3 +87,9 @@ function bones_custom_admin_footer() {
 	_e('', 'bonestheme');
 }
 add_filter('admin_footer_text', 'bones_custom_admin_footer');
+
+function bones_admin_style() {
+    wp_enqueue_style('admin-styles', get_template_directory_uri() . '/library/less/admin.css', false);
+}
+
+add_action('admin_enqueue_scripts', 'bones_admin_style');
