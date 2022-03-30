@@ -265,7 +265,8 @@ if (getPost()->ID == 21990) {
                 
                 <i class="fa fa-search header-search-icon" aria-hidden="true"></i>
                 <div class="omt-suche header-search-input">
-                    <form role="search" method="get" id="searchform" action="https://www.omt.de/"> <input type="text" class="searchphrase" value="" name="s" id="s" placeholder="Finde die Inhalte beim OMT..." id=""/></form></div>
+                    <form role="search" method="get" id="searchform" action="https://www.omt.de/"> <input type="text" class="searchphrase" value="" name="s" id="s" placeholder="Finde die Inhalte beim OMT..." id=""/></form>
+                </div>
             </div>
             <?php if (is_single() || getPost()->field('ist_themenwelt', 'bool')) : ?>
                 <progress value="0"></progress>
