@@ -359,10 +359,12 @@ function bones_comments($comment, $args, $depth) {
 
 
 function bones_wpsearch($form) {
-    $form = '<div class="omt-suche"><h2>Inhalte auf dem OMT suchen:</h2><form role="search" method="get" id="searchform" action="' . home_url( '/' ) . '">
-    <input type="text" class="searchphrase" value="' . get_search_query() . '" name="s" id="s" placeholder="'.esc_attr__('Finde die Inhalte beim OMT...','bonestheme').'" />
-    <input type="submit" id="searchsubmit" value="'. esc_attr__('Los') .'" />
-    </form></div>';
+    $form = '<div class="omt-suche">
+<form role="search" method="get" id="searchform" action="https://www.omt.de/">
+<input type="text" class="searchphrase" value="" name="s" id="s" placeholder="Finde die Inhalte beim OMT..." id=""/>
+<input type="submit" id="searchsubmit" value="Los">
+</form>
+</div>';
     return $form;
 }
 
@@ -498,7 +500,7 @@ function timestamp_compare_desc($a, $b) ////***helper function to sort the array
     if ($t1 === $t2) {
         return strcmp(strtolower($a['$webinar_vorschautitel']), strtolower($b['$webinar_vorschautitel']));
     }
-    
+
     return $t2 - $t1;
 }
 
@@ -912,7 +914,7 @@ function action_woocommerce_variation_options( $loop, $variation_data, $variatio
     if ( $is_checked == 'yes' ) {
         $is_checked = 'checked';
     } else {
-        $is_checked = '';     
+        $is_checked = '';
     }
 
     ?>
@@ -929,8 +931,8 @@ function action_woocommerce_save_product_variation( $variation_id, $i ) {
     if ( ! empty( $_POST['_activePro'] ) && ! empty( $_POST['_activePro'][$i] ) ) {
         update_post_meta( $variation_id, '_activePro', 'yes' );
     } else {
-        update_post_meta( $variation_id, '_activePro', 'no' ); 
-    }       
+        update_post_meta( $variation_id, '_activePro', 'no' );
+    }
 }
 add_action( 'woocommerce_save_product_variation', 'action_woocommerce_save_product_variation', 10, 2 );
 
@@ -939,7 +941,7 @@ add_filter( 'acf/fields/wysiwyg/toolbars' , 'custom_toolbar'  );
 function custom_toolbar( $toolbars )
 {
     if(!is_admin()){
-       $toolbars['Full' ] = array();
+        $toolbars['Full' ] = array();
         $toolbars['Full' ][1] = array(
             'formatselect',
             'bold',
@@ -972,7 +974,7 @@ function custom_toolbar( $toolbars )
             'wp_help',
         );
     }
-    
+
     if( ($key = array_search('code' , $toolbars['Full' ][2])) !== false )
     {
         unset( $toolbars['Full' ][2][$key] );
@@ -982,33 +984,33 @@ function custom_toolbar( $toolbars )
 }
 
 
-function wpb_find_shortcode($atts, $content=null) { 
-ob_start();
-extract( shortcode_atts( array(
+function wpb_find_shortcode($atts, $content=null) {
+    ob_start();
+    extract( shortcode_atts( array(
         'find' => '',
     ), $atts ) );
- 
-$string = $atts['find'];
- 
-$args = array(
-    's' => $string,
+
+    $string = $atts['find'];
+
+    $args = array(
+        's' => $string,
     );
- 
-$the_query = new WP_Query( $args );
- 
-if ( $the_query->have_posts() ) {
+
+    $the_query = new WP_Query( $args );
+
+    if ( $the_query->have_posts() ) {
         echo '<ul>';
-    while ( $the_query->have_posts() ) {
-    $the_query->the_post(); ?>
-    <li><a href="<?php  the_permalink() ?>"><?php the_title(); ?></a></li>
-    <?php
-    }
+        while ( $the_query->have_posts() ) {
+            $the_query->the_post(); ?>
+            <li><a href="<?php  the_permalink() ?>"><?php the_title(); ?></a></li>
+            <?php
+        }
         echo '</ul>';
-} else {
-        echo "Sorry no posts found"; 
-}
- 
-wp_reset_postdata();
-return ob_get_clean();
+    } else {
+        echo "Sorry no posts found";
+    }
+
+    wp_reset_postdata();
+    return ob_get_clean();
 }
 add_shortcode('shortcodefinder', 'wpb_find_shortcode');
