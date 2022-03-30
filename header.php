@@ -264,7 +264,8 @@ if (getPost()->ID == 21990) {
                 <?php } ?>
                 
                 <i class="fa fa-search header-search-icon" aria-hidden="true"></i>
-                <div class="omt-suche header-search-input"><form role="search" method="get" id="searchform" action="https://www.omt.de/"> <input type="text" class="searchphrase" value="" name="s" data-swplive="true" data-swpengine="default" data-swpconfig="default" id="s" placeholder="Finde die Inhalte beim OMT..." autocomplete="off" aria-describedby="searchwp_live_search_results_5f9aea9a3b5dd_instructions" aria-owns="searchwp_live_search_results_5f9aea9a3b5dd" aria-autocomplete="both"><p class="searchwp-live-search-instructions screen-reader-text" id="searchwp_live_search_results_5f9aea9a3b5dd_instructions">When autocomplete results are available use up and down arrows to review and enter to go to the desired page. Touch device users, explore by touch or with swipe gestures.</p><input type="hidden" name="swpmfe" value="5916110af2bd3b2b4d5992f3b0f8059a"></form></div>
+                <div class="omt-suche header-search-input">
+                    <form role="search" method="get" id="searchform" action="https://www.omt.de/"> <input type="text" class="searchphrase" value="" name="s" id="s" placeholder="Finde die Inhalte beim OMT..." id=""/></form></div>
             </div>
             <?php if (is_single() || getPost()->field('ist_themenwelt', 'bool')) : ?>
                 <progress value="0"></progress>
