@@ -30,7 +30,7 @@ $autoren_slider = $zeile["inhaltstyp"][0]["downloads_people"];
                                 <?php echo ModalView::loadTemplate('default', [
                                     'title' => $button_label,
                                     'buttonTitle' => $button_label,
-                                    'buttonClass' => 'button downloads-button x-text-base x-w-full',
+                                    'buttonClass' => 'button downloads-button button-red x-text-base x-w-full',
                                     'content' => '<script>hbspt.forms.create({ portalId: "3856579", formId: "' . $hubspot_formular_id . '" });</script>'
                                 ]) ?>
                             </div>
