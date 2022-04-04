@@ -1,7 +1,7 @@
 <?php /////dynamic GFORM Populating SELECT Fields for TOol Umfrage
 //add_filter( 'gform_pre_render_104', 'populate_posts' );
-add_filter( 'gform_pre_validation_104', 'populate_posts' );
-add_filter( 'gform_pre_submission_filter_104', 'populate_posts' );
+//add_filter( 'gform_pre_validation_104', 'populate_posts' );
+//add_filter( 'gform_pre_submission_filter_104', 'populate_posts' );
 //add_filter( 'gform_admin_pre_render_104', 'populate_posts' );
 function populate_posts( $form ) {
     $toolkategorien = array(
