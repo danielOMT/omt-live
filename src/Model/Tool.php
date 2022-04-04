@@ -272,7 +272,7 @@ class Tool extends PostModel
         if ($showButtons && $balance > 0) {
             foreach ($acfCategories as $category) {
                 if ($category['kategorie'] == $currentCategory && $category['gebot'] > 0) {
-                    return $category['gebot'];
+                    return 100*$category['gebot'];
                 }
             }
         }
