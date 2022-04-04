@@ -1,41 +1,35 @@
 <?php /////dynamic GFORM Populating SELECT Fields for TOol Umfrage
-add_filter( 'gform_pre_render_26', 'populate_posts' );
-add_filter( 'gform_pre_validation_26', 'populate_posts' );
-add_filter( 'gform_pre_submission_filter_26', 'populate_posts' );
-add_filter( 'gform_admin_pre_render_26', 'populate_posts' );
+add_filter( 'gform_pre_render_104', 'populate_posts' );
+add_filter( 'gform_pre_validation_104', 'populate_posts' );
+add_filter( 'gform_pre_submission_filter_104', 'populate_posts' );
+add_filter( 'gform_admin_pre_render_104', 'populate_posts' );
 function populate_posts( $form ) {
     $toolkategorien = array(
-        array( "class" => "populate-affiliate-tools", "id" => 475, "include-children" => false ),
-        array( "class" => "populate-agentursteuerung-tools", "id" => 332 , "include-children" => false),
-        array( "class" => "populate-amazon-seo-tools", "id" => 497, "include-children" => false ),
-        array( "class" => "populate-content-marketing-tools", "id" => 378, "include-children" => true ),
-        array( "class" => "populate-content-management-systeme-tools", "id" => 466, "include-children" => true ),
-        array( "class" => "populate-conversion-optimierung-tools", "id" => 189, "include-children" => false),
-        array( "class" => "populate-crm-systeme-tools", "id" => 330, "include-children" => false),
-        array( "class" => "populate-email-marketing-tools", "id" => 349 , "include-children" => false),
+        array( "class" => "populate-ab-tools", "id" => 739, "include-children" => false ),
+        array( "class" => "populate-agentursoftware-tools", "id" => 332 , "include-children" => false),
+        array( "class" => "populate-bewerbungsmanagement-tools", "id" => 929, "include-children" => false ),
+        array( "class" => "populate-bid-management-tools", "id" => 989, "include-children" => false ),
+        array( "class" => "populate-cookie-consent-tools", "id" => 687, "include-children" => false ),
+        array( "class" => "populate-crm-tools", "id" => 330, "include-children" => false),
+        array( "class" => "populate-newsletter-tools", "id" => 349, "include-children" => false),
         array( "class" => "populate-erp-tools", "id" => 467 , "include-children" => false),
-        array( "class" => "populate-facebook-ads-tools", "id" => 513 , "include-children" => false),
-        array( "class" => "populate-google-ads-tools", "id" => 496 , "include-children" => false),
-        array( "class" => "populate-google-analytics", "id" => 196 , "include-children" => false),
-        array( "class" => "populate-growth-hacking-tools", "id" => 563 , "include-children" => false),
+        array( "class" => "populate-event-management-tools", "id" => 787 , "include-children" => false),
+        array( "class" => "populate-fulfillment-tools", "id" => 841 , "include-children" => false),
+        array( "class" => "populate-hr-tools", "id" => 693 , "include-children" => false),
+        array( "class" => "populate-linkedin-tools", "id" => 566 , "include-children" => false),
         array( "class" => "populate-marketing-automation-tools", "id" => 192 , "include-children" => false),
-        array( "class" => "populate-influencer-marketing-tools", "id" => 386 , "include-children" => false),
-        array( "class" => "populate-linkbuilding-tools", "id" => 197 , "include-children" => false),
-        array( "class" => "populate-online-marketing-tools", "id" => 186 , "include-children" => false),
-        array( "class" => "populate-payment-anbieter-tools", "id" => 523 , "include-children" => false),
-        array( "class" => "populate-pinterest-marketing-tools", "id" => 564 , "include-children" => false),
-        array( "class" => "populate-projektmanagement-tools", "id" => 324, "include-children" => false),
+        array( "class" => "populate-mockup-tools", "id" => 460 , "include-children" => false),
+        array( "class" => "populate-payment-tools", "id" => 523 , "include-children" => false),
+        array( "class" => "populate-projektmanagement-tools", "id" => 324 , "include-children" => false),
         array( "class" => "populate-rechnungsprogramme-tools", "id" => 333 , "include-children" => false),
-        array( "class" => "populate-sales-tools", "id" => 565 , "include-children" => false),
+        array( "class" => "populate-reporting-tools", "id" => 515 , "include-children" => false),
+        array( "class" => "populate-seo-tools", "id" => 185 , "include-children" => false),
         array( "class" => "populate-shopsysteme-tools", "id" => 461 , "include-children" => false),
-        array( "class" => "populate-social-media-marketing-tools", "id" => 188 , "include-children" => false),
-        array( "class" => "populate-suchmaschinenoptimierung-tools", "id" => 185 , "include-children" => false),
-        array( "class" => "populate-video-marketing-tools", "id" => 398 , "include-children" => false),
+        array( "class" => "populate-usability-testing-tools", "id" => 582 , "include-children" => false),
         array( "class" => "populate-webanalyse-tools", "id" => 438 , "include-children" => false),
-        array( "class" => "populate-webkonferenz-anbieter-tools", "id" => 535 , "include-children" => false),
-        array( "class" => "populate-zeiterfassung-tools", "id" => 504 , "include-children" => false),
-        //array( "class" => "populate-webdesign-tools", "id" => 475 , "include-children" => false),
-        //array( "class" => "populate-wordpress-tools", "id" => 475 , "include-children" => false),
+        array( "class" => "populate-webkonferenz-tools", "id" => 535 , "include-children" => false),
+        array( "class" => "populate-website-monitoring-tools", "id" => 458 , "include-children" => false),
+        array( "class" => "populate-zeiterfassungs-tools", "id" => 504 , "include-children" => false),
     );
     foreach ($toolkategorien as $kategorie) {
         foreach ( $form['fields'] as $field ) {
