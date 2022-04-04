@@ -76,8 +76,8 @@ class ArraySort
     public static function toolsBySponsored(array &$array)
     {
         usort($array, function ($a, $b) {
-            $wertA = 100 * number_format($a['$wert'], 0);
-            $wertB = 100 * number_format($b['$wert'], 0);
+            $wertA = number_format($a['$wert'], 2);
+            $wertB = number_format($b['$wert'], 2);
 //            if ($wertB === $wertA) {
 //                $ratingA = (float)10 * number_format($a['$wertung_gesamt'], 1);
 //                $ratingB = (float)10 * number_format($b['$wertung_gesamt'], 1);
