@@ -73,7 +73,8 @@ class ArraySort
 //        });
 //    }
 
-    public static function toolsBySponsored(array &$array)
+    public static function toolsBySponsored(array &$array) //simplified the sort function because the float calculation just continued giving wrong orderings.
+        //also deactivating secondary sort modes (if worth is same) for the time being
     {
         usort($array, function ($a, $b) {
             $wertA = number_format($a['$wert'], 2);

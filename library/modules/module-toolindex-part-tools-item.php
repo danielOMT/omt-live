@@ -117,7 +117,7 @@ if ("teasertabelle" == $tools_style ) { ?>
         <?php } ?>
     </div>
 <?php } else { ?>
-<div class="tool viewtrack viewtool" id="view-<?php print str_replace(" ", "", (strtolower($tool_title)));?>" data-value="<?php print $tool['$wert'];?>">
+<div class="tool viewtrack viewtool" id="view-<?php print str_replace(" ", "", (strtolower($tool_title)));?>">
     <div class="tool-top">
         <div class="tool-logo-wrap">
             <img 
