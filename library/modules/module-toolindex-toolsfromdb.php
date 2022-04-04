@@ -47,6 +47,13 @@ while ($loop->have_posts()) : $loop->the_post();
         $tool_vorschautext = get_field("vorschautext");
         $vorschautext_nach_kategorie = get_field("vorschautext_nach_kategorie");
         $tool_kategorien = get_field('tool_kategorien');
+        //loop through categories, get "gebot" for currently processed category and then put that value as into the $wert variable because this one is used for sorting!
+        foreach ($tool_kategorien as $toolkategorie) {
+            if ($tax_query == $toolkategorie['kategorie']) {
+                if ($toolkategorie['gebot']>0) { $wert = $toolkategorie['gebot']; }
+            }
+        }
+        //end of loop through categories, get "gebot" for currently processed category and then put that value as into the $wert variable because this one is used for sorting!
         $anzahl_bewertungen = get_field('anzahl_bewertungen', $ID);
         $buttons_anzeigen = get_field('buttons_anzeigen', $ID);
         $filter_preis = get_field('filter_preis', $ID);
