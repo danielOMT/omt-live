@@ -77,13 +77,12 @@ if ("kategorie" == $tabelle_kategorie) {
             }
 
             if (is_array($jsontool['$tool_kategorien'])) {
-//                $json[$j]['$wert'] = $toolModel->worth(
-//                    (bool) $jsontool['$buttons_anzeigen'],
-//                    $jsontool['$guthaben'],
-//                    $jsontool['$tool_kategorien'],
-//                    $kategorie
-//                );
-                $json[$j]['$wert'] = $jsontool['$wert'];
+                $json[$j]['$wert'] = $toolModel->worth(
+                    (bool) $jsontool['$buttons_anzeigen'],
+                    $jsontool['$guthaben'],
+                    $jsontool['$tool_kategorien'],
+                    $kategorie
+                );
             }
         }
 
