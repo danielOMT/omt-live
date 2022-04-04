@@ -287,7 +287,7 @@ class Tool extends PostModel
         $logo = get_field('logo', $post->ID);
         $previewTitle = get_field('vorschautitel_fur_index', $post->ID);
         $showButtons = get_field('buttons_anzeigen', $post->ID) ? 1 : 0;
-        $worth = intval(get_field('wert', $post->ID)) ?: 0;
+        $worth = floatval(get_field('wert', $post->ID)) ?: 0;
         $balance = get_field('guthaben', $post->ID) ?: 0;
         $pricePlans = array_filter((array) get_field('filter_preis', $post->ID)) ?: ['kostenlos'];
         $clubRating = get_field('club_stimmenanzahl', $post->ID) ?: 0;
