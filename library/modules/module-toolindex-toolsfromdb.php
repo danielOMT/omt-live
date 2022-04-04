@@ -53,7 +53,7 @@ while ($loop->have_posts()) : $loop->the_post();
                 if ($toolkategorie['gebot']>0) { $wert = $toolkategorie['gebot']; }
             }
         }
-        if ("258525" == $ID) { $wert = 5; }
+        if (258525 == $ID) { $wert = 5; }
         //end of loop through categories, get "gebot" for currently processed category and then put that value as into the $wert variable because this one is used for sorting!
         $anzahl_bewertungen = get_field('anzahl_bewertungen', $ID);
         $buttons_anzeigen = get_field('buttons_anzeigen', $ID);
