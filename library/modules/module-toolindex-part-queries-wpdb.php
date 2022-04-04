@@ -83,7 +83,7 @@ if ("kategorie" == $tabelle_kategorie) {
 //                    $jsontool['$tool_kategorien'],
 //                    $kategorie
 //                );
-                $json[$j] = $jsontool['$wert'];
+                $json[$j]['$wert'] = $jsontool['$wert'];
             }
         }
 
