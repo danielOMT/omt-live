@@ -1,7 +1,18 @@
 <?php 
 
 use OMT\View\WebinarView;
+?>
+    <div class="legend" style="width:100% !important;margin-left:30px;">
 
+        <div class="table-cats">
+            <b>Legende:</b>
+            <i class="cat1 fa fa-circle"></i> Für Anfänger geeignet
+            <i class="cat2 fa fa-circle"></i> Einsteiger, aber Basiswissen vorhanden
+            <i class="cat3 fa fa-circle"></i> Fortgeschrittene
+            <i class="cat4 fa fa-circle"></i> Experten
+        </div>
+    </div>
+<?php
 wp_enqueue_script('alpine-lines-clamping', get_template_directory_uri() . '/library/js/core/lines-clamping.js');
 wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/alpine.min.js');
 ?>

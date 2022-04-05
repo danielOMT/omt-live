@@ -61,7 +61,7 @@ $datahostWebinar = Webinar::init()->item(['id' => $post_id]);
                 <?php } ?>
                 <div class="socials-header"><?php print do_shortcode('[shariff borderradius="1" services="facebook|twitter|googleplus|linkedin|xing" theme="round" orientation="horizontal" align="flex-end"]');?></div>
             </div>
-            <h1 class="entry-title single-title h2 has-margin-bottom-30" itemprop="headline"><?php the_title(); ?></h1>
+            <h1 class="entry-title single-title h2"  style="margin-bottom:0px; itemprop="headline"><?php the_title(); ?></h1>
             <div class="table-cats has-margin-bottom-30">
                 <?php if (in_array(1, $webinar_schwierigkeitsgrad)) { ?><i style="cursor:help;" title="Für Anfänger geeignet" class="cat1 fa fa-circle"></i><?php } ?>
                 <?php if (in_array(2, $webinar_schwierigkeitsgrad)) { ?><i style="cursor:help;" title="Einsteiger, aber Basiswissen vorhanden" class="cat2 fa fa-circle"></i><?php } ?>
