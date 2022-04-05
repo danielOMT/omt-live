@@ -29,6 +29,16 @@ class Webinar extends PostModel
             $video_dur = get_field('webinar_video_duration', $post->ID);
         }
 
+        $difficulty = get_field('webinar_schwierigkeitsgrad', $post->ID);
+        $difficulty_1 = 0;
+        $difficulty_2 = 0;
+        $difficulty_3 = 0;
+        $difficulty_4 = 0;
+        if (in_array(1, $difficulty)) { $difficulty_1 = 1; }
+        if (in_array(2, $difficulty)) { $difficulty_2 = 1; }
+        if (in_array(3, $difficulty)) { $difficulty_3 = 1; }
+        if (in_array(4, $difficulty)) { $difficulty_4 = 1; }
+
         $itemId = $model->store([
             'id' => $post->ID,
             'title' => get_the_title($post),
@@ -48,7 +58,11 @@ class Webinar extends PostModel
             'wistia_member_code' => get_field('webinar_wistia_embed_code_mitglieder', $post->ID) ?: null,
             'hidden' => get_field('webinar_in_ubersicht_ausblenden', $post->ID) == 1 ? 1 : 0,
             'post_date' => get_the_date('Y-m-d H:i:s', $post),
-            'video_duration' => $video_dur
+            'video_duration' => $video_dur,
+            'difficulty_1' => $difficulty_1,
+            'difficulty_2' => $difficulty_2,
+            'difficulty_3' => $difficulty_3,
+            'difficulty_4' => $difficulty_4
         ]);
 
         if ($itemId) {
