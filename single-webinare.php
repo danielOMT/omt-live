@@ -37,6 +37,7 @@ $webinar_day = date("d.m.Y", $timestamp);
 $zeilen = get_field("zeilen");
 $als_seite_behandeln = get_field('als_seite_behandeln');
 $slideShareUrl = trim(get_field('slideshare-url'));
+$webinar_schwierigkeitsgrad = get_field('webinar_schwierigkeitsgrad');
 $datahostWebinar = Webinar::init()->item(['id' => $post_id]);
 ?>
 <!--<div class="socials-floatbar-left">-->
@@ -61,6 +62,12 @@ $datahostWebinar = Webinar::init()->item(['id' => $post_id]);
                 <div class="socials-header"><?php print do_shortcode('[shariff borderradius="1" services="facebook|twitter|googleplus|linkedin|xing" theme="round" orientation="horizontal" align="flex-end"]');?></div>
             </div>
             <h1 class="entry-title single-title h2 has-margin-bottom-30" itemprop="headline"><?php the_title(); ?></h1>
+            <div class="table-cats has-margin-bottom-30">
+                <?php if (in_array(1, $webinar_schwierigkeitsgrad)) { ?><i style="cursor:help;" title="Für Anfänger geeignet" class="cat1 fa fa-circle"></i><?php } ?>
+                <?php if (in_array(2, $webinar_schwierigkeitsgrad)) { ?><i style="cursor:help;" title="Einsteiger, aber Basiswissen vorhanden" class="cat2 fa fa-circle"></i><?php } ?>
+                <?php if (in_array(3, $webinar_schwierigkeitsgrad)) { ?><i style="cursor:help;" title="Fortgeschrittene" class="cat3 fa fa-circle"></i><?php } ?>
+                <?php if (in_array(4, $webinar_schwierigkeitsgrad)) { ?><i style="cursor:help;" title="Experten" class="cat4 fa fa-circle"></i><?php } ?>
+            </div>
             <?php //***WEBINAR VIDEO UND DOWNLOADS + SONSTIGE FEATURES AUSGEBEN**//?>
             <?php if (strlen($webinar_youtube_embed_code)>0 OR strlen($webinar_wistia_embed_code)>0 OR strlen($webinar_wistia_embed_code_mitglieder)>0) {  //webinar video erst nach club launch aktivieren ?>
                 <div class="video_wrap">
