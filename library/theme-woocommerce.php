@@ -554,6 +554,17 @@ function mysite_woocommerce_payment_complete( $order_id )
             wp_mail($to, $subject, $body, $headers);
             print "Guthabenbenachrichtigung sent";
         }
+        if ( 244114 == $product_id ) //if magazin printausgabe has been ordered. Checking if it will work with the main product id or we need variation ids?
+        {
+            $to = "daniel.voelskow@reachx.de";
+            $subject = "OMT Magazin wurde bestellt";
+            $body ="<h1>test</h1>";
+            $headers = "From: info@omt.de\r\n";
+            $headers .= "Reply-To: info@omt.de\r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+            wp_mail($to, $subject, $body, $headers);
+        }
     }
 }
 //add_action( 'woocommerce_order_status_processing', 'mysite_woocommerce_payment_complete', 10, 1 );
