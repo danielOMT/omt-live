@@ -34,7 +34,7 @@ foreach ($variations1 as $ticketvariation) {   /*build array with all seminars a
             $beschreibungselemente = $variationsbeschreibung['beschreibungselemente'];
         }
     }
-   if ( ( 279961 == $ticket_variation_id OR 279962 == $ticket_variation_id OR 279964 == $ticket_variation_id OR 254478 == $ticket_variation_id) ) {
+   if ( ( 279961 == $ticket_variation_id OR 279962 == $ticket_variation_id OR 279964 == $ticket_variation_id OR 254479 == $ticket_variation_id) ) {
         $active = true;
         //$lager = 999;
     } else { $active = false; }
