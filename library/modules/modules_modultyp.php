@@ -291,6 +291,10 @@ switch ($zeile['inhaltstyp'][0]['acf_fc_layout']) {
     case "vertical_tabs":
         include('module-vertical-tabs.php');
         break;
+    
+    case "partner_full_width":
+        include('module-partner-full-width.php');
+        break;
         
     case "partner":
         include('module-partner.php');
