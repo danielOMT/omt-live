@@ -3,7 +3,7 @@
 ?>
 <div class="omt-three-column-container">
 <?php foreach ($boxes as $box) : ?>
-		<div>
+		<div class="main_box">
 			<div class="image-b">
 				<img src="<?=$box['image']['url'];?>">
 			</div>
