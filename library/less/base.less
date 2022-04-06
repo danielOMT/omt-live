@@ -9742,7 +9742,13 @@ input {
   justify-content: space-between;
   flex-wrap: wrap;
   img {
-    max-width: 160px !important;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto !important;
   }
   .main_box {
     margin: 25px;
@@ -9756,7 +9762,9 @@ input {
     padding-bottom: 20px;
   }
   .image-b{
-    min-height:200px;
+    min-height: 150px;
+    height: 200px;
+    position: relative;
   }
 }
 
