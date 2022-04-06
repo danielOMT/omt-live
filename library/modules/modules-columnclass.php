@@ -275,7 +275,11 @@
     case "vertical_tabs":
         $columnclass = "module-tabs inhaltseditor";
         break; 
-
+    
+    case "partner_full_width":
+        $columnclass = "partner-full-width";
+        break;
+        
     default:
         $columnclass = "";
         break;
