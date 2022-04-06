@@ -1,5 +1,8 @@
 <?php
 
+use OMT\Model\Datahost\Article;
+use OMT\Model\PostModel;
+use OMT\Module\Articles as ArticlesModule;
 use OMT\View\TeamView;
 
 if (is_user_logged_in()) {
@@ -20,7 +23,6 @@ $paginierung_posts_pro_seite = get_field('paginierung_posts_pro_seite');
 $page_2_start_ab = get_field('page_2_start_ab');
 
 $magazin_filter = get_field('magazin_filter');
-$webinare_filter = get_field('webinare_filter');
 
 $zeilen = get_field('zeilen');
 $header_hero_hintergrundbild = get_field('header_hero_hintergrundbild');
@@ -57,9 +59,6 @@ $standardbanner_fur_alle_seiten_ausspielen = get_field('standardbanner_fur_alle_
 $standardbanner_fur_alle_seiten_ausspielen = 0;
 $desktop_standardbanner_alternativen = get_field('desktop_standardbanner_alternativen', 'options');
 $topLeftBannerUrl = getPost()->field('banner_top_left_url');
-
-
-$shortcode_ebooks = get_field('shortcode_ebooks');
 
 if ( (1 == $globales_banner_verwenden_desktop) OR (1 == $standardbanner_fur_alle_seiten_ausspielen) ) {
     $bannerbild = get_field('desktop_standardbanner_seiten', 'options');
@@ -306,7 +305,7 @@ if ( 1 == $header_footer_2020) {
 
     ///////////IF IS PAGNIATION AND PAGE 2+
     $page = $wp_query->query_vars['mpage'];
-    if (1 == $paginierung_aktivieren && $page > 1 && $page != 5) {
+    if ($paginierung_aktivieren == 1 && $page > 1 && $page < 5) {
         if(empty($page)) $page = 1;
         $rowclass = "wrap grid-wrap";
         $columnclass  = "artikel-wrap teaser-modul";
@@ -315,12 +314,23 @@ if ( 1 == $header_footer_2020) {
             <?php if (1 == $header_footer_2020) { ?><div class="row-inner wrap"><?php }?>
                 <div class="omt-module <?php print $columnclass . " "; ?>">
                     <?php
-                    $zeile['inhaltstyp'][0]['anzahl_angezeigter_artikel'] = $paginierung_posts_pro_seite;
-                    $zeile['inhaltstyp'][0]['kategorie'] = "alle";
-                    $zeile['inhaltstyp'][0]['anzahl'] = $paginierung_posts_pro_seite;
-                    $zeile['inhaltstyp'][0]['ab_x'] = $page_2_start_ab + ($paginierung_posts_pro_seite * ($page - 2));
-                    $zeile['inhaltstyp'][0]['format'] = "mixed";
-                    include('library/modules/module-artikel-anzeigen.php');
+                        if (USE_JSON_POSTS_SYNC) {
+                            $zeile['inhaltstyp'][0]['anzahl_angezeigter_artikel'] = $paginierung_posts_pro_seite;
+                            $zeile['inhaltstyp'][0]['kategorie'] = "alle";
+                            $zeile['inhaltstyp'][0]['anzahl'] = $paginierung_posts_pro_seite;
+                            $zeile['inhaltstyp'][0]['ab_x'] = $page_2_start_ab + ($paginierung_posts_pro_seite * ($page - 2));
+                            $zeile['inhaltstyp'][0]['format'] = "mixed";
+
+                            include('library/modules/module-artikel-anzeigen.php');
+                        } else {
+                            echo (new ArticlesModule([
+                                'anzahl_angezeigter_artikel' => $paginierung_posts_pro_seite,
+                                'kategorie' => 'alle',
+                                'anzahl' => $paginierung_posts_pro_seite,
+                                'ab_x' => $page_2_start_ab + ($paginierung_posts_pro_seite * ($page - 2)),
+                                'format' => 'mixed'
+                            ]))->render();
+                        }
                     ?>
                 </div>
                 <?php if (1 == $header_footer_2020) { ?></div><?php }?>
@@ -364,8 +374,6 @@ if ( 1 == $header_footer_2020) {
 
     if ($zeile['no_margin_bottom'] != false) { $rowclass .= " no-margin-bottom"; }
     if ($zeile['inhaltstyp'][0]['timetable_verstecken'] == 1) { $rowclass .= " display-none-imp";}
-     
-
 
     ?>
     <section id="abschnitt-<?php print $rowcount;?>" class="omt-row <?php print $rowclass;?> <?php print $class_themenwelt;?> <?php if (false != $color_area ) { ?>color-area-<?php print $zeile['color_embed']; } ?> <?php if (1==$zeile['content_rotate']) { print "content-rotate"; } ?>">
@@ -427,13 +435,20 @@ include ('library/modules/modules-columnclass.php');
 ///
 ///
 /// PAGINIERUNG
-if (1 == $paginierung_aktivieren) {
-    require_once ( get_template_directory() . '/library/functions/json-magazin/json-magazin-alle.php');
-    $totalposts = display_magazinartikel_json(99999, "alle", NULL, true);
+if ($paginierung_aktivieren == 1) {
+    if (USE_JSON_POSTS_SYNC) {
+        require_once get_template_directory() . '/library/functions/json-magazin/json-magazin-alle.php';
+        $totalPosts = display_magazinartikel_json(99999, "alle", NULL, true);
+    } else {
+        $totalPosts = Article::init()->itemsCount([
+            'status' => PostModel::POST_STATUS_PUBLISH,
+            'recap' => false
+        ]);
+    }
 
     // Limit the pagination to 5 pages
-    if ($totalposts > $page_2_start_ab + ($paginierung_posts_pro_seite * 4)) {
-        $totalposts = $page_2_start_ab + ($paginierung_posts_pro_seite * 4);
+    if ($totalPosts > $page_2_start_ab + ($paginierung_posts_pro_seite * 4)) {
+        $totalPosts = $page_2_start_ab + ($paginierung_posts_pro_seite * 4);
     }
     ?>
     <section class="omt-row pagination-wrap">
@@ -451,9 +466,9 @@ if (1 == $paginierung_aktivieren) {
             <?php if ($page>2) { ?><a href="<?php print get_the_permalink();?><?php print $page-1;?>/">Neuere Artikel</a><?php } ?>
             <?php if (1 == $page) {?><div style="width:100%;text-align:right;"><?php }?>
             
-            <?php if ($totalposts > $page_2_start_ab + ($paginierung_posts_pro_seite * ($page - 1))) { ?>
+            <?php if ($totalPosts > $page_2_start_ab + ($paginierung_posts_pro_seite * ($page - 1))) : ?>
                 <a href="<?php print get_the_permalink();?><?php print $page+1;?>/">Ältere Artikel</a>
-            <?php } ?>
+            <?php endif ?>
 
             <?php if (1 == $page) {?></div><?php } ?>
         </div>
