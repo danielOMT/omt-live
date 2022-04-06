@@ -266,7 +266,11 @@
     
     case "profile":
         $columnclass = "profile-section";
-        break;    
+        break;  
+
+    case "three_column_layout":
+        $columnclass = "three-column";
+        break;  
 
     default:
         $columnclass = "";
