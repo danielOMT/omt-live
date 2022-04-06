@@ -270,7 +270,11 @@
 
     case "three_column_layout":
         $columnclass = "three-column";
-        break;  
+        break; 
+        
+    case "vertical_tabs":
+        $columnclass = "module-tabs inhaltseditor";
+        break; 
 
     default:
         $columnclass = "";

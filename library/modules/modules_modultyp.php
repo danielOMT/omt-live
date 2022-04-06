@@ -288,6 +288,10 @@ switch ($zeile['inhaltstyp'][0]['acf_fc_layout']) {
         include('module-three-column-layout.php');
         break;
 
+    case "vertical_tabs":
+        include('module-vertical-tabs.php');
+        break;
+        
     case "partner":
         include('module-partner.php');
         break;
