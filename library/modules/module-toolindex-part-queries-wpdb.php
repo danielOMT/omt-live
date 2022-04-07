@@ -34,12 +34,14 @@ $kostenlos = 0;
 $nicht_kostenlos = 0;
 $testversion = 0;
 $trial = 0;
+$clubstimmen = 0;
+
 if ("kategorie" == $tabelle_kategorie) {
     $toolModel = Tool::init();
-    
+
     foreach ($json as $jsontool) { //remove all non-selected IDs from the JSON
         $is_term = 0;
-        
+
         if (is_array($jsontool['$terms'])) {
             foreach ($jsontool['$terms'] as $term) {
                 if ($kategorie == $term->term_id) {
@@ -84,6 +86,7 @@ if ("kategorie" == $tabelle_kategorie) {
                     $kategorie
                 );
             }
+            if ( $jsontool['$clubstimmen']>0 ) { $clubstimmen = 1; }
         }
 
         $j++;

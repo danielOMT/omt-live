@@ -25,7 +25,7 @@
                     <option selected value="sponsored">Sponsored</option>
                     <option value="beste">Die besten Bewertungen</option>
                     <option value="meiste">Die meisten Bewertungen</option>
-                    <option value="clubstimmen">Die meisten OMT-Club Stimmen</option>
+                    <?php if (1 == $clubstimmen) { ?><option value="clubstimmen">Die meisten OMT-Club Stimmen</option><?php } ?>
                     <option value="alphabetisch">Alphabetisch</option>
                 </select>
             </div>
