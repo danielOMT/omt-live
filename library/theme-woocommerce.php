@@ -501,7 +501,7 @@ function mysite_woocommerce_payment_complete( $order_id )
     $order_time = $toolorder->get_date_modified();
     foreach ($items as $item_id => $item) {
         $product_id = $item->get_variation_id() ? $item->get_variation_id() : $item->get_product_id();
-        $parent_id = wc_get_product( $item->get_parent_id() );
+        $parent_id = wp_get_post_parent_id($product_id);
         if ($product_id === 201855) {
             $guthabenaufladung = true;
             $total = $toolorder->get_subtotal();
