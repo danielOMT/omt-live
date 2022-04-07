@@ -3,7 +3,7 @@
 ?>
 <div class="omt-partner-container">
 <?php foreach ($partners as $partner) : 
-		if ($partner['link'] != '') : ?>
+		if ($partner['link'] == '') : ?>
 			<div>
 				<img src="<?=$partner['image']['url'];?>" class="partner-logo">
 			</div>
