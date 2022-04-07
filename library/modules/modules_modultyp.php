@@ -283,7 +283,19 @@ switch ($zeile['inhaltstyp'][0]['acf_fc_layout']) {
     case "konferenzticket":
         include('module-konferenzticket.php');
         break;
+        
+    case "three_column_layout":
+        include('module-three-column-layout.php');
+        break;
 
+    case "vertical_tabs":
+        include('module-vertical-tabs.php');
+        break;
+    
+    case "partner_full_width":
+        include('module-partner-full-width.php');
+        break;
+        
     case "partner":
         include('module-partner.php');
         break;

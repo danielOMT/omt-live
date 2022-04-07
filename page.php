@@ -400,7 +400,19 @@ include ('library/modules/modules-columnclass.php');
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 ?>
-<?php if (1 == $header_footer_2020) { ?><div class="row-inner wrap"><?php }?>
+<?php if (1 == $header_footer_2020) { ?>
+        <?php if($zeile['inhaltstyp'][0]['acf_fc_layout'] == 'konferenzticket'):?>
+            <div class="omt-ticket-row">
+        <?php elseif($zeile['inhaltstyp'][0]['acf_fc_layout'] == 'autojobs'):?>
+            <div class="omt-ticket-auto-row">
+        <?php elseif($zeile['inhaltstyp'][0]['acf_fc_layout'] == 'partner_full_width'):?>
+            <div class="omt-full-width">
+        <?php elseif($zeile['inhaltstyp'][0]['acf_fc_layout'] == 'highlighted-jobs'):?>
+            <div class="omt-full-highlighted-jobs">
+        <?php else:?>
+            <div class="row-inner wrap">
+        <?php endif;?>
+    <?php }?>
 
     <div class="omt-module <?php print $columnclass . " "; ?>"
          <?php if ($columnclass == "header_hero_modul") { ?>style="background: url('<?php print $zeile['inhaltstyp'][0]['hero_background_image']['url'];?>');" <?php } ?>

@@ -266,8 +266,20 @@
     
     case "profile":
         $columnclass = "profile-section";
-        break;    
+        break;  
 
+    case "three_column_layout":
+        $columnclass = "three-column";
+        break; 
+        
+    case "vertical_tabs":
+        $columnclass = "module-tabs inhaltseditor";
+        break; 
+    
+    case "partner_full_width":
+        $columnclass = "partner-full-width";
+        break;
+        
     default:
         $columnclass = "";
         break;
