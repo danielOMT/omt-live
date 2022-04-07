@@ -102,7 +102,7 @@ wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/a
                         <?php if ($module->post_type == 'omt_ebook' && $downloadPost->order_product_id) : ?>
                             kostenpflichtig bestellen
                         <?php else : ?>
-                            kostenlos herunterladen
+                            kostenlos herunterladen.
                         <?php endif; ?>
                     </a>
                 </div>
