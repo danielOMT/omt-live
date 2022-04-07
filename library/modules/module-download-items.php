@@ -100,8 +100,10 @@ wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/a
                     <?php endif; ?>
 
                     <a target="_blank" href="<?php echo $downloadPost->download_url ?>" title="<?php echo $downloadPost->download_title ?>" class="button button-red x-mt-2">
-                        <?php if ( ($module->post_type == 'omt_ebook' && $downloadPost->order_product_id) OR ($module->post_type == 'omt_ebook' && $downloadPost->magazinbestellung_produktvariante_id) ): ?>
+                        <?php if ( ($module->post_type == 'omt_ebook' && $downloadPost->order_product_id) ): ?>
                             kostenpflichtig bestellen
+                        <?php elseif ( $module->post_type == 'omt_magazin' && $downloadPost->magazinbestellung_produktvariante_id ): ?>
+                            Printausgabe bestellen
                         <?php else : ?>
                             kostenlos herunterladen
                         <?php endif; ?>
