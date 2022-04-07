@@ -74,6 +74,8 @@ if ("kategorie" == $tabelle_kategorie) {
                 foreach ($jsontool['$club_stimmenanzahl_nach_kategorien'] as $clubkat) {
                     if ($kategorie == $clubkat['kategorie']) {
                         $json[$j]['$clubstimmen'] = $clubkat['anzahl_clubstimmen'];
+                        if ( $clubkat['anzahl_clubstimmen']>0 ) { $clubstimmen = 1; }
+
                     }
                 }
             }
@@ -86,7 +88,6 @@ if ("kategorie" == $tabelle_kategorie) {
                     $kategorie
                 );
             }
-            if ( $jsontool['$clubstimmen']>0 ) { $clubstimmen = 1; }
         }
 
         $j++;
