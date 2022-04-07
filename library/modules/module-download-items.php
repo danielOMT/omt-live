@@ -43,6 +43,7 @@ $downloadPosts = get_posts([
 
 foreach ($downloadPosts as $downloadPost) {
     $downloadPost->download_url = get_the_permalink($downloadPost->ID);
+    $downloadPost->magazinbestellung_produktvariante_id = get_field("magazinbestellung_produktvariante_id", $downloadPost->ID);
     $downloadPost->download_image = get_field("vorschaubild", $downloadPost->ID);
     $downloadPost->download_title = get_field("vorschautitel", $downloadPost->ID) ?: $downloadPost->post_title;
     $downloadPost->download_description = strip_tags(get_field("vorschautext", $downloadPost->ID));
@@ -99,7 +100,7 @@ wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/a
                     <?php endif; ?>
 
                     <a target="_blank" href="<?php echo $downloadPost->download_url ?>" title="<?php echo $downloadPost->download_title ?>" class="button button-red x-mt-2">
-                        <?php if ($module->post_type == 'omt_ebook' && $downloadPost->order_product_id) : ?>
+                        <?php if ( ($module->post_type == 'omt_ebook' && $downloadPost->order_product_id) OR ($module->post_type == 'omt_ebook' && $downloadPost->magazinbestellung_produktvariante_id) ): ?>
                             kostenpflichtig bestellen
                         <?php else : ?>
                             kostenlos herunterladen
