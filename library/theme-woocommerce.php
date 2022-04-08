@@ -556,12 +556,12 @@ function mysite_woocommerce_payment_complete( $order_id )
             wp_mail($to, $subject, $body, $headers);
             print "Guthabenbenachrichtigung sent";
         }
-        if ( ( 244114 == $parent_id ) OR (240285 = $product_id ) ) //if magazin printausgabe has been ordered. Checking if it will work with the main product id or we need variation ids?
+        if ( ( 244114 == $parent_id ) OR (240285 == $product_id ) ) //if magazin printausgabe has been ordered. Checking if it will work with the main product id or we need variation ids?
         {
             $data  = $toolorder->get_data(); // The Order data
             ## BILLING INFORMATION:
             $billing_email      = $data['billing']['email'];
-            $billing_phone      = $order_data['billing']['phone'];
+            $billing_phone      = $data['billing']['phone'];
 
             $billing_first_name = $data['billing']['first_name'];
             $billing_last_name  = $data['billing']['last_name'];
