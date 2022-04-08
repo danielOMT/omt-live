@@ -558,7 +558,7 @@ function mysite_woocommerce_payment_complete( $order_id )
         }
         if ( ( 244114 == $parent_id ) OR (240285 = $product_id ) ) //if magazin printausgabe has been ordered. Checking if it will work with the main product id or we need variation ids?
         {
-            $data  = $order->get_data(); // The Order data
+            $data  = $toolorder->get_data(); // The Order data
             ## BILLING INFORMATION:
             $billing_email      = $data['billing']['email'];
             $billing_phone      = $order_data['billing']['phone'];
