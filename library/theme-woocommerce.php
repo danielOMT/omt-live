@@ -586,7 +586,7 @@ function mysite_woocommerce_payment_complete( $order_id )
             $to = "daniel.voelskow@reachx.de";
             $subject = "OMT Magazinbestellung: " . $product_name;
             $body ="<h1>Magazin Bestelldaten:</h1>";
-            $body ="<h2>Produkt: " . $product_name . "</h2>";
+            $body .="<h2>Produkt: " . $product_name . "</h2>";
             $body .="<h2>Rechnungsinformationen:</h2>";
             $body .= "<table>";
             $body .= "<tr><td>Vorname:</td><td>" . $billing_first_name . "</td></tr>";
