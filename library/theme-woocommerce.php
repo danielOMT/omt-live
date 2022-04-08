@@ -501,6 +501,7 @@ function mysite_woocommerce_payment_complete( $order_id )
     $order_time = $toolorder->get_date_modified();
     foreach ($items as $item_id => $item) {
         $product_id = $item->get_variation_id() ? $item->get_variation_id() : $item->get_product_id();
+        $product_name = $item->get_title();
         $parent_id = wp_get_post_parent_id($product_id);
         if ($product_id === 201855) {
             $guthabenaufladung = true;
@@ -555,7 +556,7 @@ function mysite_woocommerce_payment_complete( $order_id )
             wp_mail($to, $subject, $body, $headers);
             print "Guthabenbenachrichtigung sent";
         }
-        if ( 244114 == $parent_id ) //if magazin printausgabe has been ordered. Checking if it will work with the main product id or we need variation ids?
+        if ( ( 244114 == $parent_id ) OR (240285 = $product_id ) ) //if magazin printausgabe has been ordered. Checking if it will work with the main product id or we need variation ids?
         {
             $data  = $order->get_data(); // The Order data
             ## BILLING INFORMATION:
@@ -583,8 +584,9 @@ function mysite_woocommerce_payment_complete( $order_id )
             $shipping_postcode   = $data['shipping']['postcode'];
             $shipping_country    = $data['shipping']['country'];
             $to = "daniel.voelskow@reachx.de";
-            $subject = "OMT Magazin wurde bestellt";
+            $subject = "OMT Magazinbestellung: " . $product_name;
             $body ="<h1>Magazin Bestelldaten:</h1>";
+            $body ="<h2>Produkt: " . $product_name . "</h2>";
             $body .="<h2>Rechnungsinformationen:</h2>";
             $body .= "<table>";
             $body .= "<tr><td>Vorname:</td><td>" . $billing_first_name . "</td></tr>";
