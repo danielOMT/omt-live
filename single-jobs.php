@@ -12,6 +12,7 @@ if ($post_art == "job") {
         exit;
     }
 }
+$job_hervorheben_class = '';
 $arbeitgeber_name = get_field('arbeitgeber_name');
 $arbeitgeber_logo = get_field('arbeitgeber_logo');
 $arbeitgeber_logo_id = get_field('arbeitgeber_logo_id');
@@ -22,9 +23,11 @@ $stelle_frei_ab = get_field('stelle_frei_ab');
 $bewerbung_email_adresse = get_field('bewerbung_email_adresse');
 $stadt = get_field('stadt');
 $gehalt = get_field('gehalt');
+$job_hervorheben = get_field('job_hervorheben');
 $arbeitgeber_url = get_field('arbeitgeber_url');
 $standard_icon_teaser_highlight = get_field('standard_icon_teaser_highlight', 'options');
 if (strlen($arbeitgeber_logo_id)>0) { $arbeitgeber_logo['url'] = $arbeitgeber_logo_id; }
+if($job_hervorheben == 1){ $job_hervorheben_class = 'ribbon_'; $no_border = 'ribbon_link';}else{$job_hervorheben_class = ''; $no_border = '';}
 
 get_header(); ?>
 <div class="socials-floatbar-left">
@@ -42,7 +45,7 @@ get_header(); ?>
             <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                 <article style="" id="post-<?php the_ID(); ?>" <?php post_class('clearfix'); ?> role="article">
                     <section class="entry-content clearfix" itemprop="articleBody">
-                        <div class="webinar-teaser card clearfix">
+                        <div class="webinar-teaser card clearfix <?=$job_hervorheben_class;?>"  data-ribbon="Hot Job">
                             <div class="webinar-teaser-img">
                                 <img class="teaser-img" alt="<?php print $arbeitgeber_name?>" title="<?php print $arbeitgeber_name; ?>" src="<?php print $arbeitgeber_logo['url'];?>">
                             </div>
