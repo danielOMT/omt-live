@@ -113,7 +113,7 @@ function _getBannerWidestSection() {
 
 
 //Vertical tabs
-function openTab(evt, Services) {
+function openVertTab(evt, Services) {
   var i, tabcontent, tablinks, tabArrow;
   tabcontent = document.getElementsByClassName("tabcontent-omt");
   for (i = 0; i < tabcontent.length; i++) {

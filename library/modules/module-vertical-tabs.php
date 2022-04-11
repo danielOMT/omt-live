@@ -9,7 +9,7 @@
 	<?php foreach ($tabs as $tab) :
 		if($count == 0){ $defaultActiveTab =  'defaultOpen'; }
 	?>
-    <button class="tablinks-omt" onclick="openTab(event, 'tab_<?=$count;?>')" id="<?=$defaultActiveTab;?>">
+    <button class="tablinks-omt" onclick="openVertTab(event, 'tab_<?=$count;?>')" id="<?=$defaultActiveTab;?>">
        <?=$tab['tab_lin'];?> 
     </button>
 	<?php $count++; 
