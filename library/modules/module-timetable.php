@@ -132,11 +132,13 @@ $fullcolspan = $anzahl_raume;
                                         <a target="_blank" href="<?php print get_the_permalink($helper->ID);?>"><?php print get_the_title($helper->ID); ?></a>
                                     <?php } } else { print $speaker_alternativtext; } ?></b><br />
                                 <?php print $titel;?> <i class="fa fa-info btn" data-popup-open="popup-<?php print $vortrag_id;?>"></i>
-                                <div class="table-cats">
+                                <?php if ($schwierigkeitsgrad_ausblenden != 1) { ?>
+                                    <div class="table-cats">
                                     <?php if (in_array(1, $schwierigkeitsgrad)) { ?><i class="cat1 fa fa-circle"></i><?php } ?>
                                     <?php if (in_array(2, $schwierigkeitsgrad)) { ?><i class="cat2 fa fa-circle"></i><?php } ?>
                                     <?php if (in_array(3, $schwierigkeitsgrad)) { ?><i class="cat3 fa fa-circle"></i><?php } ?>
                                 </div>
+                                    <?php } ?>
                                 <div class="popup" data-popup="popup-<?php print $vortrag_id;?>">
                                     <div class="close-layer" data-popup-close="popup-<?php print $vortrag_id;?>"></div>
                                     <div class="popup-inner">
@@ -172,12 +174,13 @@ $fullcolspan = $anzahl_raume;
                                     <a target="_blank" href="<?php print get_the_permalink($helper->ID);?>"><?php print get_the_title($helper->ID); ?></a>
                                 <?php } } else { print $speaker_alternativtext; } ?></b><br />
                                 <?php print $titel;?> <i class="fa fa-info btn" data-popup-open="popup-<?php print $vortrag_id;?>"></i>
-
-                                <div class="table-cats">
+                                <?php if ($schwierigkeitsgrad_ausblenden != 1) { ?>
+                                    <div class="table-cats">
                                     <?php if (in_array(1, $schwierigkeitsgrad)) { ?><i class="cat1 fa fa-circle"></i><?php } ?>
                                     <?php if (in_array(2, $schwierigkeitsgrad)) { ?><i class="cat2 fa fa-circle"></i><?php } ?>
                                     <?php if (in_array(3, $schwierigkeitsgrad)) { ?><i class="cat3 fa fa-circle"></i><?php } ?>
                                 </div>
+                                    <?php } ?>
                                 <div class="popup" data-popup="popup-<?php print $vortrag_id;?>">
                                     <div class="close-layer" data-popup-close="popup-<?php print $vortrag_id;?>"></div>
                                     <div class="popup-inner">
