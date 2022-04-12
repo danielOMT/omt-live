@@ -4,9 +4,10 @@ $fullcolspan = $anzahl_raume;
 <?php if (strlen($zeile['inhaltstyp'][0]['headline'])>0) { ;?><h2><?php print $zeile['inhaltstyp'][0]['headline'];?></h2><?php } ?>
 <?php if (strlen($zeile['inhaltstyp'][0]['introtext'])>0) { ;?><?php print $zeile['inhaltstyp'][0]['introtext'];?><?php } ?>
 <?php if ($zeile['inhaltstyp'][0]['timetable_verstecken'] != 1) { ?>
-    <?php if ($zeile['inhaltstyp'][0]['schwierigkeitsgrad_ausblenden'] != 1) { ?>
+    <?php
+    $schwierigkeitsgrad_ausblenden = 0;
+    if ($zeile['inhaltstyp'][0]['schwierigkeitsgrad_ausblenden'] != 1) { ?>
     <div class="legend">
-
         <div class="table-cats">
             <b>Legende:</b>
             <i class="cat1 fa fa-circle"></i> Anfänger
@@ -14,7 +15,7 @@ $fullcolspan = $anzahl_raume;
             <i class="cat3 fa fa-circle"></i> Experten
         </div>
     </div>
-        <?php } ?>
+        <?php } else { $schwierigkeitsgrad_ausblenden = 1; } ?>
 
     <table>
         <thead>
@@ -89,7 +90,7 @@ $fullcolspan = $anzahl_raume;
                                         <a target="_blank" href="<?php print get_the_permalink($helper->ID);?>"><?php print get_the_title($helper->ID); ?></a>
                                     <?php } } else { print $speaker_alternativtext; } ?></b><br />
                                 <?php print $titel;?> <i class="fa fa-info btn" data-popup-open="popup-<?php print $vortrag_id;?>"></i>
-                                <?php if ($zeile['inhaltstyp'][0]['schwierigkeitsgrad_ausblenden'] != 1) { ?>
+                                <?php if ($schwierigkeitsgrad_ausblenden != 1) { ?>
                                 <div class="table-cats">
                                     <?php if (in_array(1, $schwierigkeitsgrad)) { ?><i class="cat1 fa fa-circle"></i><?php } ?>
                                     <?php if (in_array(2, $schwierigkeitsgrad)) { ?><i class="cat2 fa fa-circle"></i><?php } ?>
