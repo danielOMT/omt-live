@@ -4,6 +4,7 @@ $fullcolspan = $anzahl_raume;
 <?php if (strlen($zeile['inhaltstyp'][0]['headline'])>0) { ;?><h2><?php print $zeile['inhaltstyp'][0]['headline'];?></h2><?php } ?>
 <?php if (strlen($zeile['inhaltstyp'][0]['introtext'])>0) { ;?><?php print $zeile['inhaltstyp'][0]['introtext'];?><?php } ?>
 <?php if ($zeile['inhaltstyp'][0]['timetable_verstecken'] != 1) { ?>
+    <?php if ($zeile['inhaltstyp'][0]['schwierigkeitsgrad_ausblenden'] != 1) { ?>
     <div class="legend">
 
         <div class="table-cats">
@@ -13,6 +14,7 @@ $fullcolspan = $anzahl_raume;
             <i class="cat3 fa fa-circle"></i> Experten
         </div>
     </div>
+        <?php } ?>
 
     <table>
         <thead>
@@ -22,10 +24,10 @@ $fullcolspan = $anzahl_raume;
         $mod3_id = $zeile['inhaltstyp'][0]['moderator_raum_3']->ID;
         ?>
         <th class="time"><b>Uhrzeit</b></th>
-        <th class="room"><b>Raum 1</b><br />Moderator: <a style="color:white;" target="_blank" href="<?php print get_the_permalink($mod1_id)?>"><?php print $zeile['inhaltstyp'][0]['moderator_raum_1']->post_title;?></a></th>
-        <th class="room"><b>Raum 2</b><br />Moderator: <a style="color:white;" target="_blank" href="<?php print get_the_permalink($mod2_id)?>"><?php print $zeile['inhaltstyp'][0]['moderator_raum_2']->post_title;?></a></th>
+        <th class="room"><b>Raum 1</b><?php if ($zeile['inhaltstyp'][0]['moderatoren_ausblenden'] != 1) { ?><br />Moderator: <a style="color:white;" target="_blank" href="<?php print get_the_permalink($mod1_id)?>"><?php print $zeile['inhaltstyp'][0]['moderator_raum_1']->post_title;?></a><?php } ?></th>
+        <th class="room"><b>Raum 2</b><?php if ($zeile['inhaltstyp'][0]['moderatoren_ausblenden'] != 1) { ?><br />Moderator: <a style="color:white;" target="_blank" href="<?php print get_the_permalink($mod2_id)?>"><?php print $zeile['inhaltstyp'][0]['moderator_raum_2']->post_title;?></a><?php } ?></th>
         <?php if ($anzahl_raume >2) { ?>
-            <th class="room"><b>Raum 3</b><br />Moderator: <a style="color:white;" target="_blank" href="<?php print get_the_permalink($mod3_id)?>"><?php print $zeile['inhaltstyp'][0]['moderator_raum_3']->post_title;?></a></th>
+            <th class="room"><b>Raum 3</b><?php if ($zeile['inhaltstyp'][0]['moderatoren_ausblenden'] != 1) { ?><br />Moderator: <a style="color:white;" target="_blank" href="<?php print get_the_permalink($mod3_id)?>"><?php print $zeile['inhaltstyp'][0]['moderator_raum_3']->post_title;?></a><?php } ?></th>
         <?php } ?>
         </thead>
         <tbody>
@@ -87,11 +89,13 @@ $fullcolspan = $anzahl_raume;
                                         <a target="_blank" href="<?php print get_the_permalink($helper->ID);?>"><?php print get_the_title($helper->ID); ?></a>
                                     <?php } } else { print $speaker_alternativtext; } ?></b><br />
                                 <?php print $titel;?> <i class="fa fa-info btn" data-popup-open="popup-<?php print $vortrag_id;?>"></i>
+                                <?php if ($zeile['inhaltstyp'][0]['schwierigkeitsgrad_ausblenden'] != 1) { ?>
                                 <div class="table-cats">
                                     <?php if (in_array(1, $schwierigkeitsgrad)) { ?><i class="cat1 fa fa-circle"></i><?php } ?>
                                     <?php if (in_array(2, $schwierigkeitsgrad)) { ?><i class="cat2 fa fa-circle"></i><?php } ?>
                                     <?php if (in_array(3, $schwierigkeitsgrad)) { ?><i class="cat3 fa fa-circle"></i><?php } ?>
                                 </div>
+                                    <?php } ?>
                                 <div class="popup" data-popup="popup-<?php print $vortrag_id;?>">
                                     <div class="close-layer" data-popup-close="popup-<?php print $vortrag_id;?>"></div>
                                     <div class="popup-inner">
