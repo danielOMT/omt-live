@@ -1013,3 +1013,42 @@ function wpb_find_shortcode($atts, $content=null) {
     return ob_get_clean();
 }
 add_shortcode('shortcodefinder', 'wpb_find_shortcode');
+
+
+// Inject the TOC on each post.
+add_filter('the_content', function ($content) {
+    global $tableOfContents;
+    $tableOfContents = "
+        <div class='h5'>
+            Table of Contents <span class='toggle'>+ show</span>
+        </div>
+        <div class='items'>
+    ";
+    $index = 1;
+    // Insert the IDs and create the TOC.
+    $content = preg_replace_callback('#<(h[2-2])(.*?)>(.*?)</\1>#si', function ($matches) use (&$index, &$tableOfContents) {
+        $tag = $matches[1];
+        $title = strip_tags($matches[3]);
+        $hasId = preg_match('/id=(["\'])(.*?)\1[\s>]/si', $matches[2], $matchedIds);
+        $id = $hasId ? $matchedIds[2] : $index++ . '-' . sanitize_title($title);
+        $tableOfContents .= "<div class='item-$tag'><a href='#$id'>$title</a></div>";
+        if ($hasId) {
+            return $matches[0];
+        }
+        //return sprintf('<%s%s id="%s">%s</%s>', $tag, $matches[2], $id, $matches[3], $tag);
+        if(!strpos($matches[2], "no-ihv")) {
+            return sprintf('<span class="anchor index-anchor" id="%s"></span><%s%s >%s</%s>', $id, $tag, $matches[2], $matches[3], $tag);
+        } else {
+            return sprintf('<%s%s >%s</%s>', $tag, $matches[2], $matches[3], $tag);
+        }
+    }, $content);
+    $tableOfContents .= '</div>';
+    return $content;
+});
+
+
+function get_the_table_of_contents()
+{
+    global $tableOfContents;
+    return $tableOfContents;
+}

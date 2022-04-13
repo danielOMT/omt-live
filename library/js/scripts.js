@@ -140,23 +140,26 @@ function progressbar_scroll() {
 ///////////AUTOMATIC INDEX GENERATOR////////////////////////////////////////////
 function generate_index() {
     var numItems = $('.inhaltsverzeichnis-wrap').length;
+    var numindex = $('.inhaltsverzeichnis-index').length;
     var numItems_shortcode = $('.inhaltsverzeichnis-shortcode').length;
-    if (numItems > 0 || numItems_shortcode > 0) {
-        $(".ul.inhaltsverzeichnis").append('<p>Inhaltsverzeichnis:</p>');
-        $(".entry-content h2, .omt-row h2").each(function (i) {
-            if (!$(this).hasClass("no-ihv")) {
-                if ($(this).is(":visible")) {
-                    var current = $(this);
-                    var headline_name = $(this).text();
-                    headline_name = headline_name.trim().replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').replace(/^(-)+|(-)+$/g,'').replace('-–-', '-').replace('-–', '-').toLowerCase();
+    if (!numindex > 0) {
+        if (numItems > 0 || numItems_shortcode > 0) {
+            $(".ul.inhaltsverzeichnis").append('<p>Inhaltsverzeichnis:</p>');
+            $(".entry-content h2, .omt-row h2").each(function (i) {
+                if (!$(this).hasClass("no-ihv")) {
+                    if ($(this).is(":visible")) {
+                        var current = $(this);
+                        var headline_name = $(this).text();
+                        headline_name = headline_name.trim().replace(/([~!@#$%^&*()_+=`{}\[\]\|\\:;'<>,.\/? ])+/g, '-').replace(/^(-)+|(-)+$/g, '').replace('-–-', '-').replace('-–', '-').toLowerCase();
 
-                    $("<span class='anchor' id='" + headline_name + "'></span>").insertBefore(current);
-                    $(".inhaltsverzeichnis").append("<li><a id='link" + i + "' href='#" +
-                        headline_name + "' title='" + current.html() + "'>" +
-                        current.html() + "</a></li>");
+                        $("<span class='anchor' id='" + headline_name + "'></span>").insertBefore(current);
+                        $(".inhaltsverzeichnis").append("<li><a id='link" + i + "' href='#" +
+                            headline_name + "' title='" + current.html() + "'>" +
+                            current.html() + "</a></li>");
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 }
 

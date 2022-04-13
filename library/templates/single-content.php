@@ -38,10 +38,42 @@ $horen = get_field('spotify_id');
         <div id="inner-content" class="wrap clearfix magazin-single-wrap no-hero">
             <div class="blog-single magazin-single clearfix" role="main">
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-                    <?php if (1 != $inhaltsverzeichnis_deaktivieren) { ?>
+                    <?php /*if (1 != $inhaltsverzeichnis_deaktivieren) { ?>
                         <div class="inhaltsverzeichnis-wrap">
                             <ul class="caret-right inhaltsverzeichnis">
                                 <p class="index_header">Inhaltsverzeichnis:</p>
+                            </ul>
+                        </div>
+                    <?php } */?>
+
+                    <?php if (1 != $inhaltsverzeichnis_deaktivieren) {
+                        //https://www.codepicky.com/wordpress-table-of-contents/
+                        //files: scripts.js, functions.php
+                        ?>
+                        <div class="inhaltsverzeichnis-wrap inhaltsverzeichnis-index">
+                            <ul class="caret-right inhaltsverzeichnis">
+                                <p class="index_header">Inhaltsverzeichnis:</p>
+                                <?php
+                                $tableOfContents = "";
+                                $postcontent = get_the_content();
+                                $index = 1;
+                                // Insert the IDs and create the TOC.
+                                $content = preg_replace_callback('#<(h[2-2])(.*?)>(.*?)</\1>#si', function ($matches) use (&$index, &$tableOfContents) {
+                                    $tag = $matches[1];
+                                    $title = strip_tags($matches[3]);
+                                    $hasId = preg_match('/id=(["\'])(.*?)\1[\s>]/si', $matches[2], $matchedIds);
+                                    $id = $hasId ? $matchedIds[2] : $index++ . '-' . sanitize_title($title);
+                                    if(!strpos($matches[2], "no-ihv")) {
+                                        $tableOfContents .= "<li class='item-$tag'><a href='#$id'>$title</a></li>";
+                                    }
+                                    if ($hasId) {
+                                        return $matches[0];
+                                    }
+                                    return sprintf('<%s%s id="%s">%s</%s>', $tag, $matches[2], $id, $matches[3], $tag);
+                                }, $postcontent);
+                                $tableOfContents .= '</div>';
+                                ?>
+                                <?php print $tableOfContents; ?>
                             </ul>
                         </div>
                     <?php } ?>
