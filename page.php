@@ -184,9 +184,6 @@ if ( 1 == $header_footer_2020) {
 
 <div id="content" class="<?php print $extraclass;?>" xmlns:background="http://www.w3.org/1999/xhtml">
 <?php if (1 != $header_deaktivieren) {
-    if (is_page(311677) OR $post->post_parent == 311677){
-        get_template_part('library/templates/hero-freelancervermittlung', 'page');
-    }
     if (1 == $header_footer_2020) {
         //get_template_part('library/templates/hero-flat', 'page');
     } elseif (is_page(44272) OR $post->post_parent == 44272){
