@@ -111,7 +111,7 @@ require_once('library/custom_post_types/agenturfinder/custom-post-webdesign-agen
 require_once('library/custom_post_types/agenturfinder/custom-post-wordpress-agentur.php');
 
 //freelancer
-require_once('library/custom_post_types/agenturfinder/custom-post-freelancer.php');
+require_once('library/custom_post_types/custom-post-freelancer.php');
 
 
 //Lexikon
