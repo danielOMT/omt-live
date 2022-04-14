@@ -126,4 +126,9 @@ function openVertTab(evt, Services) {
   document.getElementById(Services).style.display = "block";
   evt.currentTarget.className += " active";
 }
-document.getElementById("defaultOpen").click();
+//Check if vertical tab module exists and trigger click event
+$( document ).ready(function() {
+    if (document.querySelector('.tablinks-omt') !== null) {
+    document.getElementById("defaultOpen").click();
+    }
+});
