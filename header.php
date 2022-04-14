@@ -279,11 +279,12 @@ if (getPost()->ID == 21990) {
     </div>
 <?php if (is_page()) {
     if (is_page(311677) OR $post->post_parent == 311677){
-        get_template_part('library/templates/hero-freelancervermittlung', 'page');
         ?>
         <div class="wrapper">
         <div id="container">
-    <?php } else {
+        <?php
+        get_template_part('library/templates/hero-freelancervermittlung', 'page');
+        } else {
         get_template_part('library/templates/hero-flat', 'page');
         ?><div class="wrapper">
         <div id="container">
