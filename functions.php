@@ -110,6 +110,10 @@ require_once('library/custom_post_types/agenturfinder/custom-post-webanalyse-age
 require_once('library/custom_post_types/agenturfinder/custom-post-webdesign-agentur.php');
 require_once('library/custom_post_types/agenturfinder/custom-post-wordpress-agentur.php');
 
+//freelancer
+require_once('library/custom_post_types/agenturfinder/custom-post-freelancer.php');
+
+
 //Lexikon
 require_once('library/custom_post_types/custom-post-lexikon.php');
 
