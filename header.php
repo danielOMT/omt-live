@@ -281,7 +281,7 @@ if (getPost()->ID == 21990) {
             if (is_page(311677) OR $post->post_parent == 311677){ // if page is "Freelancer" or a hierachical element below it
                 ?>
                 <?php
-                get_template_part('library/templates/hero-freelancervermittlung', 'page');
+               // get_template_part('library/templates/hero-freelancervermittlung', 'page');
             } else {
                 get_template_part('library/templates/hero-flat', 'page'); }
             ?>
