@@ -38,7 +38,7 @@ if (strlen($suchschlitz_text_button_local)>0) { $suchschlitz_text_button = $such
         <p class="agenturfinder-subheading"><?php print $suchschlitz_text_oben;?></p>
         <div class="agenturfinder-search contact-modal">
                 <?php /*<input type="text" value="" name="s" id="s" placeholder="<?php print $suchschlitz_platzhaltertext;?>" />*/?>
-            <select name="s" class="agenturfinder-dropdown">
+            <select name="s" class="agenturfinder-dropdown freelancer-dropdown">
                 <option selected disabled><?php print $suchschlitz_platzhaltertext;?></option>
                 <option value="affiliate-marketing">Affiliate Marketing</option>
                 <option value="amazon-marketing">Amazon Marketing</option>
