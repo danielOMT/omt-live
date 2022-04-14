@@ -802,8 +802,8 @@ function magnificpopup() {
     }
     //AGENTURFINDER MODAL
     var numItems = $('#kontakt').length;
-    var numItems2 = $('#kontakt-header').length;
-    if (numItems > 0 || numitems2 > 0 /*&& numSingle < 1*/) {
+    var numItems_header = $('#kontakt-header').length;
+    if (numItems > 0 || numItems_header > 0 /*&& numSingle < 1*/) {
         $('.contact-modal a').attr('data-effect', 'mfp-zoom-out'); //set data-effect attribute
         $('#content .omt-row .contact-modal a.agentursuche-button').click(function () {
             $('.contact-modal a').magnificPopup({
@@ -819,41 +819,41 @@ function magnificpopup() {
             event.preventDefault();
         });
     }
-    if (numItems > 0 || numitems2 > 0 /*&& numSingle < 1*/) {
+    if (numItems > 0 || numItems_header > 0 /*&& numSingle < 1*/) {
         $(".agenturfinder-dropdown").on('change', function() {
             var selected = $('.agenturfinder-dropdown option:selected').val();
             switch (selected) {
-                case "affiliate-marketing": $('#gform_page_35_1 .gchoice_35_7_1 input').attr('checked', true); break;
-                case "amazon-marketing": $('#gform_page_35_1 .gchoice_35_7_2 input').attr('checked', true); break;
-                case "amazon-seo": $('#gform_page_35_1 .gchoice_35_7_3 input').attr('checked', true); break;
-                case "contenterstellung": $('#gform_page_35_1 .gchoice_35_7_4 input').attr('checked', true); break;
-                case "content-marketing": $('#gform_page_35_1 .gchoice_35_7_5 input').attr('checked', true); break;
-                case "cro": $('#gform_page_35_1 .gchoice_35_7_6 input').attr('checked', true); break;
-                case "direktmarketing": $('#gform_page_35_1 .gchoice_35_7_7 input').attr('checked', true); break;
-                case "e-mail-marketing": $('#gform_page_35_1 .gchoice_35_7_8 input').attr('checked', true); break;
-                case "facebook-ads": $('#gform_page_35_1 .gchoice_35_7_9 input').attr('checked', true); break;
-                case "google-analytics": $('#gform_page_35_1 .gchoice_35_7_11 input').attr('checked', true); break;
-                case "google-ads": $('#gform_page_35_1 .gchoice_35_7_12 input').attr('checked', true); break;
-                case "gmb": $('#gform_page_35_1 .gchoice_35_7_13 input').attr('checked', true); break;
-                case "growth-hacking": $('#gform_page_35_1 .gchoice_35_7_14 input').attr('checked', true); break;
-                case "inbound": $('#gform_page_35_1 .gchoice_35_7_15 input').attr('checked', true); break;
-                case "influencer-marketing": $('#gform_page_35_1 .gchoice_35_7_16 input').attr('checked', true); break;
-                case "linkbuilding": $('#gform_page_35_1 .gchoice_35_7_17 input').attr('checked', true); break;
-                case "local-seo": $('#gform_page_35_1 .gchoice_35_7_18 input').attr('checked', true); break;
-                case "marketing": $('#gform_page_35_1 .gchoice_35_7_19 input').attr('checked', true); break;
-                case "online-marketing": $('#gform_page_35_1 .gchoice_35_7_21 input').attr('checked', true); break;
-                case "performance-marketing": $('#gform_page_35_1 .gchoice_35_7_22 input').attr('checked', true); break;
-                case "pinterest-marketing": $('#gform_page_35_1 .gchoice_35_7_23 input').attr('checked', true); break;
-                case "public-relations": $('#gform_page_35_1 .gchoice_35_7_24 input').attr('checked', true); break;
-                case "social-media": $('#gform_page_35_1 .gchoice_35_7_25 input').attr('checked', true); break;
-                case "sem": $('#gform_page_35_1 .gchoice_35_7_26 input').attr('checked', true); break;
-                case "seo": $('#gform_page_35_1 .gchoice_35_7_27 input').attr('checked', true); break;
-                case "tiktok": $('#gform_page_35_1 .gchoice_35_7_28 input').attr('checked', true); break;
-                case "videoerstellung": $('#gform_page_35_1 .gchoice_35_7_29 input').attr('checked', true); break;
-                case "webanalyse": $('#gform_page_35_1 .gchoice_35_7_31 input').attr('checked', true); break;
-                case "webdesign": $('#gform_page_35_1 .gchoice_35_7_32 input').attr('checked', true); break;
-                case "website-entwicklung": $('#gform_page_35_1 .gchoice_35_7_33 input').attr('checked', true); break;
-                case "website-relaunch": $('#gform_page_35_1 .gchoice_35_7_34 input').attr('checked', true); break;
+                case "affiliate-marketing": $('#gform_page_106_1 .gchoice_106_7_1 input').attr('checked', true); break;
+                case "amazon-marketing": $('#gform_page_106_1 .gchoice_106_7_2 input').attr('checked', true); break;
+                case "amazon-seo": $('#gform_page_106_1 .gchoice_106_7_3 input').attr('checked', true); break;
+                case "contenterstellung": $('#gform_page_106_1 .gchoice_106_7_4 input').attr('checked', true); break;
+                case "content-marketing": $('#gform_page_106_1 .gchoice_106_7_5 input').attr('checked', true); break;
+                case "cro": $('#gform_page_106_1 .gchoice_106_7_6 input').attr('checked', true); break;
+                case "direktmarketing": $('#gform_page_106_1 .gchoice_106_7_7 input').attr('checked', true); break;
+                case "e-mail-marketing": $('#gform_page_106_1 .gchoice_106_7_8 input').attr('checked', true); break;
+                case "facebook-ads": $('#gform_page_106_1 .gchoice_106_7_9 input').attr('checked', true); break;
+                case "google-analytics": $('#gform_page_106_1 .gchoice_106_7_11 input').attr('checked', true); break;
+                case "google-ads": $('#gform_page_106_1 .gchoice_106_7_12 input').attr('checked', true); break;
+                case "gmb": $('#gform_page_106_1 .gchoice_106_7_13 input').attr('checked', true); break;
+                case "growth-hacking": $('#gform_page_106_1 .gchoice_106_7_14 input').attr('checked', true); break;
+                case "inbound": $('#gform_page_106_1 .gchoice_106_7_15 input').attr('checked', true); break;
+                case "influencer-marketing": $('#gform_page_106_1 .gchoice_106_7_16 input').attr('checked', true); break;
+                case "linkbuilding": $('#gform_page_106_1 .gchoice_106_7_17 input').attr('checked', true); break;
+                case "local-seo": $('#gform_page_106_1 .gchoice_106_7_18 input').attr('checked', true); break;
+                case "marketing": $('#gform_page_106_1 .gchoice_106_7_19 input').attr('checked', true); break;
+                case "online-marketing": $('#gform_page_106_1 .gchoice_106_7_21 input').attr('checked', true); break;
+                case "performance-marketing": $('#gform_page_106_1 .gchoice_106_7_22 input').attr('checked', true); break;
+                case "pinterest-marketing": $('#gform_page_106_1 .gchoice_106_7_23 input').attr('checked', true); break;
+                case "public-relations": $('#gform_page_106_1 .gchoice_106_7_24 input').attr('checked', true); break;
+                case "social-media": $('#gform_page_106_1 .gchoice_106_7_25 input').attr('checked', true); break;
+                case "sem": $('#gform_page_106_1 .gchoice_106_7_26 input').attr('checked', true); break;
+                case "seo": $('#gform_page_106_1 .gchoice_106_7_27 input').attr('checked', true); break;
+                case "tiktok": $('#gform_page_106_1 .gchoice_106_7_28 input').attr('checked', true); break;
+                case "videoerstellung": $('#gform_page_106_1 .gchoice_106_7_29 input').attr('checked', true); break;
+                case "webanalyse": $('#gform_page_106_1 .gchoice_106_7_31 input').attr('checked', true); break;
+                case "webdesign": $('#gform_page_106_1 .gchoice_106_7_32 input').attr('checked', true); break;
+                case "website-entwicklung": $('#gform_page_106_1 .gchoice_106_7_33 input').attr('checked', true); break;
+                case "website-relaunch": $('#gform_page_106_1 .gchoice_106_7_34 input').attr('checked', true); break;
             }
             $('#content .search-header .wrap .agentursuche-button').click();
         });
