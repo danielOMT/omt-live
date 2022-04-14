@@ -1944,22 +1944,24 @@ function omtLoadMore(){
 
 //Vertical tabs
 function openVertTab(evt, Services) {
-    var numItems = $('#defaultOpen').length;
-    if (numItems > 0) {
-        var i, tabcontent, tablinks, tabArrow;
-        tabcontent = document.getElementsByClassName("tabcontent-omt");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-        tablinks = document.getElementsByClassName("tablinks-omt");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-        document.getElementById(Services).style.display = "block";
-        evt.currentTarget.className += " active";
-        document.getElementById("defaultOpen").click();
-    }
+  var i, tabcontent, tablinks, tabArrow;
+  tabcontent = document.getElementsByClassName("tabcontent-omt");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks-omt");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(Services).style.display = "block";
+  evt.currentTarget.className += " active";
 }
+//Check if vertical tab module exists and trigger click event
+$( document ).ready(function() {
+    if (document.querySelector('.tablinks-omt') !== null) {
+    document.getElementById("defaultOpen").click();
+    }
+});
 
 
 
