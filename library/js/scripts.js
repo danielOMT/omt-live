@@ -802,7 +802,8 @@ function magnificpopup() {
     }
     //AGENTURFINDER MODAL
     var numItems = $('#kontakt').length;
-    if (numItems > 0 /*&& numSingle < 1*/) {
+    var numItems2 = $('#kontakt-header').length;
+    if (numItems > 0 || numitems2 > 0 /*&& numSingle < 1*/) {
         $('.contact-modal a').attr('data-effect', 'mfp-zoom-out'); //set data-effect attribute
         $('#content .omt-row .contact-modal a.agentursuche-button').click(function () {
             $('.contact-modal a').magnificPopup({
@@ -818,7 +819,7 @@ function magnificpopup() {
             event.preventDefault();
         });
     }
-    if (numItems > 0 /*&& numSingle < 1*/) {
+    if (numItems > 0 || numitems2 > 0 /*&& numSingle < 1*/) {
         $(".agenturfinder-dropdown").on('change', function() {
             var selected = $('.agenturfinder-dropdown option:selected').val();
             switch (selected) {
