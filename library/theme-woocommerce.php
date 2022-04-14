@@ -367,10 +367,14 @@ function c_custom_checkout_field_process()
 add_filter( 'woocommerce_cart_item_name', 'product_thumbnail_in_checkout', 20, 3 );
 function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_key ){
     if ( is_checkout() )
-    {
+    {   
+        $product_type = get_post_meta( $cart_item['product_id'], '_custom_product_type', true );
         $thumbnail   = $cart_item['data']->get_image(array( 350, 180));
-        $image_html  = '<div class="product-item-thumbnail">'.$thumbnail.'</div> ';
-
+        if ($product_type == 'job') {
+            $image_html = '';
+        }else{
+            $image_html  = '<div class="product-item-thumbnail">'.$thumbnail.'</div> ';
+        }
         $product_name = $image_html . $product_name;
     }
     return $product_name;
@@ -774,3 +778,7 @@ add_filter('woocommerce_api_request_url', function ($api_request_url, $request, 
 
     return $api_request_url;
 }, 10, 3);
+
+
+
+
