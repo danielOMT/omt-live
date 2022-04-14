@@ -1136,3 +1136,51 @@ function add_job_form( )
 
 }
 
+
+
+//Cheking new job posted and send email notification
+add_action( 'woocommerce_after_register_post_type', 'auto_publishing_jobs' );
+function auto_publishing_jobs(){
+    global $product;
+    //get jobs arguments
+    $argsJobs = array(
+        'post_type'      => 'jobs',
+        'post_status' => 'draft',
+        'order' => 'DESC',
+    );
+    $loop = new WP_Query($argsJobs);//get jobs 
+
+    $args = array('post_status' => 'any', 'limit' => 50);//get order arguments
+    $orders = wc_get_orders( $args  );//get orders 
+
+    foreach ( $orders as $order ) :
+        $order_status = $order->get_status();
+        $billing_uniqe_id = get_post_meta( $order->get_id(), '_billing_uniqe_id_for_job', true );
+
+        while ($loop->have_posts()) : $loop->the_post();
+            $uniqe_id = get_field('un_id');
+            $post_id = get_the_ID();
+            $job_status = get_post_status ( $post_id );
+            if($billing_uniqe_id == $uniqe_id && $uniqe_id > 0 ):
+                if($order_status == 'completed' && $job_status == 'draft'):
+                    // $postid = $post_id; //Supply post-Id here $post->ID.
+                    //     wp_update_post(array(
+                    //         'ID'    =>  $postid,
+                    //         'post_status'   =>  'publish'
+                    //     ));
+                    $to = 'mario@omt.de';
+                    $subject = 'New Job Posted';
+                    $body = "<h1>Job Link</h1><hr/><a href='".get_site_url()."/wp-admin/post.php?post=".$post_id."&action=edit'>View Job </a>";
+                    $headers = array('Content-Type: text/html; charset=UTF-8');
+                    $headers = "From: info@omt.de\r\n";
+                    $headers .= "MIME-Version: 1.0\r\n";
+                    $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+                    wp_mail($to, $subject, $body, $headers);
+                endif;
+            endif;
+
+        endwhile;
+    endforeach;
+    wp_reset_postdata();
+}
+
