@@ -296,6 +296,10 @@ switch ($zeile['inhaltstyp'][0]['acf_fc_layout']) {
         include('module-partner-full-width.php');
         break;
         
+    case "autojobs":
+        include('module-autopublishing-jobs.php');
+        break;
+
     case "highlighted-jobs":
         include('module-highlighted-jobs.php');
         break;

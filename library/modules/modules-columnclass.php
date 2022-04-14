@@ -279,7 +279,10 @@
     case "partner_full_width":
         $columnclass = "partner-full-width";
         break;
-        
+    
+    case "autojobs":
+        $columnclass = "autojobs";
+        break;  
     default:
         $columnclass = "";
         break;
