@@ -1072,3 +1072,67 @@ function get_the_table_of_contents()
     global $tableOfContents;
     return $tableOfContents;
 }
+
+
+
+//add custom field in woocommerce product general section
+add_action('woocommerce_product_options_general_product_data', 'woocommerce_product_custom_fields');
+// Save Fields
+add_action('woocommerce_process_product_meta', 'woocommerce_product_custom_fields_save');
+function woocommerce_product_custom_fields()
+{
+    global $woocommerce, $post;
+    echo '<div class="product_custom_field">';
+    // Custom Product Text Field
+    woocommerce_wp_text_input(
+        array(
+            'id' => '_custom_product_type',
+            'placeholder' => 'Text',
+            'label' => __('Product Type', 'woocommerce'),
+            'desc_tip' => 'true'
+        )
+    );
+    echo '</div>';
+}
+function woocommerce_product_custom_fields_save($post_id)
+{
+    // Custom Product type
+    $woocommerce_custom_product_text_field = $_POST['_custom_product_type'];
+    if (!empty($woocommerce_custom_product_text_field))
+        update_post_meta($post_id, '_custom_product_type', esc_attr($woocommerce_custom_product_text_field));
+
+}
+
+
+
+add_action( 'woocommerce_before_checkout_form', 'add_job_form', 10 );
+function add_job_form( )
+{
+    foreach( WC()->cart->get_cart() as $cart_item ){
+        $product_id = $cart_item['product_id'];
+    }
+    $product_type = get_post_meta( $product_id, '_custom_product_type', true );
+    if($product_type != ''){
+        echo '<style>
+        #content .gform_wrapper, #content #gform_wrapper_33{
+            width:100% !important
+        }
+        .checkout{
+            display:none;
+        }
+        .woocommerce-form-coupon-toggle{
+            display:none
+        }
+        .woocommerce-info{
+            display:none;
+        }
+        #customise_checkout_field{
+            display:none !Important
+        }
+       </style>';
+
+        echo do_shortcode('[gravityform ajax=true id="24" title="true" description="true" tabindex="0"]');
+    }
+
+}
+
