@@ -29,7 +29,7 @@ function jobs() {
             'search_items' => __('Job suchen', 'bonestheme'), /* Search Custom Type Title */
             'not_found' =>  __('Keine Jobs gefunden.', 'bonestheme'), /* This displays if there are no entries yet */
             'not_found_in_trash' => __('Keine Jobs im Papierkorb', 'bonestheme'), /* This displays if there is nothing in the trash */
-            'parent_item_colon' => ''
+            'parent_item_colon' => '',
         ), /* end of arrays */
         'description' => __('Jobs, welche in den entsprechenden Abschnitten ausgegeben werden', 'bonestheme'), /* Custom Type Description */
         'public' => true,
@@ -39,12 +39,13 @@ function jobs() {
         'query_var' => true,
         'menu_position' => 3, /* this is what order you want it to appear in on the left hand side menu */
         'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
-        'rewrite'	=> array( 'slug' => 'jobs/stellenanzeige', 'with_front' => false ), /* you can specify its url slug */
+        'rewrite'   => array( 'slug' => 'jobs/stellenanzeige', 'with_front' => false ), /* you can specify its url slug */
         'has_archive' => false, /* you can rename the slug here */
         'capability_type' => 'post',
         'hierarchical' => false,
         //'show_in_menu' => 'jobs',
-        'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky')
+        'supports' => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'trackbacks', 'custom-fields', 'comments', 'revisions', 'sticky'),
+        
     ));
 
   //  register_taxonomy_for_object_type('category', 'omt_jobs');
@@ -52,26 +53,26 @@ function jobs() {
 }
 add_action( 'init', 'jobs');
 //
-//register_taxonomy('jobs', array('omt_jobs'), array(
-//    'hierarchical' => true, /* if this is true, it acts like categories */
-//    'labels' => array(
-//        'name' => __('Staedte', 'bonestheme'), /* name of the custom taxonomy */
-//        'singular_name' => __('Stadt', 'bonestheme'), /* single taxonomy name */
-//        'search_items' =>  __('Staedte durchsuchen', 'bonestheme'), /* search title for taxomony */
-//        'all_items' => __('Alle Staedte', 'bonestheme'), /* all title for taxonomies */
-//        'parent_item' => __('Parent Custom Category', 'bonestheme'), /* parent title for taxonomy */
-//        'parent_item_colon' => __('Parent Custom Category:', 'bonestheme'), /* parent taxonomy title */
-//        'edit_item' => __('Stadt editieren', 'bonestheme'), /* edit custom taxonomy title */
-//        'update_item' => __('Stadt aktualisieren', 'bonestheme'), /* update title for taxonomy */
-//        'add_new_item' => __('Neue Stadt hinzufügen', 'bonestheme'), /* add new title for taxonomy */
-//        'new_item_name' => __('Neue Stadt hinzufügen', 'bonestheme') /* name title for taxonomy */
-//    ),
-//    'show_admin_column' => true,
-//    'show_ui' => true,
-//    'query_var' => true,
-//    //'rewrite' => array('slug' => 'staedte'),
-//));
-//
+register_taxonomy('jobs-categories', array('jobs'), array(
+   'hierarchical' => true, /* if this is true, it acts like categories */
+   'labels' => array(
+       'name' => __('Job kategorien', 'bonestheme'), /* name of the custom taxonomy */
+       'singular_name' => __('Job', 'bonestheme'), /* single taxonomy name */
+       'search_items' =>  __('Jobs durchsuchen', 'bonestheme'), /* search title for taxomony */
+       'all_items' => __('Alle Jobs', 'bonestheme'), /* all title for taxonomies */
+       'parent_item' => __('Parent Custom Category', 'bonestheme'), /* parent title for taxonomy */
+       'parent_item_colon' => __('Parent Custom Category:', 'bonestheme'), /* parent taxonomy title */
+       'edit_item' => __('Job editieren', 'bonestheme'), /* edit custom taxonomy title */
+       'update_item' => __('Job aktualisieren', 'bonestheme'), /* update title for taxonomy */
+       'add_new_item' => __('Neue Job hinzufügen', 'bonestheme'), /* add new title for taxonomy */
+       'new_item_name' => __('Neue Job hinzufügen', 'bonestheme') /* name title for taxonomy */
+   ),
+   'show_admin_column' => true,
+   'show_ui' => true,
+   'query_var' => true,
+   'rewrite' => array('slug' => 'jobs-categories'),
+));
+
 //function omt_jobs_staedte() {
 //    register_post_type('omt_jobs_staedte', array(
 //        'labels' => array(
@@ -97,7 +98,7 @@ add_action( 'init', 'jobs');
 //        'query_var' => true,
 //        'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */
 //        'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
-//        'rewrite'	=> array( 'slug' => 'jobs', 'with_front' => false ), /* you can specify its url slug */
+//        'rewrite' => array( 'slug' => 'jobs', 'with_front' => false ), /* you can specify its url slug */
 //        'has_archive' => false, /* you can rename the slug here */
 //        'capability_type' => 'post',
 //        'hierarchical' => false,
@@ -135,7 +136,7 @@ add_action( 'init', 'jobs');
 //        'query_var' => true,
 //        'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */
 //        'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
-//        'rewrite'	=> array( 'slug' => 'jobs', 'with_front' => false ), /* you can specify its url slug */
+//        'rewrite' => array( 'slug' => 'jobs', 'with_front' => false ), /* you can specify its url slug */
 //        'has_archive' => false, /* you can rename the slug here */
 //        'capability_type' => 'post',
 //        'hierarchical' => false,
@@ -174,7 +175,7 @@ add_action( 'init', 'jobs');
 //        'query_var' => true,
 //        'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */
 //        'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
-//        'rewrite'	=> array( 'slug' => 'jobs', 'with_front' => false ), /* you can specify its url slug */
+//        'rewrite' => array( 'slug' => 'jobs', 'with_front' => false ), /* you can specify its url slug */
 //        'has_archive' => false, /* you can rename the slug here */
 //        'capability_type' => 'post',
 //        'hierarchical' => false,
