@@ -185,10 +185,11 @@ if ( 1 == $header_footer_2020) {
 <div id="content" class="<?php print $extraclass;?>" xmlns:background="http://www.w3.org/1999/xhtml">
 <?php if (1 != $header_deaktivieren) {
     if (1 == $header_footer_2020) {
+        $ID = $post->ID;
         //get_template_part('library/templates/hero-flat', 'page');
     } elseif (is_page(44272) OR $post->post_parent == 44272){
         get_template_part('library/templates/hero-agenturfinder', 'page');
-    } elseif (is_page(311677) OR $post->post_parent == 311677){
+    } elseif (311677==$ID OR $post->post_parent == 311677){
         get_template_part('library/templates/hero-freelancervermittlung', 'page');
     } else { ?>
         <div class="omt-row hero-header <?php if (1 == $themenwelt_alternativ) { print "hero-themenwelt-alternativ"; } ?>" style="background: url('<?php print $hero_background['url'];?>') no-repeat 50% 0;">
