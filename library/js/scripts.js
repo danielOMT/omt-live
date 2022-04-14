@@ -1967,7 +1967,7 @@ $( document ).ready(function() {
 
 window.onload = function() {
     $rand_id = Math.floor(100000 + Math.random() * 900000);
-    document.getElementById("input_24_36").value = $rand_id;
+    document.getElementById("input_24_31").value = $rand_id;
     document.getElementById("billing_uniqe_id_for_job").value = $rand_id;
 } 
 //After gform success display checkout
@@ -1976,7 +1976,7 @@ $(document).on("gform_confirmation_loaded", function (e, form_id) {
   jQuery( ".woocommerce-form-coupon-toggle" ).addClass( "show_checkout" );
 });window.onload = function() {
     $rand_id = Math.floor(100000 + Math.random() * 900000);
-    document.getElementById("input_24_36").value = $rand_id;
+    document.getElementById("input_24_31").value = $rand_id;
     document.getElementById("billing_uniqe_id_for_job").value = $rand_id;
 } 
 //After gform success display checkout
