@@ -71,12 +71,12 @@ if (strlen($suchschlitz_text_button_local)>0) { $suchschlitz_text_button = $such
                 <option value="website-entwicklung">Website Entwicklung</option>
                 <option value="website-relaunch">Website Relaunch</option>
             </select>
-                <a href="#kontakt-header" class="agentursuche-button"><?php print $suchschlitz_text_button;?></a>
+                <a href="#kontakt" class="agentursuche-button"><?php print $suchschlitz_text_button;?></a>
         </div>
         <?php if (strlen($suchschlitz_text_unten)>0) { ?><p class="agenturfinder-subtext"><?php print $suchschlitz_text_unten;?></p><?php } ?>
     </div>
 </div>
-<div id="kontakt-header" class="mfp-hide" data-effect="mfp-zoom-out">
+<div id="kontakt" class="mfp-hide" data-effect="mfp-zoom-out">
     <?php //echo do_shortcode( '[contact-form-7 id="128" title="Kontaktformular 1"]' ); ?>
     <?php echo do_shortcode( '[gravityform id="106" title="true" description="true" tabindex="0" ajax=true ]' ); ?>
 </div>
