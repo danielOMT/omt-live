@@ -152,7 +152,7 @@ function display_jobs(int $anzahl = 99) { ?>
         $result = '';
         $result = preg_replace("/[^a-zA-Z0-9]+/", "", $value);
 
-        $cleaned = str_replace(' ', '', $result)
+        $cleaned = str_replace(' ', '', $result);
         return $cleaned;
     }
     function getCitiesForFilter(){
