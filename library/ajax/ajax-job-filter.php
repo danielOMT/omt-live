@@ -310,7 +310,7 @@ function omt_filter_jobs()
             $erfahrung = cleanFilterData( get_field('erfahrung') );
        
             foreach ($data['erfahrung'] as $key => $value) :
-                if($erfahrung == $value):
+                if($erfahrung == cleanFilterData($value)):
                     array_push( $arbeitenResult,$stadt);
                     array_push( $occupationResult, $wie_arbeiten);
                     array_push( $erfahrungResult, $erfahrung);
@@ -328,7 +328,7 @@ function omt_filter_jobs()
                     $erfahrung = cleanFilterData( get_field('erfahrung') );
                
                     foreach ($data['erfahrung'] as $key => $value) :
-                        if($erfahrung == $value):
+                        if($erfahrung == cleanFilterData($value)):
                             array_push($categoriesResult, str_replace(' ', '', $cat->name));
                         else:endif;;
                     endforeach;
@@ -347,7 +347,7 @@ function omt_filter_jobs()
 
             foreach ($data['erfahrung'] as $key => $value) :
                 foreach ($data['arbeiten'] as $asarbkey => $arbeitens) :
-                    if($erfahrung == $value && $stadt == $arbeitens):
+                    if($erfahrung == cleanFilterData($value) && $stadt == cleanFilterData($arbeitens)):
                         array_push( $stadt );
                         array_push( $wie_arbeiten );
                         array_push( $erfahrung );
@@ -369,7 +369,7 @@ function omt_filter_jobs()
 
                     foreach ($data['erfahrung'] as $key => $value) :
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens) :
-                            if($erfahrung == $value && $stadt == $arbeitens):
+                            if($erfahrung == cleanFilterData($value) && $stadt == cleanFilterData($arbeitens)):
                                 array_push($categoriesResult, cleanFilterData( $cat->name) );
                             endif;
                         endforeach;
@@ -388,7 +388,7 @@ function omt_filter_jobs()
 
             foreach ($data['erfahrung'] as $key => $value) :
                 foreach ($data['occupation'] as $asarbkey => $arbeitens) :
-                    if($erfahrung == $value && $wie_arbeiten == $arbeitens):
+                    if($erfahrung == cleanFilterData($value) && $wie_arbeiten == cleanFilterData($arbeitens)):
                         array_push($arbeitenResult, $stadt );
                         array_push($occupationResult, $wie_arbeiten);
                         array_push($erfahrungResult, $erfahrung );
@@ -410,7 +410,7 @@ function omt_filter_jobs()
 
                     foreach ($data['erfahrung'] as $key => $value) :
                         foreach ($data['occupation'] as $asarbkey => $arbeitens) :
-                            if($erfahrung == $value && $wie_arbeiten == $arbeitens):
+                            if($erfahrung == cleanFilterData($value) && $wie_arbeiten == cleanFilterData($arbeitens)):
                                 array_push($categoriesResult, cleanFilterData( $cat->name) );
                             endif;
                         endforeach;
@@ -430,7 +430,7 @@ function omt_filter_jobs()
             foreach ($data['erfahrung'] as $key => $value) :
                 foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                     foreach ($data['occupation'] as $occup => $occupations):
-                        if($erfahrung == $value && $stadt == $arbeitens && $wie_arbeiten == $occupations):
+                        if($erfahrung == cleanFilterData($value) && $stadt == cleanFilterData($arbeitens) && $wie_arbeiten == cleanFilterData($occupations)):
                             array_push($arbeitenResult, $stadt );
                             array_push($occupationResult, $wie_arbeiten );
                             array_push($erfahrungResult, $erfahrung );
@@ -454,7 +454,7 @@ function omt_filter_jobs()
                     foreach ($data['erfahrung'] as $key => $value) :
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                             foreach ($data['occupation'] as $occup => $occupations):
-                                if($erfahrung == $value && $stadt == $arbeitens && $wie_arbeiten == $occupations):
+                                if($erfahrung == cleanFilterData($value) && $stadt == cleanFilterData($arbeitens) && $wie_arbeiten == cleanFilterData($occupations)):
                                     array_push($categoriesResult, cleanFilterData( $cat->name) );
                                 endif;
                             endforeach;
@@ -480,7 +480,7 @@ function omt_filter_jobs()
 
                     foreach ($data['erfahrung'] as $key => $value) :
                         foreach ($data['categories'] as $cates => $cate):
-                            if($erfahrung == $value && $cat->name == $cate):
+                            if($erfahrung == cleanFilterData($value) && cleanFilterData($cat->name) == cleanFilterData($cate)):
                                 array_push($arbeitenResult, $stadt );
                                 array_push($occupationResult, $wie_arbeiten );
                                 array_push($categoriesResult, cleanFilterData( $cat->name) );
@@ -509,7 +509,7 @@ function omt_filter_jobs()
                     foreach ($data['erfahrung'] as $key => $value) :
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                             foreach ($data['categories'] as $cates => $cate):
-                                if($erfahrung == $value && $stadt == $arbeitens  && $cat->name == $cate):
+                                if($erfahrung == cleanFilterData($value) && $stadt == cleanFilterData($arbeitens)  && cleanFilterData($cat->name) == cleanFilterData($cate)):
                                     array_push($arbeitenResult,  $stadt );
                                     array_push($occupationResult, $wie_arbeiten );
                                     array_push($categoriesResult, cleanFilterData( $cat->name) );
@@ -539,7 +539,7 @@ function omt_filter_jobs()
                     foreach ($data['erfahrung'] as $key => $value) :
                         foreach ($data['occupation'] as $occup => $occupations):
                             foreach ($data['categories'] as $cates => $cate):
-                                if($erfahrung == $value  && $wie_arbeiten == $occupations && $cat->name == $cate):
+                                if($erfahrung == cleanFilterData($value)  && $wie_arbeiten == cleanFilterData($occupations) && cleanFilterData($cat->name) == cleanFilterData($cate)):
                                     array_push($arbeitenResult, $stadt );
                                     array_push($occupationResult,  $wie_arbeiten );
                                     array_push($categoriesResult, cleanFilterData( $cat->name) );
@@ -566,7 +566,7 @@ function omt_filter_jobs()
                     $erfahrung = cleanFilterData( get_field('erfahrung'));
                     $wie_arbeiten = cleanFilterData( get_field('wie_arbeiten'));
                         foreach ($data['categories'] as $cates => $cate):
-                            if($cat->name == $cate):
+                            if(cleanFilterData($cat->name) == cleanFilterData($cate)):
                                 array_push($arbeitenResult,  $stadt);
                                 array_push($occupationResult, $wie_arbeiten);
                                 array_push($categoriesResult, cleanFilterData( $cat->name ) );
@@ -593,7 +593,7 @@ function omt_filter_jobs()
 
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                                 foreach ($data['categories'] as $cates => $cate):
-                                    if($stadt == $arbeitens &&  $cat->name == $cate):
+                                    if($stadt == cleanFilterData($arbeitens) &&  cleanFilterData($cat->name) == cleanFilterData($cate)):
                                         array_push($arbeitenResult,  $stadt);
                                         array_push($occupationResult, $wie_arbeiten);
                                         array_push($categoriesResult, cleanFilterData( $cat->name));
@@ -612,7 +612,7 @@ function omt_filter_jobs()
             $erfahrung = cleanFilterData( get_field('erfahrung'));
             $wie_arbeiten = cleanFilterData( get_field('wie_arbeiten'));
             foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
-                if($stadt == $arbeitens):
+                if($stadt == cleanFilterData($arbeitens)):
                     array_push($arbeitenResult, $stadt);
                     array_push($occupationResult, $wie_arbeiten);
                     array_push($erfahrungResult, $erfahrung);
@@ -631,7 +631,7 @@ function omt_filter_jobs()
                     $erfahrung = cleanFilterData( get_field('erfahrung'));
                     $wie_arbeiten = cleanFilterData( get_field('wie_arbeiten'));
                     foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
-                        if($stadt == $arbeitens):
+                        if($stadt == cleanFilterData($arbeitens)):
                             array_push($categoriesResult, cleanFilterData( $cat->name) );
                         endif;
                     endforeach;
@@ -647,7 +647,7 @@ function omt_filter_jobs()
             $wie_arbeiten = cleanFilterData( get_field('wie_arbeiten'));
                 foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                     foreach ($data['occupation'] as $occup => $occupations):
-                        if($stadt == $arbeitens && $wie_arbeiten == $occupations):
+                        if($stadt == cleanFilterData($arbeitens) && $wie_arbeiten == cleanFilterData($occupations)):
                             array_push($arbeitenResult, $stadt);
                             array_push($occupationResult, $wie_arbeiten);
                             array_push($erfahrungResult, $erfahrung);
@@ -668,7 +668,7 @@ function omt_filter_jobs()
                     $wie_arbeiten = cleanFilterData( get_field('wie_arbeiten') );
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                             foreach ($data['occupation'] as $occup => $occupations):
-                                if($stadt == $arbeitens && $wie_arbeiten == $occupations):
+                                if($stadt == cleanFilterData($arbeitens) && $wie_arbeiten == cleanFilterData($occupations)):
                                     array_push($categoriesResult, cleanFilterData( $cat->name) );
                                 endif;
                             endforeach;
@@ -693,7 +693,7 @@ function omt_filter_jobs()
 
                             foreach ($data['occupation'] as $occup => $occupations):
                                 foreach ($data['categories'] as $cates => $cate):
-                                    if($wie_arbeiten == $occupations && $cat->name == $cate):
+                                    if($wie_arbeiten == cleanFilterData($occupations) && cleanFilterData($cat->name) == cleanFilterData($cate)):
                                         array_push($arbeitenResult, $stadt);
                                         array_push($occupationResult, $wie_arbeiten);
                                         array_push($categoriesResult, cleanFilterData( $cat->name) );
@@ -712,7 +712,7 @@ function omt_filter_jobs()
             $erfahrung = cleanFilterData(  get_field('erfahrung') );
             $wie_arbeiten = cleanFilterData(  get_field('wie_arbeiten') );
             foreach ($data['occupation'] as $occup => $occupations):
-                if($wie_arbeiten == $occupations):
+                if($wie_arbeiten == cleanFilterData($occupations)):
                     array_push($arbeitenResult, $stadt);
                     array_push($occupationResult,  $wie_arbeiten);
                     array_push($erfahrungResult, $erfahrung);
@@ -731,7 +731,7 @@ function omt_filter_jobs()
                     $erfahrung = cleanFilterData( get_field('erfahrung') );
                     $wie_arbeiten = cleanFilterData( get_field('wie_arbeiten') );
                     foreach ($data['occupation'] as $occup => $occupations):
-                        if($wie_arbeiten == $occupations):
+                        if($wie_arbeiten == cleanFilterData($occupations)):
                             array_push($categoriesResult, cleanFilterData( $cat->name) );
                         endif;
                     endforeach;
@@ -757,7 +757,7 @@ function omt_filter_jobs()
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                             foreach ($data['occupation'] as $occup => $occupations):
                                 foreach ($data['categories'] as $cates => $cate):
-                                    if($erfahrung == $value && $stadt == $arbeitens && $wie_arbeiten == $occupations && $cat->name == $cate):
+                                    if($erfahrung == cleanFilterData($value) && $stadt == cleanFilterData($arbeitens) && $wie_arbeiten == cleanFilterData($occupations) && cleanFilterData($cat->name) == cleanFilterData($cate)):
                                         array_push($arbeitenResult, $stadt);
                                         array_push($occupationResult, $wie_arbeiten);
                                         array_push($categoriesResult, cleanFilterData( $cat->name) );
