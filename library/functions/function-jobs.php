@@ -151,9 +151,9 @@ function display_jobs(int $anzahl = 99) { ?>
     function removeSpecialChar($value){
         $result = '';
         $result = preg_replace("/[^a-zA-Z0-9]+/", "", $value);
-   
-$str = strtr( $str, $unwanted_array );
-        return trim($result);
+
+        $cleaned = str_replace(' ', '', $result)
+        return $cleaned;
     }
     function getCitiesForFilter(){
 
@@ -193,7 +193,7 @@ $str = strtr( $str, $unwanted_array );
                 <div>
                 <input type="checkbox" name="stadt" value="'.$value.'" class="omt-input jobs_filter '.$hide_cat.'" id="stadt_'.$count.'"/>
                 <label for="stadt_'.$count.'" class="'.$hide_cat.'">'.$value.'
-                    <label class="post_count stadt_c '.str_replace(' ', '', $helperCLass).'">('.countJobByCity($value).')</label>
+                    <label class="post_count stadt_c '.removeSpecialChar($helperCLass).'">('.countJobByCity($value).')</label>
                 </label>
                 </div>
 

@@ -1184,3 +1184,7 @@ function auto_publishing_jobs(){
     wp_reset_postdata();
 }
 
+function clean($string) {
+   $string = str_replace(' ', '-', $string); // Replaces all spaces with hyphens.
+   return preg_replace('/[^A-Za-z\-]/', '', $string); // Removes special chars.
+}
