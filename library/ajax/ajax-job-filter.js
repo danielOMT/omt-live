@@ -62,6 +62,7 @@ $('.jobs_filter').change(function() {
                     $("#filter_loader").hide();
                     $('#jobs').html(data.content).show();
 
+                        console.log(data.occupation);
 
                         if (resultArbeiten.length > 0 && resultOccupation.length == 0 && resultCategory == 0 && resultErfahrung.length == 0 ){
                             // occupation count 
