@@ -190,7 +190,7 @@ function display_jobs(int $anzahl = 99) { ?>
             $helperCLass = str_replace(array( '(', ')' ), '', $value);
             $result .= '
                 <div>
-                <input type="checkbox" name="stadt" value="'.$value.'" class="omt-input jobs_filter '.$hide_cat.'" id="stadt_'.$count.'"/>
+                <input type="checkbox" name="stadt" value="'.removeSpecialChar($value).'" class="omt-input jobs_filter '.$hide_cat.'" id="stadt_'.$count.'"/>
                 <label for="stadt_'.$count.'" class="'.$hide_cat.'">'.$value.'
                     <label class="post_count stadt_c '.removeSpecialChar($helperCLass).'">('.countJobByCity($value).')</label>
                 </label>
