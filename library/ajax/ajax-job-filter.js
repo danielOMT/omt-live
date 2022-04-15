@@ -314,12 +314,15 @@ $('.jobs_filter').change(function() {
                             var currentArbeiten = null;
                             var cntArbeiten = 0;
                             for (var i = 0; i < data.arbeiten.length; i++) {
+                                console.log(data.arbeiten[i]);
                                 if (data.arbeiten[i] != currentArbeiten) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.arbeiten[i]);
-                                    var yes_x = x_x.classList.contains(data.arbeiten[i]);
-                                    if (cntArbeiten > 0) {$('.'+currentArbeiten).html('('+ cntArbeiten + ')').show();}
-                                    currentArbeiten = data.arbeiten[i];
-                                    cntArbeiten = 1;
+                                    if(data.arbeiten[i] != ''){
+                                        var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.arbeiten[i]);
+                                        var yes_x = x_x.classList.contains(data.arbeiten[i]);
+                                        if (cntArbeiten > 0) {$('.'+currentArbeiten).html('('+ cntArbeiten + ')').show();}
+                                        currentArbeiten = data.arbeiten[i];
+                                        cntArbeiten = 1;
+                                    }
                                 } else {cntArbeiten++;}
                             }
                             if (cntArbeiten > 0) {
@@ -335,11 +338,13 @@ $('.jobs_filter').change(function() {
                             var cntOccup = 0;
                             for (var i = 0; i < data.occupation.length; i++) {
                                 if (data.occupation[i] != currentOccup) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.occupation[i]);
-                                    var yes_x = x_x.classList.contains(data.occupation[i]);
-                                    if (cntOccup > 0) {$('.'+currentOccup).html('('+ cntOccup + ')').show();}
-                                    currentOccup = data.occupation[i];
-                                    cntOccup = 1;
+                                    if(data.occupation[i] != ''){
+                                        var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.occupation[i]);
+                                        var yes_x = x_x.classList.contains(data.occupation[i]);
+                                        if (cntOccup > 0) {$('.'+currentOccup).html('('+ cntOccup + ')').show();}
+                                        currentOccup = data.occupation[i];
+                                        cntOccup = 1;
+                                    }
                                 } else {cntOccup++;}
                             }
                             if (cntOccup > 0) {
@@ -355,11 +360,13 @@ $('.jobs_filter').change(function() {
                             var cntCat = 0;
                             for (var i = 0; i < data.categories.length; i++) {
                                 if (data.categories[i] != currentCat) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.categories[i]);
-                                    var yes_x = x_x.classList.contains(data.categories[i]);
-                                    if (cntCat > 0) { $('.'+currentCat).html('('+ cntCat + ')').show();}
-                                    currentCat = data.categories[i];
-                                    cntCat = 1;
+                                    if(data.categories[i] != ''){
+                                        var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.categories[i]);
+                                        var yes_x = x_x.classList.contains(data.categories[i]);
+                                        if (cntCat > 0) { $('.'+currentCat).html('('+ cntCat + ')').show();}
+                                        currentCat = data.categories[i];
+                                        cntCat = 1;
+                                    }
                                 } else {cntCat++;}
                             }
                             if (cntCat > 0) {
@@ -368,8 +375,6 @@ $('.jobs_filter').change(function() {
                                 $('.'+currentCat).html('('+ cntCat + ')').show();
                             }
 
-
-                            console.log(data.erfahrung);
                             //level count
                             $('.erfahrung_c').html('(0)').show();//empty filter data
                             data.erfahrung.sort();
@@ -377,11 +382,13 @@ $('.jobs_filter').change(function() {
                             var cntErf = 0;
                             for (var i = 0; i < data.erfahrung.length; i++) {
                                 if (data.erfahrung[i] != currentErf) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.erfahrung[i]);
-                                    var yes_x = x_x.classList.contains(data.erfahrung[i]);
-                                    if (cntErf > 0) {$('.'+currentErf).html('('+ cntErf + ')').show();}
-                                    currentErf = data.erfahrung[i];
-                                    cntErf = 1;
+                                    if(data.erfahrung[i] != ''){
+                                        var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.erfahrung[i]);
+                                        var yes_x = x_x.classList.contains(data.erfahrung[i]);
+                                        if (cntErf > 0) {$('.'+currentErf).html('('+ cntErf + ')').show();}
+                                        currentErf = data.erfahrung[i];
+                                        cntErf = 1;
+                                    }
                                 } else {cntErf++;}
                             }
                             if (cntErf > 0) {
