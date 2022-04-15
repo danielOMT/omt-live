@@ -12,6 +12,12 @@
     $cats = get_categories($args);
     $choices = $erfahrung['fields'][9]['choices'];//get form data
     $occupations = $erfahrung['fields'][7]['choices']; //get form data
+    function clean2($value) {
+	    $result = '';
+	    $result = preg_replace("/[^a-zA-Z0-9]+/", "", $value);
+	    $cleaned = str_replace(' ', '', $result);
+	    return $cleaned;
+	}
 ?>
 <div id="sidebar1" class="sidebar fourcol last clearfix" role="complementary" >	
 	<?php if (is_active_sidebar('jobs')) : ?>
@@ -23,9 +29,9 @@
 				<?php				    
 				   	foreach($cats as $cat) : ?>
 				   		<div >
-						   	<input type="checkbox"  name="category" value="<?=clean($cat->name); ?>" id="<?=$cat->term_id;?>" class="omt-input jobs_filter cat_f <?php if($count_cat > 2){ echo $hide_cat; }?>" />
+						   	<input type="checkbox"  name="category" value="<?=clean2($cat->name); ?>" id="<?=$cat->term_id;?>" class="omt-input jobs_filter cat_f <?php if($count_cat > 2){ echo $hide_cat; }?>" />
 						   	<label class="cat_f <?php if($count_cat > 2){ echo $hide_cat; }?>" for="<?=$cat->term_id;?>"><?=$cat->name; ?> 
-						   		<label id="showCat_<?=$cat->term_id;?>" class="post_count category_c <?=clean($cat->name)?>">(<?=countByCategory($cat->name);?>)</label>
+						   		<label id="showCat_<?=$cat->term_id;?>" class="post_count category_c <?=clean2($cat->name)?>">(<?=countByCategory($cat->name);?>)</label>
 						    </label>
 					   </div>
 						<?php  $count_cat++;
@@ -39,9 +45,9 @@
 					<div class="space_"></div>
 					<h5 class="filter_title"><?php _e('Erfahrung', 'jobs'); ?></h5>
 					<?php foreach ($choices as $choice) : ?>
-						<input type="checkbox"  name="erfahrung" value="<?=clean($choice['value']);?>" class="omt-input jobs_filter" id="erf_<?=$count_erf;?>"/>
+						<input type="checkbox"  name="erfahrung" value="<?=clean2($choice['value']);?>" class="omt-input jobs_filter" id="erf_<?=$count_erf;?>"/>
 				   		<label class="cat_f" for="erf_<?=$count_erf;?>"><?=$choice['text'];?>
-				   			<label id="showErf_<?=$count_erf;?>" class="post_count erfahrung_c <?=clean($choice['value']);?>">(<?=countJobByErfahrung($choice['value']);?>)</label>
+				   			<label id="showErf_<?=$count_erf;?>" class="post_count erfahrung_c <?=clean2($choice['value']);?>">(<?=countJobByErfahrung($choice['value']);?>)</label>
 				   		</label><br>
 					<?php $count_erf++; endforeach;?>
 
@@ -55,9 +61,9 @@
 					<div class="space_"></div>
 					<h5 class="filter_title"><?php _e('Art der Beschäftigung', 'jobs'); ?></h5>
 					<?php foreach ($occupations as $occupation) : ?>
-						<input type="checkbox" name="occupation" value="<?=clean($occupation['value']);?>" class="omt-input jobs_filter" id="ccu_<?=$count_der;?>"/>
+						<input type="checkbox" name="occupation" value="<?=clean2($occupation['value']);?>" class="omt-input jobs_filter" id="ccu_<?=$count_der;?>"/>
 				   		<label class="cat_f" for="ccu_<?=$count_der;?>"><?=$occupation['text'];?>
-				   			<label id="showBesch_<?=$count_der;?>" class="post_count besch_c <?=clean($occupation['value']);?>">(<?=countJobByBeschäftigung($occupation['value']);?>)</label>
+				   			<label id="showBesch_<?=$count_der;?>" class="post_count besch_c <?=clean2($occupation['value']);?>">(<?=countJobByBeschäftigung($occupation['value']);?>)</label>
 				   		</label><br>
 					<?php $count_der++; endforeach;?>
 
