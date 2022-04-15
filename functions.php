@@ -1186,7 +1186,7 @@ function auto_publishing_jobs(){
 
 function clean($value) {
     $result = '';
-    $result = preg_replace("/[^a-zA-Z]+/", "", $value);
+    $result = preg_replace("/[^a-zA-ZäÄöÖüÜ]+/", "", $value);
     $cleaned = str_replace(' ', '', $result);
     return $cleaned;
 }

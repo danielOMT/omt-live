@@ -612,6 +612,8 @@ function omt_filter_jobs()
             $erfahrung = cleanFilterData( get_field('erfahrung'));
             $wie_arbeiten = cleanFilterData( get_field('wie_arbeiten'));
             foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
+//echo $stadt . '-' . cleanFilterData($arbeitens) . '<br>';
+
                 if($stadt == cleanFilterData($arbeitens)):
                     array_push($arbeitenResult, $stadt);
                     array_push($occupationResult, $wie_arbeiten);
@@ -804,7 +806,7 @@ function omt_filter_jobs()
 
 
     // echo '<pre>';
-    // print_r($allCategories);
+    // print_r($arbeitenResult);
     // echo '</pre>';
 
 
@@ -831,7 +833,7 @@ add_action('wp_ajax_nopriv_do_filter_jobs', 'omt_filter_jobs');
 
 function cleanFilterData($value){
     $result = '';
-    $result = preg_replace("/[^a-zA-Z]+/", "", $value);
+    $result = preg_replace("/[^a-zA-ZäÄöÖüÜ]+/", "", $value);
     $cleaned = str_replace(' ', '', $result);
     return $cleaned;
 }

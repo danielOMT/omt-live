@@ -150,7 +150,7 @@ function display_jobs(int $anzahl = 99) { ?>
     
     function removeSpecialChar($value){
         $result = '';
-        $result = preg_replace("/[^a-zA-Z]+/", "", $value);
+        $result = preg_replace("/[^a-zA-ZäÄöÖüÜ]+/", "", $value);
         $cleaned = str_replace(' ', '', $result);
         return $cleaned;
     }
@@ -170,7 +170,7 @@ function display_jobs(int $anzahl = 99) { ?>
 
 
 
-        $result = '';
+        $result = ''; 
         $count = 0;       
         $loop = new WP_Query($args);
         $label = $field['choices'][ $value ];
@@ -187,12 +187,11 @@ function display_jobs(int $anzahl = 99) { ?>
 
         foreach ($clearedArrayCities as $key => $value) {
             if($count > 2){ $hide_cat = 'hide_city'; }
-            $helperCLass = str_replace(array( '(', ')' ), '', $value);
             $result .= '
                 <div>
                 <input type="checkbox" name="stadt" value="'.$value.'" class="omt-input jobs_filter '.$hide_cat.'" id="stadt_'.$count.'"/>
                 <label for="stadt_'.$count.'" class="'.$hide_cat.'">'.$value.'
-                    <label class="post_count stadt_c '.removeSpecialChar($helperCLass).'">('.countJobByCity($value).')</label>
+                    <label class="post_count stadt_c '.removeSpecialChar($value).'">('.countJobByCity($value).')</label>
                 </label>
                 </div>
 
@@ -281,7 +280,7 @@ function display_jobs(int $anzahl = 99) { ?>
             }
         endwhile;
         return $count;
-    } 
+    }
 
 
     function countByCategory($value){
