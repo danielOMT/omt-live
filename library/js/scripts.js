@@ -1977,6 +1977,38 @@ $(document).on("gform_confirmation_loaded", function (e, form_id) {
 });
 
 
+//job filter show more button for categories
+function show_cat(){
+    event.preventDefault();
+    $(".hide_cat").show();
+    $(".hide_categories").show();
+    $(".show_categories").hide();
+    
+}
+function hide_cat(){
+    event.preventDefault();
+    $(".hide_cat").hide();
+    $(".show_categories").show();
+    $(".hide_categories").hide();
+}
+
+//job filter show more button for cities
+function show_city(){
+    event.preventDefault();
+    $(".hide_city").show();
+    $(".hide_cities").show();
+    $(".show_cities").hide();
+    
+}
+function hide_city(){
+    event.preventDefault();
+    $(".hide_city").hide();
+    $(".show_cities").show();
+    $(".hide_cities").hide();
+}
+
+
+
 
 /*excludes wprocket
 

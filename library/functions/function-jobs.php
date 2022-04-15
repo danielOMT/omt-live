@@ -26,7 +26,10 @@ function display_jobs(int $anzahl = 99) { ?>
         'order'             => 'DESC',
     );
     ?>
-
+    <div id="filter_loader" style="display: none;">
+        <img src="/uploads/2022/03/loader_.svg">
+    </div>
+    
     <div id="jobs" class="has-margin-bottom-30">
         <?php
         $loop = new WP_Query($args);
@@ -140,4 +143,174 @@ function display_jobs(int $anzahl = 99) { ?>
         ?> </div> <?php
     wp_reset_postdata();
 } ?>
+
+
+
+<?php
+    
+    function removeSpecialChar($value){
+        $result = '';
+        $result = preg_replace("/[^a-zA-Z0-9]+/", "", $value);
+   
+$str = strtr( $str, $unwanted_array );
+        return trim($result);
+    }
+    function getCitiesForFilter(){
+
+        $args = array(
+            'posts_per_page' => $anzahl,
+            'post_type' => 'jobs',
+            'date_query' => array(
+                array(
+                    'column' => 'post_date_gmt',
+                    'after'  => '180 days ago',
+                )
+            ),
+            'order'             => 'DESC',
+        );
+
+
+
+        $result = '';
+        $count = 0;       
+        $loop = new WP_Query($args);
+        $label = $field['choices'][ $value ];
+        $cities = [];
+        $clearedArrayCities = [];
+        $helperCLass = '';
+        $hide_cat = '';
+        while ($loop->have_posts()) : $loop->the_post();
+            $field = get_field_object('stadt');
+            $value = $field['value'];
+            if(!empty($value)){array_push($cities,$value);}
+        endwhile;
+        $clearedArrayCities = array_unique($cities);
+
+        foreach ($clearedArrayCities as $key => $value) {
+            if($count > 2){ $hide_cat = 'hide_city'; }
+            $helperCLass = str_replace(array( '(', ')' ), '', $value);
+            $result .= '
+                <div>
+                <input type="checkbox" name="stadt" value="'.$value.'" class="omt-input jobs_filter '.$hide_cat.'" id="stadt_'.$count.'"/>
+                <label for="stadt_'.$count.'" class="'.$hide_cat.'">'.$value.'
+                    <label class="post_count stadt_c '.str_replace(' ', '', $helperCLass).'">('.countJobByCity($value).')</label>
+                </label>
+                </div>
+
+            '; 
+        $count ++;
+        }
+        if($count > 12){
+            $result .= '<button class="show_cities" onclick="show_city()"> <span>Mehr anzeigen</span> <i class="arrow_ down_"></i></button>
+                    <button style="display: none;" class="hide_cities" onclick="hide_city()"> <span>Weniger anzeigen</span> <i class="arrow_ up_"></i></button>';
+                }else{}
+        
+        return $result;
+    }
+
+    
+
+    function countJobByErfahrung($erfahrung){
+        $args = array(
+            'posts_per_page' => 99,
+            'post_type' => 'jobs',
+            'date_query' => array(
+                array(
+                    'column' => 'post_date_gmt',
+                    'after'  => '180 days ago',
+                )
+            ),
+            'order'             => 'DESC',
+        );
+        $count = 0;
+        $loop = new WP_Query($args);
+
+        while ($loop->have_posts()) : $loop->the_post();
+            $value = get_field('erfahrung');
+            if(!empty($value) && $value == $erfahrung){
+                $count++;
+            }
+        endwhile;
+        return $count;
+    }
+
+
+    function countJobByCity($city){
+        $args = array(
+            'posts_per_page' => 99,
+            'post_type' => 'jobs',
+            'date_query' => array(
+                array(
+                    'column' => 'post_date_gmt',
+                    'after'  => '180 days ago',
+                )
+            ),
+            'order'             => 'DESC',
+        );
+        $count = 0;
+        $loop = new WP_Query($args);
+
+        while ($loop->have_posts()) : $loop->the_post();
+            $value = get_field('stadt');
+            if(!empty($value) && $value == $city){
+                $count++;
+            }
+        endwhile;
+        return $count;
+    }
+
+
+    function countJobByBeschäftigung($Beschäftigung){
+        $args = array(
+            'posts_per_page' => 99,
+            'post_type' => 'jobs',
+            'date_query' => array(
+                array(
+                    'column' => 'post_date_gmt',
+                    'after'  => '180 days ago',
+                )
+            ),
+            'order'             => 'DESC',
+        );
+        $count = 0;
+        $loop = new WP_Query($args);
+
+        while ($loop->have_posts()) : $loop->the_post();
+            $value = get_field('wie_arbeiten');
+            if(!empty($value) && $value == $Beschäftigung){
+                $count++;
+            }
+        endwhile;
+        return $count;
+    }
+
+
+    function countByCategory($value){
+        $count = 0;
+        $cat_args = array(
+            'taxonomy' => 'jobs-categories', 
+            'orderby' => 'slug', 
+            'order' => 'ASC'
+        );
+        $cats = get_categories($cat_args); // passing in above parameters
+        foreach ($cats as $cat) : // loop through each cat
+             $cpt_query_args = new WP_Query( array(
+                'post_type' => 'jobs',
+                'jobs-categories' => $cat->name
+                )
+            );
+            if ($cpt_query_args->have_posts()) : 
+                    while ($cpt_query_args->have_posts()) : $cpt_query_args->the_post(); 
+                        if($cat->name == $value){
+                            $count++;
+                        }
+                    endwhile; 
+            endif; 
+            wp_reset_query();
+        endforeach; 
+    return $count;
+    }
+
+
+?>
 <?php ///****end of jobs-content***///?>

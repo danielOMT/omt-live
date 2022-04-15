@@ -7,6 +7,7 @@ require_once ('ajax-ebooksfilter.php');
 require_once ('ajax-webinarefilter.php');
 require_once ('ajax-podcasts.php');
 require_once ('ajax-umfrage.php');
+require_once ('ajax-job-filter.php');
 require_once ('ajax-toolkategorien.php');
 require_once('ajax-toolanbieter/ajax-toolanbieter.php');
 require_once('ajax-toolanbieter/ajax-subnav.php');
@@ -160,3 +161,12 @@ function assets_toolkategorienajax() {
     ));
 }
 add_action('wp_enqueue_scripts', 'assets_toolkategorienajax', 100);
+
+function assets_jobFilterajax() {
+    wp_enqueue_script('ajax-job-filter', get_stylesheet_directory_uri() . '/library/ajax/ajax-job-filter.js', ['jquery'], null, true);
+    wp_localize_script('ajax-job-filter', 'jobfilter', array(
+        'nonce' => wp_create_nonce('jobfilter'),
+        'ajax_url' => admin_url('admin-ajax.php')
+    ));
+}
+add_action('wp_enqueue_scripts', 'assets_jobFilterajax', 100);
