@@ -382,9 +382,9 @@ function omt_filter_jobs()
    
     }elseif(!empty($data['erfahrung']) && empty($data['categories']) && empty($data['arbeiten']) && !empty($data['occupation'])){
         while ($loop->have_posts()) : $loop->the_post();
-            $stadt = cleanFilterData( get_field('stadt') cleanFilterData( );
-            $erfahrung = cleanFilterData( get_field('erfahrung') cleanFilterData( );
-            $wie_arbeiten = cleanFilterData( get_field('wie_arbeiten') cleanFilterData( );
+            $stadt = cleanFilterData( get_field('stadt') );
+            $erfahrung = cleanFilterData( get_field('erfahrung') );
+            $wie_arbeiten = cleanFilterData( get_field('wie_arbeiten') );
 
             foreach ($data['erfahrung'] as $key => $value) :
                 foreach ($data['occupation'] as $asarbkey => $arbeitens) :
