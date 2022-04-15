@@ -150,7 +150,7 @@ function display_jobs(int $anzahl = 99) { ?>
     
     function removeSpecialChar($value){
         $result = '';
-        $result = preg_replace("/[^a-zA-Z0-9]+/", "", $value);
+        $result = preg_replace("/[^a-zA-Z]+/", "", $value);
         $cleaned = str_replace(' ', '', $result);
         return $cleaned;
     }
