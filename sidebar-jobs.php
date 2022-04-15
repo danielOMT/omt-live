@@ -25,7 +25,7 @@
 				   		<div >
 						   	<input type="checkbox"  name="category" value="<?=$cat->name; ?>" id="<?=$cat->term_id;?>" class="omt-input jobs_filter cat_f <?php if($count_cat > 2){ echo $hide_cat; }?>" />
 						   	<label class="cat_f <?php if($count_cat > 2){ echo $hide_cat; }?>" for="<?=$cat->term_id;?>"><?=$cat->name; ?> 
-						   		<label id="showCat_<?=$cat->term_id;?>" class="post_count category_c <?=$cat->name?>">(<?=countByCategory($cat->name);?>)</label>
+						   		<label id="showCat_<?=$cat->term_id;?>" class="post_count category_c <?= clean($cat->name)?>">(<?=countByCategory($cat->name);?>)</label>
 						    </label>
 					   </div>
 						<?php  $count_cat++;
