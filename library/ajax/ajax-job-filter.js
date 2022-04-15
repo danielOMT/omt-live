@@ -173,7 +173,7 @@ $('.jobs_filter').change(function() {
                             var currentErf = null;
                             var cntErf = 0;
                             for (var i = 0; i < data.erfahrung.length; i++) {
-                                console.log(data.erfahrung[i]);
+                                console.log('rame'+data.erfahrung[i]);
                                 if (data.erfahrung[i] != currentErf) {
                                     var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.erfahrung[i]);
                                     var yes_x = x_x.classList.contains(data.erfahrung[i]);
@@ -316,7 +316,6 @@ $('.jobs_filter').change(function() {
                             var currentArbeiten = null;
                             var cntArbeiten = 0;
                             for (var i = 0; i < data.arbeiten.length; i++) {
-                                console.log(data.arbeiten[i]);
                                 if (data.arbeiten[i] != currentArbeiten) {
                                     if(data.arbeiten[i] != ''){
                                         var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.arbeiten[i]);
