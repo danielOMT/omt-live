@@ -831,7 +831,7 @@ add_action('wp_ajax_nopriv_do_filter_jobs', 'omt_filter_jobs');
 
 function cleanFilterData($value){
     $result = '';
-    $result = preg_replace("/[^a-zA-Z0-9]+/", "", $value);
+    $result = preg_replace("/[^a-zA-Z]+/", "", $value);
     $cleaned = str_replace(' ', '', $result);
     return $cleaned;
 }
