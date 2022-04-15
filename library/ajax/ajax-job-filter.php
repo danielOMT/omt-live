@@ -348,9 +348,9 @@ function omt_filter_jobs()
             foreach ($data['erfahrung'] as $key => $value) :
                 foreach ($data['arbeiten'] as $asarbkey => $arbeitens) :
                     if($erfahrung == $value && $stadt == $arbeitens):
-                        array_push( $stadt) );
-                        array_push( $wie_arbeiten) );
-                        array_push( $erfahrung) );
+                        array_push( $stadt );
+                        array_push( $wie_arbeiten );
+                        array_push( $erfahrung );
                     endif;
                 endforeach;
             endforeach;
