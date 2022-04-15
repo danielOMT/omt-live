@@ -254,6 +254,7 @@ $('.jobs_filter').change(function() {
                             var cntArbeiten = 0;
                             for (var i = 0; i < data.arbeiten.length; i++) {
                                 if (data.arbeiten[i] != currentArbeiten) {
+                                    console.log(data.arbeiten[i]);
                                     var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.arbeiten[i]);
                                     var yes_x = x_x.classList.contains(data.arbeiten[i]);
                                     if (cntArbeiten > 0) {$('.'+currentArbeiten).html('('+ cntArbeiten + ')').show();}
