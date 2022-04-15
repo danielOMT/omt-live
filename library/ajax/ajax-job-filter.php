@@ -614,7 +614,6 @@ function omt_filter_jobs()
             foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
 
                 if($stadt == cleanFilterData($arbeitens)):
-                    echo $stadt .'-'. cleanFilterData($arbeitens) . '<br>';
                     array_push($arbeitenResult, $stadt);
                     array_push($occupationResult, $wie_arbeiten);
                     array_push($erfahrungResult, $erfahrung);
