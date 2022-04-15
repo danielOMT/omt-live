@@ -281,7 +281,7 @@ function display_jobs(int $anzahl = 99) { ?>
             }
         endwhile;
         return $count;
-    }
+    } 
 
 
     function countByCategory($value){
