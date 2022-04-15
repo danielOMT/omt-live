@@ -62,7 +62,6 @@ $('.jobs_filter').change(function() {
                     $("#filter_loader").hide();
                     $('#jobs').html(data.content).show();
 
-                        console.log(data.occupation);
 
                         if (resultArbeiten.length > 0 && resultOccupation.length == 0 && resultCategory == 0 && resultErfahrung.length == 0 ){
                             // occupation count 
@@ -369,6 +368,8 @@ $('.jobs_filter').change(function() {
                                 $('.'+currentCat).html('('+ cntCat + ')').show();
                             }
 
+
+                            console.log(data.erfahrung);
                             //level count
                             $('.erfahrung_c').html('(0)').show();//empty filter data
                             data.erfahrung.sort();
