@@ -65,7 +65,7 @@ $('.jobs_filter').change(function() {
 
                         if (resultArbeiten.length > 0 && resultOccupation.length == 0 && resultCategory == 0 && resultErfahrung.length == 0 ){
                             // occupation count 
-                            $('.besch_c').html('(0)').show();//empty filter data
+                            if(data.erfahrung.length > 0){$('.besch_c').html('(0)').show();//empty filter data
                             data.occupation.sort();
                             var currentOccup = null;
                             var cntOccup = 0;
@@ -82,8 +82,7 @@ $('.jobs_filter').change(function() {
                                 var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentOccup);
                                 var yes_x = x_x.classList.contains(currentOccup);
                                 $('.'+currentOccup).html('('+ cntOccup + ')').show();
-                            }
-
+                            }}
                             // Category count
                             $('.category_c').html('(0)').show();//empty filter data
                             data.categories.sort();
@@ -103,7 +102,7 @@ $('.jobs_filter').change(function() {
                                 var yes_x = x_x.classList.contains(currentCat);
                                 $('.'+currentCat).html('('+ cntCat + ')').show();
                             }
-
+                            
                             //level count
                             $('.erfahrung_c').html('(0)').show();//empty filter data
                             data.erfahrung.sort();
@@ -207,7 +206,7 @@ $('.jobs_filter').change(function() {
                             }
 
                             // occupation count 
-                            $('.besch_c').html('(0)').show();//empty filter data
+                            if(data.erfahrung.length > 0){$('.besch_c').html('(0)').show();//empty filter data
                             data.occupation.sort();
                             var currentOccup = null;
                             var cntOccup = 0;
@@ -224,8 +223,7 @@ $('.jobs_filter').change(function() {
                                 var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentOccup);
                                 var yes_x = x_x.classList.contains(currentOccup);
                                 $('.'+currentOccup).html('('+ cntOccup + ')').show();
-                            }
-
+                            }}
                             //level count
                             $('.erfahrung_c').html('(0)').show();//empty filter data
                             data.erfahrung.sort();
@@ -268,7 +266,7 @@ $('.jobs_filter').change(function() {
                             }
 
                             // occupation count 
-                            $('.besch_c').html('(0)').show();//empty filter data
+                            if(data.erfahrung.length > 0){$('.besch_c').html('(0)').show();//empty filter data
                             data.occupation.sort();
                             var currentOccup = null;
                             var cntOccup = 0;
@@ -285,8 +283,7 @@ $('.jobs_filter').change(function() {
                                 var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentOccup);
                                 var yes_x = x_x.classList.contains(currentOccup);
                                 $('.'+currentOccup).html('('+ cntOccup + ')').show();
-                            }
-
+                            }}
                             // Category count
                             $('.category_c').html('(0)').show();//empty filter data
                             data.categories.sort();
