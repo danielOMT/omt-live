@@ -162,7 +162,7 @@ $('.jobs_filter').change(function() {
                                 data.categories.sort();
                                 var currentCat = null;
                                 var cntCat = 0;
-                                for (var i = 0; i < ; i++) {
+                                for (var i = 0; i < data.categories.length; i++) {
                                     if (data.categories[i] != currentCat) {
                                         var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.categories[i]);
                                         var yes_x = x_x.classList.contains(data.categories[i]);
@@ -313,7 +313,7 @@ $('.jobs_filter').change(function() {
                                 data.categories.sort();
                                 var currentCat = null;
                                 var cntCat = 0;
-                                for (var i = 0; i < ; i++) {
+                                for (var i = 0; i < data.categories.length; i++) {
                                     if (data.categories[i] != currentCat) {
                                         var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.categories[i]);
                                         var yes_x = x_x.classList.contains(data.categories[i]);
@@ -381,7 +381,7 @@ $('.jobs_filter').change(function() {
                                 data.categories.sort();
                                 var currentCat = null;
                                 var cntCat = 0;
-                                for (var i = 0; i < ; i++) {
+                                for (var i = 0; i < data.categories.length; i++) {
                                     if (data.categories[i] != currentCat) {
                                         var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.categories[i]);
                                         var yes_x = x_x.classList.contains(data.categories[i]);
