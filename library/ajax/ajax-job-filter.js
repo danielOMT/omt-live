@@ -44,6 +44,10 @@ $('.jobs_filter').change(function() {
         });
 
 
+        //console.log(resultCategory);
+
+
+
         $.ajax({
             url: jobfilter.ajax_url,
             data: {
@@ -62,353 +66,83 @@ $('.jobs_filter').change(function() {
                     $("#filter_loader").hide();
                     $('#jobs').html(data.content).show();
 
-
-                        if (resultArbeiten.length > 0 && resultOccupation.length == 0 && resultCategory == 0 && resultErfahrung.length == 0 ){
-                            // occupation count 
-                            $('.besch_c').html('(0)').show();//empty filter data
-                            data.occupation.sort();
-                            var currentOccup = null;
-                            var cntOccup = 0;
-                            for (var i = 0; i < data.occupation.length; i++) {
-                                if (data.occupation[i] != currentOccup) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.occupation[i]);
-                                    var yes_x = x_x.classList.contains(data.occupation[i]);
-                                    if (cntOccup > 0) {$('.'+currentOccup).html('('+ cntOccup + ')').show();}
-                                    currentOccup = data.occupation[i];
-                                    cntOccup = 1;
-                                } else {cntOccup++;}
-                            }
-                            if (cntOccup > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentOccup);
-                                var yes_x = x_x.classList.contains(currentOccup);
-                                $('.'+currentOccup).html('('+ cntOccup + ')').show();
-                            }
-
-                            // Category count
-                            $('.category_c').html('(0)').show();//empty filter data
-                            data.categories.sort();
-                            var currentCat = null;
-                            var cntCat = 0;
-                            for (var i = 0; i < data.categories.length; i++) {
-                                if (data.categories[i] != currentCat) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.categories[i]);
-                                    var yes_x = x_x.classList.contains(data.categories[i]);
-                                    if (cntCat > 0) { $('.'+currentCat).html('('+ cntCat + ')').show();}
-                                    currentCat = data.categories[i];
-                                    cntCat = 1;
-                                } else {cntCat++;}
-                            }
-                            if (cntCat > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentCat);
-                                var yes_x = x_x.classList.contains(currentCat);
-                                $('.'+currentCat).html('('+ cntCat + ')').show();
-                            }
-
-                            //level count
-                            $('.erfahrung_c').html('(0)').show();//empty filter data
-                            data.erfahrung.sort();
-                            var currentErf = null;
-                            var cntErf = 0;
-                            for (var i = 0; i < data.erfahrung.length; i++) {
-                                if (data.erfahrung[i] != currentErf) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.erfahrung[i]);
-                                    var yes_x = x_x.classList.contains(data.erfahrung[i]);
-                                    if (cntErf > 0) {$('.'+currentErf).html('('+ cntErf + ')').show();}
-                                    currentErf = data.erfahrung[i];
-                                    cntErf = 1;
-                                } else {cntErf++;}
-                            }
-                            if (cntErf > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentErf);
-                                var yes_x = x_x.classList.contains(currentErf);
-                                $('.'+currentErf).html('('+ cntErf + ')').show();
-                            }
-
-                           
-                        }else if(resultArbeiten.length == 0 && resultOccupation.length > 0 && resultCategory == 0 && resultErfahrung.length == 0){
-                                //City count
-                            $('.stadt_c').html('(0)').show();//empty filter data
-                            data.arbeiten.sort();
-                            var currentArbeiten = null;
-                            var cntArbeiten = 0;
-                            for (var i = 0; i < data.arbeiten.length; i++) {
-                                if (data.arbeiten[i] != currentArbeiten) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.arbeiten[i]);
-                                    var yes_x = x_x.classList.contains(data.arbeiten[i]);
-                                    if (cntArbeiten > 0) {$('.'+currentArbeiten).html('('+ cntArbeiten + ')').show();}
-                                    currentArbeiten = data.arbeiten[i];
-                                    cntArbeiten = 1;
-                                } else {cntArbeiten++;}
-                            }
-                            if (cntArbeiten > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentArbeiten);
-                                var yes_x = x_x.classList.contains(currentArbeiten);
-                                $('.'+currentArbeiten).html('('+ cntArbeiten + ')').show();
-                            }
-
-                            // Category count
-                            $('.category_c').html('(0)').show();//empty filter data
-                            data.categories.sort();
-                            var currentCat = null;
-                            var cntCat = 0;
-                            for (var i = 0; i < data.categories.length; i++) {
-                                if (data.categories[i] != currentCat) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.categories[i]);
-                                    var yes_x = x_x.classList.contains(data.categories[i]);
-                                    if (cntCat > 0) { $('.'+currentCat).html('('+ cntCat + ')').show();}
-                                    currentCat = data.categories[i];
-                                    cntCat = 1;
-                                } else {cntCat++;}
-                            }
-                            if (cntCat > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentCat);
-                                var yes_x = x_x.classList.contains(currentCat);
-                                $('.'+currentCat).html('('+ cntCat + ')').show();
-                            }
-
-                            //level count
-                            $('.erfahrung_c').html('(0)').show();//empty filter data
-                            data.erfahrung.sort();
-                            var currentErf = null;
-                            var cntErf = 0;
-                            for (var i = 0; i < data.erfahrung.length; i++) {
-                                if (data.erfahrung[i] != currentErf) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.erfahrung[i]);
-                                    var yes_x = x_x.classList.contains(data.erfahrung[i]);
-                                    if (cntErf > 0) {$('.'+currentErf).html('('+ cntErf + ')').show();}
-                                    currentErf = data.erfahrung[i];
-                                    cntErf = 1;
-                                } else {cntErf++;}
-                            }
-                            if (cntErf > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentErf);
-                                var yes_x = x_x.classList.contains(currentErf);
-                                $('.'+currentErf).html('('+ cntErf + ')').show();
-                            }  
-                        }else if(resultArbeiten.length == 0 && resultOccupation.length == 0 && resultCategory  > 0 && resultErfahrung.length == 0){
-                            //City count
-                            $('.stadt_c').html('(0)').show();//empty filter data
-                            data.arbeiten.sort();
-                            var currentArbeiten = null;
-                            var cntArbeiten = 0;
-                            for (var i = 0; i < data.arbeiten.length; i++) {
-                                if (data.arbeiten[i] != currentArbeiten) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.arbeiten[i]);
-                                    var yes_x = x_x.classList.contains(data.arbeiten[i]);
-                                    if (cntArbeiten > 0) {$('.'+currentArbeiten).html('('+ cntArbeiten + ')').show();}
-                                    currentArbeiten = data.arbeiten[i];
-                                    cntArbeiten = 1;
-                                } else {cntArbeiten++;}
-                            }
-                            if (cntArbeiten > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentArbeiten);
-                                var yes_x = x_x.classList.contains(currentArbeiten);
-                                $('.'+currentArbeiten).html('('+ cntArbeiten + ')').show();
-                            }
-
-                            // occupation count 
-                            $('.besch_c').html('(0)').show();//empty filter data
-                            data.occupation.sort();
-                            var currentOccup = null;
-                            var cntOccup = 0;
-                            for (var i = 0; i < data.occupation.length; i++) {
-                                if (data.occupation[i] != currentOccup) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.occupation[i]);
-                                    var yes_x = x_x.classList.contains(data.occupation[i]);
-                                    if (cntOccup > 0) {$('.'+currentOccup).html('('+ cntOccup + ')').show();}
-                                    currentOccup = data.occupation[i];
-                                    cntOccup = 1;
-                                } else {cntOccup++;}
-                            }
-                            if (cntOccup > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentOccup);
-                                var yes_x = x_x.classList.contains(currentOccup);
-                                $('.'+currentOccup).html('('+ cntOccup + ')').show();
-                            }
-
-                            //level count
-                            $('.erfahrung_c').html('(0)').show();//empty filter data
-                            data.erfahrung.sort();
-                            var currentErf = null;
-                            var cntErf = 0;
-                            for (var i = 0; i < data.erfahrung.length; i++) {
-                                if (data.erfahrung[i] != currentErf) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.erfahrung[i]);
-                                    var yes_x = x_x.classList.contains(data.erfahrung[i]);
-                                    if (cntErf > 0) {$('.'+currentErf).html('('+ cntErf + ')').show();}
-                                    currentErf = data.erfahrung[i];
-                                    cntErf = 1;
-                                } else {cntErf++;}
-                            }
-                            if (cntErf > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentErf);
-                                var yes_x = x_x.classList.contains(currentErf);
-                                $('.'+currentErf).html('('+ cntErf + ')').show();
-                            }
-                        }else if(resultArbeiten.length == 0 && resultOccupation.length == 0 && resultCategory == 0 && resultErfahrung.length > 0){
-                            
-                            //City count
-                            $('.stadt_c').html('(0)').show();//empty filter data
-                            data.arbeiten.sort();
-                            var currentArbeiten = null;
-                            var cntArbeiten = 0;
-                            for (var i = 0; i < data.arbeiten.length; i++) {
-                                if (data.arbeiten[i] != currentArbeiten) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.arbeiten[i]);
-                                    var yes_x = x_x.classList.contains(data.arbeiten[i]);
-                                    if (cntArbeiten > 0) {$('.'+currentArbeiten).html('('+ cntArbeiten + ')').show();}
-                                    currentArbeiten = data.arbeiten[i];
-                                    cntArbeiten = 1;
-                                } else {cntArbeiten++;}
-                            }
-                            if (cntArbeiten > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentArbeiten);
-                                var yes_x = x_x.classList.contains(currentArbeiten);
-                                $('.'+currentArbeiten).html('('+ cntArbeiten + ')').show();
-                            }
-
-                            // occupation count 
-                            $('.besch_c').html('(0)').show();//empty filter data
-                            data.occupation.sort();
-                            var currentOccup = null;
-                            var cntOccup = 0;
-                            for (var i = 0; i < data.occupation.length; i++) {
-                                if (data.occupation[i] != currentOccup) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.occupation[i]);
-                                    var yes_x = x_x.classList.contains(data.occupation[i]);
-                                    if (cntOccup > 0) {$('.'+currentOccup).html('('+ cntOccup + ')').show();}
-                                    currentOccup = data.occupation[i];
-                                    cntOccup = 1;
-                                } else {cntOccup++;}
-                            }
-                            if (cntOccup > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentOccup);
-                                var yes_x = x_x.classList.contains(currentOccup);
-                                $('.'+currentOccup).html('('+ cntOccup + ')').show();
-                            }
-
-                            // Category count
-                            $('.category_c').html('(0)').show();//empty filter data
-                            data.categories.sort();
-                            var currentCat = null;
-                            var cntCat = 0;
-                            for (var i = 0; i < data.categories.length; i++) {
-                                if (data.categories[i] != currentCat) {
-                                    var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.categories[i]);
-                                    var yes_x = x_x.classList.contains(data.categories[i]);
-                                    if (cntCat > 0) { $('.'+currentCat).html('('+ cntCat + ')').show();}
-                                    currentCat = data.categories[i];
-                                    cntCat = 1;
-                                } else {cntCat++;}
-                            }
-                            if (cntCat > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentCat);
-                                var yes_x = x_x.classList.contains(currentCat);
-                                $('.'+currentCat).html('('+ cntCat + ')').show();
-                            }
-                          
-                        }else{
-                            //City count
-                            $('.stadt_c').html('(0)').show();//empty filter data
-                            data.arbeiten.sort();
-                            var currentArbeiten = null;
-                            var cntArbeiten = 0;
-                            for (var i = 0; i < data.arbeiten.length; i++) {
-                                console.log(data.arbeiten[i]);
-                                if (data.arbeiten[i] != currentArbeiten) {
-                                    if(data.arbeiten[i] != ''){
-                                        var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.arbeiten[i]);
-                                        var yes_x = x_x.classList.contains(data.arbeiten[i]);
-                                        if (cntArbeiten > 0) {$('.'+currentArbeiten).html('('+ cntArbeiten + ')').show();}
-                                        currentArbeiten = data.arbeiten[i];
-                                        cntArbeiten = 1;
-                                    }
-                                } else {cntArbeiten++;}
-                            }
-                            if (cntArbeiten > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentArbeiten);
-                                var yes_x = x_x.classList.contains(currentArbeiten);
-                                $('.'+currentArbeiten).html('('+ cntArbeiten + ')').show();
-                            }
-
-                            // occupation count 
-                            $('.besch_c').html('(0)').show();//empty filter data
-                            data.occupation.sort();
-                            var currentOccup = null;
-                            var cntOccup = 0;
-                            for (var i = 0; i < data.occupation.length; i++) {
-                                if (data.occupation[i] != currentOccup) {
-                                    if(data.occupation[i] != ''){
-                                        var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.occupation[i]);
-                                        var yes_x = x_x.classList.contains(data.occupation[i]);
-                                        if (cntOccup > 0) {$('.'+currentOccup).html('('+ cntOccup + ')').show();}
-                                        currentOccup = data.occupation[i];
-                                        cntOccup = 1;
-                                    }
-                                } else {cntOccup++;}
-                            }
-                            if (cntOccup > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentOccup);
-                                var yes_x = x_x.classList.contains(currentOccup);
-                                $('.'+currentOccup).html('('+ cntOccup + ')').show();
-                            }
-
-                            // Category count
-                            $('.category_c').html('(0)').show();//empty filter data
-                            data.categories.sort();
-                            var currentCat = null;
-                            var cntCat = 0;
-                            for (var i = 0; i < data.categories.length; i++) {
-                                if (data.categories[i] != currentCat) {
-                                    if(data.categories[i] != ''){
-                                        var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.categories[i]);
-                                        var yes_x = x_x.classList.contains(data.categories[i]);
-                                        if (cntCat > 0) { $('.'+currentCat).html('('+ cntCat + ')').show();}
-                                        currentCat = data.categories[i];
-                                        cntCat = 1;
-                                    }
-                                } else {cntCat++;}
-                            }
-                            if (cntCat > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentCat);
-                                var yes_x = x_x.classList.contains(currentCat);
-                                $('.'+currentCat).html('('+ cntCat + ')').show();
-                            }
-
-                            //level count
-                            $('.erfahrung_c').html('(0)').show();//empty filter data
-                            data.erfahrung.sort();
-                            var currentErf = null;
-                            var cntErf = 0;
-                            for (var i = 0; i < data.erfahrung.length; i++) {
-                                if (data.erfahrung[i] != currentErf) {
-                                    if(data.erfahrung[i] != ''){
-                                        var x_x = document.getElementById("jobs_filter_form").querySelector("."+data.erfahrung[i]);
-                                        var yes_x = x_x.classList.contains(data.erfahrung[i]);
-                                        if (cntErf > 0) {$('.'+currentErf).html('('+ cntErf + ')').show();}
-                                        currentErf = data.erfahrung[i];
-                                        cntErf = 1;
-                                    }
-                                } else {cntErf++;}
-                            }
-                            if (cntErf > 0) {
-                                var x_x = document.getElementById("jobs_filter_form").querySelector("."+currentErf);
-                                var yes_x = x_x.classList.contains(currentErf);
-                                $('.'+currentErf).html('('+ cntErf + ')').show();
-                            }      
-                        }
-
-                        
+                    // Category count
+                    $('.category_c').html('(0)').show();//empty filter data
+                    data.categories.sort();
+                    var currentCat = null;
+                    var cntCat = 0;
+                    for (var i = 0; i < data.categories.length; i++) {
+                        if (data.categories[i] != currentCat) {
+                            categoriesSel = $("#jobs_filter_form").find("[data-selector='" +currentCat + "']"); 
+                            if (cntCat > 0) { $('#'+categoriesSel[0].id).html('('+ cntCat + ')').show();}
+                            currentCat = data.categories[i];
+                            cntCat = 1;
+                        } else {cntCat++;}
+                    }
+                    if (cntCat > 0) {
+                        categoriesSel = $("#jobs_filter_form").find("[data-selector='" + currentCat + "']"); 
+                        $('#'+categoriesSel[0].id).html('('+ cntCat + ')').show();
+                    }
 
 
-                        
+                    //Occupation count
+                    $('.besch_c').html('(0)').show();//empty filter data
+                    data.occupation.sort();
+                    var currentOcc = null;
+                    var cntOcc = 0;
+                    for (var i = 0; i < data.occupation.length; i++) {
+                        if (data.occupation[i] != currentOcc) {
+                            occupationSel = $("#jobs_filter_form").find("[data-selector='" +currentOcc + "']"); 
+                            if (cntOcc > 0) { $('#'+occupationSel[0].id).html('('+ cntOcc + ')').show();}
+                            currentOcc = data.occupation[i];
+                            cntOcc = 1;
+                        } else {cntOcc++;}
+                    }
+                    if (cntOcc > 0) {
+                        occupationSel = $("#jobs_filter_form").find("[data-selector='" + currentOcc + "']"); 
+                        $('#'+occupationSel[0].id).html('('+ cntOcc + ')').show();
+                    }
 
-                         
 
+                    //Occupation count
+                    $('.stadt_c').html('(0)').show();//empty filter data
+
+                    data.arbeiten.sort();
+                    var currentArd = null;
+                    var cntArb = 0;
+                    for (var i = 0; i < data.arbeiten.length; i++) {
+                        if (data.arbeiten[i] != currentArd) {
+                            arbeitenSel = $("#jobs_filter_form").find("[data-selector='" +currentArd + "']"); 
+                            if (cntArb > 0) { $('#'+arbeitenSel[0].id).html('('+ cntArb + ')').show();}
+                            currentArd = data.arbeiten[i];
+                            cntArb = 1;
+                        } else {cntArb++;}
+                    }
+                    if (cntArb > 0) {
+                        arbeitenSel = $("#jobs_filter_form").find("[data-selector='" + currentArd + "']"); 
+
+                        $('#'+arbeitenSel[0].id).html('('+ cntArb + ')').show();
+                    }
+
+                    //Erfahrung count
+                    $('.erfahrung_c').html('(0)').show();//empty filter data
+                    data.erfahrung.sort();
+                    var currentErf = null;
+                    var cntErf = 0;
+                    for (var i = 0; i < data.erfahrung.length; i++) {
+                        if (data.erfahrung[i] != currentErf) {
+                            erfahrungSel = $("#jobs_filter_form").find("[data-selector='" +currentErf + "']"); 
+                            if (cntErf > 0) { $('#'+erfahrungSel[0].id).html('('+ cntErf + ')').show();}
+                            currentErf = data.erfahrung[i];
+                            cntErf = 1;
+                        } else {cntErf++;}
+                    }
+                    if (cntErf > 0) {
+                        erfahrungSel = $("#jobs_filter_form").find("[data-selector='" + currentErf + "']"); 
+                        $('#'+erfahrungSel[0].id).html('('+ cntErf + ')').show();
+                    }
                     
-                } else if (data.status === 201) {
-
-                }
+                } else if (data.status === 201) {}
             },
             complete: function (data, textStatus) {
                 msg = textStatus;
@@ -418,5 +152,6 @@ $('.jobs_filter').change(function() {
             }
         });
 });
+
 
 

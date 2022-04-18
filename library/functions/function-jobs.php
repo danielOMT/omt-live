@@ -178,6 +178,8 @@ function display_jobs(int $anzahl = 99) { ?>
         $clearedArrayCities = [];
         $helperCLass = '';
         $hide_cat = '';
+        $stadt_id = 540;
+        $conc_id = 0;
         while ($loop->have_posts()) : $loop->the_post();
             $field = get_field_object('stadt');
             $value = $field['value'];
@@ -186,19 +188,20 @@ function display_jobs(int $anzahl = 99) { ?>
         $clearedArrayCities = array_unique($cities);
 
         foreach ($clearedArrayCities as $key => $value) {
+            $conc_id = $stadt_id+$count;
             if($count > 2){ $hide_cat = 'hide_city'; }
             $result .= '
                 <div>
-                <input type="checkbox" name="stadt" value="'.$value.'" class="omt-input jobs_filter '.$hide_cat.'" id="stadt_'.$count.'"/>
-                <label for="stadt_'.$count.'" class="'.$hide_cat.'">'.$value.'
-                    <label class="post_count stadt_c '.removeSpecialChar($value).'">('.countJobByCity($value).')</label>
+                <input type="checkbox" name="stadt" value="'.$value.'" class="omt-input jobs_filter '.$hide_cat.'" id="'.$conc_id.'"/>
+                <label for="'.$conc_id.'"  class="'.$hide_cat.'">'.$value.'
+                    <label id="showstadt_'.$conc_id.'" data-selector="'.$value.'" class="post_count stadt_c '.$value.'">('.countJobByCity($value).')</label>
                 </label>
                 </div>
 
             '; 
         $count ++;
         }
-        if($count > 12){
+        if($count > 2){
             $result .= '<button class="show_cities" onclick="show_city()"> <span>Mehr anzeigen</span> <i class="arrow_ down_"></i></button>
                     <button style="display: none;" class="hide_cities" onclick="hide_city()"> <span>Weniger anzeigen</span> <i class="arrow_ up_"></i></button>';
                 }else{}
