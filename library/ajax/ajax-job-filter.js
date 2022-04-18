@@ -74,14 +74,20 @@ $('.jobs_filter').change(function() {
                     for (var i = 0; i < data.categories.length; i++) {
                         if (data.categories[i] != currentCat) {
                             categoriesSel = $("#jobs_filter_form").find("[data-selector='" +currentCat + "']"); 
-                            if (cntCat > 0) { $('#'+categoriesSel[0].id).html('('+ cntCat + ')').show();}
+                            if (cntCat > 0) {
+                                if(notEmpty(categoriesSel)){
+                                    $('#'+categoriesSel[0].id).html('('+ cntCat + ')').show();}
+                                }
                             currentCat = data.categories[i];
                             cntCat = 1;
                         } else {cntCat++;}
                     }
                     if (cntCat > 0) {
                         categoriesSel = $("#jobs_filter_form").find("[data-selector='" + currentCat + "']"); 
-                        $('#'+categoriesSel[0].id).html('('+ cntCat + ')').show();
+                        if(notEmpty(categoriesSel)){
+                            $('#'+categoriesSel[0].id).html('('+ cntCat + ')').show();
+                        }
+                        
                     }
 
 
@@ -93,14 +99,20 @@ $('.jobs_filter').change(function() {
                     for (var i = 0; i < data.occupation.length; i++) {
                         if (data.occupation[i] != currentOcc) {
                             occupationSel = $("#jobs_filter_form").find("[data-selector='" +currentOcc + "']"); 
-                            if (cntOcc > 0) { $('#'+occupationSel[0].id).html('('+ cntOcc + ')').show();}
+                            if (cntOcc > 0) {
+                                if(notEmpty(occupationSel)){
+                                    $('#'+occupationSel[0].id).html('('+ cntOcc + ')').show();
+                                }
+                            }
                             currentOcc = data.occupation[i];
                             cntOcc = 1;
                         } else {cntOcc++;}
                     }
                     if (cntOcc > 0) {
                         occupationSel = $("#jobs_filter_form").find("[data-selector='" + currentOcc + "']"); 
-                        $('#'+occupationSel[0].id).html('('+ cntOcc + ')').show();
+                        if(notEmpty(occupationSel)){
+                            $('#'+occupationSel[0].id).html('('+ cntOcc + ')').show();
+                        }
                     }
 
 
@@ -113,18 +125,25 @@ $('.jobs_filter').change(function() {
                     for (var i = 0; i < data.arbeiten.length; i++) {
                         if (data.arbeiten[i] != currentArd) {
                             arbeitenSel = $("#jobs_filter_form").find("[data-selector='" +currentArd + "']"); 
-                            if (cntArb > 0) { $('#'+arbeitenSel[0].id).html('('+ cntArb + ')').show();}
+                            if (cntArb > 0) { 
+                                if(notEmpty(arbeitenSel)){
+                                    $('#'+arbeitenSel[0].id).html('('+ cntArb + ')').show();
+                                }
+                            }
                             currentArd = data.arbeiten[i];
                             cntArb = 1;
                         } else {cntArb++;}
                     }
                     if (cntArb > 0) {
                         arbeitenSel = $("#jobs_filter_form").find("[data-selector='" + currentArd + "']"); 
-
-                        $('#'+arbeitenSel[0].id).html('('+ cntArb + ')').show();
+                        if(notEmpty(arbeitenSel)){
+                            $('#'+arbeitenSel[0].id).html('('+ cntArb + ')').show();
+                        }
+                        
                     }
 
                     //Erfahrung count
+                    console.log(data.erfahrung);
                     $('.erfahrung_c').html('(0)').show();//empty filter data
                     data.erfahrung.sort();
                     var currentErf = null;
@@ -132,14 +151,21 @@ $('.jobs_filter').change(function() {
                     for (var i = 0; i < data.erfahrung.length; i++) {
                         if (data.erfahrung[i] != currentErf) {
                             erfahrungSel = $("#jobs_filter_form").find("[data-selector='" +currentErf + "']"); 
-                            if (cntErf > 0) { $('#'+erfahrungSel[0].id).html('('+ cntErf + ')').show();}
+                            if (cntErf > 0) { 
+                                if(notEmpty(erfahrungSel)){
+                                    $('#'+erfahrungSel[0].id).html('('+ cntErf + ')').show();
+                                }
+                            }
                             currentErf = data.erfahrung[i];
                             cntErf = 1;
                         } else {cntErf++;}
                     }
                     if (cntErf > 0) {
                         erfahrungSel = $("#jobs_filter_form").find("[data-selector='" + currentErf + "']"); 
-                        $('#'+erfahrungSel[0].id).html('('+ cntErf + ')').show();
+                        if (erfahrungSel[0] !== null){
+                        }else{
+                            $('#'+erfahrungSel[0].id).html('('+ cntErf + ')').show();
+                        }
                     }
                     
                 } else if (data.status === 201) {}
@@ -155,3 +181,11 @@ $('.jobs_filter').change(function() {
 
 
 
+function notEmpty(obj) {
+    if(Object.keys(obj).length === 0){
+        $result = false;
+    }else{
+        $result = true;
+    }
+    return $result;
+}
