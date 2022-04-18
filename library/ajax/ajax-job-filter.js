@@ -82,7 +82,8 @@ $('.jobs_filter').change(function() {
                     }
                     if (cntCat > 0) {
                         categoriesSel = $("#jobs_filter_form").find("[data-selector='" + currentCat + "']"); 
-                        if(notEmpty(categoriesSel)){
+                        if (categoriesSel[0] !== null){
+                        }else{
                             $('#'+categoriesSel[0].id).html('('+ cntCat + ')').show();
                         }
                         
@@ -106,7 +107,8 @@ $('.jobs_filter').change(function() {
                     }
                     if (cntOcc > 0) {
                         occupationSel = $("#jobs_filter_form").find("[data-selector='" + currentOcc + "']"); 
-                        if(notEmpty(occupationSel)){
+                        if (occupationSel[0] !== null){
+                        }else{
                             $('#'+occupationSel[0].id).html('('+ cntOcc + ')').show();
                         }
                     }
@@ -130,10 +132,11 @@ $('.jobs_filter').change(function() {
                     }
                     if (cntArb > 0) {
                         arbeitenSel = $("#jobs_filter_form").find("[data-selector='" + currentArd + "']"); 
-                        if(notEmpty(arbeitenSel)){
-                            $('#'+arbeitenSel[0].id).html('('+ cntArb + ')').show();
+        
+                        if (arbeitenSel[0] !== null){
+                        }else{
+                           $('#'+arbeitenSel[0].id).html('('+ cntArb + ')').show();
                         }
-                        
                     }
 
                     //Erfahrung count
