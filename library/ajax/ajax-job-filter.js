@@ -75,10 +75,8 @@ $('.jobs_filter').change(function() {
                         if (data.categories[i] != currentCat) {
                             categoriesSel = $("#jobs_filter_form").find("[data-selector='" +currentCat + "']"); 
                             if (cntCat > 0) {
-                                if(notEmpty(categoriesSel)){
                                     $('#'+categoriesSel[0].id).html('('+ cntCat + ')').show();}
-                                }
-                            currentCat = data.categories[i];
+                                    currentCat = data.categories[i];
                             cntCat = 1;
                         } else {cntCat++;}
                     }
@@ -102,9 +100,7 @@ $('.jobs_filter').change(function() {
                         if (data.occupation[i] != currentOcc) {
                             occupationSel = $("#jobs_filter_form").find("[data-selector='" +currentOcc + "']"); 
                             if (cntOcc > 0) {
-                                if(notEmpty(occupationSel)){
                                     $('#'+occupationSel[0].id).html('('+ cntOcc + ')').show();
-                                }
                             }
                             currentOcc = data.occupation[i];
                             cntOcc = 1;
@@ -130,9 +126,7 @@ $('.jobs_filter').change(function() {
                         if (data.arbeiten[i] != currentArd) {
                             arbeitenSel = $("#jobs_filter_form").find("[data-selector='" +currentArd + "']"); 
                             if (cntArb > 0) { 
-                                if(notEmpty(arbeitenSel)){
                                     $('#'+arbeitenSel[0].id).html('('+ cntArb + ')').show();
-                                }
                             }
                             currentArd = data.arbeiten[i];
                             cntArb = 1;
@@ -158,10 +152,8 @@ $('.jobs_filter').change(function() {
                         if (data.erfahrung[i] != currentErf) {
                             erfahrungSel = $("#jobs_filter_form").find("[data-selector='" +currentErf + "']"); 
                             if (cntErf > 0) { 
-                                if(notEmpty(erfahrungSel)){
                                     $('#'+erfahrungSel[0].id).html('('+ cntErf + ')').show();
-                                }
-                            }
+                                                            }
                             currentErf = data.erfahrung[i];
                             cntErf = 1;
                         } else {cntErf++;}
