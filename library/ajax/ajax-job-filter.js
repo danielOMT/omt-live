@@ -163,8 +163,9 @@ $('.jobs_filter').change(function() {
                     if (cntErf > 0) {
                         erfahrungSel = $("#jobs_filter_form").find("[data-selector='" + currentErf + "']"); 
                         if (erfahrungSel[0] !== null){
-                        }else{
                             $('#'+erfahrungSel[0].id).html('('+ cntErf + ')').show();
+                        }else{
+                            
                         }
                     }
                     
