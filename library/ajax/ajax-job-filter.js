@@ -84,8 +84,10 @@ $('.jobs_filter').change(function() {
                     }
                     if (cntCat > 0) {
                         categoriesSel = $("#jobs_filter_form").find("[data-selector='" + currentCat + "']"); 
-                        if(notEmpty(categoriesSel)){
+                        if (categoriesSel[0] !== null){
                             $('#'+categoriesSel[0].id).html('('+ cntCat + ')').show();
+                        }else{
+                            
                         }
                         
                     }
@@ -110,8 +112,10 @@ $('.jobs_filter').change(function() {
                     }
                     if (cntOcc > 0) {
                         occupationSel = $("#jobs_filter_form").find("[data-selector='" + currentOcc + "']"); 
-                        if(notEmpty(occupationSel)){
+                        if (occupationSel[0] !== null){
                             $('#'+occupationSel[0].id).html('('+ cntOcc + ')').show();
+                        }else{
+                            
                         }
                     }
 
@@ -136,8 +140,10 @@ $('.jobs_filter').change(function() {
                     }
                     if (cntArb > 0) {
                         arbeitenSel = $("#jobs_filter_form").find("[data-selector='" + currentArd + "']"); 
-                        if(notEmpty(arbeitenSel)){
+                        if (arbeitenSel[0] !== null){
                             $('#'+arbeitenSel[0].id).html('('+ cntArb + ')').show();
+                        }else{
+                            
                         }
                         
                     }
