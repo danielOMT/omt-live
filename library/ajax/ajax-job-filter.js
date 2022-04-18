@@ -106,14 +106,14 @@ $('.jobs_filter').change(function() {
                             cntOcc = 1;
                         } else {cntOcc++;}
                     }
-                    if (cntOcc > 0) {
-                        occupationSel = $("#jobs_filter_form").find("[data-selector='" + currentOcc + "']"); 
-                        if (occupationSel[0] !== null){
-                            $('#'+occupationSel[0].id).html('('+ cntOcc + ')').show();
-                        }else{
+                    // if (cntOcc > 0) {
+                    //     occupationSel = $("#jobs_filter_form").find("[data-selector='" + currentOcc + "']"); 
+                    //     if (occupationSel[0] !== null){
+                    //         $('#'+occupationSel[0].id).html('('+ cntOcc + ')').show();
+                    //     }else{
                             
-                        }
-                    }
+                    //     }
+                    // }
 
 
                     //Occupation count
