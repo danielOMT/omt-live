@@ -16,7 +16,7 @@
 <div id="sidebar1" class="sidebar fourcol last clearfix" role="complementary" >	
 	<?php if (is_active_sidebar('jobs')) : ?>
 
-		<?php if(true):?>
+		<?php if(is_page(315098)):?>
 		<div class="job_filter_box">
 			<form id="jobs_filter_form">
 				<h5 class="filter_title"><?php _e('Kategorien', 'jobs'); ?></h5>
