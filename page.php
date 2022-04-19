@@ -45,6 +45,7 @@ $shariff_aktivieren = get_field('shariff_aktivieren');
 $shariff_headline = get_field('shariff_headline');
 $sidebar_welche = get_field('sidebar_welche');
 $sticky_button_text = get_field('sticky_button_text');
+$bewertungslogos_links_sticky = get_field('bewertungslogos_links_sticky');
 $produkt_sticky = get_field('produkt_sticky');
 $sticky_button_text_nach_counter = get_field('sticky_button_text_nach_counter');
 $sticky_button_link = get_field('sticky_button_link');
