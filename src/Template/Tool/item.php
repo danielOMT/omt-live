@@ -14,7 +14,7 @@ use OMT\Model\PostModel;
                 src="<?php echo $this->tool->logo ?: placeholderImage() ?>"
             />
         </div>
-        <div class="tool-name">
+        <div class="tool-name single-tool-name">
             <h3>
                 <?php if ($this->tool->status === PostModel::POST_STATUS_PUBLISH) : ?>
                     <a href="<?php echo $this->tool->url ?>" target="_blank"><?php echo $this->tool->preview_title ?></a>

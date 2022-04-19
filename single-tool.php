@@ -425,7 +425,7 @@ if (!$current_fp) { ?>
                     <?php }
                 }
                 if( strlen($buttons_anzeigen) == 0 ) { ?>
-                    <div class="widget widget-nochfragen widget-toolskontakt">
+                    <div id="toolskontakt" class="widget widget-nochfragen widget-toolskontakt">
                         <h4 class="widgettitle">Ist das Dein Tool?<br>Möchtest Du es aktualisieren oder vermarkten?</h4>
                         <div class="buttons-wrap">
                             <a class="button button-testen button-red button-350px" href="/online-marketing-tools/kontakt/">Schick uns eine E-Mail</a>
