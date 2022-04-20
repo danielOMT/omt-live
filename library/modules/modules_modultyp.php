@@ -346,8 +346,8 @@ switch ($zeile['inhaltstyp'][0]['acf_fc_layout']) {
         include('module-teaser-podcast.php');
         break;
 
-    case "podcast_teaser":
-        include('module-teaser-podcast.php');
+    case "omt_podcast_teaser":
+        include('module-omt-podcast.php');
         break;
         
     case "themenwelten_uebersicht":
