@@ -39,6 +39,9 @@ switch ($zeile['inhaltstyp'][0]['acf_fc_layout']) {
     case "podcast_teaser":
         $rowclass = "wrap podcast-teaser-wrap";
         break;
+    case "omt_podcast_teaser":
+        $rowclass = "wrap podcast-teaser-wrap";
+        break;
     case "club_teaser":
         $rowclass = "wrap club-teaser-wrap";
     break;

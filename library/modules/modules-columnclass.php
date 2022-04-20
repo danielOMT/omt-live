@@ -229,6 +229,9 @@
     case "podcast_teaser":
         $columnclass = "podcast-teaser";
         break;
+    case "omt_podcast_teaser":
+        $columnclass = "omt-podcast-teaser";
+        break;
     case "themenwelten_uebersicht":
         $columnclass = "teaser-modul themenwelten-modul";
         break;
