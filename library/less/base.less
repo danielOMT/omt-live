@@ -10344,8 +10344,8 @@ input {
 
 .sticky-bewertungslogos {
   width: 200px;
-  position: absolute;
-  left: 200px;
+  position: fixed;
+  left: 190px;
   padding-top: 18px;
   .widget-title {
     font-family: "Sanuk W01 Black", sans-serif;
@@ -10354,5 +10354,26 @@ input {
     color: #004490;
     font-size: 20px;
     line-height: 26px;
+  }
+}
+
+/*----------------- podcast module -----------------*/
+
+.omt-podcast-teaser {
+  display: flex;
+  .podcast-right {
+    width: 539px;
+    float: left;
+    margin-left: 30px;
+  }
+}
+.podcast-right {
+  p {
+    margin-bottom: 5px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .omt-podcast-teaser {
+    display: block;
   }
 }
