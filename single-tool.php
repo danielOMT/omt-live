@@ -314,7 +314,9 @@ if (!$current_fp) { ?>
         //testbericht
         $anwendungstipps = get_field('anwendungstipps');
         $anwendungstipps_autor = get_field('anwendungstipps_autor');
-
+        $helper_class = '';
+        $get_title = getToolTitle(get_the_title(), $h1, $inhalt, $testbericht_zeilen, $buttons_anzeigen);
+            if ( strlen($get_title) > 30 )  {$helper_class = 'tol-name-pos'; }
 
         ?>
         <div class="tool-header">
@@ -330,7 +332,7 @@ if (!$current_fp) { ?>
                 <div class="tool-about">
                     <div class="tool-name">
                         <div class="headline-wrap">
-                            <h1><?php echo getToolTitle(get_the_title(), $h1, $inhalt, $testbericht_zeilen, $buttons_anzeigen) ?></h1>
+                            <h1><?php echo $get_title; ?></h1>
                             <?php if (1 == $buttons_anzeigen && strlen($zum_toolanbieter) > 0) { ?>
                                 <a rel="nofollow" id="<?php print get_the_title();?>" class="" target="_blank" class="header-toolanbieter"  href="<?php print $zum_toolanbieter;?>">
                                     <?php print $website_label;?></a>
