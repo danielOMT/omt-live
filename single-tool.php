@@ -330,7 +330,7 @@ if (!$current_fp) { ?>
                     />
                 </div>
                 <div class="tool-about">
-                    <div class="tool-name">
+                    <div class="tool-name <?=$helper_class;?>">
                         <div class="headline-wrap">
                             <h1><?php echo $get_title; ?></h1>
                             <?php if (1 == $buttons_anzeigen && strlen($zum_toolanbieter) > 0) { ?>
