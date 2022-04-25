@@ -505,7 +505,7 @@ function mysite_woocommerce_payment_complete( $order_id )
     $order_time = $toolorder->get_date_modified();
     foreach ($items as $item_id => $item) {
         $product_id = $item->get_variation_id() ? $item->get_variation_id() : $item->get_product_id();
-     //   $product_name = $item->get_title();
+        //   $product_name = $item->get_title();
         $parent_id = wp_get_post_parent_id($product_id);
         if ($product_id === 201855) {
             $guthabenaufladung = true;
@@ -560,67 +560,67 @@ function mysite_woocommerce_payment_complete( $order_id )
             wp_mail($to, $subject, $body, $headers);
             print "Guthabenbenachrichtigung sent";
         }
-       /* if ( ( 244114 == $parent_id ) OR (240285 == $product_id ) ) //if magazin printausgabe has been ordered. Checking if it will work with the main product id or we need variation ids?
-        {
-            $data  = $toolorder->get_data(); // The Order data
-            ## BILLING INFORMATION:
-            $billing_email      = $data['billing']['email'];
-            $billing_phone      = $data['billing']['phone'];
+        /* if ( ( 244114 == $parent_id ) OR (240285 == $product_id ) ) //if magazin printausgabe has been ordered. Checking if it will work with the main product id or we need variation ids?
+         {
+             $data  = $toolorder->get_data(); // The Order data
+             ## BILLING INFORMATION:
+             $billing_email      = $data['billing']['email'];
+             $billing_phone      = $data['billing']['phone'];
 
-            $billing_first_name = $data['billing']['first_name'];
-            $billing_last_name  = $data['billing']['last_name'];
-            $billing_company    = $data['billing']['company'];
-            $billing_address_1  = $data['billing']['address_1'];
-            $billing_address_2  = $data['billing']['address_2'];
-            $billing_city       = $data['billing']['city'];
-            $billing_state      = $data['billing']['state'];
-            $billing_postcode   = $data['billing']['postcode'];
-            $billing_country    = $data['billing']['country'];
+             $billing_first_name = $data['billing']['first_name'];
+             $billing_last_name  = $data['billing']['last_name'];
+             $billing_company    = $data['billing']['company'];
+             $billing_address_1  = $data['billing']['address_1'];
+             $billing_address_2  = $data['billing']['address_2'];
+             $billing_city       = $data['billing']['city'];
+             $billing_state      = $data['billing']['state'];
+             $billing_postcode   = $data['billing']['postcode'];
+             $billing_country    = $data['billing']['country'];
 
-            ## SHIPPING INFORMATION:
-            $shipping_first_name = $data['shipping']['first_name'];
-            $shipping_last_name  = $data['shipping']['last_name'];
-            $shipping_company    = $data['shipping']['company'];
-            $shipping_address_1  = $data['shipping']['address_1'];
-            $shipping_address_2  = $data['shipping']['address_2'];
-            $shipping_city       = $data['shipping']['city'];
-            $shipping_state      = $data['shipping']['state'];
-            $shipping_postcode   = $data['shipping']['postcode'];
-            $shipping_country    = $data['shipping']['country'];
-            $to = "daniel.voelskow@reachx.de";
-            $subject = "OMT Magazinbestellung: " . $product_name;
-            $body ="<h1>Magazin Bestelldaten:</h1>";
-            $body .="<h2>Produkt: " . $product_name . "</h2>";
-            $body .="<h2>Rechnungsinformationen:</h2>";
-            $body .= "<table>";
-            $body .= "<tr><td>Vorname:</td><td>" . $billing_first_name . "</td></tr>";
-            $body .= "<tr><td>Nachname:</td><td>" . $billing_last_name . "</td></tr>";
-            $body .= "<tr><td>Firma:</td><td>" . $billing_company . "</td></tr>";
-            $body .= "<tr><td>Adresszeile 1:</td><td>" . $billing_address_1 . "</td></tr>";
-            $body .= "<tr><td>Adresszeile 2:</td><td>" . $billing_address_2 . "</td></tr>";
-            $body .= "<tr><td>Stadt:</td><td>" . $billing_city . "</td></tr>";
-            $body .= "<tr><td>Bundesland:</td><td>" . $billing_state . "</td></tr>";
-            $body .= "<tr><td>Postleitzahl:</td><td>" . $billing_postcode . "</td></tr>";
-            $body .= "<tr><td>Land:</td><td>" . $billing_country . "</td></tr>";
-            $body .= "</table>";
-            $body .="<h2>Versandinformationen (falls von Rechnung abweichend):</h2>";
-            $body .= "<table>";
-            $body .= "<tr><td>Vorname:</td><td>" . $shipping_first_name . "</td></tr>";
-            $body .= "<tr><td>Nachname:</td><td>" . $shipping_last_name . "</td></tr>";
-            $body .= "<tr><td>Firma:</td><td>" . $shipping_company . "</td></tr>";
-            $body .= "<tr><td>Adresszeile 1:</td><td>" . $shipping_address_1 . "</td></tr>";
-            $body .= "<tr><td>Adresszeile 2:</td><td>" . $shipping_address_2 . "</td></tr>";
-            $body .= "<tr><td>Stadt:</td><td>" . $shipping_city . "</td></tr>";
-            $body .= "<tr><td>Bundesland:</td><td>" . $shipping_state . "</td></tr>";
-            $body .= "<tr><td>Postleitzahl:</td><td>" . $shipping_postcode . "</td></tr>";
-            $body .= "<tr><td>Land:</td><td>" . $shipping_country . "</td></tr>";
-            $body .= "</table>";
-            $headers = "From: info@omt.de\r\n";
-            $headers .= "Reply-To: info@omt.de\r\n";
-            $headers .= "MIME-Version: 1.0\r\n";
-            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-            wp_mail($to, $subject, $body, $headers);
-        }*/
+             ## SHIPPING INFORMATION:
+             $shipping_first_name = $data['shipping']['first_name'];
+             $shipping_last_name  = $data['shipping']['last_name'];
+             $shipping_company    = $data['shipping']['company'];
+             $shipping_address_1  = $data['shipping']['address_1'];
+             $shipping_address_2  = $data['shipping']['address_2'];
+             $shipping_city       = $data['shipping']['city'];
+             $shipping_state      = $data['shipping']['state'];
+             $shipping_postcode   = $data['shipping']['postcode'];
+             $shipping_country    = $data['shipping']['country'];
+             $to = "daniel.voelskow@reachx.de";
+             $subject = "OMT Magazinbestellung: " . $product_name;
+             $body ="<h1>Magazin Bestelldaten:</h1>";
+             $body .="<h2>Produkt: " . $product_name . "</h2>";
+             $body .="<h2>Rechnungsinformationen:</h2>";
+             $body .= "<table>";
+             $body .= "<tr><td>Vorname:</td><td>" . $billing_first_name . "</td></tr>";
+             $body .= "<tr><td>Nachname:</td><td>" . $billing_last_name . "</td></tr>";
+             $body .= "<tr><td>Firma:</td><td>" . $billing_company . "</td></tr>";
+             $body .= "<tr><td>Adresszeile 1:</td><td>" . $billing_address_1 . "</td></tr>";
+             $body .= "<tr><td>Adresszeile 2:</td><td>" . $billing_address_2 . "</td></tr>";
+             $body .= "<tr><td>Stadt:</td><td>" . $billing_city . "</td></tr>";
+             $body .= "<tr><td>Bundesland:</td><td>" . $billing_state . "</td></tr>";
+             $body .= "<tr><td>Postleitzahl:</td><td>" . $billing_postcode . "</td></tr>";
+             $body .= "<tr><td>Land:</td><td>" . $billing_country . "</td></tr>";
+             $body .= "</table>";
+             $body .="<h2>Versandinformationen (falls von Rechnung abweichend):</h2>";
+             $body .= "<table>";
+             $body .= "<tr><td>Vorname:</td><td>" . $shipping_first_name . "</td></tr>";
+             $body .= "<tr><td>Nachname:</td><td>" . $shipping_last_name . "</td></tr>";
+             $body .= "<tr><td>Firma:</td><td>" . $shipping_company . "</td></tr>";
+             $body .= "<tr><td>Adresszeile 1:</td><td>" . $shipping_address_1 . "</td></tr>";
+             $body .= "<tr><td>Adresszeile 2:</td><td>" . $shipping_address_2 . "</td></tr>";
+             $body .= "<tr><td>Stadt:</td><td>" . $shipping_city . "</td></tr>";
+             $body .= "<tr><td>Bundesland:</td><td>" . $shipping_state . "</td></tr>";
+             $body .= "<tr><td>Postleitzahl:</td><td>" . $shipping_postcode . "</td></tr>";
+             $body .= "<tr><td>Land:</td><td>" . $shipping_country . "</td></tr>";
+             $body .= "</table>";
+             $headers = "From: info@omt.de\r\n";
+             $headers .= "Reply-To: info@omt.de\r\n";
+             $headers .= "MIME-Version: 1.0\r\n";
+             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+             wp_mail($to, $subject, $body, $headers);
+         }*/
     }
 }
 //add_action( 'woocommerce_order_status_processing', 'mysite_woocommerce_payment_complete', 10, 1 );
