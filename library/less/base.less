@@ -9662,7 +9662,13 @@ input {
     }
   }
 }
-
+.dein-tool-scrolled{
+    position: fixed !important;
+    right: 10px !important;
+}
+.single-tool-name{
+  max-width:700px;
+}
 .postid-302276, .postid-310736,
 .postid-302281, .postid-310740 {
   .tool-info-image, .weitere-vergleiche {
@@ -10011,6 +10017,8 @@ input {
   margin-right: auto;
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+
 }
 .highlighted-jobs-button {
   a {
@@ -10123,6 +10131,21 @@ input {
     color: white !important;
   }
 }
+@media only screen and (max-width: 900px) {
+  .omt-ticket-auto-row {
+    .ticket {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .omt-module {
+      flex-wrap: wrap;
+    }
+  }
+}
+
+
+
+
 /* recomended product*/
 .ticket-recomend {
   text-align: center;
@@ -10318,3 +10341,43 @@ input {
 }
 
 /*---------------- job filter ----------------*/
+
+.sticky-bewertungslogos {
+  width: 200px;
+  position: fixed;
+  left: 190px;
+  padding-top: 18px;
+  .widget-title {
+    font-family: "Sanuk W01 Black", sans-serif;
+    font-weight: normal;
+    text-rendering: optimizelegibility;
+    color: #004490;
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+/*----------------- podcast module -----------------*/
+
+.omt-podcast-teaser {
+  display: flex;
+  .podcast-right {
+    width: 539px;
+    float: left;
+    margin-left: 30px;
+  }
+}
+.podcast-right {
+  p {
+    margin-bottom: 5px;
+  }
+}
+@media only screen and (max-width: 1200px) {
+  .omt-podcast-teaser {
+    display: block;
+  }
+}
+
+.tol-name-pos{
+    max-width: 600px;
+}

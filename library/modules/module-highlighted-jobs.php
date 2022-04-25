@@ -13,7 +13,7 @@ $args = array(
     ?>
     <div class="hightlighted-job-top">
         <div class="highlighted-jobs-logo">
-            <h2><?php echo __('OMT JOBS')?></h2>
+            <h2><?php echo __('OMT-JOBS')?></h2>
         </div>
         <div class="highlighted-jobs-button">
             <a href="/jobs/"><?php echo __('GEHE ZU OMT JOBS');?></a>

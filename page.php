@@ -45,6 +45,7 @@ $shariff_aktivieren = get_field('shariff_aktivieren');
 $shariff_headline = get_field('shariff_headline');
 $sidebar_welche = get_field('sidebar_welche');
 $sticky_button_text = get_field('sticky_button_text');
+$bewertungslogos_links_sticky = get_field('bewertungslogos_links_sticky');
 $produkt_sticky = get_field('produkt_sticky');
 $sticky_button_text_nach_counter = get_field('sticky_button_text_nach_counter');
 $sticky_button_link = get_field('sticky_button_link');
@@ -183,6 +184,20 @@ if ( 1 == $header_footer_2020) {
 
 
 <div id="content" class="<?php print $extraclass;?>" xmlns:background="http://www.w3.org/1999/xhtml">
+<?php if($bewertungslogos_links_sticky == 1):
+    $footer_bewertungslogos = (array) getOption('footer_bewertungslogos', 'repeater');?>
+    <?php if (count($footer_bewertungslogos)) : ?>
+            <div class="widget sticky-bewertungslogos">
+                <p class="widget-title">OMT-Bewertungen</p>
+                
+                <?php foreach ($footer_bewertungslogos as $logo) : ?>
+                    <?php if (strlen($logo['link'])>0) { ?><a style="display:block; width: 100%;" class="footer-rating" href="<?php print $logo['link'];?>" target="_blank"><?php } ?>
+                    <img style="width:100%;" src="<?php echo $logo['logo'] ?>" alt="<?php print $logo['link'];?>" title="<?php print $logo['link'];?>"/>
+                    <?php if (strlen($logo['link'])>0) { ?></a><?php } ?>
+                <?php endforeach ?>
+            </div>
+    <?php endif ?>
+<?php endif;?>
 <?php if (1 != $header_deaktivieren) {
     if (1 == $header_footer_2020) {
         //get_template_part('library/templates/hero-flat', 'page');

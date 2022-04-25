@@ -1366,8 +1366,8 @@ function reposition_toolindex() {
 function tool_header_sticky() {
     if ($('.single-tool').length > 0 && $('.tool-header').length > 0) {
         if ($(window).scrollTop() > 0) {
+            $('#toolskontakt').addClass('dein-tool-scrolled');
             $('.tool-header').addClass('tool-scrolled');
-            $('#content').addClass('tool-content-scrolled');
         } else {
             $('.tool-header').removeClass('tool-scrolled');
             $('#content').removeClass('tool-content-scrolled');
@@ -1378,19 +1378,24 @@ function tool_header_sticky() {
             value = $(window).scrollTop();
             if (value>0) {
                 $('.tool-header').addClass('tool-scrolled');
+                $('#toolskontakt').addClass('dein-tool-scrolled');
                 $('#content').addClass('tool-content-scrolled');
-
+                
                 if (value > lastScrollTop){
                     // downscroll code
+                    $('#toolskontakt').addClass('dein-tool-scrolled');
                     $('.tool-scrolled-links-wrap').addClass('display-none');
+                    
                 } else {
                     // upscroll code
                     $('.tool-scrolled-links-wrap').removeClass('display-none');
                 }
                 lastScrollTop = value;
             } else {
+                $('#toolskontakt').removeClass('dein-tool-scrolled');
                 $('.tool-header').removeClass('tool-scrolled');
                 $('#content').removeClass('tool-content-scrolled');
+                
             }
         });
     }

@@ -346,6 +346,10 @@ switch ($zeile['inhaltstyp'][0]['acf_fc_layout']) {
         include('module-teaser-podcast.php');
         break;
 
+    case "omt_podcast_teaser":
+        include('module-omt-podcast.php');
+        break;
+        
     case "themenwelten_uebersicht":
         include('module-themenwelten.php');
         break;
