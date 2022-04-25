@@ -505,7 +505,7 @@ function mysite_woocommerce_payment_complete( $order_id )
     $order_time = $toolorder->get_date_modified();
     foreach ($items as $item_id => $item) {
         $product_id = $item->get_variation_id() ? $item->get_variation_id() : $item->get_product_id();
-        $product_name = $item->get_title();
+     //   $product_name = $item->get_title();
         $parent_id = wp_get_post_parent_id($product_id);
         if ($product_id === 201855) {
             $guthabenaufladung = true;
@@ -560,7 +560,7 @@ function mysite_woocommerce_payment_complete( $order_id )
             wp_mail($to, $subject, $body, $headers);
             print "Guthabenbenachrichtigung sent";
         }
-        if ( ( 244114 == $parent_id ) OR (240285 == $product_id ) ) //if magazin printausgabe has been ordered. Checking if it will work with the main product id or we need variation ids?
+       /* if ( ( 244114 == $parent_id ) OR (240285 == $product_id ) ) //if magazin printausgabe has been ordered. Checking if it will work with the main product id or we need variation ids?
         {
             $data  = $toolorder->get_data(); // The Order data
             ## BILLING INFORMATION:
@@ -620,7 +620,7 @@ function mysite_woocommerce_payment_complete( $order_id )
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
             wp_mail($to, $subject, $body, $headers);
-        }
+        }*/
     }
 }
 //add_action( 'woocommerce_order_status_processing', 'mysite_woocommerce_payment_complete', 10, 1 );
