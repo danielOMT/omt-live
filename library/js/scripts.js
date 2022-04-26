@@ -1903,7 +1903,8 @@ function changeTeaserHeaderSize(){
     });
 }
 //changing article content
-$('#article_select').change(function(){ 
+//$('#article_select').change(function(){
+$('#article_select').addEventListener('change', function() {
     var value = $(this).val();
     if(value === 'schauen'){
         $("#art_content").hide();
