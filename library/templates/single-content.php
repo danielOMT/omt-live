@@ -317,7 +317,7 @@ $horen = get_field('spotify_id');
                 <div class="omt-module artikel-wrap teaser-modul">
                     <?php         $post_type = get_post_type(get_the_ID());
                     require_once (__DIR__ . '/../functions/function-magazin.php');
-                    display_magazinartikel(4, $post_type, NULL, false, 1, "teaser-small", false, "", false );
+                    display_magazinartikel(4, $post_type, NULL, false, 1, "teaser-small", false, "", true );
                     ?>
                 </div>
                 <?php //END OF related articles
