@@ -317,7 +317,7 @@ $horen = get_field('spotify_id');
                 <div class="omt-module artikel-wrap teaser-modul">
                     <?php         $post_type = get_post_type(get_the_ID());
                     require_once (__DIR__ . '/../functions/function-magazin.php');
-                    display_magazinartikel(4, $post_type, NULL, false, 1 );
+                    display_magazinartikel(4, $post_type, NULL, false, 1, "teaser-small", false, "", false );
                     ?>
                 </div>
                 <?php //END OF related articles
@@ -550,7 +550,7 @@ if (strlen($header_hero_h1)>0) { $h1 = $header_hero_h1;} else { $h1 = get_the_ti
                         ?>
                     <?php } ?>
                 </section>
-<section class="omt-row">
+<section class="omt-row wrap grid-wrap">
                     <?php //related articles ?>
                     <h3>Weitere interessante Artikel</h3>
                     <div class="omt-module artikel-wrap teaser-modul">
