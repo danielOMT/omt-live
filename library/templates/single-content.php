@@ -310,7 +310,7 @@ $horen = get_field('spotify_id');
                 ?>
             <?php } ?>
         </section>
-        <section class="omt-row">
+        <section class="omt-row wrap grid-wrap">
             <?php //related articles ?>
             <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) {?>
                 <h3>Weitere interessante Artikel zum Thema:</h3>
