@@ -91,25 +91,25 @@ $horen = get_field('spotify_id');
 
                             <div class="info-wrap">
                                 <p class="text-red"><strong>Lesezeit: <?php echo reading_time(get_the_ID());?></strong>
-                                    <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) : ?> 
+                                    <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) : ?>
                                         <span class="artikel-divider">|</span>
                                         <span class="artikel-autor">Autor:
-                                            <?php
-                                            $i=0;
-                                            if (is_array($autor_helper)) {
-                                                foreach ($autor_helper as $helper) {
-                                                    $i++;
-                                                    if ($i > 1 AND $i != count($autor_helper)) { print ", "; }
-                                                    if ($i > 1 AND $i == count($autor_helper)) { print " & "; }
-                                                    ?>
-                                                    <a target="_blank" href="<?php print get_the_permalink($helper->ID);?>"><?php print get_the_title($helper->ID); ?></a>
-                                                <?php } ?>
+                                        <?php
+                                        $i=0;
+                                        if (is_array($autor_helper)) {
+                                            foreach ($autor_helper as $helper) {
+                                                $i++;
+                                                if ($i > 1 AND $i != count($autor_helper)) { print ", "; }
+                                                if ($i > 1 AND $i == count($autor_helper)) { print " & "; }
+                                                ?>
+                                                <a target="_blank" href="<?php print get_the_permalink($helper->ID);?>"><?php print get_the_title($helper->ID); ?></a>
+                                            <?php } ?>
                                         </span><?php } ?>
                                         <span class="artikel-divider">|</span>
-                                        <button 
-                                            type="button" 
-                                            onclick="return scrollToCommentsSection()" 
-                                            class="x-bg-transparent x-border-b x-border-blue-300 x-border-solid x-border-t-0 x-border-l-0 x-border-r-0 x-text-blue x-p-0"
+                                        <button
+                                                type="button"
+                                                onclick="return scrollToCommentsSection()"
+                                                class="x-bg-transparent x-border-b x-border-blue-300 x-border-solid x-border-t-0 x-border-l-0 x-border-r-0 x-text-blue x-p-0"
                                         >
                                             <?php echo Comment::init()->count(get_the_ID()) ?> Kommentare
                                         </button>
@@ -118,9 +118,28 @@ $horen = get_field('spotify_id');
                                 <div class="socials-header"><?php print do_shortcode('[shariff headline="Teile den Artikel" borderradius="1" buttonsize="small" services="facebook|twitter|googleplus|linkedin|xing" theme="round" orientation="horizontal" align="flex-end"]');?></div>
                             </div>
                             <?php if(isset($schauen) && $schauen != '' || isset($horen) && $horen):?>
+                                <script>
+                                    //changing article content
+                                    function articledropdown() {
+                                        var value = document.getElementById("article_select").value;
+                                        if(value === 'schauen'){
+                                            $("#art_content").hide();
+                                            $("#soundcloud_content").hide();
+                                            $("#webinar_content").show();
+                                        }else if(value === 'horen'){
+                                            $("#art_content").hide();
+                                            $("#soundcloud_content").show();
+                                            $("#webinar_content").hide();
+                                        }else{
+                                            $("#art_content").show();
+                                            $("#soundcloud_content").hide();
+                                            $("#webinar_content").hide();
+                                        }
+                                    }
+                                </script>
                                 <h3 class="article_select_headline">Wie möchtest Du den Artikel konsumieren?</h3>
                                 <label class="artikel-select-wrap">
-                                    <select id="article_select">
+                                    <select id="article_select" onchange="articledropdown()">>
                                         <option value="auswahlen">Bitte auswählen</option>
                                         <option value="Lesen">Artikel Lesen</option>
                                         <?php if(isset($schauen) && $schauen != ''): ?>
@@ -145,15 +164,15 @@ $horen = get_field('spotify_id');
                                 <div id="webinar_content" class="hide_article">
                                     <?php echo do_shortcode( '[youtube id="'.$schauen.'"]' );   ?>
                                 </div>
-                                
+
                             </section>
                             <div class="wrap socials-after-content">
                                 <?php echo do_shortcode('[shariff headline="Teile den Artikel" borderradius="1" buttonsize="small" services="facebook|twitter|googleplus|linkedin|xing" theme="round" orientation="horizontal" align="flex-end"]');?>
-                                <div>Wie ist Deine Meinung zu dem Thema? Wir freuen uns über Deinen 
-                                    <button 
-                                        type="button" 
-                                        onclick="return scrollToCommentsSection()" 
-                                        class="x-bg-transparent x-border-b x-border-blue-300 x-border-solid x-border-t-0 x-border-l-0 x-border-r-0 x-text-blue x-p-0"
+                                <div>Wie ist Deine Meinung zu dem Thema? Wir freuen uns über Deinen
+                                    <button
+                                            type="button"
+                                            onclick="return scrollToCommentsSection()"
+                                            class="x-bg-transparent x-border-b x-border-blue-300 x-border-solid x-border-t-0 x-border-l-0 x-border-r-0 x-text-blue x-p-0"
                                     >
                                         Kommentar
                                     </button>
@@ -206,11 +225,11 @@ $horen = get_field('spotify_id');
                             </h3>
                             <div class="testimonial-img">
                                 <a target="_self" href="<?php print get_the_permalink($autor->ID); ?>">
-                                    <img 
-                                        class="teaser-img" 
-                                        alt="<?php print $speaker_name; ?>"
-                                        title="<?php print $speaker_name; ?>"
-                                        src="<?php print $profilbild['sizes']['350-180']; ?>"
+                                    <img
+                                            class="teaser-img"
+                                            alt="<?php print $speaker_name; ?>"
+                                            title="<?php print $speaker_name; ?>"
+                                            src="<?php print $profilbild['sizes']['350-180']; ?>"
                                     />
                                 </a>
                                 <div class="social-media">
@@ -264,11 +283,11 @@ $horen = get_field('spotify_id');
                         </h3>
                         <div class="testimonial-img">
                             <a target="_self" href="<?php print get_the_permalink($autor->ID); ?>">
-                                <img 
-                                    class="teaser-img" 
-                                    alt="<?php print $speaker_name; ?>"
-                                    title="<?php print $speaker_name; ?>"
-                                    src="<?php print $profilbild['sizes']['350-180']; ?>"
+                                <img
+                                        class="teaser-img"
+                                        alt="<?php print $speaker_name; ?>"
+                                        title="<?php print $speaker_name; ?>"
+                                        src="<?php print $profilbild['sizes']['350-180']; ?>"
                                 />
                             </a>
                             <div class="social-media">
@@ -397,7 +416,7 @@ if (strlen($header_hero_h1)>0) { $h1 = $header_hero_h1;} else { $h1 = get_the_ti
             <?php } ?>
 
             <?php include('single-as-page-contentparts-main.php'); ?>
-            
+
             <?php if (in_array($post_type, ['omt_student'])) : ?>
                 <?php $postExpert = get_field('experte') ?>
 
@@ -446,11 +465,11 @@ if (strlen($header_hero_h1)>0) { $h1 = $header_hero_h1;} else { $h1 = get_the_ti
                                     </h3>
                                     <div class="testimonial-img">
                                         <a target="_self" href="<?php print get_the_permalink($autor->ID); ?>">
-                                            <img 
-                                                class="teaser-img" 
-                                                alt="<?php print $speaker_name; ?>"
-                                                title="<?php print $speaker_name; ?>"
-                                                src="<?php print $profilbild['sizes']['350-180']; ?>"
+                                            <img
+                                                    class="teaser-img"
+                                                    alt="<?php print $speaker_name; ?>"
+                                                    title="<?php print $speaker_name; ?>"
+                                                    src="<?php print $profilbild['sizes']['350-180']; ?>"
                                             />
                                         </a>
                                         <div class="social-media">
@@ -504,11 +523,11 @@ if (strlen($header_hero_h1)>0) { $h1 = $header_hero_h1;} else { $h1 = get_the_ti
                                 </h3>
                                 <div class="testimonial-img">
                                     <a target="_self" href="<?php print get_the_permalink($autor->ID); ?>">
-                                        <img 
-                                            class="teaser-img" 
-                                            alt="<?php print $speaker_name; ?>"
-                                            title="<?php print $speaker_name; ?>"
-                                            src="<?php print $profilbild['sizes']['350-180']; ?>"
+                                        <img
+                                                class="teaser-img"
+                                                alt="<?php print $speaker_name; ?>"
+                                                title="<?php print $speaker_name; ?>"
+                                                src="<?php print $profilbild['sizes']['350-180']; ?>"
                                         />
                                     </a>
                                     <div class="social-media">
@@ -550,7 +569,7 @@ if (strlen($header_hero_h1)>0) { $h1 = $header_hero_h1;} else { $h1 = get_the_ti
                         ?>
                     <?php } ?>
                 </section>
-<section class="omt-row wrap grid-wrap">
+                <section class="omt-row wrap grid-wrap">
                     <?php //related articles ?>
                     <h3>Weitere interessante Artikel</h3>
                     <div class="omt-module artikel-wrap teaser-modul">
@@ -563,9 +582,9 @@ if (strlen($header_hero_h1)>0) { $h1 = $header_hero_h1;} else { $h1 = get_the_ti
                     <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) {
                         comments_template();
                     } ?>
-</section>
+                </section>
             <?php } ?>
-        <?php } ?>
+            <?php } ?>
 
     </div> <?php //end of #content ?>
     <div class="socials-floatbar-mobile">

@@ -1903,7 +1903,7 @@ function changeTeaserHeaderSize(){
     });
 }
 //changing article content
-$('#article_select').change(function(){
+/*$('#article_select').change(function(){
     var value = $(this).val();
     if(value === 'schauen'){
         $("#art_content").hide();
@@ -1918,7 +1918,7 @@ $('#article_select').change(function(){
         $("#soundcloud_content").hide();
         $("#webinar_content").hide();
     }
-});
+});*/ //deactivated to put the script inline in order to make it work on mobile phones
 
 function omtLoadMore(){
     var element = document.getElementById('load_more_article');
