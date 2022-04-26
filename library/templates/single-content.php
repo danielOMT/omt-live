@@ -548,7 +548,8 @@ if (strlen($header_hero_h1)>0) { $h1 = $header_hero_h1;} else { $h1 = get_the_ti
 
                         ?>
                     <?php } ?>
-
+                </section>
+<section class="omt-row">
                     <?php //related articles ?>
                     <h3>Weitere interessante Artikel</h3>
                     <div class="omt-module artikel-wrap teaser-modul">
@@ -561,8 +562,7 @@ if (strlen($header_hero_h1)>0) { $h1 = $header_hero_h1;} else { $h1 = get_the_ti
                     <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) {
                         comments_template();
                     } ?>
-                </section>
-
+</section>
             <?php } ?>
         <?php } ?>
 
