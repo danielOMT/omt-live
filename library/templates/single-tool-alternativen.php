@@ -1,6 +1,6 @@
 <div class="teaser teaser-small teaser-matchbuttons">
     <div class="teaser-image-wrap" style="">
-        <img class="webinar-image teaser-img" alt="<?php print $title;?>" title="<?php print $title;?>" src="<?php print $logo;?>"/>
+        <?php if (strlen($logo)>0) { ?><img class="webinar-image teaser-img" alt="<?php print $title;?>" title="<?php print $title;?>" src="<?php print $logo;?>"/><?php } ?>
         <img alt="OMT Magazin" title="OMT Magazin" class="teaser-image-overlay" src="/uploads/omt-banner-overlay-350.png" style="">
     </div>
     <h3 class=""><a href="<?php print $link; ?>" title="<?php print $title;?>"><?php print $title;?></a></h3>
