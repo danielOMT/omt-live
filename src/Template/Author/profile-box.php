@@ -5,12 +5,17 @@
         </h3>
         <div class="testimonial-img">
             <a target="_self" href="<?php print get_the_permalink($this->author->ID); ?>">
-                <img 
+                <?php
+                $authorprofileimg = get_field('profilbild', $this->author->ID);
+                if (strlen($authorprofileimg['sizes']['350-180'])>0) {
+                ?>
+                <img
                     class="teaser-img" 
                     alt="<?php echo get_the_title($this->author->ID) ?>"
                     title="<?php echo get_the_title($this->author->ID) ?>"
                     src="<?php echo get_field('profilbild', $this->author->ID)['sizes']['350-180']; ?>"
                 />
+                    <?php } ?>
             </a>
             <div class="social-media">
                 <?php foreach ((array) get_field('social_media', $this->author->ID) as $social) : ?>
