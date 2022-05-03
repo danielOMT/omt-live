@@ -18,6 +18,9 @@ switch ($post_type) {
     case "direktmarketing":
         $post_type_nice = "Direktmarketing";
         break;
+    case "digitalesmarketign":
+        $post_type_nice = "Digitales Marketing";
+        break;
     case "emailmarketing":
         $post_type_nice = "E-Mail Marketing";
         break;
@@ -38,6 +41,9 @@ switch ($post_type) {
         break;
     case "influencer":
         $post_type_nice = "Influencer Marketing";
+        break;
+    case "internetmarketing":
+        $post_type_nice = "Internet Marketing";
         break;
     case "links":
         $post_type_nice = "Linkbuilding";
