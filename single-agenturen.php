@@ -176,7 +176,7 @@ if (!defined('USE_JSON_POSTS_SYNC') || USE_JSON_POSTS_SYNC === false) {
                             <div class="card">
                                 <h3><?php print $zertifikat_2_titel;?></h3>
                                 <?php if (strlen($zertifikat_2_bild_formularfeld)>0) { $zertifikat_2_bild['url'] = $zertifikat_2_bild_formularfeld; } ?>
-                                <img src="<?php print $zertifikat_2_bild['url'];?>">
+                                <?php if (strlen($zertifikat_1_bild['url'])>0) {?><img src="<?php print $zertifikat_2_bild['url'];?>"><?php } ?>
                                 <?php print $zertifikat_2_beschreibung;?>
                             </div>
                         <?php } ?>
@@ -184,7 +184,7 @@ if (!defined('USE_JSON_POSTS_SYNC') || USE_JSON_POSTS_SYNC === false) {
                             <div class="card">
                                 <h3><?php print $zertifikat_3_titel;?></h3>
                                 <?php if (strlen($zertifikat_3_bild_formularfeld)>0) { $zertifikat_3_bild['url'] = $zertifikat_3_bild_formularfeld; } ?>
-                                <img src="<?php print $zertifikat_3_bild['url'];?>">
+                               <?php if (strlen($zertifikat_1_bild['url'])>0) { ?> <img src="<?php print $zertifikat_3_bild['url'];?>"><?php } ?>
                                 <?php print $zertifikat_3_beschreibung;?>
                             </div>
                         <?php } ?>
@@ -192,7 +192,7 @@ if (!defined('USE_JSON_POSTS_SYNC') || USE_JSON_POSTS_SYNC === false) {
                             <div class="card">
                                 <h3><?php print $zertifikat_4_titel;?></h3>
                                 <?php if (strlen($zertifikat_4_bild_formularfeld)>0) { $zertifikat_4_bild['url'] = $zertifikat_4_bild_formularfeld; } ?>
-                                <img src="<?php print $zertifikat_4_bild['url'];?>">
+                                <?php if (strlen($zertifikat_1_bild['url'])>0) {?><img src="<?php print $zertifikat_4_bild['url'];?>"><?php } ?>
                                 <?php print $zertifikat_4_beschreibung;?>
                             </div>
                         <?php } ?>
