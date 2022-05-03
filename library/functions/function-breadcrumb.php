@@ -95,8 +95,8 @@ function custom_breadcrumbs() {
                         $post_type_archive = "/conversion-optimierung";
                         break;
                     case "digitalesmarketing":
-                        $post_type_name = "Digitales Marketing";
-                        $post_type_archive = "/digitales-marketing";
+                        $post_type_name = "Digital Marketing";
+                        $post_type_archive = "/digital-marketing";
                         break;
                     case "direktmarketing":
                         $post_type_name = "Direktmarketing";
