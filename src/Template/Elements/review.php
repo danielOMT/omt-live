@@ -9,13 +9,15 @@
         <div class="x-absolute review-avatar-section">
             <div class="x-pl-10 x-pr-10 avatar-image-section">
                 <div class="x-rounded-full x-overflow-hidden">
-                    <img 
+                    <?php if (strlen($this->avatar)>0) { ?>
+                    <img
                         class="x-m-0" 
                         src="<?php echo $this->avatar ?>" 
                         loading="lazy" 
                         alt="<?php echo $this->name ?>" 
                         title="<?php echo $this->name ?>" 
                     />
+                    <?php } ?>
                 </div>
             </div>
             <div class="x-text-center x-mt-2">
