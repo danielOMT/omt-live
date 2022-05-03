@@ -54,6 +54,7 @@ if ($countdown_im_header) {
                         <option value="amazon_marketing">Amazon Marketing</option>
                         <option value="content">Content Marketing</option>
                         <option value="conversion">Conversion Optimierung</option>
+                        <option value="digitalesmarketing">Digitales Marketing</option>
                         <option value="direktmarketing">Direktmarketing</option>
                         <option value="emailmarketing">E-Mail Marketing</option>
                         <option value="e-commerce">E-Commerce</option>
@@ -63,6 +64,7 @@ if ($countdown_im_header) {
                         <option value="gmb">Google My Business</option>
                         <option value="growthhack">Growth Hacking</option>
                         <option value="inbound">Inbound Marketing</option>
+                        <option value="internetmarketing">Internet Marketing</option>
                         <option value="influencer">Influencer Marketing</option>
                         <option value="links">Linkbuilding</option>
                         <option value="local">Local SEO</option>
