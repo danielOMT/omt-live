@@ -64,7 +64,7 @@ if (!defined('USE_JSON_POSTS_SYNC') || USE_JSON_POSTS_SYNC === false) {
         <div id="inner-content" class="wrap clearfix speaker-information <?php print str_replace(' ', '-', $speaker_name);?>"> <?php ///***SPEAKER BESCHREIBUNG***///?>
             <div class="omt-intro speaker-info botschafter-info">
                 <?php /*<h2 class="speaker-titel"><?php print $titel;?></h2>*/?>
-                <img class="speaker-profilbild" alt="<?php print $profilbild['alt'];?>" title="<?php print $profilbild['alt'];?>" src="<?php print $profilbild['sizes']['730-380'];?>"/>
+                <?php if (strlen($profilbild['sizes']['730-380'])>0) { ?><img class="speaker-profilbild" alt="<?php print $profilbild['alt'];?>" title="<?php print $profilbild['alt'];?>" src="<?php print $profilbild['sizes']['730-380'];?>"/><?php } ?>
                 <div class="ribbon"><span>OMT-Botschafter</span></div>
                 <div class="social-media">
                     <?php if (is_array($social_media)) {
