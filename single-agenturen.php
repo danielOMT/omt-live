@@ -168,7 +168,7 @@ if (!defined('USE_JSON_POSTS_SYNC') || USE_JSON_POSTS_SYNC === false) {
                         <div class="card">
                             <h3><?php print $zertifikat_1_titel;?></h3>
                             <?php if (strlen($zertifikat_1_bild_formularfeld)>0) { $zertifikat_1_bild['url'] = $zertifikat_1_bild_formularfeld; } ?>
-                            <img src="<?php print $zertifikat_1_bild['url'];?>">
+                            <?php if (strlen($zertifikat_1_bild['url'])>0) { ?><img src="<?php print $zertifikat_1_bild['url'];?>"><?php } ?>
                             <?php print $zertifikat_1_beschreibung;?>
                         </div>
                         <?php } ?>
