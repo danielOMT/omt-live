@@ -101,7 +101,7 @@ usort($trendcategories, "omt_cmp");
                 </h3>
                 <h4 class="teaser-cat experte-info"><?php print $speaker_kurzprofil;?></h4>
                 <?php if (strlen($speaker_link)>0) { ?><a target="_self" href="<?php print $speaker_link;?>"><?php } ?>
-                    <img class="teaser-img" alt="<?php print $speaker_name; ?>" title="<?php print $speaker_name; ?>" src="<?php print $speaker_image['sizes']['350-180'];?>">
+                    <?php if (strlen($speaker_image['sizes']['350-180'])>0) { ?><img class="teaser-img" alt="<?php print $speaker_name; ?>" title="<?php print $speaker_name; ?>" src="<?php print $speaker_image['sizes']['350-180'];?>"><?php } ?>
                     <?php if (strlen($speaker_link)>0) { ?></a><?php } ?>
             </div>
             <div class="testimonial-text">
