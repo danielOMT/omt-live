@@ -217,11 +217,13 @@ if (!defined('USE_JSON_POSTS_SYNC') || USE_JSON_POSTS_SYNC === false) {
                         <?php if (strlen($ansprechpartner_link)>0) { ?><a href="<?php print $ansprechpartner_link;?>"><?php }?>
                             <strong>Ansprechpartner: <?php print$agentur_ansprechpartner;?></strong>
                             <?php if (strlen($ansprechpartner_link)>0) { ?></a><?php }?>
+                        <?php if (strlen($agentur_ansprechpartner_profilbild['sizes']['350-180'])>0) { ?>
                         <img class="anspreachpartner-img"
                              alt="<?php print $agentur_ansprechpartner;?>"
                              title="<?php print $agentur_ansprechpartner;?>"
                              src="<?php print $agentur_ansprechpartner_profilbild['sizes']['350-180'];?>"
                         />
+                        <?php } ?>
                     </section>
                     <section class="omt-row row-ansprechpartner"">
                     <div class="contact-modal">
