@@ -1212,9 +1212,11 @@ if (!$current_fp) { ?>
                     </h3>
                     <div class="testimonial-img">
                         <a target="_self" href="<?php print get_the_permalink($autor->ID); ?>">
+                            <?php if (strlen($profilbild['sizes']['350-180'])>0) { ?>
                             <img class="teaser-img" alt="<?php print $speaker_name; ?>"
                                  title="<?php print $speaker_name; ?>"
                                  src="<?php print $profilbild['sizes']['350-180']; ?>"/>
+                    <?php } ?>
                         </a>
                         <div class="social-media">
                             <?php
