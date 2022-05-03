@@ -35,9 +35,9 @@
     <div class="x-flex x-justify-between x-w-full team-member-bottom">
         <div class="x-flex team-member-certificates x-mb-4 x-mt-4">
             <?php foreach ($this->certificates as $certificate) : ?>
-                <a href="<?php echo $certificate['link'] ?>" title="<?php echo $certificate['titel'] ?>" class="x-mr-2 x-border-0">
-                    <img src="<?php echo $certificate['zertifikat']['sizes']['medium'] ?>" alt="<?php echo $certificate['titel'] ?>" class="x-m-0" />
-                </a>
+                <?php if (strlen($certificate['link'])>0) { ?><a href="<?php echo $certificate['link'] ?>" title="<?php echo $certificate['titel'] ?>" class="x-mr-2 x-border-0"><?php } ?>
+                    <?php if (strlen($certificate['zertifikat']['sizes']['medium'])>0) { ?><img src="<?php echo $certificate['zertifikat']['sizes']['medium'] ?>" alt="<?php echo $certificate['titel'] ?>" class="x-m-0" /><?php } ?>
+            <?php if (strlen($certificate['link'])>0) { ?></a><?php } ?>
             <?php endforeach ?>
         </div>
         <div class="x-flex team-member-social-icons x-mb-4 x-mt-4">
