@@ -61,12 +61,14 @@ $autoren_slider = $zeile["inhaltstyp"][0]["downloads_people"];
             ?>
             <div class="x-text-center x-pl-10 x-pr-10 x-flex-25 person-section slick-slide">
                 <div class="x-rounded-full x-overflow-hidden x-border-6 x-border-white x-border-solid x-ml-4 x-mr-4">
+                    <?php if (strlen($profilbild)>0) { ?>
                     <img
                             class="x-m-0 x-w-full"
                             alt="<?php echo $person_title; ?>"
                             title="<?php echo $person_title; ?>"
                             src="<?php echo $profilbild; ?>"
                     />
+                <?php } ?>
                 </div>
                 <div class="x-pt-4">
                     <a href="<?php echo get_the_permalink($personID); ?>">

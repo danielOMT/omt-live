@@ -94,7 +94,8 @@ use OMT\View\View;
                             ?>
                             <div class="x-text-center x-pl-10 x-pr-10 x-flex-25 person-section slick-slide">
                                 <div class="x-rounded-full x-overflow-hidden x-border-6 x-border-white x-border-solid x-ml-4 x-mr-4">
-                                    <img 
+                                    <?php if (strlen($personAvatar)>0) {?>
+                                    <img
                                         class="x-m-0 x-w-full"
                                         alt="<?php echo getPost($person['person'])->post_title ?>"
                                         title="<?php echo getPost($person['person'])->post_title ?>"
@@ -105,6 +106,7 @@ use OMT\View\View;
                                             data-lazy="<?php echo $personAvatar ?>"
                                         <?php endif; ?>
                                     />
+                                    <?php } ?>
                                 </div>
                                 <div class="x-pt-4">
                                     <a href="<?php echo get_the_permalink($person['person']); ?>">
@@ -153,12 +155,14 @@ use OMT\View\View;
 
                         <?php if (is_array($this->firstContentImage)) : ?>
                             <div class="x-flex-1">
-                                <img 
+                                <?php if (strlen($this->firstContentImage['sizes']['large']['url'])>0) {?>
+                                <img
                                     class="x-mb-0" 
                                     src="<?php echo $this->firstContentImage['sizes']['large']['url'] ?>"
                                     alt="<?php echo $this->firstContentImage['sizes']['large']['file'] ?>"
                                     loading="lazy"
                                 />
+                                <?php } ?>
                             </div>
                         <?php endif ?>
                     </div>
@@ -168,12 +172,14 @@ use OMT\View\View;
                     <div class="x-flex x-gap-4 x-justify-between x-pl-12 x-pr-12 x-mt-16 x-pt-10 downloads-content-2">
                         <?php if (is_array($this->secondContentImage)) : ?>
                             <div class="x-flex-1">
-                                <img 
+                                <?php if (strlen($this->secondContentImage['sizes']['large']['url'])>0) { ?>
+                                <img
                                     class="x-mb-0" 
                                     src="<?php echo $this->secondContentImage['sizes']['large']['url'] ?>"
                                     alt="<?php echo $this->secondContentImage['sizes']['large']['file'] ?>"
                                     loading="lazy"
                                 />
+                                <?php } ?>
                             </div>
                         <?php endif ?>
 
