@@ -12,7 +12,7 @@ class Magazines extends Enum
             'amazon' => 'Amazon SEO',
             'content' => 'Content Marketing',
             'conversion' => 'Conversion Optimierung',
-            'digitalesmarketing' => 'Digitales Marketing',
+            'digitalesmarketing' => 'Digital Marketing',
             'direktmarketing' => 'Direktmarketing',
             'emailmarketing' => 'E-Mail Marketing',
             'e-commerce' => 'E-Commerce',
