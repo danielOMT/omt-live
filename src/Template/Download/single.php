@@ -16,7 +16,7 @@ use OMT\View\View;
             <article <?php post_class(['clearfix', 'x-mb-10']); ?> role="article">
                 <div class="entry-content x-mt-8 x-flex x-justify-between" itemprop="articleBody">
                     <div class="left-image">
-                        <img class="download-image" alt="<?php echo $this->title ?>" title="<?php echo $this->title ?>" src="<?php echo $this->leftImageUrl['sizes']['large']['url'] ?>" loading="lazy" />
+                        <?php if (strlen($this->leftImageUrl['sizes']['large']['url'])>0) { ?><img class="download-image" alt="<?php echo $this->title ?>" title="<?php echo $this->title ?>" src="<?php echo $this->leftImageUrl['sizes']['large']['url'] ?>" loading="lazy" /><?php } ?>
                     </div>
                     <div>
                         <div class="x-mb-10 downloads-content-section">
