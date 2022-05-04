@@ -1,13 +1,13 @@
 <?php
 /***************************
-* AGENTURFINDER HEADER MIT SUCHE
+* FREELANCERFINDER HEADER MIT SUCHE
 ***************************/
-$agenturfinder_hero_background = get_field('suchschlitz_hintergrundbild', 'options');
-$suchschlitz_headline = get_field('suchschlitz_headline', 'options');
-$suchschlitz_text_oben = get_field('suchschlitz_text_oben', 'options');
-$suchschlitz_platzhaltertext = get_field('suchschlitz_platzhaltertext', 'options');
-$suchschlitz_text_unten = get_field('suchschlitz_text_unten', 'options');
-$suchschlitz_text_button = get_field('suchschlitz_text_button', 'options');
+$agenturfinder_hero_background = get_field('freelancervermitlung_suchschlitz_hintergrundbild', 'options');
+$suchschlitz_headline = get_field('freelancervermitlung_suchschlitz_headline', 'options');
+$suchschlitz_text_oben = get_field('freelancervermitlung_suchschlitz_text_oben', 'options');
+$suchschlitz_platzhaltertext = get_field('freelancervermitlung_suchschlitz_platzhaltertext', 'options');
+$suchschlitz_text_unten = get_field('freelancervermitlung_suchschlitz_text_unten', 'options');
+$suchschlitz_text_button = get_field('freelancervermitlung_suchschlitz_text_button', 'options');
 
 $agenturfinder_hero_background_local = "";
 $suchschlitz_headline_local = "";
