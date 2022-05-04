@@ -15,7 +15,7 @@ $suchschlitz_text_oben_local = "";
 $suchschlitz_platzhaltertext_local = "";
 $suchschlitz_text_unten_local = "";
 $suchschlitz_text_button_local = "";
-
+$suchschlitz_platzhaltertext = "test";
 //$hero_post_type = get_post_type();
 //if ("agenturen" != $hero_post_type) {
 //    $agenturfinder_hero_background_local = get_field('suchschlitz_hintergrundbild');
