@@ -5,7 +5,7 @@
 $agenturfinder_hero_background = get_field('freelancervermitlung_suchschlitz_hintergrundbild', 'options');
 $suchschlitz_headline = get_field('freelancervermitlung_suchschlitz_headline', 'options');
 $suchschlitz_text_oben = get_field('freelancervermitlung_suchschlitz_text_oben', 'options');
-$suchschlitz_platzhaltertext = get_field('freelancervermitlung_suchschlitz_platzhaltertext', 'options');
+$suchschlitz_platzhaltertext = get_field('freelancervermitlung_such_platzhaltertext', 'options');
 $suchschlitz_text_unten = get_field('freelancervermitlung_suchschlitz_text_unten', 'options');
 $suchschlitz_text_button = get_field('freelancervermitlung_suchschlitz_text_button', 'options');
 
@@ -15,7 +15,6 @@ $suchschlitz_text_oben_local = "";
 $suchschlitz_platzhaltertext_local = "";
 $suchschlitz_text_unten_local = "";
 $suchschlitz_text_button_local = "";
-$suchschlitz_platzhaltertext = "test";
 //$hero_post_type = get_post_type();
 //if ("agenturen" != $hero_post_type) {
 //    $agenturfinder_hero_background_local = get_field('suchschlitz_hintergrundbild');
