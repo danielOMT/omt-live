@@ -29,6 +29,8 @@ require_once('library/functions/dynamic-gform.php');
 require_once('library/functions/clickmeter-functions.php');
 // require_once('library/theme-woocommerce-customfields.php');
 // require_once('library/translation/translation.php'); // this comes turned off by default
+require_once('library/disable-embeds.php');
+
 
 require_once('library/custom_post_types/custom-post-downloads.php'); //leadmagneten umbenannt!
 require_once('library/custom_post_types/custom-post-studentenarbeiten.php');
