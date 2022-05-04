@@ -16,21 +16,21 @@ $suchschlitz_platzhaltertext_local = "";
 $suchschlitz_text_unten_local = "";
 $suchschlitz_text_button_local = "";
 
-$hero_post_type = get_post_type();
-if ("agenturen" != $hero_post_type) {
-    $agenturfinder_hero_background_local = get_field('suchschlitz_hintergrundbild');
-    $suchschlitz_headline_local = get_field('suchschlitz_headline');
-    $suchschlitz_text_oben_local = get_field('suchschlitz_text_oben');
-    $suchschlitz_platzhaltertext_local = get_field('suchschlitz_platzhaltertext');
-    $suchschlitz_text_unten_local = get_field('suchschlitz_text_unten');
-    $suchschlitz_text_button_local = get_field('suchschlitz_text_button');
-if (strlen($agenturfinder_hero_background_local['url'])>0) { $agenturfinder_hero_background = $agenturfinder_hero_background_local;}
-if (strlen($suchschlitz_headline_local)>0) { $suchschlitz_headline = $suchschlitz_headline_local;}
-if (strlen($suchschlitz_text_oben_local)>0) { $suchschlitz_text_oben = $suchschlitz_text_oben_local;}
-if (strlen($suchschlitz_platzhaltertext_local)>0) { $suchschlitz_platzhaltertext = $suchschlitz_platzhaltertext_local;}
-if (strlen($suchschlitz_text_unten_local)>0) { $suchschlitz_text_unten = $suchschlitz_text_unten_local;}
-if (strlen($suchschlitz_text_button_local)>0) { $suchschlitz_text_button = $suchschlitz_text_button_local;}
-}
+//$hero_post_type = get_post_type();
+//if ("agenturen" != $hero_post_type) {
+//    $agenturfinder_hero_background_local = get_field('suchschlitz_hintergrundbild');
+//    $suchschlitz_headline_local = get_field('suchschlitz_headline');
+//    $suchschlitz_text_oben_local = get_field('suchschlitz_text_oben');
+//    $suchschlitz_platzhaltertext_local = get_field('suchschlitz_platzhaltertext');
+//    $suchschlitz_text_unten_local = get_field('suchschlitz_text_unten');
+//    $suchschlitz_text_button_local = get_field('suchschlitz_text_button');
+//if (strlen($agenturfinder_hero_background_local['url'])>0) { $agenturfinder_hero_background = $agenturfinder_hero_background_local;}
+//if (strlen($suchschlitz_headline_local)>0) { $suchschlitz_headline = $suchschlitz_headline_local;}
+//if (strlen($suchschlitz_text_oben_local)>0) { $suchschlitz_text_oben = $suchschlitz_text_oben_local;}
+//if (strlen($suchschlitz_platzhaltertext_local)>0) { $suchschlitz_platzhaltertext = $suchschlitz_platzhaltertext_local;}
+//if (strlen($suchschlitz_text_unten_local)>0) { $suchschlitz_text_unten = $suchschlitz_text_unten_local;}
+//if (strlen($suchschlitz_text_button_local)>0) { $suchschlitz_text_button = $suchschlitz_text_button_local;}
+//}
 ?>
 <div class="omt-row search-header" style="background: url('<?php print $agenturfinder_hero_background['url'];?>') no-repeat 50% 0;">
     <div class="wrap">
