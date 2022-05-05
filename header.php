@@ -282,6 +282,8 @@ if (getPost()->ID == 21990) {
                 ?>
                 <?php
                // get_template_part('library/templates/hero-freelancervermittlung', 'page');
+            } elseif (is_page(44272) OR $post->post_parent == 44272){ // if page is "Agenturfinder" or a hierachical element below it {
+
             } else {
                 get_template_part('library/templates/hero-flat', 'page'); }
             ?>
