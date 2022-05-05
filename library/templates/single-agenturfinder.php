@@ -8,9 +8,9 @@ if (is_user_logged_in()) {
         exit;
     }
 }
-$actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-$new_link = str_replace("www.omt.de", "agenturfinder.omt.de", $actual_link);
-header("Location:" . $new_link, true, 301);
+//$actual_link = "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+//$new_link = str_replace("www.omt.de", "agenturfinder.omt.de", $actual_link);
+//header("Location:" . $new_link, true, 301);
 
 ?>
 <?php get_header(); ?>
