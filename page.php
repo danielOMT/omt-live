@@ -199,7 +199,14 @@ if ( 1 == $header_footer_2020) {
     <?php endif ?>
 <?php endif;?>
 <?php if (1 != $header_deaktivieren) {
-    if (is_page(44272) OR $post->post_parent == 44272){
+    if (1 == $header_footer_2020) {
+        //get_template_part('library/templates/hero-flat', 'page');
+        if (is_page(311677) OR $post->post_parent == 311677) {
+            get_template_part('library/templates/hero-freelancervermittlung', 'page');
+        }
+        elseif (is_page(44272) OR $post->post_parent == 44272){
+            get_template_part('library/templates/hero-agenturfinder', 'page');
+    } elseif (is_page(44272) OR $post->post_parent == 44272){
         get_template_part('library/templates/hero-agenturfinder', 'page');
     } elseif (is_page(311677) OR $post->post_parent == 311677){
         get_template_part('library/templates/hero-freelancervermittlung', 'page');
