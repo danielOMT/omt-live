@@ -14,7 +14,7 @@ foreach ($promos as $key) {
         $link = $key['link'];
         $promotional = '
             <div class="teaser teaser-small box-col">
-                <a href="#">
+                <a href="#test">
                     <img width=350" height=180" class="teaser-img seminar-image seminar-img" alt="'.$promo_title.'" title="'.$promo_title.'" src="'.$image.'"/>
                 </a>
                 <h4 class="seminarcat-title article-title">
