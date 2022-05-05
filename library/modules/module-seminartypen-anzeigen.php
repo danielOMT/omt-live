@@ -13,15 +13,12 @@ foreach ($promos as $key) {
     $button_label = $key['button_label'];
     $link = $key['link'];
     $promotional = '
-            <div class="contact-modal teaser teaser-small box-col">
+            <div class="contact-modal teaser teaser-small box-col" style="margin-top:0px;">
             <a data-effect="lightbox" class="activate-form" style="width:100%;" href="#form-'.$link.'">
                     <img style="width:100%;" alt="'.$promo_title.'" title="'.$promo_title.'" src="'.$image.'"/>
             </a>
             </div>
-             <div id="form-'.$link.'" class="contact-lightbox hidden">
-                 '.do_shortcode("[gravityform ajax=true id='".$link."' title='true' description='true' tabindex='0']").'
-             </div>
-         ';
+            ';
     break;
 }
 
@@ -47,10 +44,13 @@ foreach ($seminare as $seminar) {
         $image = $featured_image[0];
         $promotiona_title = get_field('promotiona_title', $seminar['seminar']->ID);
         ?>
-        <?php if($count == 4):
+        <?php if( ( $count == 4 ) AND strlen($link)>0) {
             echo $promotional;
-        endif;?>
-
+            ?>
+            <div id="form-<?php print $link;?>" class="contact-lightbox hidden">
+                <?php echo do_shortcode( '[gravityform ajax=true id="' . $link . '" title="true" description="true" tabindex="0"]' ); ?>
+            </div>
+        <?php } ?>
         <div class="teaser teaser-small box-col">
             <a href="<?php print $seminar_link ?>">
                 <img width=350" height=180" class="teaser-img seminar-image seminar-img" alt="<?php print $seminar_title ?>" title="<?php print $seminar_title; ?>" src="<?php print $image; ?>"/>
