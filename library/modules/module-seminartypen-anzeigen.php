@@ -13,9 +13,11 @@ foreach ($promos as $key) {
     $button_label = $key['button_label'];
     $link = $key['link'];
     $promotional = '
-            <a class="teaser teaser-small box-col" href="#form-'.$link.'">
+            <div class="contact-modal teaser teaser-small box-col">
+            <a style="width:100%;" href="#form-'.$link.'">
                     <img style="width:100%;" alt="'.$promo_title.'" title="'.$promo_title.'" src="'.$image.'"/>
             </a>
+            </div>
              <div id="form-'.$link.'" class="contact-lightbox hidden">
                  '.do_shortcode("[gravityform ajax=true id='".$link."' title='true' description='true' tabindex='0']").'
              </div>
