@@ -47,7 +47,7 @@ foreach ($seminare as $seminar) {
         <?php if( ( $count == 4 ) AND strlen($link)>0) {
             echo $promotional;
             ?>
-            <div id="form-<?php print $link;?>" class="contact-lightbox hidden">
+            <div id="form-<?php print $link;?>" class="">
                 <?php echo do_shortcode( '[gravityform ajax=true id="' . $link . '" title="true" description="true" tabindex="0"]' ); ?>
             </div>
         <?php } ?>
