@@ -14,7 +14,7 @@ foreach ($promos as $key) {
     $link = $key['link'];
     $promotional = '
             <div class="contact-modal teaser teaser-small box-col" style="margin-top:0px;">
-            <a data-effect="lightbox" class="activate-form" style="width:100%;" href="#form-'.$link.'">
+            <a data-effect="lightbox" data-id="'.$link.'" class="activate-form" style="width:100%;" href="#form-'.$link.'">
                     <img style="width:100%;" alt="'.$promo_title.'" title="'.$promo_title.'" src="'.$image.'"/>
             </a>
             </div>
