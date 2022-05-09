@@ -1113,7 +1113,7 @@ $wordcount = str_word_count($title);
 $post_type_data = get_post_type_object( $post_type );
 $post_type_slug = $post_type_data->rewrite['slug'];
 if ("wordpress" == $post_type_slug) {
-    $post_type_slug = "/online-mrketing-tools/wordpress";
+    $post_type_slug = "/online-marketing-tools/wordpress";
 }
 if ($wordcount > 7) { $title = $webinar_shorttitle . "..."; }
 ?>
