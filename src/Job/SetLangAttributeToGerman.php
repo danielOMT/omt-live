@@ -11,6 +11,6 @@ class SetLangAttributeToGerman extends Job
 
     public function handle($output, $doctype)
     {
-        return str_replace(['en-US', 'de-DE'], 'Deutsch', $output);
+        return str_replace(['en-US', 'de-DE'], 'de', $output);
     }
 }
