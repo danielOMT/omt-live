@@ -3,7 +3,7 @@
         <h4 class="teaser-cat"><?php echo $this->topHeadline ?></h4>
     <?php } ?>
     <h4>
-        <a href="/webinare">
+        <a href="/webinare/">
             <?php echo $this->headline ?>
         </a>
     </h4>

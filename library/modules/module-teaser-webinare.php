@@ -10,7 +10,7 @@ require_once ( get_template_directory() . '/library/functions/json-webinare/json
 <div class="teaser teaser-large">
     <?php if (strlen($top_headline)>0) { ?><h4 class="teaser-cat"><?php print $top_headline;?></h4><?php } ?>
     <h4>
-        <a href="/webinare">
+        <a href="/webinare/">
             <?php print $headline;?>
         </a>
     </h4>
