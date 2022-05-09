@@ -112,7 +112,7 @@ function custom_breadcrumbs() {
                         break;
                     case "ga":
                         $post_type_name = "Google Analytics";
-                        $post_type_archive = "/google-analytics";
+                        $post_type_archive = "/online-marketing-tools/google-analytics";
                         break;
                     case "gmb":
                         $post_type_name = "Google My Business";

@@ -177,9 +177,8 @@ function display_magazinartikel(int $anzahl = 12, string $kategorie="alle", int 
                 //if ($wordcount > 7) { $title = $webinar_shorttitle . "..."; }
                 $post_type_data = get_post_type_object( $post_type );
                 $post_type_slug = $post_type_data->rewrite['slug'];
-                if ("wordpress" == $post_type_slug) {
-                    $post_type_slug = "online-marketing-tools/wordpress";
-                }
+                if ("wordpress" == $post_type_slug) { $post_type_slug = "online-marketing-tools/wordpress"; }
+                if ("google-analytics" == $post_type_slug) { $post_type_slug = "online-marketing-tools/google-analytics"; }
                 ?>
                 <?php if ($countonly == false AND $magazin_count>=$ab_x-1 AND $format != "teaser-medium") { ?>
                     <?php if ( (true == $highlightfirst) AND (0 == $magazin_count or $ab_x-1 == $magazin_count) ) { ?>

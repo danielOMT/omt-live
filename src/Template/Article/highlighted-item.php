@@ -36,9 +36,8 @@ use OMT\Enum\Magazines;
                     <?php echo Magazines::label($this->article->post_type) ?>
                 </span>
             <?php else :
-                if ("wordpress" == $this->article->post_type_slug) {
-                    $this->article->post_type_slug = "online-marketing-tools/wordpress";
-                }
+                if ("wordpress" == $this->article->post_type_slug) { $this->article->post_type_slug = "online-marketing-tools/wordpress"; }
+                if ("google-analytics" == $this->article->post_type_slug) { $this->article->post_type_slug = "online-marketing-tools/google-analytics"; }
                 ?>
                 <a class="has-margin-top-30 no-margin-bottom is-size-20 block category-link" href="<?php echo site_url() . '/' . $this->article->post_type_slug . '/' ?>">
                     <?php echo Magazines::label($this->article->post_type) ?>
