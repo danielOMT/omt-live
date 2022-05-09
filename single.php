@@ -1112,6 +1112,9 @@ $webinar_shorttitle = implode(' ', array_slice(explode(' ', $title), 0, 7));
 $wordcount = str_word_count($title);
 $post_type_data = get_post_type_object( $post_type );
 $post_type_slug = $post_type_data->rewrite['slug'];
+if ("wordpress" == $post_type_slug) {
+    $post_type_slug = "/online-mrketing-tools/wordpress";
+}
 if ($wordcount > 7) { $title = $webinar_shorttitle . "..."; }
 ?>
     <div class="teaser <?php print $format;?> teaser-matchbuttons">
