@@ -216,7 +216,7 @@ function custom_breadcrumbs() {
                         break;
                     case "wordpress":
                         $post_type_name = "WordPress";
-                        $post_type_archive = "/wordpress";
+                        $post_type_archive = "/online-marketing-tools/wordpress/";
                         break;
                     case "omt_magazin":
                         $post_type_name = "OMT-Magazin";
