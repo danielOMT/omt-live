@@ -35,7 +35,11 @@ use OMT\Enum\Magazines;
                 <span class="has-margin-top-30 no-margin-bottom is-size-20 block category-link">
                     <?php echo Magazines::label($this->article->post_type) ?>
                 </span>
-            <?php else : ?>
+            <?php else :
+                if ("wordpress" == $post_type_slug) {
+                    $post_type_slug = "online-marketing-tools/wordpress";
+                }
+                ?>
                 <a class="has-margin-top-30 no-margin-bottom is-size-20 block category-link" href="<?php echo site_url() . '/' . $this->article->post_type_slug . '/' ?>">
                     <?php echo Magazines::label($this->article->post_type) ?>
                 </a>
