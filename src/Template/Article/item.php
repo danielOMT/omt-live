@@ -52,7 +52,11 @@ use OMT\Enum\Magazines;
 
     <?php if (site_url() . '/' . $this->article->post_type_slug . '/' == get_the_permalink()) : ?>
         <span class="teaser-cat category-link"><?php echo Magazines::label($this->article->post_type) ?></span>
-    <?php else : ?>
+    <?php else :
+        if ("wordpress" == $this->article->post_type_slug) {
+            $this->article->post_type_slug = "online-marketing-tools/wordpress";
+        }
+        ?>
         <a class="teaser-cat category-link" href="<?php echo site_url() . '/' . $this->article->post_type_slug . '/' ?>">
             <?php echo Magazines::label($this->article->post_type) ?>
         </a>
