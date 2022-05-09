@@ -57,7 +57,7 @@ use OMT\Enum\Magazines;
             $this->article->post_type_slug = "online-marketing-tools/wordpress";
         }
         ?>
-        <a class="teaser-cat category-link" href="<?php echo site_url() . '/' . $this->article->post_type_slug . '/' ?>">
+        <a class="teaser-cat category-link test" href="<?php echo site_url() . '/' . $this->article->post_type_slug . '/' ?>">
             <?php echo Magazines::label($this->article->post_type) ?>
         </a>
     <?php endif ?>
