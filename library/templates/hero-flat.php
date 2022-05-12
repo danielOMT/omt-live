@@ -26,6 +26,8 @@ $webinare_filter = get_field('webinare_filter');
 
 if (is_array($header_hero_hintergrundbild)) { if (strlen($header_hero_hintergrundbild['url'])>0) { $hero_background = $header_hero_hintergrundbild;} }
 if (strlen($header_hero_h1)>0) { $h1 = $header_hero_h1;} else { $h1 = get_the_title(); }
+$currentyear = date("Y");
+$h1 = str_replace("%%currentyear%%", $currentyear, $h1);
 
 if ($countdown_im_header) {
     $countdown_download_button_url = getPost()->field('countdown_download_button_url');
