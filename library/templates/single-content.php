@@ -35,7 +35,7 @@ $horen = get_field('spotify_id');
                     $h1 = get_the_title();
                     $h1 = str_replace("%%currentyear%%", $currentyear, $h1);
                     ?>
-                    <h1><?php print $h1; ?></h1>
+                    <h1 class="mag-title"><?php print $h1; ?></h1>
                 </div>
             </div>
         <?php endif ?>
