@@ -291,8 +291,8 @@ if ( 1 == $header_footer_2020) {
 
 <?php if (strlen($intro_headline) > 0 || strlen($intro_text) > 0) {
     $currentyear = date("Y");
-    $h1 = str_replace("%%currentyear%%", $currentyear, $intro_headline);
-    $h1 = str_replace("%%currentyear%%", $currentyear, $intro_text);
+    $intro_headline = str_replace("%%currentyear%%", $currentyear, $intro_headline);
+    $intro_text = str_replace("%%currentyear%%", $currentyear, $intro_text);
     ?>
     <div class="omt-row omt-intro wrap article-header page-intro">
         <?php if (strlen($intro_headline) >0) { ?><h2><?php print $intro_headline;?></h2><?php } ?>
