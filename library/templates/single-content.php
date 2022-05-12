@@ -30,7 +30,12 @@ $horen = get_field('spotify_id');
         <?php if (in_array($post_type, ["lexikon", "quicktipps"])) : ?>
             <div class="omt-row hero-header header-flat" style="background: url('<?php echo get_field('header_hero_hintergrundbild')['url'] ?? get_field('standardseite', 'options')['url'] ?>') no-repeat 50% 0;">
                 <div class="wrap">
-                    <h1><?php the_title() ?></h1>
+                    <?php
+                    $currentyear = date("Y");
+                    $h1 = get_the_title();
+                    $h1 = str_replace("%%currentyear%%", $currentyear, $h1);
+                    ?>
+                    <h1><?php print $h1; ?></h1>
                 </div>
             </div>
         <?php endif ?>
