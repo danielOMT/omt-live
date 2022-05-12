@@ -35,7 +35,7 @@ $horen = get_field('spotify_id');
                     $h1 = get_the_title();
                     $h1 = str_replace("%%currentyear%%", $currentyear, $h1);
                     ?>
-                    <h1 class="mag-title"><?php print $h1; ?></h1>
+                    <h1 class=""><?php print $h1; ?></h1>
                 </div>
             </div>
         <?php endif ?>
@@ -89,8 +89,14 @@ $horen = get_field('spotify_id');
 
                     <article id="post-<?php the_ID(); ?>" class="omt-row template-themenwelt" role="article">
                         <div class="article-header">
-                            <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) : ?>
-                                <h1 class="entry-title single-title" itemprop="headline"><?php the_title(); ?></h1>
+                            <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) :
+                                $currentyear = date("Y");
+                                $h1 = get_the_title();
+                                $title_alternativ = get_field('title_alternativ');
+                                if (strlen($title_alternativ)>0) { $h1 = $title_alternativ; }
+                                $h1 = str_replace("%%currentyear%%", $currentyear, $h1);
+                                ?>
+                                <h1 class="entry-title single-title" itemprop="headline"><?php print $h1; ?></h1>
                             <?php endif ?>
 
 
