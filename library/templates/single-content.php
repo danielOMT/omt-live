@@ -33,6 +33,8 @@ $horen = get_field('spotify_id');
                     <?php
                     $currentyear = date("Y");
                     $h1 = get_the_title();
+                    $title_alternativ = get_field('title_alternativ');
+                    if (strlen($title_alternativ)>0) { $h1 = $title_alternativ; }
                     $h1 = str_replace("%%currentyear%%", $currentyear, $h1);
                     ?>
                     <h1 class=""><?php print $h1; ?></h1>
