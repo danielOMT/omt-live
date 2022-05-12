@@ -781,4 +781,13 @@ add_filter('woocommerce_api_request_url', function ($api_request_url, $request, 
 
 
 
+add_filter( 'allowed_block_types', 'misha_allow_2_woo_blocks' );
 
+function misha_allow_2_woo_blocks( $allowed_blocks ){
+
+    $allowed_blocks = array(
+    );
+
+    return $allowed_blocks;
+
+}
