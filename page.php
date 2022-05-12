@@ -289,7 +289,10 @@ if ( 1 == $header_footer_2020) {
     </div>
 <?php endif ?>
 
-<?php if (strlen($intro_headline) > 0 || strlen($intro_text) > 0) { ?>
+<?php if (strlen($intro_headline) > 0 || strlen($intro_text) > 0) {
+    $h1 = str_replace("%%currentyear%%", $intro_headline, $h1);
+    $h1 = str_replace("%%currentyear%%", $intro_text, $h1);
+    ?>
     <div class="omt-row omt-intro wrap article-header page-intro">
         <?php if (strlen($intro_headline) >0) { ?><h2><?php print $intro_headline;?></h2><?php } ?>
         <?php if($themenwelt_autor) {?>
