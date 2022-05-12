@@ -290,6 +290,7 @@ if ( 1 == $header_footer_2020) {
 <?php endif ?>
 
 <?php if (strlen($intro_headline) > 0 || strlen($intro_text) > 0) {
+    $currentyear = date("Y");
     $h1 = str_replace("%%currentyear%%", $currentyear, $intro_headline);
     $h1 = str_replace("%%currentyear%%", $currentyear, $intro_text);
     ?>
