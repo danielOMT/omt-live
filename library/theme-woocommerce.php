@@ -210,7 +210,7 @@ function customise_checkout_field($checkout)
         ) ,
         'label' => __('Teilnehmer Vorname') ,
         'placeholder' => __('Vorname') ,
-        'required' => false,
+        'required' => true,
     ) , $checkout->get_value('teilnehmer_vorname'));
 
     woocommerce_form_field('teilnehmer_nachname', array(
@@ -220,7 +220,7 @@ function customise_checkout_field($checkout)
         ) ,
         'label' => __('Teilnehmer Nachname') ,
         'placeholder' => __('Nachname') ,
-        'required' => false,
+        'required' => true,
     ) , $checkout->get_value('teilnehmer_nachname'));
 
     woocommerce_form_field('teilnehmer_email', array(
@@ -230,7 +230,7 @@ function customise_checkout_field($checkout)
         ) ,
         'label' => __('Teilnehmer Email') ,
         'placeholder' => __('E-Mail Adresse') ,
-        'required' => false,
+        'required' => true,
     ) , $checkout->get_value('teilnehmer_email'));
 
     echo "</div>";
