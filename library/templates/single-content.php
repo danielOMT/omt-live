@@ -79,7 +79,7 @@ $horen = get_field('spotify_id');
                                         return $matches[0];
                                     }
                                     return sprintf('<%s%s id="%s">%s</%s>', $tag, $matches[2], $id, $matches[3], $tag);
-                                }, str_replace("%%currentyear%%", $currentyear, the_content());
+                                }, the_content());
                                 $tableOfContents .= '</div>';
                                 ?>
                                 <?php print $tableOfContents; ?>
