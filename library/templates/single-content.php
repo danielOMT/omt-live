@@ -134,7 +134,7 @@ $horen = get_field('spotify_id');
                                         </button>
                                     <?php endif ?>
                                 </p>
-                                <div class="socials-header"><?php print do_shortcode('[shariff headline="Teile den Artikel" borderradius="1" buttonsize="small" services="facebook|twitter|googleplus|linkedin|xing" theme="round" orientation="horizontal" align="flex-end"]');?></div>
+                                <?php if (1 != $lesezeit_deaktivieren) { ?><div class="socials-header"><?php print do_shortcode('[shariff headline="Teile den Artikel" borderradius="1" buttonsize="small" services="facebook|twitter|googleplus|linkedin|xing" theme="round" orientation="horizontal" align="flex-end"]');?></div><?php } ?>
                             </div>
                             <?php if(isset($schauen) && $schauen != '' || isset($horen) && $horen):?>
                                 <script>
