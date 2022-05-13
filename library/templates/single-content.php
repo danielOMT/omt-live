@@ -79,7 +79,7 @@ $horen = get_field('spotify_id');
                                         return $matches[0];
                                     }
                                     return sprintf('<%s%s id="%s">%s</%s>', $tag, $matches[2], $id, $matches[3], $tag);
-                                }, $postcontent);
+                                }, the_content());
                                 $tableOfContents .= '</div>';
                                 ?>
                                 <?php print $tableOfContents; ?>
@@ -175,7 +175,7 @@ $horen = get_field('spotify_id');
                                     $postcontent = get_the_content();
                                     $currentyear = date("Y");
                                     //$postcontent = str_replace("%%currentyear%%", $currentyear, $postcontent);
-                                    print $postcontent; ?>
+                                    the_content(); ?>
                                 </div>
                                 <div id="soundcloud_content" class="hide_article">
                                     <?php echo do_shortcode( '[spotify trackid="'.$horen.'"]' );   ?>
