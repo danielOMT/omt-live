@@ -64,7 +64,7 @@ $horen = get_field('spotify_id');
                                 $tableOfContents = "";
                                 $postcontent = get_the_content();
                                 $currentyear = date("Y");
-                                $postcontent = str_replace("%%currentyear%%", $currentyear, $postcontent);
+                                //$postcontent = str_replace("%%currentyear%%", $currentyear, $postcontent);
                                 $index = 1;
                                 // Insert the IDs and create the TOC.
                                 $content = preg_replace_callback('#<(h[2-2])(.*?)>(.*?)</\1>#si', function ($matches) use (&$index, &$tableOfContents) {
@@ -174,7 +174,7 @@ $horen = get_field('spotify_id');
                                     <?php
                                     $postcontent = get_the_content();
                                     $currentyear = date("Y");
-                                    $postcontent = str_replace("%%currentyear%%", $currentyear, $postcontent);
+                                    //$postcontent = str_replace("%%currentyear%%", $currentyear, $postcontent);
                                     print $postcontent; ?>
                                 </div>
                                 <div id="soundcloud_content" class="hide_article">
