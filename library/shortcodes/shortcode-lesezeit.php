@@ -13,5 +13,5 @@ function shortcode_lesezeit( $atts ) {
 
     return $result;
 }
-add_shortcode( 'shortcode_lesezeit', 'shortcode_lesezeit' );
+add_shortcode( 'lesezeit', 'shortcode_lesezeit' );
 ?>
