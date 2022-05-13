@@ -7,7 +7,7 @@ function shortcode_lesezeit( $atts ) {
     );
 
     ob_start(); ?>
-    <strong>Lesezeit: <?php echo reading_time(get_the_ID());?></strong>
+    <p><strong>Lesezeit: <?php echo reading_time(get_the_ID());?></strong></p>
     <?php $result = ob_get_clean();
 
 
