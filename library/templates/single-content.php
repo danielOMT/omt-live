@@ -93,85 +93,85 @@ $horen = get_field('spotify_id');
                     <?php endif ?>
 
                     <article id="post-<?php the_ID(); ?>" class="omt-row template-themenwelt" role="article">
-                        <div class="article-header">
-                            <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) :
-                                $currentyear = date("Y");
-                                $h1 = get_the_title();
-                                $title_alternativ = get_field('title_alternativ');
-                                if (strlen($title_alternativ)>0) { $h1 = $title_alternativ; }
-                                $h1 = str_replace("%%currentyear%%", $currentyear, $h1);
-                                ?>
-                                <h1 class="entry-title single-title" itemprop="headline"><?php print $h1; ?></h1>
-                            <?php endif ?>
+                        <?php if (1 != $lesezeit_deaktivieren) { ?>
+                            <div class="article-header">
+                                <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) :
+                                    $currentyear = date("Y");
+                                    $h1 = get_the_title();
+                                    $title_alternativ = get_field('title_alternativ');
+                                    if (strlen($title_alternativ)>0) { $h1 = $title_alternativ; }
+                                    $h1 = str_replace("%%currentyear%%", $currentyear, $h1);
+                                    ?>
+                                    <h1 class="entry-title single-title" itemprop="headline"><?php print $h1; ?></h1>
+                                <?php endif ?>
 
 
-                            <div class="info-wrap">
-                                <p class="text-red">
-                                    <?php if (1 != $lesezeit_deaktivieren) { ?>
-                                    <strong>Lesezeit: <?php echo reading_time(get_the_ID());?></strong>
-                                    <?php } ?>
-                                    <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) : ?>
-                                        <span class="artikel-divider">|</span>
-                                        <span class="artikel-autor">Autor:
-                                        <?php
-                                        $i=0;
-                                        if (is_array($autor_helper)) {
-                                            foreach ($autor_helper as $helper) {
-                                                $i++;
-                                                if ($i > 1 AND $i != count($autor_helper)) { print ", "; }
-                                                if ($i > 1 AND $i == count($autor_helper)) { print " & "; }
-                                                ?>
-                                                <a target="_blank" href="<?php print get_the_permalink($helper->ID);?>"><?php print get_the_title($helper->ID); ?></a>
-                                            <?php } ?>
+                                <div class="info-wrap">
+                                    <p class="text-red">
+                                        <strong>Lesezeit: <?php echo reading_time(get_the_ID());?></strong>
+                                        <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) : ?>
+                                            <span class="artikel-divider">|</span>
+                                            <span class="artikel-autor">Autor:
+                                            <?php
+                                            $i=0;
+                                            if (is_array($autor_helper)) {
+                                                foreach ($autor_helper as $helper) {
+                                                    $i++;
+                                                    if ($i > 1 AND $i != count($autor_helper)) { print ", "; }
+                                                    if ($i > 1 AND $i == count($autor_helper)) { print " & "; }
+                                                    ?>
+                                                    <a target="_blank" href="<?php print get_the_permalink($helper->ID);?>"><?php print get_the_title($helper->ID); ?></a>
+                                                <?php } ?>
                                         </span><?php } ?>
-                                        <span class="artikel-divider">|</span>
-                                        <button
-                                                type="button"
-                                                onclick="return scrollToCommentsSection()"
-                                                class="x-bg-transparent x-border-b x-border-blue-300 x-border-solid x-border-t-0 x-border-l-0 x-border-r-0 x-text-blue x-p-0"
-                                        >
-                                            <?php echo Comment::init()->count(get_the_ID()) ?> Kommentare
-                                        </button>
-                                    <?php endif ?>
-                                </p>
-                                <?php if (1 != $lesezeit_deaktivieren) { ?><div class="socials-header"><?php print do_shortcode('[shariff headline="Teile den Artikel" borderradius="1" buttonsize="small" services="facebook|twitter|googleplus|linkedin|xing" theme="round" orientation="horizontal" align="flex-end"]');?></div><?php } ?>
-                            </div>
-                            <?php if(isset($schauen) && $schauen != '' || isset($horen) && $horen):?>
-                                <script>
-                                    //changing article content
-                                    function articledropdown() {
-                                        var value = document.getElementById("article_select").value;
-                                        if(value === 'schauen'){
-                                            $("#art_content").hide();
-                                            $("#soundcloud_content").hide();
-                                            $("#webinar_content").show();
-                                        }else if(value === 'horen'){
-                                            $("#art_content").hide();
-                                            $("#soundcloud_content").show();
-                                            $("#webinar_content").hide();
-                                        }else{
-                                            $("#art_content").show();
-                                            $("#soundcloud_content").hide();
-                                            $("#webinar_content").hide();
+                                            <span class="artikel-divider">|</span>
+                                            <button
+                                                    type="button"
+                                                    onclick="return scrollToCommentsSection()"
+                                                    class="x-bg-transparent x-border-b x-border-blue-300 x-border-solid x-border-t-0 x-border-l-0 x-border-r-0 x-text-blue x-p-0"
+                                            >
+                                                <?php echo Comment::init()->count(get_the_ID()) ?> Kommentare
+                                            </button>
+                                        <?php endif ?>
+                                    </p>
+                                    <div class="socials-header"><?php print do_shortcode('[shariff headline="Teile den Artikel" borderradius="1" buttonsize="small" services="facebook|twitter|googleplus|linkedin|xing" theme="round" orientation="horizontal" align="flex-end"]');?></div>
+                                </div>
+                                <?php if(isset($schauen) && $schauen != '' || isset($horen) && $horen):?>
+                                    <script>
+                                        //changing article content
+                                        function articledropdown() {
+                                            var value = document.getElementById("article_select").value;
+                                            if(value === 'schauen'){
+                                                $("#art_content").hide();
+                                                $("#soundcloud_content").hide();
+                                                $("#webinar_content").show();
+                                            }else if(value === 'horen'){
+                                                $("#art_content").hide();
+                                                $("#soundcloud_content").show();
+                                                $("#webinar_content").hide();
+                                            }else{
+                                                $("#art_content").show();
+                                                $("#soundcloud_content").hide();
+                                                $("#webinar_content").hide();
+                                            }
                                         }
-                                    }
-                                </script>
-                                <h3 class="article_select_headline">Wie möchtest Du den Artikel konsumieren?</h3>
-                                <label class="artikel-select-wrap">
-                                    <select id="article_select" onchange="articledropdown()">>
-                                        <option value="auswahlen">Bitte auswählen</option>
-                                        <option value="Lesen">Artikel Lesen</option>
-                                        <?php if(isset($schauen) && $schauen != ''): ?>
-                                            <option value="schauen">Video schauen</option>
-                                        <?php endif;?>
-                                        <?php if(isset($horen) && $horen != ''): ?>
-                                            <option value="horen">Tonspur hören</option>
-                                        <?php endif;?>
-                                    </select>
-                                </label>
+                                    </script>
+                                    <h3 class="article_select_headline">Wie möchtest Du den Artikel konsumieren?</h3>
+                                    <label class="artikel-select-wrap">
+                                        <select id="article_select" onchange="articledropdown()">>
+                                            <option value="auswahlen">Bitte auswählen</option>
+                                            <option value="Lesen">Artikel Lesen</option>
+                                            <?php if(isset($schauen) && $schauen != ''): ?>
+                                                <option value="schauen">Video schauen</option>
+                                            <?php endif;?>
+                                            <?php if(isset($horen) && $horen != ''): ?>
+                                                <option value="horen">Tonspur hören</option>
+                                            <?php endif;?>
+                                        </select>
+                                    </label>
 
-                            <?php endif;?>
-                        </div>
+                                <?php endif;?>
+                            </div>
+                        <?php } ?>
                         <section class="entry-content clearfix inhaltseditor" itemprop="articleBody">
                             <section class="entry-content clearfix" itemprop="articleBody">
                                 <div id="art_content">
