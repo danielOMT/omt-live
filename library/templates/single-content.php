@@ -108,7 +108,7 @@ $horen = get_field('spotify_id');
                             <div class="info-wrap">
                                 <p class="text-red">
                                     <?php if (1 != $lesezeichen_deaktivieren) { ?>
-                                    <strong>Lesezeit: <?php echo reading_time(get_the_ID());?></strong>
+                                    <strong>Lesezeit : <?php echo reading_time(get_the_ID());?></strong>
                                     <?php } ?>
                                     <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) : ?>
                                         <span class="artikel-divider">|</span>
