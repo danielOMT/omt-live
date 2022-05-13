@@ -18,6 +18,7 @@ $beschreibung = get_field('beschreibung', $autor->ID);
 $social_media = get_field('social_media', $autor->ID);
 $speaker_name = get_the_title($autor->ID);
 $inhaltsverzeichnis_deaktivieren = get_field('inhaltsverzeichnis_deaktivieren');
+$lesezeichen_deaktivieren = get_field('$lesezeichen_deaktivieren');
 $lesen = 'content';
 $schauen = get_field('webinar_id');
 $horen = get_field('spotify_id');
@@ -105,7 +106,10 @@ $horen = get_field('spotify_id');
 
 
                             <div class="info-wrap">
-                                <p class="text-red"><strong>Lesezeit: <?php echo reading_time(get_the_ID());?></strong>
+                                <p class="text-red">
+                                    <?php if (!$lesezeichen_deaktivieren) { ?>
+                                    <strong>Lesezeit: <?php echo reading_time(get_the_ID());?></strong>
+                                    <?php } ?>
                                     <?php if (!in_array($post_type, ["lexikon", "quicktipps"])) : ?>
                                         <span class="artikel-divider">|</span>
                                         <span class="artikel-autor">Autor:
