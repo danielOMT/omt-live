@@ -19,8 +19,7 @@ wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/a
 <?php if (count($this->webinars)) : ?>
     <?php $shownwebinars = array(); ?>
     <?php foreach ($this->webinars as $key => $webinar) : ?>
-        <?php if (!in_array($this->webinar->extra->url, $shownwebinars)) {
-            array_push($shownwebinars, $this->webinar->extra->url);
+        <?php if (!in_array($this->webinar->preview_title, $shownwebinars)) {
             ?>
             <?php if ($this->highlightFirst && $key === 0) : ?>
                 <?php echo WebinarView::loadTemplate('highlighted-item', [
@@ -35,7 +34,9 @@ wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/a
                     'position' => ($this->offset ?? 0) + $key + 1
                 ]) ?>
             <?php endif ?>
-        <?php } ?>
+        <?php
+            array_push($shownwebinars, $this->webinar->preview_title);
+        } ?>
     <?php endforeach ?>
 
     <?php if (isset($this->loadMoreWebinars) && $this->loadMoreWebinars) : ?>
