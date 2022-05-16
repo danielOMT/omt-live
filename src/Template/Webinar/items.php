@@ -21,7 +21,8 @@ wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/a
     <?php foreach ($this->webinars as $key => $webinar) : ?>
         <?php
         $currenturl = $webinar->extra->url;
-        if (!in_array($currenturl, $shownwebinars)) {
+        print "<div style='display:none;'>" . $currenturl . "</div>";
+        if (in_array($currenturl, $shownwebinars)) {} else {
             array_push($shownwebinars, $currenturl);
             ?>
             <?php if ($this->highlightFirst && $key === 0) : ?>
@@ -37,7 +38,7 @@ wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/a
                     'position' => ($this->offset ?? 0) + $key + 1
                 ]) ?>
             <?php endif ?>
-        <?php //} ?>
+        <?php } ?>
     <?php endforeach ?>
 
     <?php if (isset($this->loadMoreWebinars) && $this->loadMoreWebinars) : ?>
