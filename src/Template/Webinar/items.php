@@ -20,8 +20,8 @@ wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/a
     <?php $shownwebinars = array(); ?>
     <?php foreach ($this->webinars as $key => $webinar) : ?>
         <?php
-        $currenturl = array( 'url' => $webinar->preview_title);
-        print "<div style='display:none;'>" . $currenturl[0] . "</div>";
+        $currenturl = $webinar->extra->url;
+        print "<div style='display:none;'>" . $currenturl . "</div>";
         //if (in_array($currenturl, $shownwebinars)) {} else {
           //  array_push($shownwebinars, $currenturl);
             ?>
