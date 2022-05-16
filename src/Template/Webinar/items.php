@@ -21,9 +21,8 @@ wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/a
     <?php foreach ($this->webinars as $key => $webinar) : ?>
         <?php
         $currenturl = $webinar->extra->url;
-        print "<div style='display:none;'>" . $currenturl . "</div>";
-        //if (in_array($currenturl, $shownwebinars)) {} else {
-          //  array_push($shownwebinars, $currenturl);
+        if (!in_array($currenturl, $shownwebinars)) {
+            array_push($shownwebinars, $currenturl);
             ?>
             <?php if ($this->highlightFirst && $key === 0) : ?>
                 <?php echo WebinarView::loadTemplate('highlighted-item', [
