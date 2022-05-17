@@ -63,9 +63,6 @@ $horen = get_field('spotify_id');
                                 <p class="index_header">Inhaltsverzeichnis:</p>
                                 <?php
                                 $tableOfContents = "";
-                                $postcontent = get_the_content();
-                                $currentyear = date("Y");
-                                //$postcontent = str_replace("%%currentyear%%", $currentyear, $postcontent);
                                 $index = 1;
                                 // Insert the IDs and create the TOC.
                                 $content = preg_replace_callback('#<(h[2-2])(.*?)>(.*?)</\1>#si', function ($matches) use (&$index, &$tableOfContents) {
@@ -176,9 +173,6 @@ $horen = get_field('spotify_id');
                             <section class="entry-content clearfix" itemprop="articleBody">
                                 <div id="art_content">
                                     <?php
-                                    $postcontent = get_the_content();
-                                    $currentyear = date("Y");
-                                    //$postcontent = str_replace("%%currentyear%%", $currentyear, $postcontent);
                                     the_content(); ?>
                                 </div>
                                 <div id="soundcloud_content" class="hide_article">
