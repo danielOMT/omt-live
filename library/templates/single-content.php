@@ -63,6 +63,7 @@ $horen = get_field('spotify_id');
                                 <p class="index_header">Inhaltsverzeichnis:</p>
                                 <?php
                                 $tableOfContents = "";
+                                $postcontent = get_the_content();
                                 $index = 1;
                                 // Insert the IDs and create the TOC.
                                 $content = preg_replace_callback('#<(h[2-2])(.*?)>(.*?)</\1>#si', function ($matches) use (&$index, &$tableOfContents) {
@@ -77,7 +78,7 @@ $horen = get_field('spotify_id');
                                         return $matches[0];
                                     }
                                     return sprintf('<%s%s id="%s">%s</%s>', $tag, $matches[2], $id, $matches[3], $tag);
-                                }, the_content());
+                                }, $postcontent);
                                 $tableOfContents .= '</div>';
                                 ?>
                                 <?php print $tableOfContents; ?>
