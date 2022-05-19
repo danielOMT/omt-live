@@ -129,6 +129,7 @@ if ($countdown_im_header) {
 
 <?php if (1 == $countdown_im_header) { ?>
     <div <?php echo $countdown_bg_style?> class="omt-row hero-countdown-wrap">
+        <div class="upto768 close-countdown">(X)</div>
         <div class="wrap hero-countdown">
             <div class="countdown-wrap x-flex-1">
                 <?php if (strlen($countdown_headline)>0) {?><p class="countdown-headline"><?php print $countdown_headline;?></p><?php } ?>
