@@ -66,7 +66,7 @@ if ($kategorie[0] == "alle") {
     if (1 == $nur_headline__kategorie_link_ausgeben) { ?>
         <h4 style="min-height:0px;" class="agenturfinder-headline-only">
             <?php if ($compareslug != $post_type_slug) { ?>
-                <a class="button" target="_blank" href="<?php print "/" . $post_type_slug; ?>"><?php print $headline; ?></a>
+                <a class="button" target="_blank" href="<?php print "/" . $post_type_slug . "/"; ?>"><?php print $headline; ?></a>
             <?php } else { ?><?php print $headline; ?><?php } ?>
         </h4>
     <?php } else {
