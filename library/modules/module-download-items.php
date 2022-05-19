@@ -107,7 +107,6 @@ wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/a
                         $downloadID = $downloadPost->ID;
                         $deactivate_downloading_until = get_field('deactivate_downloading_until', $downloadID);
                         if ($today>=$deactivate_downloading_until) { ?>
-                    <div class="x-mt-2">
                     <a class="button" href="<?php echo $downloadPost->download_url ?>">
                             <?php if ($module->post_type == 'omt_ebook' && $downloadPost->order_product_id) : ?>
                                 kostenpflichtig bestellen
@@ -116,7 +115,6 @@ wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/a
                                 ?>
                             <?php endif; ?>
                         </a>
-                    </div>
                         <?php } ?>
 
                         <?php if ($downloadPost->download_product_variation) : ?>
