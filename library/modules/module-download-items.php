@@ -99,15 +99,33 @@ wp_enqueue_script('alpinejs', get_template_directory_uri() . '/library/js/libs/a
                         <div class="vorschautext has-margin-top-30 has-margin-bottom-30"><?php echo $downloadPost->download_description ?></div>
                     <?php endif; ?>
 
-                    <a target="_blank" href="<?php echo $downloadPost->download_url ?>" title="<?php echo $downloadPost->download_title ?>" class="button button-red x-mt-2">
-                        <?php if ( ($module->post_type == 'omt_ebook' && $downloadPost->order_product_id) ): ?>
+                    <?php if ( ($module->post_type == 'omt_ebook' && $downloadPost->order_product_id) ) { ?>
+                        <a target="_blank" href="<?php echo $downloadPost->download_url ?>" title="<?php echo $downloadPost->download_title ?>" class="button button-red x-mt-2">
                             kostenpflichtig bestellen
-                        <?php elseif ( $module->post_type == 'omt_magazin' && $downloadPost->magazinbestellung_produktvariante_id ): ?>
-                            Printausgabe bestellen
-                        <?php else : ?>
-                            kostenlos herunterladen
+                        </a>
+                    <?php } elseif ( $module->post_type == 'omt_magazin' && $downloadPost->magazinbestellung_produktvariante_id ){
+                        $downloadID = $downloadPost->ID;
+                        $deactivate_downloading_until = get_field('deactivate_downloading_until', $downloadID);
+                        if ($today>=$deactivate_downloading_until) { ?>
+                        <a class="button" href="<?php echo $downloadPost->download_url ?>">
+                            <?php if ($module->post_type == 'omt_ebook' && $downloadPost->order_product_id) : ?>
+                                kostenpflichtig bestellen
+                            <?php else : ?>
+                                kostenlos herunterladen<?php
+                                ?>
+                            <?php endif; ?>
+                        </a>
+                        <?php } ?>
+
+                        <?php if ($downloadPost->download_product_variation) : ?>
+                            <a class="button download-checkout-url" href="<?php echo WooCart::init()->productVariationCheckoutUrl($downloadPost->download_product_variation) ?>">Printausgabe bestellen</a>
                         <?php endif; ?>
-                    </a>
+
+                    <?php } else { ?>
+                        <a target="_blank" href="<?php echo $downloadPost->download_url ?>" title="<?php echo $downloadPost->download_title ?>" class="button button-red x-mt-2">
+                            kostenlos herunterladen
+                        </a>
+                    <?php } ?>
                 </div>
             </div>
         </div>
