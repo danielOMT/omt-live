@@ -63,7 +63,7 @@ $datahostWebinar = Webinar::init()->item(['id' => $post_id]);
             </div>
             <h1 class="entry-title single-title h2"  style="margin-bottom:0px; itemprop="headline"><?php the_title(); ?></h1>
             <div class="table-cats has-margin-bottom-30">
-                <span style="font-size:14px;">Schwierigkeitsgrad: </span>
+                <span style="font-size:15px;font-weight:700;">Schwierigkeitsgrad: </span>
                 <?php if (in_array(1, $webinar_schwierigkeitsgrad)) { ?><i style="cursor:help;" title="Für Anfänger geeignet" class="cat1 fa fa-circle"></i><?php } ?>
                 <?php if (in_array(2, $webinar_schwierigkeitsgrad)) { ?><i style="cursor:help;" title="Einsteiger, aber Basiswissen vorhanden" class="cat2 fa fa-circle"></i><?php } ?>
                 <?php if (in_array(3, $webinar_schwierigkeitsgrad)) { ?><i style="cursor:help;" title="Fortgeschrittene" class="cat3 fa fa-circle"></i><?php } ?>
