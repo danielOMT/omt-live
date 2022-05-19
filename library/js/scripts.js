@@ -44,6 +44,12 @@ function header_search_icon() {
     });
 }
 
+function close_hero_countdown() {
+    $(".close-countdown").click(function () {
+       $('.hero-countdown-wrap').css('display', 'none');
+    });
+}
+
 function accordion() {
     // Accordion
     var acc_item = $(".accordion-item");
@@ -1656,6 +1662,7 @@ function lazy_tool_youtube() {
 }
 
 $(document).ready(function($) {
+    close_hero_countdown();
     initMobileCardDataTables();
     initDownloadsPeopleCarousel();
     lazy_wistia();
