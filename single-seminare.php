@@ -442,7 +442,7 @@ if (strlen($seminar_preis)>0) { $next_price = $seminar_preis; }
                                                                     print str_replace('-','.',$next_date);
                                                                 } else {
                                                                     print str_replace('-','.',$next_date) . " - " . str_replace('-','.',$next_date_end);
-                                                                } ?> in <?php print $next_location_stadt;?></li>
+                                                                } ?><?php if ("Online Seminar" != $next_location_stadt) { print "in"; }?> <?php print $next_location_stadt;?></li>
                                                         <?php } else { ?>
                                                             <li><b>Nächster Termin:</b> in Planung</li>
                                                         <?php } ?>
