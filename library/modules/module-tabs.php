@@ -6,7 +6,7 @@ $highlight_last = $zeile['inhaltstyp'][0]['letzten_hervorheben'];?>
 <span id="selected" class="anchor"></span>
 <div class="tab tab-buttons <?php if (1 == $highlight_last) { print 'highlight-last'; }?>">
     <?php foreach ($zeile['inhaltstyp'][0]['items'] as $item) { ;?>
-        <a href="#selected" class="tablinks <?php if ($tabsi < 1) print 'active';?>" onclick="openTab(event, 'tab-<?php print $tabsi;?>')"><?php print $item['headline'];?></a>
+        <span class="tablinks <?php if ($tabsi < 1) print 'active';?>" onclick="openTab(event, 'tab-<?php print $tabsi;?>')"><?php print $item['headline'];?></span>
         <?php
         $tabsi++;
     }?>
