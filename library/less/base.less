@@ -7326,7 +7326,7 @@ table,
   margin: 0px;
   width: 100%;
 
-  a {
+  a, span {
     background: none !important;
     padding: 0px !important;
     display: inline !important;
@@ -7334,6 +7334,7 @@ table,
     color: @white;
     border-bottom: none;
     font-family: "Sanuk W01 Black", sans-serif;
+    cursor: pointer;
 
     &:hover {
       color: @omt_blue;
@@ -10457,4 +10458,8 @@ input {
       max-width: none !important;
     }
   }
+}
+
+span.button, .sticky-buttons span {
+  cursor: pointer;
 }

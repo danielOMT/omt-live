@@ -170,26 +170,26 @@ if (strlen($seminar_preis)>0) { $next_price = $seminar_preis; }
                                         </div>
                                     </h3>*/?>
                                         <div class="sticky-buttons">
-                                            <?php if (strlen($seminar_ubersicht)>0) { ?><a href="#selected" class="tablinks active" onclick="openTab(event, 'ubersicht')">Übersicht</a><?php } ?>
-                                            <?php if (strlen($seminar_agenda)>0) { ?><a href="#selected" class="tablinks " onclick="openTab(event, 'agenda')">Agenda</a><?php } ?>
-                                            <?php if (strlen($seminar_zielgruppe)>0) { ?><a href="#selected" class="tablinks " onclick="openTab(event, 'zielgruppe')">Zielgruppe</a><?php } ?>
-                                            <?php if (strlen($seminar_beschreibung)>0) { ?><a href="#selected" class="tablinks " onclick="openTab(event, 'beschreibung')">Beschreibung</a><?php } ?>
-                                            <a href="#selected" class="tablinks" onclick="openTab(event, 'experte')">Experte</a>
-                                            <?php if (strlen($stimmen_zum_seminar[0]['teilnehmer_stimme'])>0) { ?><a href="#selected" class="tablinks " onclick="openTab(event, 'teilnehmerstimmen')">Teilnehmerstimmen</a><?php } ?>
-                                            <?php if ( (strlen($next_date)>0) OR ( strlen($seminar_infopaket )<1) ) {?><a class="tablinks tablinks-termine stayvisible" href="#selected" onclick="openTab(event, 'termine')">Termine</a><?php } ?>
-                                            <?php if (strlen($seminar_infopaket)>0) {?><a class="tablinks tablinks-infopaket"  style="" target="_blank" href="<?php print $seminar_infopaket;?>">Infopaket</a><?php } ?>
+                                            <?php if (strlen($seminar_ubersicht)>0) { ?><span class="tablinks active" onclick="openTab(event, 'ubersicht')">Übersicht</span><?php } ?>
+                                            <?php if (strlen($seminar_agenda)>0) { ?><span class="tablinks " onclick="openTab(event, 'agenda')">Agenda</span><?php } ?>
+                                            <?php if (strlen($seminar_zielgruppe)>0) { ?><span class="tablinks " onclick="openTab(event, 'zielgruppe')">Zielgruppe</span><?php } ?>
+                                            <?php if (strlen($seminar_beschreibung)>0) { ?><span class="tablinks " onclick="openTab(event, 'beschreibung')">Beschreibung</span><?php } ?>
+                                            <span class="tablinks" onclick="openTab(event, 'experte')">Experte</span>
+                                            <?php if (strlen($stimmen_zum_seminar[0]['teilnehmer_stimme'])>0) { ?><span class="tablinks " onclick="openTab(event, 'teilnehmerstimmen')">Teilnehmerstimmen</span><?php } ?>
+                                            <?php if ( (strlen($next_date)>0) OR ( strlen($seminar_infopaket )<1) ) {?><span class="tablinks tablinks-termine stayvisible" onclick="openTab(event, 'termine')">Termine</span><?php } ?>
+                                            <?php if (strlen($seminar_infopaket)>0) {?><span class="tablinks tablinks-infopaket"  style="" target="_blank" href="<?php print $seminar_infopaket;?>">Infopaket</span><?php } ?>
                                         </div>
-                                        <?php if (strlen($seminar_ubersicht)>0) { ?><a href="#selected" class="no-sticky tablinks active" onclick="openTab(event, 'ubersicht')">Übersicht</a><?php } ?>
-                                        <?php if (strlen($seminar_agenda)>0) { ?><a href="#selected" class="no-sticky tablinks " onclick="openTab(event, 'agenda')">Agenda</a><?php } ?>
-                                        <?php if (strlen($seminar_zielgruppe)>0) { ?><a href="#selected" class="no-sticky tablinks " onclick="openTab(event, 'zielgruppe')">Zielgruppe</a><?php } ?>
-                                        <?php if (strlen($seminar_beschreibung)>0) { ?><a href="#selected" class="no-sticky tablinks " onclick="openTab(event, 'beschreibung')">Beschreibung</a><?php } ?>
-                                        <a href="#selected" class="no-sticky tablinks " onclick="openTab(event, 'experte')">Experte</a>
-                                        <?php if (strlen($stimmen_zum_seminar[0]['teilnehmer_stimme'])>0) { ?><a href="#selected" class="tablinks no-sticky" onclick="openTab(event, 'teilnehmerstimmen')">Teilnehmerstimmen</a><?php } ?>
-                                        <a href="#selected" class="tablinks tabbutton-termine" onclick="openTab(event, 'termine')">Termine & Anmeldung</a>
+                                        <?php if (strlen($seminar_ubersicht)>0) { ?><span class="no-sticky tablinks active" onclick="openTab(event, 'ubersicht')">Übersicht</span><?php } ?>
+                                        <?php if (strlen($seminar_agenda)>0) { ?><span class="no-sticky tablinks " onclick="openTab(event, 'agenda')">Agenda</span><?php } ?>
+                                        <?php if (strlen($seminar_zielgruppe)>0) { ?><span class="no-sticky tablinks " onclick="openTab(event, 'zielgruppe')">Zielgruppe</span><?php } ?>
+                                        <?php if (strlen($seminar_beschreibung)>0) { ?><span class="no-sticky tablinks " onclick="openTab(event, 'beschreibung')">Beschreibung</span><?php } ?>
+                                        <span class="no-sticky tablinks " onclick="openTab(event, 'experte')">Experte</span>
+                                        <?php if (strlen($stimmen_zum_seminar[0]['teilnehmer_stimme'])>0) { ?><span class="tablinks no-sticky" onclick="openTab(event, 'teilnehmerstimmen')">Teilnehmerstimmen</span><?php } ?>
+                                        <span class="tablinks tabbutton-termine" onclick="openTab(event, 'termine')">Termine & Anmeldung</span>
                                         <?php if (strlen($seminar_infopaket)>0) {?><a style="" target="_blank" href="<?php print $seminar_infopaket;?>" class="tablinks tabbutton-termine tabbutton-infopaket">Infopaket bestellen</a><?php } ?>
                                     </div>
                                     <div class="seminar-buttons-mobile display-none">
-                                        <a class="" href="#selected" class="" onclick="openTab(event, 'termine')">Termine</a>
+                                        <span onclick="openTab(event, 'termine')">Termine</span>
                                         <?php if (strlen($seminar_infopaket)>0) {?><a class=""  style="" target="_blank" href="<?php print $seminar_infopaket;?>">Infopaket</a><?php } ?>
                                     </div>
                                 </div>
