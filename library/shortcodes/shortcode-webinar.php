@@ -54,6 +54,7 @@ function omt_webinar_shortcode( $atts ) {
                 <a <?php if ($today_date < $webinar_date_compare) {?> target="_blank" <?php } ?>data-type="<?php print $webinar_type;?>" data-id="<?php print $webinar_video;?>" href="<?php print $linktarget;?>" title="<?php print $webinar_title; ?>" class="<?php if ($today_date > $webinar_date_compare) { print "open-video"; } ?>">
                     <img class="teaser-img" alt="<?php print $webinar_title; ?>" title="<?php print $webinar_title; ?>" src="<?php print $previewImage['sizes']['550-290'];?>">
                 </a>
+                <?php print_r($previewImage);?>
             <?php } ?>
         </div>
         <div class="webinar-teaser-text">
