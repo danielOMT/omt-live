@@ -15,11 +15,13 @@ function omt_ctawidget( $atts ) {
 
     ?>
     <div class="webinar-teaser card clearfix">
+        <?php if (strlen($atts['bild'])>0) { ?>
         <div class="webinar-teaser-img">
             <a target="<?php print $atts['target'];?>" href="<?php print $atts['link'];?>" title="<?php print $atts['headline']; ?>">
                 <img class="teaser-img" alt="<?php print $atts['headline']; ?>" title="<?php print $atts['headline']; ?>" src="<?php print $atts['bild'];?>">
             </a>
         </div>
+        <?php } ?>
         <div class="webinar-teaser-text">
             <div class="teaser-cat"><?php print $atts['headline_red'];?></div>
             <h3><?php print $atts['headline'];?></h3>
