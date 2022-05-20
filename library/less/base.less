@@ -4679,7 +4679,7 @@ table,
         display: none;
       }
 
-      a {
+      a, span {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -4706,7 +4706,7 @@ table,
     }
   }
   /* Style the buttons that are used to open the tab content */
-  .highlight-last a {
+  .highlight-last a, .highlight-last span {
     &:last-child {
       background: @omt_red;
       // border: 1px solid @omt_red;
@@ -4725,7 +4725,7 @@ table,
   }
 
   /* Create an active/current tablink class */
-  .tab a.active {
+  .tab a.active, .tab span.active {
     //color: @white;
     //background: @omt_blue;
     //border: 1px solid @omt_blue;
@@ -4813,7 +4813,7 @@ table,
         width: 100%;
         // padding-top:10px;
         // border-top: 1px solid @tool_lightgrey;
-        a {
+        a, span {
           width: auto;
           padding: 0px;
           margin: 0 20px 0 0;
@@ -4837,7 +4837,7 @@ table,
         .tablinks-infopaket {
           color: @omt_red !important;
         }
-        a.active {
+        a.active, span.active {
           color: @omt_blue !important;
           border: 1px solid @omt_blue;
         }
@@ -4845,7 +4845,7 @@ table,
       .no-sticky {
         display:none;
       }
-      a {
+      a, span {
         margin-bottom: 0px;
         align-self: baseline;
       }
