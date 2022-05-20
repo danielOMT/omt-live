@@ -448,11 +448,11 @@ if (strlen($seminar_preis)>0) { $next_price = $seminar_preis; }
                                                         <?php } ?>
                                                     </ul>
                                                     <?php if (strlen($next_date)>0) {?>
-                                                        <a href="#selected" class="button button-red" style="margin-top: 10px;" onclick="openTab(event, 'termine')">Alle Termine</a>
+                                                        <span class="button button-red" style="margin-top: 10px;" onclick="openTab(event, 'termine')">Alle Termine</span>
                                                         <?php /*<a class="a a-730px a-blue" id="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>" href="/kasse/?add-to-cart=<?php print $seminar_woocommerce->ID;?>&attribute_pa_startdatum=<?php print $seminar['day_start'];?>&attribute_pa_enddatum=<?php print $seminar['day_end'];?>&attribute_pa_startuhrzeit=<?php print $seminar['time_start'];?>&attribute_pa_enduhrzeit=<?php print $seminar['time_end'];?>&attribute_pa_location=<?php print $seminar['location'];?>&speaker_id=<?php print $seminar_speaker->ID;?>" title="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>">*/?>
                                                     <?php } ?>
                                                     <?php if ( ( strlen($next_date)<1) AND (strlen($seminar_infopaket)<1) ) {?>
-                                                        <a href="#selected" class="button button-red" style="margin-top: 10px;" onclick="openTab(event, 'termine')">Zur Warteliste</a>
+                                                        <span class="button button-red" style="margin-top: 10px;" onclick="openTab(event, 'termine')">Zur Warteliste</span>
                                                         <?php /*<a class="a a-730px a-blue" id="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>" href="/kasse/?add-to-cart=<?php print $seminar_woocommerce->ID;?>&attribute_pa_startdatum=<?php print $seminar['day_start'];?>&attribute_pa_enddatum=<?php print $seminar['day_end'];?>&attribute_pa_startuhrzeit=<?php print $seminar['time_start'];?>&attribute_pa_enduhrzeit=<?php print $seminar['time_end'];?>&attribute_pa_location=<?php print $seminar['location'];?>&speaker_id=<?php print $seminar_speaker->ID;?>" title="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>">*/?>
                                                     <?php } ?>
                                                     <?php if (strlen($seminar_infopaket)>0) { ?>
