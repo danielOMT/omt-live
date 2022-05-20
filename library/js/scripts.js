@@ -1126,7 +1126,7 @@ function openTab(evt, tabName) {
     /* document.getElementById(tabName).css('margin-top', '0px');*/
     evt.currentTarget.className += " active";
     regenerate_index();
-    $('html,body').animate({scrollTop: $('#selected').offset().top},'slow');
+    $('html,body').animate({ scrollTop: $("#selected").offset().top }, 'slow');
 }
 
 function stickysidebar() {
