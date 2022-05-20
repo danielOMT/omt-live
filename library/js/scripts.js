@@ -1104,11 +1104,6 @@ function popup_modal() {
     });
 }
 
-function scrollToAnchor(aid){
-    var aTag = $("a[name='"+ aid +"']");
-    $('html,body').animate({scrollTop: aTag.offset().top},'slow');
-}
-
 function openTab(evt, tabName) {
     // Declare all variables
     $('.tabcontent').not('.tab-termine').removeClass('untabbed');
@@ -1131,7 +1126,7 @@ function openTab(evt, tabName) {
     /* document.getElementById(tabName).css('margin-top', '0px');*/
     evt.currentTarget.className += " active";
     regenerate_index();
-    scrollToAnchor('selected');
+    $('html,body').animate({scrollTop: $('#selected').offset().top},'slow');
 }
 
 function stickysidebar() {
