@@ -50,7 +50,7 @@ function omt_webinar_shortcode( $atts ) {
     <?php if ($today_date < $webinar_date_compare) { $linktarget = get_the_permalink($webinar_ID); } else { $linktarget = "#webinar-anschauen"; } ?>
         <div class="webinar-teaser card clearfix" data-id="<?php if ($today_date > $webinar_date_compare) { print $webinar_video; }?>">
         <div class="webinar-teaser-img">
-            <?php if (strlen($previewImage['sizes']['550-290'])>0) { ?>
+            <?php if (strlen($previewImage['url'])>0) { ?>
                 <a <?php if ($today_date < $webinar_date_compare) {?> target="_blank" <?php } ?>data-type="<?php print $webinar_type;?>" data-id="<?php print $webinar_video;?>" href="<?php print $linktarget;?>" title="<?php print $webinar_title; ?>" class="<?php if ($today_date > $webinar_date_compare) { print "open-video"; } ?>">
                     <img class="teaser-img" alt="<?php print $webinar_title; ?>" title="<?php print $webinar_title; ?>" src="<?php print $previewImage['sizes']['550-290'];?>">
                 </a>
