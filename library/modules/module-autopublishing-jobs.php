@@ -31,7 +31,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
     $extra_class = '';
     $rec = '';
     $recom_up_class = '';
-    if (3 == count ($variations1)) { $teaser_size = "small"; $style = "style='width: 33.3333% !important;'"; }
+    if (3 == count ($variations1)) { $teaser_size = "small"; $style = "style='width: 32% !important;'"; }
     foreach($produktvariationen_beschreibungen as $variationsbeschreibung) {
         if ($variationsbeschreibung['variations_id'] == $ticket_variation_id) {
             $beschreibungselemente = $variationsbeschreibung['beschreibungselemente'];
