@@ -53,12 +53,12 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
             <div class="teaser teaser-<?php print $teaser_size;?> ticket <?= $extra_class;?><?= $recom_up_class;?> <?php if ($active != true) { print "omt-ticket-inactive"; } ?>" <?php print $style; ?>>
                     <?php if ($lager > 0 && $active == true) { ?>
 
-            <?=$rec;?>
                 <a
                         href="/kasse/?add-to-cart=<?php print $ticket_variation_id;?>&job=1"
                         title="<?php the_title_attribute(); ?>">
                     <?php } ?><!--$lager > 0 && $active == true/-->
                         <?php if( $highlighted == 'yes' ){ ?> <div class="highlight-top"> <?php } ?>
+                        <?=$rec;?>
                         <h4 class="ticket-type"><?= $test_job;?></h4>
                         <p class="ticket-price"><?php print $preis;?>,- &euro;</p>
 
