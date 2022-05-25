@@ -24,8 +24,8 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
     $highlighted = get_post_meta( $ticket_variation_id, '_highlighted', true );
     $active_product = get_post_meta( $ticket_variation_id, '_activePro', true );
     $produktvariationen_beschreibungen = get_field('produktvariationen_beschreibungen', 'options');
-    
-   
+
+
     $beschreibungselemente = 0;
     $teaser_size = "xsmall";
     $extra_class = '';
@@ -37,7 +37,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
             $beschreibungselemente = $variationsbeschreibung['beschreibungselemente'];
         }
     }
-    
+
     //Checking if product is active or inactive in prosuct variation
     if( $active_product == 'yes' ){ $active = true; $lager = 999; }else{ $active = false; }
 
@@ -48,44 +48,44 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
     if ( $lager <1 OR $active != true) { $inactive_class = "ticket-inactive"; }
     if( $highlighted == 'yes' ){ $extra_class = 'highlighted'; $rec = '<p class="ticket-recomend">'.$empfehlung_text.'</p>'; }//else{ $recom_up_class = 'recom_up_class'; }
     ?>
-        
 
-            <div class="teaser teaser-<?php print $teaser_size;?> ticket <?= $extra_class;?><?= $recom_up_class;?> <?php if ($active != true) { print "omt-ticket-inactive"; } ?>" <?php print $style; ?>>
-                    <?php if ($lager > 0 && $active == true) { ?>
-                     
-                    <a  
-                        href="/kasse/?add-to-cart=<?php print $ticket_variation_id;?>&job=1" 
-                        title="<?php the_title_attribute(); ?>">
-                    <?php } ?><!--$lager > 0 && $active == true/-->
-                        <?php if( $highlighted == 'yes' ){ ?> <div class="highlight-top"> <?php } ?>
-                        <h4 class="ticket-type"><?= $test_job;?></h4>
-                        <p class="ticket-price"><?php print $preis;?>,- &euro;</p>
-                        <?=$rec;?>
 
-                        <?php if ($lager > 0 && $active == true) : ?>
-                            <span  class="button button-red" title="<?php the_title_attribute(); ?>">Jobangebot erstellen!</span>
-                        <?php else: ?>
-                            <div class="button button-gradient">
-                                <?php if ($lager > 0) : print "nicht verfügbar";  else : print "ausverkauft!";endif;?>
-                            </div>
-                        <?php endif; ?>
-                            <?php if( $highlighted == 'yes' ){ ?> </div><?php } ?>
-                                <?php if ($beschreibungselemente != 0) :?>
-                            <div class="produkt-beschreibung " id="more_<?=$ticket_variation_id?>">
-                                <?php
-                                    foreach ($beschreibungselemente as $element) {
-                                        print "<p>" . $element['text'] . "</p>";
-                                    }
-                                ?>
-                            </div>
-                        <?php endif; ?>
+    <div class="teaser teaser-<?php print $teaser_size;?> ticket <?= $extra_class;?><?= $recom_up_class;?> <?php if ($active != true) { print "omt-ticket-inactive"; } ?>" <?php print $style; ?>>
+        <?php if ($lager > 0 && $active == true) { ?>
 
-                        <?php if ($lager > 0 && $active == true && (empty($countdown_download_button_url) || empty($countdown_download_button_label))) : ?>
-                    </a><!--data-ticket-type/-->
-                    <?php endif ?>
-                    
-                    
-            </div>
+        <a
+                href="/kasse/?add-to-cart=<?php print $ticket_variation_id;?>&job=1"
+                title="<?php the_title_attribute(); ?>">
+            <?php } ?><!--$lager > 0 && $active == true/-->
+            <?php if( $highlighted == 'yes' ){ ?> <div class="highlight-top"> <?php } ?>
+                <?=$rec;?>
+                <h4 class="ticket-type"><?= $test_job;?></h4>
+                <p class="ticket-price"><?php print $preis;?>,- &euro;</p>
+
+                <?php if ($lager > 0 && $active == true) : ?>
+                    <span  class="button button-red" title="<?php the_title_attribute(); ?>">Jobangebot erstellen!</span>
+                <?php else: ?>
+                    <div class="button button-gradient">
+                        <?php if ($lager > 0) : print "nicht verfügbar";  else : print "ausverkauft!";endif;?>
+                    </div>
+                <?php endif; ?>
+                <?php if( $highlighted == 'yes' ){ ?> </div><?php } ?>
+            <?php if ($beschreibungselemente != 0) :?>
+                <div class="produkt-beschreibung " id="more_<?=$ticket_variation_id?>">
+                    <?php
+                    foreach ($beschreibungselemente as $element) {
+                        print "<p>" . $element['text'] . "</p>";
+                    }
+                    ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($lager > 0 && $active == true && (empty($countdown_download_button_url) || empty($countdown_download_button_label))) : ?>
+        </a><!--data-ticket-type/-->
+    <?php endif ?>
+
+
+    </div>
 
 
 <?php endforeach; ?>
