@@ -50,42 +50,42 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
     ?>
 
 
-    <div class="teaser teaser-<?php print $teaser_size;?> ticket <?= $extra_class;?><?= $recom_up_class;?> <?php if ($active != true) { print "omt-ticket-inactive"; } ?>" <?php print $style; ?>>
-        <?php if ($lager > 0 && $active == true) { ?>
+            <div class="teaser teaser-<?php print $teaser_size;?> ticket <?= $extra_class;?><?= $recom_up_class;?> <?php if ($active != true) { print "omt-ticket-inactive"; } ?>" <?php print $style; ?>>
+                    <?php if ($lager > 0 && $active == true) { ?>
 
-        <a
-                href="/kasse/?add-to-cart=<?php print $ticket_variation_id;?>&job=1"
-                title="<?php the_title_attribute(); ?>">
-            <?php } ?><!--$lager > 0 && $active == true/-->
-            <?php if( $highlighted == 'yes' ){ ?> <div class="highlight-top"> <?php } ?>
-                <?=$rec;?>
-                <h4 class="ticket-type"><?= $test_job;?></h4>
-                <p class="ticket-price"><?php print $preis;?>,- &euro;</p>
+                    <a
+                        href="/kasse/?add-to-cart=<?php print $ticket_variation_id;?>&job=1"
+                        title="<?php the_title_attribute(); ?>">
+                    <?php } ?><!--$lager > 0 && $active == true/-->
+                        <?php if( $highlighted == 'yes' ){ ?> <div class="highlight-top"> <?php } ?>
+                        <h4 class="ticket-type"><?= $test_job;?></h4>
+                        <p class="ticket-price"><?php print $preis;?>,- &euro;</p>
+                        <?=$rec;?>
 
-                <?php if ($lager > 0 && $active == true) : ?>
-                    <span  class="button button-red" title="<?php the_title_attribute(); ?>">Jobangebot erstellen!</span>
-                <?php else: ?>
-                    <div class="button button-gradient">
-                        <?php if ($lager > 0) : print "nicht verfügbar";  else : print "ausverkauft!";endif;?>
-                    </div>
-                <?php endif; ?>
-                <?php if( $highlighted == 'yes' ){ ?> </div><?php } ?>
-            <?php if ($beschreibungselemente != 0) :?>
-                <div class="produkt-beschreibung " id="more_<?=$ticket_variation_id?>">
-                    <?php
-                    foreach ($beschreibungselemente as $element) {
-                        print "<p>" . $element['text'] . "</p>";
-                    }
-                    ?>
-                </div>
-            <?php endif; ?>
+                        <?php if ($lager > 0 && $active == true) : ?>
+                            <span  class="button button-red" title="<?php the_title_attribute(); ?>">Jobangebot erstellen!</span>
+                        <?php else: ?>
+                            <div class="button button-gradient">
+                                <?php if ($lager > 0) : print "nicht verfügbar";  else : print "ausverkauft!";endif;?>
+                            </div>
+                        <?php endif; ?>
+                            <?php if( $highlighted == 'yes' ){ ?> </div><?php } ?>
+                                <?php if ($beschreibungselemente != 0) :?>
+                            <div class="produkt-beschreibung " id="more_<?=$ticket_variation_id?>">
+                                <?php
+                                    foreach ($beschreibungselemente as $element) {
+                                        print "<p>" . $element['text'] . "</p>";
+                                    }
+                                ?>
+                            </div>
+                        <?php endif; ?>
 
-            <?php if ($lager > 0 && $active == true && (empty($countdown_download_button_url) || empty($countdown_download_button_label))) : ?>
-        </a><!--data-ticket-type/-->
-    <?php endif ?>
+                        <?php if ($lager > 0 && $active == true && (empty($countdown_download_button_url) || empty($countdown_download_button_label))) : ?>
+                    </a><!--data-ticket-type/-->
+                    <?php endif ?>
 
 
-    </div>
+            </div>
 
 
 <?php endforeach; ?>
