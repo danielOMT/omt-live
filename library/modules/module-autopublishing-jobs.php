@@ -57,6 +57,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                         href="/kasse/?add-to-cart=<?php print $ticket_variation_id;?>&job=1" 
                         title="<?php the_title_attribute(); ?>">
                     <?php } ?><!--$lager > 0 && $active == true/-->
+                        <?php if( $highlighted == 'yes' ){ ?> <div class="highlight-top"> <?php } ?>
                         <h4 class="ticket-type"><?= $test_job;?></h4>
                         <p class="ticket-price"><?php print $preis;?>,- &euro;</p>
                         <?=$rec;?>
@@ -68,7 +69,8 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                                 <?php if ($lager > 0) : print "nicht verfügbar";  else : print "ausverkauft!";endif;?>
                             </div>
                         <?php endif; ?>
-                        <?php if ($beschreibungselemente != 0) :?>
+                            <?php if( $highlighted == 'yes' ){ ?> </div><?php } ?>
+                                <?php if ($beschreibungselemente != 0) :?>
                             <div class="produkt-beschreibung " id="more_<?=$ticket_variation_id?>">
                                 <?php
                                     foreach ($beschreibungselemente as $element) {
