@@ -9,13 +9,12 @@ $active = true;
 $countdown_im_header = get_field('countdown_im_header');
 $countdown_download_button_url = $countdown_im_header ? getPost()->field('countdown_download_button_url') : '';
 $countdown_download_button_label = $countdown_im_header ? getPost()->field('countdown_download_button_label') : '';
-
+?>
+    <span class="anchor" id="ticket"></span>
+<?php
 foreach ($variations1 as $ticketvariation) :   /*build array with all seminars and all repeater date fields*/
     //collecting data
     $single_variation = new WC_Product_Variation($ticketvariation);
-    ?>
-    <span class="anchor" id="ticket"></span>
-    <?php
     $test_job = $single_variation->attributes['pa_jobangebot'];
     $ticketstatus = $single_variation->attributes['status'];
     $preis = $single_variation->price;
