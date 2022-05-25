@@ -382,6 +382,12 @@ if ( 1 == $header_footer_2020) {
     $introtext = $zeile['introtext'];
     $headline_noindex = $zeile['headline_noindex'];
     $headline_set = $zeile['headline_&_introtext_vor_dem_modul'];
+    $abstand_oben_entfernen = $zeile['abstand_oben_entfernen'];
+    $abstand_unten_entfernen = $zeile['abstand_unten_entfernen'];
+    $style = "style='";
+    if (1 == $abstand_oben_entfernen) { $style .= "padding-top:0px;margin-top:0px;"; }
+    if (1 == $abstand_unten_entfernen) { $style .= "padding-bottom:0px;margin-bottom:0px;"; }
+    $style .="'";
     if (1 == $themenwelt_alternativ) { $sticky_header_abschnitt = $zeile['sticky_header_abschnitt']; }
     if ($headline_set!=true) {
         $headline = "";
@@ -402,7 +408,7 @@ if ( 1 == $header_footer_2020) {
     if ($zeile['inhaltstyp'][0]['timetable_verstecken'] == 1) { $rowclass .= " display-none-imp";}
 
     ?>
-    <section id="abschnitt-<?php print $rowcount;?>" class="omt-row <?php print $rowclass;?> <?php print $class_themenwelt;?> <?php if (false != $color_area ) { ?>color-area-<?php print $zeile['color_embed']; } ?> <?php if (1==$zeile['content_rotate']) { print "content-rotate"; } ?>">
+    <section id="abschnitt-<?php print $rowcount;?>" class="omt-row <?php print $rowclass;?> <?php print $class_themenwelt;?> <?php if (false != $color_area ) { ?>color-area-<?php print $zeile['color_embed']; } ?> <?php if (1==$zeile['content_rotate']) { print "content-rotate"; } ?>" <?php print $style;?>>
         <?php if ( (1 == $themenwelt_alternativ) AND (strlen($sticky_header_abschnitt)>0) ) { ?>
             <span class="anchor anchor-themenwelt" id="<?php print $sticky_header_abschnitt;?>"></span> <?php } ?>
         <?php if (false != $color_area ) { ?><div class="color-area-inner"></div><?php } ?>
