@@ -63,7 +63,14 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                         <h4 class="ticket-type"><?= $test_job;?></h4>
                         <p class="ticket-price"><?php print $preis;?>,- &euro;</p>
                         <?=$rec;?>
-                      
+
+                        <?php if ($lager > 0 && $active == true) : ?>
+                            <span  class="button button-red" title="<?php the_title_attribute(); ?>">Jobangebot erstellen!</span>
+                        <?php else: ?>
+                            <div class="button button-gradient">
+                                <?php if ($lager > 0) : print "nicht verfügbar";  else : print "ausverkauft!";endif;?>
+                            </div>
+                        <?php endif; ?>
                         <?php if ($beschreibungselemente != 0) :?>
                             <div class="produkt-beschreibung " id="more_<?=$ticket_variation_id?>">
                                 <?php
@@ -73,13 +80,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                                 ?>
                             </div>
                         <?php endif; ?>
-                        <?php if ($lager > 0 && $active == true) : ?>
-                            <span  class="button button-red" title="<?php the_title_attribute(); ?>">Jobangebot erstellen!</span>
-                        <?php else: ?>
-                            <div class="button button-gradient">
-                                <?php if ($lager > 0) : print "nicht verfügbar";  else : print "ausverkauft!";endif;?>
-                            </div>
-                        <?php endif; ?>
+
                         <?php if ($lager > 0 && $active == true && (empty($countdown_download_button_url) || empty($countdown_download_button_label))) : ?>
                     </a><!--data-ticket-type/-->
                     <?php endif ?>
