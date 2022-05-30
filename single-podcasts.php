@@ -11,6 +11,7 @@ $podinar_beschreibung = get_field('podinar_beschreibung');
 $podcast_introtext = get_field('podcast_introtext');
 $podinarID = get_field('podinarID');
 $podinar_abonnieren_optionen = get_field('podinar_abonnieren_optionen', 'options');
+$spotify_track_id = get_field('spotify_track_id');
 ?>
 <div class="socials-floatbar-left">
     <?php print do_shortcode('[shariff headline="<p>Podcast-Folge<br/>teilen:</p>" borderradius="1" services="facebook|twitter|googleplus|linkedin|xing" theme="round" orientation="vertical"]');?>
@@ -23,7 +24,19 @@ $podinar_abonnieren_optionen = get_field('podinar_abonnieren_optionen', 'options
             <?php } */?>
             <h1 class="entry-title single-title h2 has-margin-bottom-30" itemprop="headline"><?php the_title(); ?></h1>
             <?php if (strlen($podcast_introtext)>0) { ?><div class="omt-module"><?php print $podcast_introtext; ?></div> <?php } ?>
-            <?php  if (strlen($soundcloud)>0) { //SOUNDCLOUD ?>
+            <?php  if (strlen($spotify_track_id)>0) { //SPOTIFY ?>
+            <div class="titlebox box-podcast box-spotify" style="display: block; width:100%;max-width:730px; background: #ffffff; color: #333333; border: 1px solid #004590;">
+                <div class="titlebox-label" style="display: block; background: #ffffff; color: #333333; border: 1px solid #004590;">
+                    <span class="titlebox-title">
+                        <img class="titlebox-label-image" src="https://www.omt.de/uploads/omt-logo.svg" alt="omt logo"/>
+                    </span>
+                </div>
+                <h3 style="margin: 0px !important;">Jetzt direkt bei Spotify anhören</h3>
+                <div class="lazy-spotify" style="margin:0 auto;" data-track="<?php print $spotify_track_id;?>">
+                    OMT-Podcast</div>
+            </div>
+
+        <?php } elseif (strlen($soundcloud)>0) { //SOUNDCLOUD ?>
                     <?php
                     //  $soundcloud = '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/323253642&color=%23c0cedb&auto_play=false&hide_related=true&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>';
                     $trackpos = strpos($soundcloud, "/tracks/");
