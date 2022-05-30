@@ -50,7 +50,7 @@ if (1 == $alphabetische_anzeige) {
     } else {
         if (in_array("alle", $kategorien)) {
             //$post_types = array('contentagentur', 'cmagentur', 'digitalagentur', 'gaagentur', 'internetagentur', 'omagentur', 'seaagentur', 'seoagentur', 'smagentur', 'webagentur', 'webanalyseagentur', 'webdesignagentur', 'wpagentur');
-            $post_types = array('affiliateagentur', 'contentagentur', 'cmagentur', 'digitalagentur', 'gaagentur', 'internetagentur', 'linkbuildingagentur', 'omagentur', 'seaagentur', 'seoagentur', 'smagentur', 'webagentur', 'webanalyseagentur', 'webdesignagentur', 'wpagentur', 'videoerstellung');
+            $post_types = array('affiliateagentur', 'amazonagentur', 'amazonseoagentur', 'contentagentur', 'cmagentur', 'conversion', 'direktmarketingagentur', 'digitalagentur', 'ecommerceagentur', 'emailagentur', 'facebookadsagentur', 'googleanalyticsagentur', 'gaagentur', 'gmbagentur', 'growthhackingagentur', 'inboundagentur', 'influencermarketingagentur', 'internetagentur', 'linkbuildingagentur', 'localseoagentur', 'marketingagentur', 'omagentur', 'performancemarketingagentur', 'pragentur', 'smagentur', 'semagentur', 'seaagentur', 'seoagentur', 'texterstellung', 'tiktokagentur', 'videoerstellung', 'webagentur', 'webanalyseagentur', 'webdesignagentur', 'wpagentur', 'youtubeagentur', 'ytadsagentur', 'oms-agentur', 'pinterestagentur', 'linkedinagentur', 'analyticsagentur', 'trackingagentur', 'shopifyagentur' );
 
         } else {
             $post_types = $kategorien;
