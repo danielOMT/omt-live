@@ -53,7 +53,7 @@
                         
                         <?php foreach ($footer_bewertungslogos as $logo) : ?>
                             <?php if (strlen($logo['link'])>0) { ?><a style="display:block; width: 100%;" class="footer-rating" href="<?php print $logo['link'];?>" target="_blank"><?php } ?>
-                            <img style="width:100%;" src="<?php echo $logo['logo'] ?>" alt="<?php print $logo['link'];?>" title="<?php print $logo['link'];?>"/>
+                            <img style="width:100%;" src="<?php echo $logo['logo'] ?>" alt="<?php print $logo['logo'];?>" title="<?php print $logo['logo'];?>"/>
                             <?php if (strlen($logo['link'])>0) { ?></a><?php } ?>
                         <?php endforeach ?>
                     </div>

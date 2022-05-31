@@ -31,7 +31,7 @@ $spotify_track_id = get_field('spotify_track_id');
                         <img class="titlebox-label-image" src="https://www.omt.de/uploads/omt-logo.svg" alt="omt logo"/>
                     </span>
                 </div>
-                <h3 style="margin: 0px !important;">Jetzt direkt bei Spotify anhören</h3>
+                <h3 style="margin: 0px !important;">Podcast anhören:</h3>
                 <div class="lazy-spotify" style="margin:0 auto;" data-track="<?php print $spotify_track_id;?>">
                     OMT-Podcast</div>
             </div>
