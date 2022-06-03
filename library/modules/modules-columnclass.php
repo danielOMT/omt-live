@@ -285,7 +285,12 @@
     
     case "autojobs":
         $columnclass = "autojobs";
-        break;  
+        break;
+
+    case "auswahlboxen":
+        $columnclass = "auswahlboxen-wrap";
+        break;
+
     default:
         $columnclass = "";
         break;
