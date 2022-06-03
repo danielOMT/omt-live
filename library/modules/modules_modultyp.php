@@ -143,6 +143,10 @@ switch ($zeile['inhaltstyp'][0]['acf_fc_layout']) {
         include('module-video-wistia.php');
         break;
 
+    case "auswahlboxen":
+        include('module-auswahlboxen.php');
+        break;
+
     case "webinare_anzeigen":
         if (defined('USE_JSON_POSTS_SYNC') && USE_JSON_POSTS_SYNC) {
             include('module-webinare-anzeigen.php');
