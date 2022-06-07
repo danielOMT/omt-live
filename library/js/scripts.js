@@ -506,6 +506,7 @@ function initStickyToHeader() {
     var numberthemenwelt = $('.header-themenwelt-flat').length;
     var numinhaltsmodule = $('.inhaltsverzeichnis-module').length;
     var numterminesticky = $('.termine-sticky').length;
+    var numjobbutton = $('.header-jobs-button').length;
 //    var seminaresidebar = $('.single-seminare .widget-shortinfo').length;
     if (numItems > 0 && numcountdown < 1) {
         var ht = $('header').height(); // height of div1 in pixels
@@ -582,6 +583,20 @@ function initStickyToHeader() {
             } else {
                 $('.header-themenwelt-flat').removeClass('element-sticky');
                 $('.article-header').css("margin-top", "30px");
+            }
+        });
+    }
+
+    if (numjobbutton > 0 ) {
+        var ht = $('header').height(); // height of div1 in pixels
+        themenweltelementOffset = $('.header-jobs-button').offset().top;
+        $(window).on('scroll', function () {
+            var scrollTop     = $(window).scrollTop();
+            var distance      = (themenweltelementOffset - scrollTop - ht);
+            if (distance < 10) {
+                $('.header-jobs-button').addClass('element-sticky');
+            } else {
+                $('.header-jobs-button').removeClass('element-sticky');
             }
         });
     }
