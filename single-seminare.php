@@ -442,7 +442,7 @@ if (strlen($seminar_preis)>0) { $next_price = $seminar_preis; }
                                                                     print str_replace('-','.',$next_date);
                                                                 } else {
                                                                     print str_replace('-','.',$next_date) . " - " . str_replace('-','.',$next_date_end);
-                                                                } ?><?php if ("Online Seminar" != $next_location_stadt) { print "in"; } else { print " ("; }?> <?php print $next_location_stadt;?><?php if ("Online Seminar" == $next_location_stadt) { print ")"; }?></li>
+                                                                } ?><?php if ("Online Seminar" != $next_location_stadt) { print "in "; } else { print " ("; }?><?php print $next_location_stadt;?><?php if ("Online Seminar" == $next_location_stadt) { print ")"; }?></li>
                                                         <?php } else { ?>
                                                             <li><b>Nächster Termin:</b> in Planung</li>
                                                         <?php } ?>
