@@ -22,7 +22,8 @@ $countdown_zieldatum = get_field('countdown_zieldatum');
 $magazin_filter = get_field('magazin_filter');
 $ebooks_filter = get_field('ebooks_filter');
 $webinare_filter = get_field('webinare_filter');
-
+$sidebar_welche = get_field('sidebar_welche');
+$has_sidebar = get_field('has_sidebar');
 
 if (is_array($header_hero_hintergrundbild)) { if (strlen($header_hero_hintergrundbild['url'])>0) { $hero_background = $header_hero_hintergrundbild;} }
 if (strlen($header_hero_h1)>0) { $h1 = $header_hero_h1;} else { $h1 = get_the_title(); }
