@@ -1428,6 +1428,24 @@ function seminar_sticky_buttons() {
     }
 }
 
+function mobile_hide_on_scroll() {
+    var numItems = $('.mobile-hide-on-scroll').length;
+    if (numItems > 0) {
+        if ($(window).width() < 768) {
+            $(document).on('scroll', function () {
+                value = $(window).scrollTop();
+                if (value > 0) {
+                    // downscroll code
+                    $('.mobile-hide-on-scroll').addClass('display-none');
+                }
+            });
+        }
+    }
+}
+
+
+
+
 function tool_ubersicht_more() {
     $('.tool-uebersicht .more-info').click(function () {
         $(this).parent().find('.info-container').toggleClass('half-reduced');
@@ -1710,6 +1728,7 @@ $(document).ready(function($) {
     header_search_icon();
     themenwelt_sticky_mobile();
     stickysidebar();
+    mobile_hide_on_scroll();
 
     if ( $.isFunction($.fn.slick) ) {
         function slider_slick() {
