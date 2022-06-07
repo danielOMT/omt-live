@@ -359,6 +359,9 @@ if (strlen($seminar_preis)>0) { $next_price = $seminar_preis; }
                                                                     </div>
                                                                     <?php /* <a class="a a-730px a-blue" id="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>" href="/kasse/?add-to-cart=<?php print $seminar_woocommerce->ID;?>&variation_id=<?php print $seminar['vid'];?>" title="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>">*/ ?>
                                                                     <?php /* <a class="button button-730px button-blue" id="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>" href="/kasse/?add-to-cart=<?php print $seminar_woocommerce->ID;?>&attribute_pa_startdatum=<?php print $seminar['day_start'];?>&attribute_pa_enddatum=<?php print $seminar['day_end'];?>&attribute_pa_startuhrzeit=<?php print $seminar['time_start'];?>&attribute_pa_enduhrzeit=<?php print $seminar['time_end'];?>&attribute_pa_location=<?php print $seminar['location'];?>&speaker_id=<?php print $speakerid;?>" title="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>">*/?>
+                                                                    <?php if (strlen($seminar_infopaket)>0) { ?>
+                                                                        <a class="button button-red has-margin-bottom-30" target="_blank" href="<?php print $seminar_infopaket;?>">Infopaket</a>
+                                                                    <?php } ?>
                                                                     <a class="button button-730px button-blue" id="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>" href="/kasse/?add-to-cart=<?php print $seminar['vid'];?>" title="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>">
                                                                         Jetzt <?php if (strlen($seminar['online_id'])>0) { print "vor Ort-Teilnahme "; } ?>Buchen
                                                                     </a>
@@ -366,9 +369,6 @@ if (strlen($seminar_preis)>0) { $next_price = $seminar_preis; }
                                                                         <a class="button button-730px button-blue no-margin-top hybrid-buchen-button" style="" id="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>" href="/kasse/?add-to-cart=<?php print $seminar['online_id'];?>" title="<?php the_title_attribute(array('post'=>$seminar['id'])); ?>">
                                                                             Jetzt Online-Teilnahme Buchen <span class="discountbadge">10%</span>
                                                                         </a>
-                                                                    <?php } ?>
-                                                                    <?php if (strlen($seminar_infopaket)>0) { ?>
-                                                                        <a class="button button-red has-margin-top-30" target="_blank" href="<?php print $seminar_infopaket;?>">Infopaket</a>
                                                                     <?php } ?>
                                                                 </div>
                                                                 <?php
