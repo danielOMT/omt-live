@@ -507,6 +507,7 @@ function initStickyToHeader() {
     var numinhaltsmodule = $('.inhaltsverzeichnis-module').length;
     var numterminesticky = $('.termine-sticky').length;
     var numjobbutton = $('.header-jobs-button').length;
+    var auswahlboxen = $('.auswahlboxen-wrap').length;
 //    var seminaresidebar = $('.single-seminare .widget-shortinfo').length;
     if (numItems > 0 && numcountdown < 1) {
         var ht = $('header').height(); // height of div1 in pixels
@@ -725,6 +726,21 @@ function initStickyToHeader() {
                 $('.header-omt-filter').css({ 'margin-bottom': 0 });
                 $('.header-omt-filter').css({ 'padding': '30px 0'});
                 $('.header-omt-filter').removeClass('element-sticky');
+            }
+        });
+    }
+
+    if (auswahlboxen > 0 ) {
+        var ht = $('header').height(); // height of div1 in pixels
+        elementOffset = $('.auswahlboxen-wrap').offset().top;
+
+        $(window).on('scroll', function () {
+            var scrollTop = $(window).scrollTop();
+            var distancenavi = (elementOffset - scrollTop - ht);
+            if (distancenavi < 10) {
+                $('.auswahlboxen-wrap').addClass('element-sticky');
+            } else {
+                $('.auswahlboxen-wrap').removeClass('element-sticky');
             }
         });
     }
