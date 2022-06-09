@@ -737,7 +737,6 @@ function initStickyToHeader() {
         $(window).on('scroll', function () {
             var scrollTop = $(window).scrollTop();
             var distancenavi = (elementOffset - scrollTop - ht);
-            console.log(distancenavi);
             if (distancenavi < 10) {
                 $('.auswahlboxen-wrap').addClass('element-sticky');
                 $('.auswahlboxen-wrap').addClass('auswahlboxen-sticky');
