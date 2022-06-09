@@ -740,8 +740,10 @@ function initStickyToHeader() {
             console.log(distancenavi);
             if (distancenavi < 10) {
                 $('.auswahlboxen-wrap').addClass('element-sticky');
+                $('.auswahlboxen-wrap').addClass('auswahlboxen-sticky');
             } else {
                 $('.auswahlboxen-wrap').removeClass('element-sticky');
+                $('.auswahlboxen-wrap').removeClass('auswahlboxen-sticky');
             }
         });
     }
