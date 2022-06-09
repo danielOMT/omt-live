@@ -731,13 +731,13 @@ function initStickyToHeader() {
     }
 
     if (auswahlboxen > 0 ) {
-        console.log("auswahlboxen");
         var ht = $('header').height(); // height of div1 in pixels
         elementOffset = $('.auswahlboxen-wrap').offset().top;
 
         $(window).on('scroll', function () {
             var scrollTop = $(window).scrollTop();
             var distancenavi = (elementOffset - scrollTop - ht);
+            console.log(distancenavi);
             if (distancenavi < 10) {
                 $('.auswahlboxen-wrap').addClass('element-sticky');
             } else {
