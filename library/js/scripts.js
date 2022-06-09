@@ -731,6 +731,7 @@ function initStickyToHeader() {
     }
 
     if (auswahlboxen > 0 ) {
+        console.log("auswahlboxen");
         var ht = $('header').height(); // height of div1 in pixels
         elementOffset = $('.auswahlboxen-wrap').offset().top;
 
