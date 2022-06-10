@@ -46,7 +46,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
     //     //$lager = 999;
     // } else { $active = false; }
     if ( $lager <1 OR $active != true) { $inactive_class = "ticket-inactive"; }
-    if( $highlighted == 'yes' ){ $extra_class = 'highlighted'; $rec = '<div class="ribbon">'.$empfehlung_text.'</div>'; }//else{ $recom_up_class = 'recom_up_class'; }
+    if( $highlighted == 'yes' ){ $extra_class = 'highlighted'; $rec = '<div class="ribbon_">'.$empfehlung_text.'</div>'; }//else{ $recom_up_class = 'recom_up_class'; }
     ?>
 
 
