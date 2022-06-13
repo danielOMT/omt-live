@@ -56,7 +56,7 @@ function omt_webinar_shortcode( $atts ) {
                         <img class="teaser-img" alt="<?php print $webinar_title; ?>" title="<?php print $webinar_title; ?>" src="<?php print $previewImage['sizes']['550-290'];?>">
                     </a>
                 <?php } else { ?>
-                    <span data-type="<?php print $webinar_type;?>" data-id="<?php print $webinar_video;?>" title="<?php print $webinar_title; ?>" class="open-video button button-red">
+                    <span data-type="<?php print $webinar_type;?>" data-id="<?php print $webinar_video;?>" title="<?php print $webinar_title; ?>" class="open-video">
                     <img class="teaser-img" alt="<?php print $webinar_title; ?>" title="<?php print $webinar_title; ?>" src="<?php print $previewImage['sizes']['550-290'];?>">
                         </span>
                 <?php } ?>
