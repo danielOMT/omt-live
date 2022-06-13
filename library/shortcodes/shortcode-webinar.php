@@ -29,7 +29,7 @@ function omt_webinar_shortcode( $atts ) {
     if (!$previewImage) {
         $previewImage = get_field("profilbild", $webinar_speaker->ID);
     }
-    
+
     $webinar_compare = $webinar_day . " " . $webinar_time;
     $webinar_date_compare = strtotime($webinar_compare); //convert seminar date to unix string for future-check the entries
     //Convert it into a timestamp.
@@ -48,12 +48,18 @@ function omt_webinar_shortcode( $atts ) {
     ?>
     <?php //*****NEW WEBINAR TEASER STRUCTURE///*****////?>
     <?php if ($today_date < $webinar_date_compare) { $linktarget = get_the_permalink($webinar_ID); } else { $linktarget = "#webinar-anschauen"; } ?>
-        <div class="webinar-teaser card clearfix" data-id="<?php if ($today_date > $webinar_date_compare) { print $webinar_video; }?>">
+    <div class="webinar-teaser card clearfix" data-id="<?php if ($today_date > $webinar_date_compare) { print $webinar_video; }?>">
         <div class="webinar-teaser-img">
             <?php if (strlen($previewImage['sizes']['550-290'])>0) { ?>
-                <a <?php if ($today_date < $webinar_date_compare) {?> target="_blank" <?php } ?>data-type="<?php print $webinar_type;?>" data-id="<?php print $webinar_video;?>" href="<?php print $linktarget;?>" title="<?php print $webinar_title; ?>" class="<?php if ($today_date > $webinar_date_compare) { print "open-video"; } ?>">
+                <?php if ($today_date < $webinar_date_compare) { ?>
+                    <a target="_blank" data-type="<?php print $webinar_type;?>" data-id="<?php print $webinar_video;?>" href="<?php print $linktarget;?>" title="<?php print $webinar_title; ?>" class="<?php if ($today_date > $webinar_date_compare) { print "open-video"; } ?>">
+                        <img class="teaser-img" alt="<?php print $webinar_title; ?>" title="<?php print $webinar_title; ?>" src="<?php print $previewImage['sizes']['550-290'];?>">
+                    </a>
+                <?php } else { ?>
+                    <span data-type="<?php print $webinar_type;?>" data-id="<?php print $webinar_video;?>" title="<?php print $webinar_title; ?>" class="open-video button button-red">
                     <img class="teaser-img" alt="<?php print $webinar_title; ?>" title="<?php print $webinar_title; ?>" src="<?php print $previewImage['sizes']['550-290'];?>">
-                </a>
+                        </span>
+                <?php } ?>
             <?php } ?>
         </div>
         <div class="webinar-teaser-text">
