@@ -60,7 +60,12 @@ function omt_webinar_shortcode( $atts ) {
             <div class="teaser-cat">kostenfreies Webinar <?php if ($today_date < $webinar_date_compare) { print "am " . $webinar_day; ?> | <?php print $webinar_time . " Uhr"; }?></div>
             <span class="h3"><?php print $webinar_vorschautitel; ?> — <?php print $webinar_speaker->post_title;?></span>
             <p><?php showBeforeMore(get_field('webinar_beschreibung', $webinar_ID)); ?></p>
-            <a <?php if ($today_date < $webinar_date_compare) {?> target="_blank" <?php } ?> data-type="<?php print $webinar_type;?>" data-id="<?php print $webinar_video;?>" href="<?php print $linktarget;?>" title="<?php print $webinar_title; ?>" class="<?php if ($today_date > $webinar_date_compare) { print "open-video"; } ?> button button-red"><?php if ($today_date < $webinar_date_compare) { ?>Jetzt anmelden und live dabei sein<?php } else { print "Gratis anschauen"; } ?></a>
+            <?php if ($today_date < $webinar_date_compare) { ?>
+            <a <?php if ($today_date < $webinar_date_compare) {?> target="_blank" <?php } ?> data-type="<?php print $webinar_type;?>" data-id="<?php print $webinar_video;?>" href="<?php print $linktarget;?>" title="<?php print $webinar_title; ?>" class="<?php if ($today_date > $webinar_date_compare) { print "open-video"; } ?> button button-red">
+                Jetzt anmelden und live dabei sein
+                <?php } else { ?>
+                    <span data-type="<?php print $webinar_type;?>" data-id="<?php print $webinar_video;?>" title="<?php print $webinar_title; ?>" class="open-video button button-red">Gratis anschauen</span>
+                <?php } ?>
         </div>
     </div>
     <?php //*****END OF NEW WEBINAR TEASER STRUCTURE///*****////?>
