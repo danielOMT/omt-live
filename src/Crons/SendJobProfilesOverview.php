@@ -20,7 +20,7 @@ class SendJobProfilesOverview extends Cron
 
         if (count($items)) {
             Email::send(
-                'mario@omt.de',
+                'william.henry@omt.de',
                 'Job-Profile Übersicht',
                 EmailView::loadTemplate('job-profiles-overview', [
                     'date' => Date::get()->format('d.m.Y'),
