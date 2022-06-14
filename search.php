@@ -350,6 +350,27 @@ $class_themenwelt = " template-themenwelt";
                                                     </h2>
                                                 </div>
                                             <?php }
+                                            elseif ("agenturen" == $post_type) {
+                                                $hero_image = get_field('logo');
+                                                ?>
+                                                <div class="omt-webinar omt-podinar teaser teaser-small teaser-matchbuttons">
+                                                    <div class="teaser-image-wrap">
+                                                        <img class="webinar-image podinar-image teaser-img" alt="<?php print get_the_title();?>" title="<?php print get_the_title();?>" src="<?php print $hero_image['url'];?>"/>
+                                                        <img alt="OMT Podinare" title="OMT Podinare" class="teaser-image-overlay" src="/uploads/omt-banner-overlay-350.png">
+                                                    </div>
+                                                    <h2 class="h4 no-ihv"><a href="<?php print get_the_permalink();?>">
+                                                            <?php
+                                                            $title = str_replace("Themenwelt", "", get_the_title());
+                                                            $title =  str_replace("-", "", $title);
+                                                            if (strpos(get_the_title(), "Themenwelt")>0) {
+                                                                $title = substr($title, 19);
+                                                            }
+                                                            print $title;
+                                                            ?>
+                                                        </a>
+                                                    </h2>
+                                                </div>
+                                            <?php }
                                             elseif ("seminare" == $post_type) {
                                                 $seminar_image = "asdf";
                                                 $seminar_link = get_the_permalink();
