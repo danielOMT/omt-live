@@ -74,16 +74,6 @@ $class_themenwelt = " template-themenwelt";
                         'lexikon',
                         'quicktipps'
                     );
-                    foreach ($types as $post_type) {
-                        $i=0;
-                        while (have_posts()) { ?>
-                            <?php the_post();
-                            if ($post_type == get_post_type()) {
-                                $i++;
-                            }
-                        }
-                        rewind_posts();
-
 
                         $post_type_nice = "";
                         $post_type_data = get_post_type_object($post_type);
@@ -201,8 +191,7 @@ $class_themenwelt = " template-themenwelt";
                             case "page":
                                 $post_type_nice = "Seiten";
                                 break;
-                        }
-                        if ($i>0) { ?>
+                        } ?>
                             <div class="search-module">
                                 <h3><?php print $post_type_nice . " zu &quot;" . esc_attr(get_search_query()) . "&quot;";?></h3>
                                 <div class="omt-module teaser-modul">
@@ -545,9 +534,7 @@ $class_themenwelt = " template-themenwelt";
                                     ?>
                                 </div>
                             </div>
-                        <?php } ?>
-                    <?php }
-                } ?>
+              <?php  } ?>
             </div>
             <a class="button button-blue button-730px" style=";margin-bottom: 30px;" href="#searchwp-modal-5916110af2bd3b2b4d5992f3b0f8059a" data-searchwp-modal-trigger="searchwp-modal-5916110af2bd3b2b4d5992f3b0f8059a">Neue Suche starten</a>
             <?php //get_sidebar(); ?>
