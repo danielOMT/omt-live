@@ -525,7 +525,7 @@ $class_themenwelt = " template-themenwelt";
                                         if (
                                         ( "omt_downloads" == $post_type ) || ( "omt_student" == $post_type ) || ( "omt_ebook" == $post_type ) || ( "omt_magazin" == $post_type ) ) {
                                             $featured_image = get_field('vorschaubild');
-                                            $image_teaser = $featured_image['url'];
+                                            $image_teaser = $featured_image['sizes']['550-290'];
                                         }
                                         ?>
                                         <a href="<?php the_permalink()?>" title="<?php the_title_attribute(); ?>" class="teaser teaser-small teaser-matchbuttons">
