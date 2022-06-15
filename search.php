@@ -74,124 +74,7 @@ $class_themenwelt = " template-themenwelt";
                         'lexikon',
                         'quicktipps'
                     );
-
-                        $post_type_nice = "";
-                        $post_type_data = get_post_type_object($post_type);
-                        $post_type_slug = $post_type_data->rewrite['slug'];
-                        switch ($post_type) {
-                            case "affiliate":
-                                $post_type_nice = "Affiliate Marketing-Artikel";
-                                break;
-                            case "amazon":
-                                $post_type_nice = "Amazon SEO-Artikel";
-                                break;
-                            case "amazon_marketing":
-                                $post_type_nice = "Amazon Marketing";
-                                break;
-                            case "content":
-                                $post_type_nice = "Content Marketing-Artikel";
-                                break;
-                            case "conversion":
-                                $post_type_nice = "Conversion Optimierung-Artikel";
-                                break;
-                            case "direktmarketing":
-                                $post_type_nice = "Direktmarketing-Artikel";
-                                break;
-                            case "emailmarketing":
-                                $post_type_nice = "E-Mail Marketing-Artikel";
-                                break;
-                            case "facebook":
-                                $post_type_nice = "Facebook Ads-Artikel";
-                                break;
-                            case "ga":
-                                $post_type_nice = "Google Analytics-Artikel";
-                                break;
-                            case "growthhack":
-                                $post_type_nice = "Growth Hacking-Artikel";
-                                break;
-                            case "inbound":
-                                $post_type_nice = "Inbound Marketing-Artikel";
-                                break;
-                            case "influencer":
-                                $post_type_nice = "Influencer Marketing-Artikel";
-                                break;
-                            case "links":
-                                $post_type_nice = "Linkbuilding-Artikel";
-                                break;
-                            case "local":
-                                $post_type_nice = "Local SEO-Artikel";
-                                break;
-                            case "magazin":
-                                $post_type_nice = "Magazin-Artikel";
-                                break;
-                            case "marketing":
-                                $post_type_nice = "Marketing-Artikel";
-                                break;
-                            case "onlinemarketing":
-                                $post_type_nice = "Online Marketing-Artikel";
-                                break;
-                            case "pagespeed":
-                                $post_type_nice = "Wordpress Pagespeed-Artikel";
-                                break;
-                            case "pinterest":
-                                $post_type_nice = "Pinterest Marketing-Artikel";
-                                break;
-                            case "plugins":
-                                $post_type_nice = "Wordpress Plugins-Artikel";
-                                break;
-                            case "p_r":
-                                $post_type_nice = "PR-Artikel";
-                                break;
-                            case "sea":
-                                $post_type_nice = "Google Ads-Artikel";
-                                break;
-                            case "seo":
-                                $post_type_nice = "Suchmaschinenoptimierung-Artikel";
-                                break;
-                            case "social":
-                                $post_type_nice = "Social Media Marketing-Artikel";
-                                break;
-                            case "videomarketing":
-                                $post_type_nice = "Video Marketing-Artikel";
-                                break;
-                            case "webanalyse":
-                                $post_type_nice = "Webanalyse-Artikel";
-                                break;
-                            case "webdesign":
-                                $post_type_nice = "Webdesign-Artikel";
-                                break;
-                            case "wordpress":
-                                $post_type_nice = "WordPress-Artikel";
-                                break;
-                            ////nicht-magazin-post types below
-                            case "webinare":
-                                $post_type_nice = "Webinare";
-                                break;
-                            case "lexikon":
-                                $post_type_nice = "Lexikon-Artikel";
-                                break;
-                            case "quicktipps":
-                                $post_type_nice = "Quicktipps-Artikel";
-                                break;
-                            case "podcasts":
-                                $post_type_nice = "Podcasts";
-                                break;
-                            case "seminare":
-                                $post_type_nice = "Seminare";
-                                break;
-                            case "tool":
-                                $post_type_nice = "Online Marketing Tools";
-                                break;
-                            case "agenturen":
-                                $post_type_nice = "Online Marketing Agenturen";
-                                break;
-                            case "post":
-                                $post_type_nice = "weitere Beiträge";
-                                break;
-                            case "page":
-                                $post_type_nice = "Seiten";
-                                break;
-                        } ?>
+ ?>
                             <div class="search-module">
                                 <h3><?php print $post_type_nice . " zu &quot;" . esc_attr(get_search_query()) . "&quot;";?></h3>
                                 <div class="omt-module teaser-modul">
@@ -202,7 +85,124 @@ $class_themenwelt = " template-themenwelt";
                                     $today_date = date(strtotime("now"));  ////****get current time as unix string for future-check the entries
                                     while (have_posts()) { ?>
                                         <?php the_post();
-                                        if ($post_type == get_post_type()) {
+
+                                        $post_type_nice = "";
+                                        $post_type_data = get_post_type_object($post_type);
+                                        $post_type_slug = $post_type_data->rewrite['slug'];
+                                        switch ($post_type) {
+                                            case "affiliate":
+                                                $post_type_nice = "Affiliate Marketing-Artikel";
+                                                break;
+                                            case "amazon":
+                                                $post_type_nice = "Amazon SEO-Artikel";
+                                                break;
+                                            case "amazon_marketing":
+                                                $post_type_nice = "Amazon Marketing";
+                                                break;
+                                            case "content":
+                                                $post_type_nice = "Content Marketing-Artikel";
+                                                break;
+                                            case "conversion":
+                                                $post_type_nice = "Conversion Optimierung-Artikel";
+                                                break;
+                                            case "direktmarketing":
+                                                $post_type_nice = "Direktmarketing-Artikel";
+                                                break;
+                                            case "emailmarketing":
+                                                $post_type_nice = "E-Mail Marketing-Artikel";
+                                                break;
+                                            case "facebook":
+                                                $post_type_nice = "Facebook Ads-Artikel";
+                                                break;
+                                            case "ga":
+                                                $post_type_nice = "Google Analytics-Artikel";
+                                                break;
+                                            case "growthhack":
+                                                $post_type_nice = "Growth Hacking-Artikel";
+                                                break;
+                                            case "inbound":
+                                                $post_type_nice = "Inbound Marketing-Artikel";
+                                                break;
+                                            case "influencer":
+                                                $post_type_nice = "Influencer Marketing-Artikel";
+                                                break;
+                                            case "links":
+                                                $post_type_nice = "Linkbuilding-Artikel";
+                                                break;
+                                            case "local":
+                                                $post_type_nice = "Local SEO-Artikel";
+                                                break;
+                                            case "magazin":
+                                                $post_type_nice = "Magazin-Artikel";
+                                                break;
+                                            case "marketing":
+                                                $post_type_nice = "Marketing-Artikel";
+                                                break;
+                                            case "onlinemarketing":
+                                                $post_type_nice = "Online Marketing-Artikel";
+                                                break;
+                                            case "pagespeed":
+                                                $post_type_nice = "Wordpress Pagespeed-Artikel";
+                                                break;
+                                            case "pinterest":
+                                                $post_type_nice = "Pinterest Marketing-Artikel";
+                                                break;
+                                            case "plugins":
+                                                $post_type_nice = "Wordpress Plugins-Artikel";
+                                                break;
+                                            case "p_r":
+                                                $post_type_nice = "PR-Artikel";
+                                                break;
+                                            case "sea":
+                                                $post_type_nice = "Google Ads-Artikel";
+                                                break;
+                                            case "seo":
+                                                $post_type_nice = "Suchmaschinenoptimierung-Artikel";
+                                                break;
+                                            case "social":
+                                                $post_type_nice = "Social Media Marketing-Artikel";
+                                                break;
+                                            case "videomarketing":
+                                                $post_type_nice = "Video Marketing-Artikel";
+                                                break;
+                                            case "webanalyse":
+                                                $post_type_nice = "Webanalyse-Artikel";
+                                                break;
+                                            case "webdesign":
+                                                $post_type_nice = "Webdesign-Artikel";
+                                                break;
+                                            case "wordpress":
+                                                $post_type_nice = "WordPress-Artikel";
+                                                break;
+                                            ////nicht-magazin-post types below
+                                            case "webinare":
+                                                $post_type_nice = "Webinare";
+                                                break;
+                                            case "lexikon":
+                                                $post_type_nice = "Lexikon-Artikel";
+                                                break;
+                                            case "quicktipps":
+                                                $post_type_nice = "Quicktipps-Artikel";
+                                                break;
+                                            case "podcasts":
+                                                $post_type_nice = "Podcasts";
+                                                break;
+                                            case "seminare":
+                                                $post_type_nice = "Seminare";
+                                                break;
+                                            case "tool":
+                                                $post_type_nice = "Online Marketing Tools";
+                                                break;
+                                            case "agenturen":
+                                                $post_type_nice = "Online Marketing Agenturen";
+                                                break;
+                                            case "post":
+                                                $post_type_nice = "weitere Beiträge";
+                                                break;
+                                            case "page":
+                                                $post_type_nice = "Seiten";
+                                                break;
+                                        }
                                             if ("webinare" == $post_type) {
                                                 $user_firstname = "";
                                                 $user_lastname = "";
@@ -528,7 +528,6 @@ $class_themenwelt = " template-themenwelt";
                                                     <!--                                                    <a class="button" href="--><?php //the_permalink()?><!--" title="--><?php //the_title_attribute(); ?><!--">Artikel lesen</a>-->
                                                 </a>
                                             <?php } ?>
-                                        <?php } ?>
                                     <?php }
                                     rewind_posts();
                                     ?>
