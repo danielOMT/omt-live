@@ -211,7 +211,7 @@ $class_themenwelt = " template-themenwelt";
                                     "trend" != $post_type AND
                                     "umfrage" != $post_type AND
                                     "christmas" != $post_type AND
-                                    "stellenanzeige" != $post_type AND
+                                    "jobs" != $post_type AND
                                     "product" != $post_type
                                 ) {
                                     if ("webinare" == $post_type) {
