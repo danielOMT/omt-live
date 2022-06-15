@@ -203,7 +203,6 @@ $class_themenwelt = " template-themenwelt";
                                         break;
                                 }
                                 ?>
-                                <h3><?php print $post_type_nice . " zu &quot;" . esc_attr(get_search_query()) . "&quot;";?></h3>
                                 <?php
                                 if ("webinare" == $post_type) {
                                     $user_firstname = "";
