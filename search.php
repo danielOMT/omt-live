@@ -76,7 +76,6 @@ $class_themenwelt = " template-themenwelt";
                     );
                     ?>
                     <div class="search-module">
-                        <h3><?php print $post_type_nice . " zu &quot;" . esc_attr(get_search_query()) . "&quot;";?></h3>
                         <div class="omt-module teaser-modul">
                             <?php
                             $current_id = get_the_id();
@@ -203,6 +202,9 @@ $class_themenwelt = " template-themenwelt";
                                         $post_type_nice = "Seiten";
                                         break;
                                 }
+                                ?>
+                                <h3><?php print $post_type_nice . " zu &quot;" . esc_attr(get_search_query()) . "&quot;";?></h3>
+                                <?php
                                 if ("webinare" == $post_type) {
                                     $user_firstname = "";
                                     $user_lastname = "";
