@@ -186,6 +186,10 @@ function custom_breadcrumbs() {
                         $post_type_name = "Email Marketing";
                         $post_type_archive = "/email-marketing";
                         break;
+                    case "influencer":
+                        $post_type_name = "Influencer Marketing";
+                        $post_type_archive = "/influencer-marketing";
+                        break;
                     case "tiktok":
                         $post_type_name = "TikTok-Marketing";
                         $post_type_archive = "/tiktok-marketing";
