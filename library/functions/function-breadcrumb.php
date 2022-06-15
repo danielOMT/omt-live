@@ -246,6 +246,10 @@ function custom_breadcrumbs() {
                         $post_type_name = "OMT-Agenturfinder";
                         $post_type_archive = "/agentur-finden/agentur";
                         break;
+                    case "wissenswertes":
+                        $post_type_name = "Wissenswertes";
+                        $post_type_archive = "/wissenswertes";
+                        break;
                 }
                 if (strlen ($post_type_archive)<1) { $post_type_archive = "/" . $post_type; } //if we dont have an archive due to parent pages
 
