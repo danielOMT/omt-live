@@ -524,11 +524,7 @@ $class_themenwelt = " template-themenwelt";
                                         $featured_image_highlight = wp_get_attachment_image_src( get_post_thumbnail_id($id), '550-290' );
                                         $image_teaser = $featured_image_teaser[0];
                                         if (
-                                                "omt_downloads" == $post_type OR
-                                                "omt_student" == $post_type OR
-                                                "omt_ebook" == $post_type OR
-                                                "omt_magazin" == $post_type
-                                        ) {
+                                        ( "omt_downloads" == $post_type ) || ( "omt_student" == $post_type ) || ( "omt_ebook" == $post_type ) || ( "omt_magazin" == $post_type ) ) {
                                             $featued_image = get_field('vorschaubild');
                                             $image_teaser = $featured_image['url'];
                                         }
