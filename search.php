@@ -518,8 +518,7 @@ $class_themenwelt = " template-themenwelt";
                                                 </div>
                                             <?php } ?>
                                         </div>
-                                    <?php }
-                                    else {
+                                    <?php } else {
                                         $featured_image_teaser = wp_get_attachment_image_src( get_post_thumbnail_id($id), '350-180' );
                                         $featured_image_highlight = wp_get_attachment_image_src( get_post_thumbnail_id($id), '550-290' );
                                         $image_teaser = $featured_image_teaser[0];
