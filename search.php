@@ -523,6 +523,15 @@ $class_themenwelt = " template-themenwelt";
                                         $featured_image_teaser = wp_get_attachment_image_src( get_post_thumbnail_id($id), '350-180' );
                                         $featured_image_highlight = wp_get_attachment_image_src( get_post_thumbnail_id($id), '550-290' );
                                         $image_teaser = $featured_image_teaser[0];
+                                        if (
+                                                "omt_downloads" == $post_type OR
+                                                "omt_student" == $post_type OR
+                                                "omt_ebook" == $post_type OR
+                                                "omt_magazin" == $post_type
+                                        ) {
+                                            $featued_image = get_field('vorschaubild');
+                                            $image_teaser = $featured_image['sizes']['550-290'];
+                                        }
                                         ?>
                                         <a href="<?php the_permalink()?>" title="<?php the_title_attribute(); ?>" class="teaser teaser-small teaser-matchbuttons">
                                             <div class="teaser-image-wrap" style="">
@@ -541,13 +550,11 @@ $class_themenwelt = " template-themenwelt";
                                     <?php } ?>
                                 <?php } ?>
                             <?php }
-                            rewind_posts();
                             ?>
                         </div>
                     </div>
                 <?php  } ?>
             </div>
-            <a class="button button-blue button-730px" style=";margin-bottom: 30px;" href="#searchwp-modal-5916110af2bd3b2b4d5992f3b0f8059a" data-searchwp-modal-trigger="searchwp-modal-5916110af2bd3b2b4d5992f3b0f8059a">Neue Suche starten</a>
             <?php //get_sidebar(); ?>
         </div>
     </div>
