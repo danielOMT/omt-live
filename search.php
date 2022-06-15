@@ -34,7 +34,6 @@ $class_themenwelt = " template-themenwelt";
         </div>
         <div class="omt-row wrap">
             <div class="omt-module module-suchergebnis">
-                <a class="button button-blue button-730px" style=";margin-bottom: 30px;" href="#searchwp-modal-5916110af2bd3b2b4d5992f3b0f8059a" data-searchwp-modal-trigger="searchwp-modal-5916110af2bd3b2b4d5992f3b0f8059a">Neue Suche starten</a>
                 <?php
                 if( have_posts() ) {
                     $types = array(
