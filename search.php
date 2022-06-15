@@ -530,7 +530,7 @@ $class_themenwelt = " template-themenwelt";
                                                 "omt_magazin" == $post_type
                                         ) {
                                             $featued_image = get_field('vorschaubild');
-                                            $image_teaser = $featured_image['sizes']['550-290'];
+                                            $image_teaser = $featured_image['url'];
                                         }
                                         ?>
                                         <a href="<?php the_permalink()?>" title="<?php the_title_attribute(); ?>" class="teaser teaser-small teaser-matchbuttons">
