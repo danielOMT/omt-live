@@ -524,7 +524,7 @@ $class_themenwelt = " template-themenwelt";
                                         $image_teaser = $featured_image_teaser[0];
                                         if (
                                         ( "omt_downloads" == $post_type ) || ( "omt_student" == $post_type ) || ( "omt_ebook" == $post_type ) || ( "omt_magazin" == $post_type ) ) {
-                                            $featued_image = get_field('vorschaubild');
+                                            $featured_image = get_field('vorschaubild');
                                             $image_teaser = $featured_image['url'];
                                         }
                                         ?>
