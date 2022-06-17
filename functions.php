@@ -36,6 +36,14 @@ require_once('library/custom_post_types/custom-post-downloads.php'); //leadmagne
 require_once('library/custom_post_types/custom-post-studentenarbeiten.php');
 require_once('library/custom_post_types/custom-post-ebooks.php');
 require_once('library/custom_post_types/custom-post-magazin.php');
+
+//download templates:
+require_once('library/custom_post_types/custom-post-template-facebook.php');
+require_once('library/custom_post_types/custom-post-template-instagram.php');
+require_once('library/custom_post_types/custom-post-template-linkedin.php');
+require_once('library/custom_post_types/custom-post-template-youtube.php');
+
+
 //Download mit Kategorien:
 
 require_once('library/custom_post_types/custom-post-webinare.php');
