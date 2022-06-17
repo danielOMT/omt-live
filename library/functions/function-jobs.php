@@ -154,60 +154,7 @@ function display_jobs(int $anzahl = 99) { ?>
         $cleaned = str_replace(' ', '', $result);
         return $cleaned;
     }
-    function getCitiesForFilter(){
-
-        $args = array(
-            'posts_per_page' => $anzahl,
-            'post_type' => 'jobs',
-            'date_query' => array(
-                array(
-                    'column' => 'post_date_gmt',
-                    'after'  => '180 days ago',
-                )
-            ),
-            'order'             => 'DESC',
-        );
-
-
-
-        $result = ''; 
-        $count = 0;       
-        $loop = new WP_Query($args);
-        $label = $field['choices'][ $value ];
-        $cities = [];
-        $clearedArrayCities = [];
-        $helperCLass = '';
-        $hide_cat = '';
-        $stadt_id = 540;
-        $conc_id = 0;
-        while ($loop->have_posts()) : $loop->the_post();
-            $field = get_field_object('stadt');
-            $value = $field['value'];
-            if(!empty($value)){array_push($cities,$value);}
-        endwhile;
-        $clearedArrayCities = array_unique($cities);
-
-        foreach ($clearedArrayCities as $key => $value) {
-            $conc_id = $stadt_id+$count;
-            if($count > 2){ $hide_cat = 'hide_city'; }
-            $result .= '
-                <div>
-                <input type="checkbox" name="stadt" value="'.$value.'" class="omt-input jobs_filter '.$hide_cat.'" id="'.$conc_id.'"/>
-                <label for="'.$conc_id.'"  class="'.$hide_cat.'">'.$value.'
-                    <label id="showstadt_'.$conc_id.'" data-selector="'.$value.'" class="post_count stadt_c '.$value.'">('.countJobByCity($value).')</label>
-                </label>
-                </div>
-
-            '; 
-        $count ++;
-        }
-        if($count > 2){
-            $result .= '<button class="show_cities" onclick="show_city()"> <span>Mehr anzeigen</span> <i class="arrow_ down_"></i></button>
-                    <button style="display: none;" class="hide_cities" onclick="hide_city()"> <span>Weniger anzeigen</span> <i class="arrow_ up_"></i></button>';
-                }else{}
-        
-        return $result;
-    }
+    
 
     
 
@@ -286,32 +233,225 @@ function display_jobs(int $anzahl = 99) { ?>
     }
 
 
-    function countByCategory($value){
-        $count = 0;
-        $cat_args = array(
-            'taxonomy' => 'jobs-categories', 
-            'orderby' => 'slug', 
-            'order' => 'ASC'
+
+
+
+    //display default categories for job filter
+    function displayCategoryFilter(){
+        $args = array(
+           'taxonomy' => 'jobs-categories',
+           'orderby' => 'name',
+           'order'   => 'ASC'
         );
-        $cats = get_categories($cat_args); // passing in above parameters
-        foreach ($cats as $cat) : // loop through each cat
-             $cpt_query_args = new WP_Query( array(
-                'post_type' => 'jobs',
-                'jobs-categories' => $cat->name
-                )
-            );
-            if ($cpt_query_args->have_posts()) : 
-                    while ($cpt_query_args->have_posts()) : $cpt_query_args->the_post(); 
-                        if($cat->name == $value){
-                            $count++;
-                        }
-                    endwhile; 
-            endif; 
-            wp_reset_query();
-        endforeach; 
-    return $count;
+        $cats = get_categories($args);
+        $sorted = [];
+        $count_cat = 0;
+        $hide_cat = 'hide_cat';
+        
+
+        foreach($cats as $cat):
+            array_push($sorted, ['name' => $cat->name,'count' =>$cat->count, 'id' => $cat->term_id]);
+        endforeach;
+
+        usort($sorted, function($a, $b) {
+            $retval = $a['count'] <=> $b['count'];
+            if ($retval == 0) :
+                $retval = $a['suborder'] <=> $b['suborder'];
+                if ($retval == 0) :
+                    $retval = $a['details']['subsuborder'] <=> $b['details']['subsuborder'];
+                endif;
+            endif;
+            return $retval;
+        });
+        $sortedResult = array_reverse($sorted);
+        echo '<div id="category_id">';
+        foreach ($sortedResult as $key => $value) :
+            if($count_cat > 2):
+                $hide_cat = 'hide_cat'; 
+            else:
+                $hide_cat = '';
+            endif;
+
+            // if ($count_cat == 2) {
+            //      $break = ''; 
+            // }else{
+            //    $break = '<br>'; 
+            // }
+
+            echo '  <div style="display:block">
+                    <input type="checkbox"  name="category" value="'.$value['name'].'" id="'.$value['id'].'" class="omt-input jobs_filter cat_f '.$hide_cat.'"  onchange="filterJobs()"/>
+                    <label class="cat_f '.$hide_cat.'" for="'.$value['id'].'">'.$value['name'].' 
+                        <label id="showCat_'.$value['id'].'" data-selector="'.$value['name'].'"  class="post_count category_c '.$value['name'].'">('.$value['count'].')</label>
+                    </label></div>
+              
+            ';
+            $count_cat++;
+        endforeach;
+        if($count_cat > 2):
+            echo '<button class="show_categories" onclick="show_cat()"> <span>Mehr anzeigen</span> <i class="arrow_ down_"></i></button>
+                <button style="display: none;" class="hide_categories" onclick="hide_cat()"> <span>Weniger anzeigen</span> <i class="arrow_ up_"></i></button>';
+         endif;
+         echo '</div>';
     }
 
 
+    //display default Erfahrung for job filter
+    function displayErfahrungFilter(){
+        $count_erf = 0;
+        $erfahrung = GFFormsModel::get_form_meta(24);
+        $choices = $erfahrung['fields'][9]['choices'];//get form data
+        $sorted = [];
+        foreach($choices as $choice):
+            array_push($sorted, ['name' => $choice['value'],'count' => countJobByErfahrung($choice['value'])]);
+        endforeach;
+        $sortedResult = array_reverse($sorted);
+
+        usort($sorted, function($a, $b) {
+            $retval = $a['count'] <=> $b['count'];
+            if ($retval == 0) :
+                $retval = $a['suborder'] <=> $b['suborder'];
+                if ($retval == 0) :
+                    $retval = $a['details']['subsuborder'] <=> $b['details']['subsuborder'];
+                endif;
+            endif;
+            return $retval;
+        });
+        $sortedResult = array_reverse($sorted);
+        echo '<div id="erfahrung">';
+        foreach ($sortedResult as $key => $value) :
+            $erfahrung_id = 385;
+            $calculated = $erfahrung_id+$count_erf;
+            echo '<input type="checkbox"  name="erfahrung" value="'.$value['name'].'" class="omt-input jobs_filter" id="'.$calculated.'" onchange="filterJobs()"/>
+                <label class="cat_f" for="'.$calculated.'">'.$value['name'].'
+                    <label id="showErf_'.$calculated.'" data-selector="'.$value['name'].'"  class="post_count erfahrung_c '.$value['name'].'">('.$value['count'].')</label>
+                </label><br>';
+            $count_erf++;
+        endforeach;
+        echo '</div>';
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    function getCitiesForFilter(){
+
+        $args = array(
+            'posts_per_page' => $anzahl,
+            'post_type' => 'jobs',
+            'date_query' => array(
+                array(
+                    'column' => 'post_date_gmt',
+                    'after'  => '180 days ago',
+                )
+            ),
+            'order'             => 'DESC',
+        );
+
+
+
+        $result = ''; 
+        $count = 0;       
+        $loop = new WP_Query($args);
+        $label = $field['choices'][ $value ];
+        $cities = [];
+        $clearedArrayCities = [];
+        $helperCLass = '';
+        $hide_cat = '';
+        $stadt_id = 540;
+        $conc_id = 0;
+        while ($loop->have_posts()) : $loop->the_post();
+            $field = get_field_object('stadt');
+            $value = $field['value'];
+            if(!empty($value)){array_push($cities,$value);}
+        endwhile;
+        $clearedArrayCities = array_unique($cities);
+
+
+
+        $sorted = [];
+        foreach($clearedArrayCities as $city):
+            array_push($sorted, ['name' => $city,'count' => countJobByCity($city)]);
+        endforeach;
+        $sortedResult = array_reverse($sorted);
+
+        usort($sorted, function($a, $b) {
+            $retval = $a['count'] <=> $b['count'];
+            if ($retval == 0) :
+                $retval = $a['suborder'] <=> $b['suborder'];
+                if ($retval == 0) :
+                    $retval = $a['details']['subsuborder'] <=> $b['details']['subsuborder'];
+                endif;
+            endif;
+            return $retval;
+        });
+        $sortedResult = array_reverse($sorted);
+
+        $result .= '<div id="cities__">';
+
+        foreach ($sortedResult as $key => $value) {
+            $conc_id = $stadt_id+$count;
+            if($count > 2){ $hide_cat = 'hide_city'; }
+            $result .= '
+                <div id="cities__">
+                <input type="checkbox" name="stadt" value="'.$value['name'].'" class="omt-input jobs_filter '.$hide_cat.'" id="'.$conc_id.'" onchange="filterJobs()"/>
+                <label for="'.$conc_id.'"  class="'.$hide_cat.'">'.$value['name'].'
+                    <label id="showstadt_'.$conc_id.'" data-selector="'.$value['name'].'" class="post_count stadt_c '.$value['name'].'">('.$value['count'].')</label>
+                </label>
+                </div>
+
+            '; 
+        $count ++;
+        }
+        if($count > 2){
+            $result .= '<button class="show_cities" onclick="show_city()"> <span>Mehr anzeigen</span> <i class="arrow_ down_"></i></button>
+                    <button style="display: none;" class="hide_cities" onclick="hide_city()"> <span>Weniger anzeigen</span> <i class="arrow_ up_"></i></button>';
+                }else{}
+        $result .= '</div>';
+        return $result;
+    }
+
+
+    function displayOccupationsFilter(){
+        $erfahrung = GFFormsModel::get_form_meta(24);
+        $occupations = $erfahrung['fields'][7]['choices']; //get form data  
+        $count_der = 0;
+        $sorted = [];
+        foreach($occupations as $occupation):
+            array_push($sorted, ['name' => $occupation['value'],'count' => countJobByBeschäftigung($occupation['value'])]);
+        endforeach;
+        $sortedResult = array_reverse($sorted);
+
+
+        usort($sorted, function($a, $b) {
+            $retval = $a['count'] <=> $b['count'];
+            if ($retval == 0) :
+                $retval = $a['suborder'] <=> $b['suborder'];
+                if ($retval == 0) :
+                    $retval = $a['details']['subsuborder'] <=> $b['details']['subsuborder'];
+                endif;
+            endif;
+            return $retval;
+        });
+        $sortedResult = array_reverse($sorted);
+        echo  '<div id="occup">';
+        foreach ($sortedResult as $key => $value) :
+            $occupation_id = 825;
+            $calculated = $occupation_id+$count_der;
+            echo '<input type="checkbox" name="occupation" value="'.$value['name'].'" class="omt-input jobs_filter" id="'.$calculated.'" onchange="filterJobs()"/>
+                        <label class="cat_f" for="'.$calculated.'">'.$value['name'].'
+                            <label id="showBesch_'.$calculated.'" data-selector="'.$value['name'].'" class="post_count besch_c '.$value['name'].'">('.$value['count'].')</label>
+                        </label><br>';
+            $count_der++;
+        endforeach;
+        echo '</div>';
+    }
+
 ?>
-<?php ///****end of jobs-content***///?>

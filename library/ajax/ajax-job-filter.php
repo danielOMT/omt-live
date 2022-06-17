@@ -1,6 +1,4 @@
 <?php
-
-
 function omt_filter_jobs()
 {
     /**
@@ -14,6 +12,12 @@ function omt_filter_jobs()
     ];
 
     ob_start();
+
+
+    function my_scripts_method(){
+ wp_enqueue_script( 'jquery' );
+}
+add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         
     $result = '';
     $tax_query = '';
@@ -802,8 +806,179 @@ function omt_filter_jobs()
 
 
     // echo '<pre>';
-    // print_r($arbeitenResult);
+    // print_r($data['erfahrung']);
     // echo '</pre>';
+
+
+    ///////////////////////////////////// Level /////////////////////////////////////
+    $sortedErf = [];
+    $count_erf = 0;
+    $valsErf = array_count_values($erfahrungResult);
+    $result_erf = '';
+    foreach ($valsErf as $key => $value) {
+        array_push($sortedErf, ['name' => $key,'count' =>$value]);
+    }
+
+    usort($sortedErf, function($a, $b) {
+        $retval = $a['count'] <=> $b['count'];
+        if ($retval == 0) :
+            $retval = $a['suborder'] <=> $b['suborder'];
+            if ($retval == 0) :
+                $retval = $a['details']['subsuborder'] <=> $b['details']['subsuborder'];
+            endif;
+        endif;
+        return $retval;
+    });
+    $sortedErfResult = array_reverse($sortedErf);
+
+
+    $result_erf .='<div id="erfahrung">';
+    foreach ($sortedErfResult as $key => $value) :
+        $erfahrung_id = 385;
+        $calculated = $erfahrung_id+$count_erf;
+        $result_erf .= '<input type="checkbox"  name="erfahrung" value="'.$value['name'].'" class="omt-input jobs_filter" onchange="filterJobs()" id="'.$calculated.'"/>
+            <label class="cat_f" for="'.$calculated.'">'.$value['name'].'
+                <label id="showErf_'.$calculated.'" data-selector="'.$value['name'].'"  class="post_count erfahrung_c '.$value['name'].'">('.$value['count'].')</label>
+            </label><br><div>';
+        $count_erf++;
+    endforeach;
+    $result_erf .='</div>';
+    ///////////////////////////////////// Level /////////////////////////////////////
+
+
+
+    ///////////////////////////////////// Cities /////////////////////////////////////
+    $sortedArb = [];
+    $count = 0;
+    $valsArb = array_count_values($arbeitenResult);
+    $result_Arb = '';
+
+    foreach ($valsArb as $key => $value) {
+        array_push($sortedArb, ['name' => $key,'count' =>$value]);
+    }
+
+
+    usort($sortedArb, function($a, $b) {
+        $retval = $a['count'] <=> $b['count'];
+        if ($retval == 0) :
+            $retval = $a['suborder'] <=> $b['suborder'];
+            if ($retval == 0) :
+                $retval = $a['details']['subsuborder'] <=> $b['details']['subsuborder'];
+            endif;
+        endif;
+        return $retval;
+    });
+
+    $sortedArbResult = array_reverse($sortedArb);
+
+    foreach ($sortedArbResult as $key => $value) {
+        $conc_id = $stadt_id+$count;
+        if($count > 2){ $hide_cat = 'hide_city'; }
+        $result_Arb .= '<div id="cities__">
+                <input type="checkbox" name="stadt" value="'.$value['name'].'" class="omt-input jobs_filter '.$hide_cat.'" id="'.$conc_id.'" onchange="filterJobs()"/>
+                <label for="'.$conc_id.'"  class="'.$hide_cat.'">'.$value['name'].'
+                    <label id="showstadt_'.$conc_id.'" data-selector="'.$value['name'].'" class="post_count stadt_c '.$value['name'].'">('.$value['count'].')</label>
+                </label> </div>'; 
+    $count ++;
+    }
+
+    if($count > 2){
+        $result_Arb .= '<button class="show_cities" onclick="show_city()"> <span>Mehr anzeigen</span> <i class="arrow_ down_"></i></button>
+                <button style="display: none;" class="hide_cities" onclick="hide_city()"> <span>Weniger anzeigen</span> <i class="arrow_ up_"></i></button>';
+            }else{}
+    ///////////////////////////////////// Cities /////////////////////////////////////
+        
+
+
+    ///////////////////////////////////// Ocupation /////////////////////////////////////
+    $sortedOcc = [];
+    $count_der = 0;
+    $valsOcc = array_count_values($occupationResult);
+    $result_Occ = '';
+
+    foreach ($valsOcc as $key => $value) {
+        array_push($sortedOcc, ['name' => $key,'count' =>$value]);
+    }
+    usort($sortedOcc, function($a, $b) {
+        $retval = $a['count'] <=> $b['count'];
+        if ($retval == 0) :
+            $retval = $a['suborder'] <=> $b['suborder'];
+            if ($retval == 0) :
+                $retval = $a['details']['subsuborder'] <=> $b['details']['subsuborder'];
+            endif;
+        endif;
+        return $retval;
+    });
+    $sortedOccResult = array_reverse($sortedOcc);
+
+    $result_Occ .= '<div id="occup">';
+    foreach ($sortedOccResult as $key => $value) :
+        $occupation_id = 825;
+        $calculated = $occupation_id+$count_der;
+        $result_Occ .= '<input type="checkbox" name="occupation" value="'.$value['name'].'" class="omt-input jobs_filter" id="'.$calculated.'" onchange="filterJobs()"/>
+                    <label class="cat_f" for="'.$calculated.'">'.$value['name'].'
+                        <label id="showBesch_'.$calculated.'" data-selector="'.$value['name'].'" class="post_count besch_c '.$value['name'].'">('.$value['count'].')</label>
+                    </label><br>';
+        $count_der++;
+    endforeach;
+    $result_Occ .= '</div>';
+    ///////////////////////////////////// Ocupation /////////////////////////////////////
+
+
+
+    $sortedCat = [];
+    $count_cat = 0;
+    $hide_cat = 'hide_cat';
+    $valsCat = array_count_values($categoriesResult);
+    $result_Cat = '';
+
+    foreach ($valsCat as $key => $value) {
+        array_push($sortedCat, ['name' => $key,'count' =>$value]);
+    }
+    usort($sortedCat, function($a, $b) {
+        $retval = $a['count'] <=> $b['count'];
+        if ($retval == 0) :
+            $retval = $a['suborder'] <=> $b['suborder'];
+            if ($retval == 0) :
+                $retval = $a['details']['subsuborder'] <=> $b['details']['subsuborder'];
+            endif;
+        endif;
+        return $retval;
+    });
+    $sortedCatResult = array_reverse($sortedCat);
+
+
+    foreach ($sortedCatResult as $key => $value) :
+        $category_id = 125;
+        $calculated = $category_id+$count_cat;
+            if($count_cat > 2): 
+                $hide_cat = 'hide_cat'; 
+            else:
+                $hide_cat = '';
+            endif;
+
+            $result_Cat .= '
+                <div id="category_id">
+                    <input type="checkbox"  name="category" value="'.$value['name'].'" id="'.$calculated.'" class="omt-input jobs_filter cat_f '.$hide_cat.'" onchange="filterJobs()" />
+                    <label class="cat_f '.$hide_cat.'" for="'.$calculated.'">'.$value['name'].' 
+                        <label id="showCat_'.$calculated.'" data-selector="'.$value['name'].'"  class="post_count category_c '.$value['name'].'">('.$value['count'].')</label>
+                    </label>
+               </div>
+
+            ';
+            $count_cat++;
+        endforeach;
+        if($count_cat > 2):
+            $result_Cat .= '<button class="show_categories" onclick="show_cat()"> <span>Mehr anzeigen</span> <i class="arrow_ down_"></i></button>
+                <button style="display: none;" class="hide_categories" onclick="hide_cat()"> <span>Weniger anzeigen</span> <i class="arrow_ up_"></i></button>';
+         endif;
+
+    // echo '<pre>';
+    // print_r($sortedCatResult);
+    // echo '</pre>';
+
+
+
 
 
 
@@ -811,13 +986,16 @@ function omt_filter_jobs()
         'status' => 200,
         'message' => 'Leider keine artikel gefunden.',
         'content' => $result,
-        'erfahrung' => $erfahrungResult,
-        'categories' => $categoriesResult,
-        'arbeiten' => $arbeitenResult,
-        'occupation' => $occupationResult,
+        'erfahrung' => $result_erf,
+        'categories' => $result_Cat,
+        'arbeiten' => $result_Arb,
+        'occupation' => $result_Occ,
+        'checkedErf' => $data['erfahrung'],
+        'checkedCat' => $data['categories'],
+        'checkedArb' => $data['arbeiten'],
+        'checkedOcc' => $data['occupation'],
     ];
     
-
     //$response['content'] = 'rame';
     wp_reset_postdata();
     die(json_encode($response));
