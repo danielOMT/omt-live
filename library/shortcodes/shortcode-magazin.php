@@ -16,7 +16,7 @@ function magazin_teaser( $atts, $content = null ) {
     $shortcode_vorschautext = get_field('shortcode_vorschautext', 'options');
     $shortcode_teaserbild = get_field('shortcode_teaserbild', 'options');
 
-    if ( ( strlen($shortcode_button_2_link>0 ) AND ( strlen( $shortcode_button_2_text)>0) ) ) {
+    if ( ( strlen($shortcode_button_2_link)>0 ) AND ( strlen( $shortcode_button_2_text)>0 ) ) {
         return '<div class="webinar-teaser card clearfix">
         <div class="webinar-teaser-img">
             <a target="_blank" href="' . $shortcode_link . '" title="' . $shortcode_titel . '">
