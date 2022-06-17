@@ -36,7 +36,7 @@ function magazin_teaser( $atts, $content = null ) {
             </div>
             <a class="h4 article-title no-ihv" target="_blank" href="' . $shortcode_link . '" title="' . $shortcode_titel . '">' . $shortcode_titel . '</a>
             <div class="vorschautext has-margin-top-30 has-margin-bottom-30">' . $shortcode_vorschautext . '</div>
-            <a target="_blank" href="' . $shortcode_link . '" title="' . $shortcode_titel . '" class="button">' . $shortcode_button_text . '</a>
+            <a target="_blank" href="' . $shortcode_link . '" title="' . $shortcode_titel . '" class="button button-blue">' . $shortcode_button_text . '</a>
             <a target="_blank" href="' . $shortcode_button_2_link . '" title="' . $shortcode_titel . '" class="button button-red">' . $shortcode_button_2_text . '</a>
         </div>
     </div>';
