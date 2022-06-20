@@ -1123,7 +1123,7 @@ if (getPost()->field('ist_themenwelt', 'bool')) {
         $lat=$zeile['inhaltstyp'][0]['karte']['lat'];
         $lng=$zeile['inhaltstyp'][0]['karte']['lng'];
         ?>
-        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Qw28M7pNw6mb0WfJwA1wVO10XzfC7RE&v=3.exp'></script>
+        <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDFmVEWDZOoE8GtOglBut7XSID-OSC6hK0&v=3.exp'></script>
         <div id='gmap_canvas' style='height: <?php print $zeile["inhaltstyp"][0]["hohe_der_karte"];?>px;width:100%;'></div>
         <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
         <script type='text/javascript'>
@@ -2189,7 +2189,7 @@ case "vergleichstabelle_tools":
                 /// Beispiel: https://www.omt.de/agentur-finden/seo-agentur/frankfurt/ ?>
                     <?php
               //  if ( ($user && isset($user->user_login) && ( ('Daniel Voelskow' == $user->user_login) OR ('PureHost' == $user->user_login) ) ) ) {
-                wp_enqueue_script('google-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Qw28M7pNw6mb0WfJwA1wVO10XzfC7RE', null, null, true); ?>
+                wp_enqueue_script('google-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDFmVEWDZOoE8GtOglBut7XSID-OSC6hK0', null, null, true); ?>
                 <div class="acf-map">
                     <?php foreach ( $agenturen_posts as $agentur) {
                         if (is_array ($partner)) { $ID = $agentur['agentur']->ID; } else { $ID = $agentur; }

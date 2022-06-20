@@ -238,7 +238,7 @@ if (!defined('USE_JSON_POSTS_SYNC') || USE_JSON_POSTS_SYNC === false) {
                         ?>
                         <div class="maps-wrap">
                             <?php
-                            wp_enqueue_script('google-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Qw28M7pNw6mb0WfJwA1wVO10XzfC7RE', null, null, true); // Add in your key
+                            wp_enqueue_script('google-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDFmVEWDZOoE8GtOglBut7XSID-OSC6hK0', null, null, true); // Add in your key
                             // ACF Google Map Single Map Output
                             //$location = get_field('location'); // Set the ACF location field to a variable
                             //wp_enqueue_script('acfmaps', get_stylesheet_directory_uri() . '/library/js/acf-maps.js', array('jquery'), '', true);

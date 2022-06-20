@@ -104,7 +104,7 @@ function info_before_checkout() {
                     <?php print get_the_title($speaker_id);?>
                 </p>
             </div>
-            <?php wp_enqueue_script('google-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Qw28M7pNw6mb0WfJwA1wVO10XzfC7RE', null, null, true); // Add in your key ?>
+            <?php wp_enqueue_script('google-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDFmVEWDZOoE8GtOglBut7XSID-OSC6hK0', null, null, true); // Add in your key ?>
             <div class="acf-map" style="">
                 <div class="marker" data-lat="<?php echo $hotel_adresse['lat']; ?>" data-lng="<?php echo $hotel_adresse['lng']; ?>">
                     <div class="agentur-titel-wrap">

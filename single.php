@@ -899,7 +899,7 @@ $zoom = $zeile["inhaltstyp"][0]["zoomlevel_der_karte"];
 $lat=$zeile['inhaltstyp'][0]['karte']['lat'];
 $lng=$zeile['inhaltstyp'][0]['karte']['lng'];
 ?>
-    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Qw28M7pNw6mb0WfJwA1wVO10XzfC7RE&v=3.exp'></script>
+    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDFmVEWDZOoE8GtOglBut7XSID-OSC6hK0&v=3.exp'></script>
     <div id='gmap_canvas' style='height: <?php print $zeile["inhaltstyp"][0]["hohe_der_karte"];?>px;width:100%;'></div>
     <style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
     <script type='text/javascript'>

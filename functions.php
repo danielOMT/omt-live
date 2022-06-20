@@ -530,7 +530,7 @@ function sort_by_timestamp($a, $b) ////***helper function to sort the array by $
 /**register google maps api**/
 function my_acf_google_map_api( $api ){
 
-    $api['key'] = 'AIzaSyD9Qw28M7pNw6mb0WfJwA1wVO10XzfC7RE';
+    $api['key'] = 'AIzaSyDFmVEWDZOoE8GtOglBut7XSID-OSC6hK0';
 
     return $api;
 

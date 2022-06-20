@@ -71,7 +71,7 @@ foreach ($nonpremiumagenturen_array as $agentur) {
             <div id="main" class="omt-row blog-single  clearfix" role="main">
                 <h1 class="entry-title single-title h2" itemprop="headline"><?php the_title(); ?></h1>
                 <div id="branchenbuch" class="omt-abschnitt single-branchenbuch-content"> <?php //***jobs main leftside***//?>
-                    <?php wp_enqueue_script('google-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Qw28M7pNw6mb0WfJwA1wVO10XzfC7RE', null, null, true); ?>
+                    <?php wp_enqueue_script('google-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDFmVEWDZOoE8GtOglBut7XSID-OSC6hK0', null, null, true); ?>
                     <div class="acf-map">
                         <?php foreach ($agenturen_array as $agentur) { ?>
                             <?php $location = get_field('adresse_mapmarker', $agentur);

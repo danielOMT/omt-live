@@ -13,7 +13,7 @@ $loop = new WP_Query( $args_agenturen ); //*args and query all "?>
     $premiumagentur = get_field('premiumagentur');
     if (1 == $premiumagentur) { $agenturen_array[] = get_the_ID(); }
 } ?>
-<?php wp_enqueue_script('google-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Qw28M7pNw6mb0WfJwA1wVO10XzfC7RE', null, null, true); // Add in your key
+<?php wp_enqueue_script('google-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDFmVEWDZOoE8GtOglBut7XSID-OSC6hK0', null, null, true); // Add in your key
 ?>
 <div class="acf-map">
     <?php foreach ($agenturen_array as $agentur) { ?>

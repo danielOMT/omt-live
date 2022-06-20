@@ -164,7 +164,7 @@ function branchenbuch_suche() { ?>
             if ($_POST['branche'] != "Alle Branchen") {$input_branche = get_the_title($_POST['branche']); }
             if (count($agenturen_array)>=1) {
                 ?><h3 class="filter-results">Ergebnisse für <?php print $input_branche;?> in <?php print $input_ort;?>:</h3><?php
-                wp_enqueue_script('google-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyD9Qw28M7pNw6mb0WfJwA1wVO10XzfC7RE', null, null, true); // Add in your key
+                wp_enqueue_script('google-api', 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDFmVEWDZOoE8GtOglBut7XSID-OSC6hK0', null, null, true); // Add in your key
                 // ACF Google Map Single Map Output
                 //$location = get_field('location'); // Set the ACF location field to a variable
                 //wp_enqueue_script('acfmaps', get_stylesheet_directory_uri() . '/library/js/acf-maps.js', array('jquery'), '', true);
