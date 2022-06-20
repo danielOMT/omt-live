@@ -260,7 +260,7 @@ $datahostWebinar = Webinar::init()->item(['id' => $post_id]);
                             <a class="teaser-highlight-container" href="/club/" target="_self">
                                 <!--starting teaser highlight content-->
                                 <div class="teaser-highlight-img">
-                                    <img src="<?php print $standard_icon_teaser_highlight['url'];?>" width="130" />
+                                    <img src="<?php print $standard_icon_teaser_highlight['url'];?>" alt="<?php print $standard_icon_teaser_highlight['alt'];?>" width="130" />
                                 </div>
                                 <div class="teaser-highlight-text">
                                     <h3>Der OMT Club</h3>
