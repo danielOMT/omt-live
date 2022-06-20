@@ -3,7 +3,7 @@
 function omt_titlebox( $atts, $content = null ) {
     $atts = shortcode_atts(
         array(
-            "title" => "<img class='titlebox-label-image' alt='titlebox-logo' src='/uploads/omt-logo.svg'/>",
+            "title" => "<img class='titlebox-label-image' alt='titlebox-logo' width='96' height='39' src='/uploads/omt-logo.svg'/>",
             "icon" => "",
             "border-size" => "1",
             "border-color" => "#004590",
