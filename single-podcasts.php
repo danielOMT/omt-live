@@ -28,7 +28,7 @@ $spotify_track_id = get_field('spotify_track_id');
             <div class="titlebox box-podcast box-spotify" style="display: block; width:100%;max-width:730px; background: #ffffff; color: #333333; border: 1px solid #004590;">
                 <div class="titlebox-label" style="display: block; background: #ffffff; color: #333333; border: 1px solid #004590;">
                     <span class="titlebox-title">
-                        <img class="titlebox-label-image" src="https://www.omt.de/uploads/omt-logo.svg" alt="omt logo"/>
+                        <img class="titlebox-label-image" src="https://www.omt.de/uploads/omt-logo.svg" width="96" height="39" alt="omt logo"/>
                     </span>
                 </div>
                 <h3 style="margin: 0px !important;">Podcast anhören:</h3>

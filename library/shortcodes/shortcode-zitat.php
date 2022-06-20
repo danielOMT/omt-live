@@ -12,7 +12,7 @@ function omt_zitat_shortcode( $atts ) {
     <div class="titlebox shortcode-zitat" style="background: #f9f9f9; color: #333333; border: 1px solid #013F6F;">
                         <div class="titlebox-label iconless" style="background: #f9f9f9; color: #333333; border: 1px solid #013F6F;">
                                 <span class="titlebox-title" style="">
-                                    <img class='titlebox-label-image' src='/uploads/omt-logo.svg'/>
+                                    <img class='titlebox-label-image' src='/uploads/omt-logo.svg' width='96' height='39' alt='omt logo'/>
                                 </span>
                         </div>
         <div>
