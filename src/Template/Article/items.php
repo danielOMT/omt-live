@@ -43,7 +43,7 @@ $itemsDisplayed = 1;
             </button>
         <div id="after_load" class="hide_loading">
             <span>Artikel werden geladen</span>
-            <img id="spinner_l"  src="/uploads/2022/03/loader_-1.svg">
+            <img id="spinner_l"  src="/uploads/2022/03/loader_-1.svg" alt="loader-image" width="30" height="30">
         </div>
         <div id="results"></div>
     <?php endif ?>
