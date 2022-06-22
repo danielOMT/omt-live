@@ -1118,36 +1118,36 @@ function woocommerce_product_custom_fields_save($post_id)
 
 
 
-add_action( 'woocommerce_before_checkout_form', 'add_job_form', 10 );
-function add_job_form( )
-{
-    foreach( WC()->cart->get_cart() as $cart_item ){
-        $product_id = $cart_item['product_id'];
-    }
-    $product_type = get_post_meta( $product_id, '_custom_product_type', true );
-    if($product_type != ''){
-        echo '<style>
-        #content .gform_wrapper, #content #gform_wrapper_33{
-            width:100% !important
-        }
-        .checkout{
-            display:none;
-        }
-        .woocommerce-form-coupon-toggle{
-            display:none
-        }
-        .woocommerce-info{
-            display:none;
-        }
-        #customise_checkout_field{
-            display:none !Important
-        }
-       </style>';
+// add_action( 'woocommerce_before_checkout_form', 'add_job_form', 10 );
+// function add_job_form( )
+// {
+//     foreach( WC()->cart->get_cart() as $cart_item ){
+//         $product_id = $cart_item['product_id'];
+//     }
+//     $product_type = get_post_meta( $product_id, '_custom_product_type', true );
+//     if($product_type != ''){
+//         echo '<style>
+//         #content .gform_wrapper, #content #gform_wrapper_33{
+//             width:100% !important
+//         }
+//         .checkout{
+//             display:none;
+//         }
+//         .woocommerce-form-coupon-toggle{
+//             display:none
+//         }
+//         .woocommerce-info{
+//             display:none;
+//         }
+//         #customise_checkout_field{
+//             display:none !Important
+//         }
+//        </style>';
 
-        echo do_shortcode('[gravityform ajax=true id="24" title="true" description="true" tabindex="0"]');
-    }
+//         echo do_shortcode('[gravityform ajax=true id="24" title="true" description="true" tabindex="0"]');
+//     }
 
-}
+// }
 
 
 

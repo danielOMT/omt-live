@@ -303,7 +303,9 @@ switch ($zeile['inhaltstyp'][0]['acf_fc_layout']) {
     case "autojobs":
         include('module-autopublishing-jobs.php');
         break;
-
+    case "agenturfinder-products":
+        include('module-agenturfinder-sub.php');
+        break;
     case "highlighted-jobs":
         include('module-highlighted-jobs.php');
         break;

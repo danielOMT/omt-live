@@ -286,6 +286,10 @@
     case "autojobs":
         $columnclass = "autojobs";
         break;
+        
+    case "agenturfinder-products":
+        $columnclass = "agenturfinder";
+        break;
 
     case "auswahlboxen":
         $columnclass = "auswahlboxen-wrap";

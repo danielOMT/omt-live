@@ -791,3 +791,116 @@ function misha_allow_2_woo_blocks( $allowed_blocks ){
     return $allowed_blocks;
 
 }
+
+
+
+
+
+
+
+/*---------------------------------- custom fields for agenturfinder ---------------------------------*/
+
+add_action( 'woocommerce_variation_options_pricing', 'omt_add_product_class_to_variations', 10, 3 );
+ 
+function omt_add_product_class_to_variations( $loop, $variation_data, $variation ) {
+   woocommerce_wp_text_input( array(
+'id' => 'product_class[' . $loop . ']',
+'class' => 'short',
+'label' => __( 'Product Variation Class', 'woocommerce' ),
+'value' => get_post_meta( $variation->ID, 'product_class', true )
+   ) );
+}
+ 
+// -----------------------------------------
+// 2. Save custom field on product variation save
+ 
+add_action( 'woocommerce_save_product_variation', 'omt_save_product_class_variations', 10, 2 );
+ 
+function omt_save_product_class_variations( $variation_id, $i ) {
+   $product_class = $_POST['product_class'][$i];
+   if ( isset( $product_class ) ) update_post_meta( $variation_id, 'product_class', esc_attr( $product_class ) );
+}
+ 
+// -----------------------------------------
+// 3. Store custom field value into variation data
+ 
+add_filter( 'woocommerce_available_variation', 'omt_add_custom_field_variation_data' );
+ 
+function omt_add_custom_field_variation_data( $variations ) {
+   $variations['product_class'] = '<div class="woocommerce_custom_field">Prodact variation Class: <span>' . get_post_meta( $variations[ 'variation_id' ], 'product_class', true ) . '</span></div>';
+   return $variations;
+}
+
+
+
+
+
+
+add_action( 'woocommerce_variation_options_pricing', 'omt_add_m_price_to_variations', 10, 3 );
+ 
+function omt_add_m_price_to_variations( $loop, $variation_data, $variation ) {
+   woocommerce_wp_text_input( array(
+'id' => 'monthly_price[' . $loop . ']',
+'class' => 'short',
+'label' => __( 'Monthly Price', 'woocommerce' ),
+'value' => get_post_meta( $variation->ID, 'monthly_price', true )
+   ) );
+}
+ 
+// -----------------------------------------
+// 2. Save custom field on product variation save
+ 
+add_action( 'woocommerce_save_product_variation', 'omt_save_m_price_variations', 10, 2 );
+ 
+function omt_save_m_price_variations( $variation_id, $i ) {
+   $monthly_price = $_POST['monthly_price'][$i];
+   if ( isset( $monthly_price ) ) update_post_meta( $variation_id, 'monthly_price', esc_attr( $monthly_price ) );
+}
+ 
+// -----------------------------------------
+// 3. Store custom field value into variation data
+ 
+add_filter( 'woocommerce_available_variation', 'omt_add_m_price_variation_data' );
+ 
+function omt_add_m_price_variation_data( $variations ) {
+   $variations['monthly_price'] = '<div class="woocommerce_custom_field">Monthly Price: <span>' . get_post_meta( $variations[ 'variation_id' ], 'monthly_price', true ) . '</span></div>';
+   return $variations;
+}
+
+
+
+
+
+add_action( 'woocommerce_variation_options_pricing', 'omt_add_fraction_to_variations', 10, 3 );
+ 
+function omt_add_fraction_to_variations( $loop, $variation_data, $variation ) {
+   woocommerce_wp_text_input( array(
+'id' => 'fraction[' . $loop . ']',
+'class' => 'short',
+'label' => __( 'Fraction', 'woocommerce' ),
+'value' => get_post_meta( $variation->ID, 'fraction', true )
+   ) );
+}
+ 
+// -----------------------------------------
+// 2. Save custom field on product variation save
+ 
+add_action( 'woocommerce_save_product_variation', 'omt_save_fraction_variations', 10, 2 );
+ 
+function omt_save_fraction_variations( $variation_id, $i ) {
+   $fraction = $_POST['fraction'][$i];
+   if ( isset( $fraction ) ) update_post_meta( $variation_id, 'fraction', esc_attr( $fraction ) );
+}
+ 
+// -----------------------------------------
+// 3. Store custom field value into variation data
+ 
+add_filter( 'woocommerce_available_variation', 'omt_add_fraction_variation_data' );
+ 
+function omt_add_fraction_variation_data( $variations ) {
+   $variations['fraction'] = '<div class="woocommerce_custom_field">Fraction: <span>' . get_post_meta( $variations[ 'variation_id' ], 'fraction', true ) . '</span></div>';
+   return $variations;
+}
+
+
+/*---------------------------------- custom fields for agenturfinder /---------------------------------*/
