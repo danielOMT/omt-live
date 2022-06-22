@@ -29,6 +29,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
     $beschreibungselemente = 0;
     $teaser_size = "xsmall";
     $extra_class = '';
+    $description_style = '';
     $rec = '';
     $recom_up_class = '';
     if (3 == count ($variations1)) { $teaser_size = "small"; $style = "style='width: 32% !important;'"; }
@@ -46,7 +47,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
     //     //$lager = 999;
     // } else { $active = false; }
     if ( $lager <1 OR $active != true) { $inactive_class = "ticket-inactive"; }
-    if( $highlighted == 'yes' ){ $extra_class = 'highlighted'; $rec = '<div class="ribbon job-ribbon"><span>'.$empfehlung_text.'</span></div>'; }//else{ $recom_up_class = 'recom_up_class'; }
+    if( $highlighted == 'yes' ){ $extra_class = 'highlighted'; $description_style = 'highlighted_p'; $rec = '<div class="ribbon job-ribbon"><span>'.$empfehlung_text.'</span></div>'; }//else{ $recom_up_class = 'recom_up_class'; }
     ?>
 
 
@@ -71,10 +72,10 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                         <?php endif; ?>
                             <?php if( $highlighted == 'yes' ){ ?> </div><?php } ?>
                                 <?php if ($beschreibungselemente != 0) :?>
-                            <div class="produkt-beschreibung " id="more_<?=$ticket_variation_id?>">
+                            <div class="produkt-beschreibung <?=$description_style;?>" id="more_<?=$ticket_variation_id?>">
                                 <?php
                                     foreach ($beschreibungselemente as $element) {
-                                        print "<p>" . $element['text'] . "</p>";
+                                        print "<p class='check_b'><span>&#10003;</span>" . $element['text'] . "</p>";
                                     }
                                 ?>
                             </div>
