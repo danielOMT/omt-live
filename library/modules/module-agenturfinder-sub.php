@@ -21,7 +21,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
     ?>
     <span class="anchor" id="ticket"></span>
     <?php
-    $test_job = $single_variation->attributes['pa_agenturfinder-products'];
+    $test_job = $single_variation->attributes['pa_agenturfinder-produkte'];
     $ticketstatus = $single_variation->attributes['status'];
     $preis = $single_variation->price;
     $lager = $single_variation->stock_quantity;
