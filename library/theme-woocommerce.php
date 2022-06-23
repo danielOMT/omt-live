@@ -330,19 +330,19 @@ function c_custom_checkout_field( $checkout )
         $cart_ids[] = $cart_product->id;
         $price = $cart_product->get_price();
     }
-    if ($price < 1) {
+    // if ($price < 1) {
 
-        echo '<div id="c_custom_checkout_field" class="hinweis-unkostenpauschale"><h3>' . __('Unkostenpauschale bei kurzfristiger Absage') . '</h3>';
-        echo '<p style="width: auto; margin:0;">Die Organisation und Durchführung unserer Seminare benötigt sehr viel Zeit und wir sind auch bei der Buchung der Räume an Meldefristen gebunden. In der Vergangenheit gab es leider vermehrt kurzfristige Absagen, die zur Entstehung von Kosten zu uns geführt haben. Um weiterhin kostenlose Seminare für die Community anbieten zu können, müssen wir bei kurzfristigen Absagen eine Unkostenpauschale erheben. Bitte bestätige uns kurz, dass Du diese Regelung zur Kenntnis genommen hast:</p>';
-        woocommerce_form_field('c_type', array(
-            'type' => 'checkbox',
-            'class' => array('my-field-class form-row form-row-wide'),
-            'label' => __('Mir ist bewusst, dass bei einer Absage innerhalb 14 Tage vor dem Seminar eine Unkostenpauschale in Höhe von 99€ fällig wird.'),
-            'placeholder' => __(''),
-            'required'  => true,
-        ), $checkout->get_value('c_type'));
-        echo '</div>';
-    }
+    //     echo '<div id="c_custom_checkout_field" class="hinweis-unkostenpauschale"><h3>' . __('Unkostenpauschale bei kurzfristiger Absage') . '</h3>';
+    //     echo '<p style="width: auto; margin:0;">Die Organisation und Durchführung unserer Seminare benötigt sehr viel Zeit und wir sind auch bei der Buchung der Räume an Meldefristen gebunden. In der Vergangenheit gab es leider vermehrt kurzfristige Absagen, die zur Entstehung von Kosten zu uns geführt haben. Um weiterhin kostenlose Seminare für die Community anbieten zu können, müssen wir bei kurzfristigen Absagen eine Unkostenpauschale erheben. Bitte bestätige uns kurz, dass Du diese Regelung zur Kenntnis genommen hast:</p>';
+    //     woocommerce_form_field('c_type', array(
+    //         'type' => 'checkbox',
+    //         'class' => array('my-field-class form-row form-row-wide'),
+    //         'label' => __('Mir ist bewusst, dass bei einer Absage innerhalb 14 Tage vor dem Seminar eine Unkostenpauschale in Höhe von 99€ fällig wird.'),
+    //         'placeholder' => __(''),
+    //         'required'  => true,
+    //     ), $checkout->get_value('c_type'));
+    //     echo '</div>';
+    // }
 }
 
 add_action('woocommerce_checkout_process', 'c_custom_checkout_field_process');
@@ -353,12 +353,12 @@ function c_custom_checkout_field_process()
         $cart_ids[] = $cart_product->id;
         $price = $cart_product->get_price();
     }
-    if ($price < 1) {
-// Check if set, if its not set add an error.
-        if (!$_POST['c_type'])
-            wc_add_notice(__('Bitte akzeptiere den Hinweis zur Unkostenpauschale bei kurzfristiger Absage.'), 'error');
+//     if ($price < 1) {
+// // Check if set, if its not set add an error.
+//         if (!$_POST['c_type'])
+//             wc_add_notice(__('Bitte akzeptiere den Hinweis zur Unkostenpauschale bei kurzfristiger Absage.'), 'error');
 
-    }
+//     }
 }
 /////END OF Custom Checkout Box for requiring acceptance of nichtantrittsgebühren in case of no-show
 
