@@ -151,7 +151,7 @@ function mytheme_woo_add_custom_fields_save( $post_id ){
     update_post_meta( $post_id, '_select', esc_attr( $woocommerce_select ) );
 
     // Checkbox
-    $woocommerce_checkbox = isset( $_POST['_checkbox'] ) ? 'yes' : 'non';
+    $woocommerce_checkbox = isset( $_POST['_checkbox'] ) ? 'yes' : 'no';
     update_post_meta( $post_id, '_checkbox', $woocommerce_checkbox );
 
     // Hidden Field
