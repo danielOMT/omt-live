@@ -19,7 +19,7 @@ function add_custom_variation_activate_checkbox( $loop, $variation_data, $variat
     woocommerce_wp_checkbox( array(
 'id' => '_activePro[' . $loop . ']',
 'class' => 'short',
-'label' => __( 'Aktivieren', 'woocommerce' ),
+'label' => __( 'Aktivieren: ', 'woocommerce' ),
 'value' => get_post_meta( $variation->ID, '_activePro', true )
 )
 );
