@@ -36,7 +36,7 @@ foreach ($variations1 as $ticketvariation) {   /*build array with all seminars a
         }
     }
     //Checking if product is active or inactive in prosuct variation
-    if( ( $active_product == 'yes' ) ) { $active = true; }else { $active = false; }
+    if( $active_product == 'yes' ){ $active = true; $lager = 999; }else{ $active = false; }
 
     // if ( ( 279962 == $ticket_variation_id OR 279961 == $ticket_variation_id OR 279964 == $ticket_variation_id OR 254476 == $ticket_variation_id) ) {
     //     $active = true;
