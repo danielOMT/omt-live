@@ -487,6 +487,9 @@ require_once("woocommerce-add-customfield-offline-id.php");
 ///CUSTOM FIELD ZUR VARIATION HINZUFÜGEN: Zugehörige Online-ID (für Hybrid-Seminare notwendig)
 require_once("woocommerce-add-customfield-online-id.php");
 
+///CUSTOM FIELD ZUR VARIATION HINZUFÜGEN: ProduktAktivieren
+require_once("woocommerce-add-customfield-activate.php");
+
 // Manage "WooCommerce Subscriptions"
 require_once("woocommerce-subscriptions.php");
 
