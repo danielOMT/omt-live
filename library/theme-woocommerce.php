@@ -330,19 +330,19 @@ function c_custom_checkout_field( $checkout )
         $cart_ids[] = $cart_product->id;
         $price = $cart_product->get_price();
     }
-    if ($price < 1) {
+    // if ($price < 1) {
 
-        echo '<div id="c_custom_checkout_field" class="hinweis-unkostenpauschale"><h3>' . __('Unkostenpauschale bei kurzfristiger Absage') . '</h3>';
-        echo '<p style="width: auto; margin:0;">Die Organisation und Durchführung unserer Seminare benötigt sehr viel Zeit und wir sind auch bei der Buchung der Räume an Meldefristen gebunden. In der Vergangenheit gab es leider vermehrt kurzfristige Absagen, die zur Entstehung von Kosten zu uns geführt haben. Um weiterhin kostenlose Seminare für die Community anbieten zu können, müssen wir bei kurzfristigen Absagen eine Unkostenpauschale erheben. Bitte bestätige uns kurz, dass Du diese Regelung zur Kenntnis genommen hast:</p>';
-        woocommerce_form_field('c_type', array(
-            'type' => 'checkbox',
-            'class' => array('my-field-class form-row form-row-wide'),
-            'label' => __('Mir ist bewusst, dass bei einer Absage innerhalb 14 Tage vor dem Seminar eine Unkostenpauschale in Höhe von 99€ fällig wird.'),
-            'placeholder' => __(''),
-            'required'  => true,
-        ), $checkout->get_value('c_type'));
-        echo '</div>';
-    }
+    //     echo '<div id="c_custom_checkout_field" class="hinweis-unkostenpauschale"><h3>' . __('Unkostenpauschale bei kurzfristiger Absage') . '</h3>';
+    //     echo '<p style="width: auto; margin:0;">Die Organisation und Durchführung unserer Seminare benötigt sehr viel Zeit und wir sind auch bei der Buchung der Räume an Meldefristen gebunden. In der Vergangenheit gab es leider vermehrt kurzfristige Absagen, die zur Entstehung von Kosten zu uns geführt haben. Um weiterhin kostenlose Seminare für die Community anbieten zu können, müssen wir bei kurzfristigen Absagen eine Unkostenpauschale erheben. Bitte bestätige uns kurz, dass Du diese Regelung zur Kenntnis genommen hast:</p>';
+    //     woocommerce_form_field('c_type', array(
+    //         'type' => 'checkbox',
+    //         'class' => array('my-field-class form-row form-row-wide'),
+    //         'label' => __('Mir ist bewusst, dass bei einer Absage innerhalb 14 Tage vor dem Seminar eine Unkostenpauschale in Höhe von 99€ fällig wird.'),
+    //         'placeholder' => __(''),
+    //         'required'  => true,
+    //     ), $checkout->get_value('c_type'));
+    //     echo '</div>';
+    // }
 }
 
 add_action('woocommerce_checkout_process', 'c_custom_checkout_field_process');
@@ -353,12 +353,12 @@ function c_custom_checkout_field_process()
         $cart_ids[] = $cart_product->id;
         $price = $cart_product->get_price();
     }
-    if ($price < 1) {
-// Check if set, if its not set add an error.
-        if (!$_POST['c_type'])
-            wc_add_notice(__('Bitte akzeptiere den Hinweis zur Unkostenpauschale bei kurzfristiger Absage.'), 'error');
+//     if ($price < 1) {
+// // Check if set, if its not set add an error.
+//         if (!$_POST['c_type'])
+//             wc_add_notice(__('Bitte akzeptiere den Hinweis zur Unkostenpauschale bei kurzfristiger Absage.'), 'error');
 
-    }
+//     }
 }
 /////END OF Custom Checkout Box for requiring acceptance of nichtantrittsgebühren in case of no-show
 
@@ -791,3 +791,116 @@ function misha_allow_2_woo_blocks( $allowed_blocks ){
     return $allowed_blocks;
 
 }
+
+
+
+
+
+
+
+/*---------------------------------- custom fields for agenturfinder ---------------------------------*/
+
+add_action( 'woocommerce_variation_options_pricing', 'omt_add_product_class_to_variations', 10, 3 );
+ 
+function omt_add_product_class_to_variations( $loop, $variation_data, $variation ) {
+   woocommerce_wp_text_input( array(
+'id' => 'product_class[' . $loop . ']',
+'class' => 'short',
+'label' => __( 'Product Variation Class', 'woocommerce' ),
+'value' => get_post_meta( $variation->ID, 'product_class', true )
+   ) );
+}
+ 
+// -----------------------------------------
+// 2. Save custom field on product variation save
+ 
+add_action( 'woocommerce_save_product_variation', 'omt_save_product_class_variations', 10, 2 );
+ 
+function omt_save_product_class_variations( $variation_id, $i ) {
+   $product_class = $_POST['product_class'][$i];
+   if ( isset( $product_class ) ) update_post_meta( $variation_id, 'product_class', esc_attr( $product_class ) );
+}
+ 
+// -----------------------------------------
+// 3. Store custom field value into variation data
+ 
+add_filter( 'woocommerce_available_variation', 'omt_add_custom_field_variation_data' );
+ 
+function omt_add_custom_field_variation_data( $variations ) {
+   $variations['product_class'] = '<div class="woocommerce_custom_field">Prodact variation Class: <span>' . get_post_meta( $variations[ 'variation_id' ], 'product_class', true ) . '</span></div>';
+   return $variations;
+}
+
+
+
+
+
+
+add_action( 'woocommerce_variation_options_pricing', 'omt_add_m_price_to_variations', 10, 3 );
+ 
+function omt_add_m_price_to_variations( $loop, $variation_data, $variation ) {
+   woocommerce_wp_text_input( array(
+'id' => 'monthly_price[' . $loop . ']',
+'class' => 'short',
+'label' => __( 'Monthly Price', 'woocommerce' ),
+'value' => get_post_meta( $variation->ID, 'monthly_price', true )
+   ) );
+}
+ 
+// -----------------------------------------
+// 2. Save custom field on product variation save
+ 
+add_action( 'woocommerce_save_product_variation', 'omt_save_m_price_variations', 10, 2 );
+ 
+function omt_save_m_price_variations( $variation_id, $i ) {
+   $monthly_price = $_POST['monthly_price'][$i];
+   if ( isset( $monthly_price ) ) update_post_meta( $variation_id, 'monthly_price', esc_attr( $monthly_price ) );
+}
+ 
+// -----------------------------------------
+// 3. Store custom field value into variation data
+ 
+add_filter( 'woocommerce_available_variation', 'omt_add_m_price_variation_data' );
+ 
+function omt_add_m_price_variation_data( $variations ) {
+   $variations['monthly_price'] = '<div class="woocommerce_custom_field">Monthly Price: <span>' . get_post_meta( $variations[ 'variation_id' ], 'monthly_price', true ) . '</span></div>';
+   return $variations;
+}
+
+
+
+
+
+add_action( 'woocommerce_variation_options_pricing', 'omt_add_fraction_to_variations', 10, 3 );
+ 
+function omt_add_fraction_to_variations( $loop, $variation_data, $variation ) {
+   woocommerce_wp_text_input( array(
+'id' => 'fraction[' . $loop . ']',
+'class' => 'short',
+'label' => __( 'Fraction', 'woocommerce' ),
+'value' => get_post_meta( $variation->ID, 'fraction', true )
+   ) );
+}
+ 
+// -----------------------------------------
+// 2. Save custom field on product variation save
+ 
+add_action( 'woocommerce_save_product_variation', 'omt_save_fraction_variations', 10, 2 );
+ 
+function omt_save_fraction_variations( $variation_id, $i ) {
+   $fraction = $_POST['fraction'][$i];
+   if ( isset( $fraction ) ) update_post_meta( $variation_id, 'fraction', esc_attr( $fraction ) );
+}
+ 
+// -----------------------------------------
+// 3. Store custom field value into variation data
+ 
+add_filter( 'woocommerce_available_variation', 'omt_add_fraction_variation_data' );
+ 
+function omt_add_fraction_variation_data( $variations ) {
+   $variations['fraction'] = '<div class="woocommerce_custom_field">Fraction: <span>' . get_post_meta( $variations[ 'variation_id' ], 'fraction', true ) . '</span></div>';
+   return $variations;
+}
+
+
+/*---------------------------------- custom fields for agenturfinder /---------------------------------*/

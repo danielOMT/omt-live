@@ -437,6 +437,31 @@ include ('library/modules/modules-columnclass.php');
             <div class="omt-ticket-row">
         <?php elseif($zeile['inhaltstyp'][0]['acf_fc_layout'] == 'autojobs'):?>
             <div class="omt-ticket-auto-row">
+        <?php elseif($zeile['inhaltstyp'][0]['acf_fc_layout'] == 'agenturfinder-products' || $zeile['inhaltstyp'][0]['acf_fc_layout'] == 'freelancer-products'):?>
+            <div class="row-inner wrap">
+                <div class="price-switcher-container">
+                    <span class="zahl">Zahlungsintervall:</span>
+                    <label class="price_sel_container" onchange="priceToggle('Monthly')">
+                        <?=__('Monatlich');?>
+                      <input type="radio" checked="checked" name="radio">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="price_sel_container" onchange="priceToggle('Quarterly')">
+                        <?=__('Vierteljährlich');?><span class="dsic"> ( -10% )</span>
+                      <input type="radio" name="radio">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="price_sel_container" onchange="priceToggle('Halfyearly')">
+                        <?=__('Halbjährlich');?><span class="dsic"> ( -15% )</span>
+                      <input type="radio" name="radio">
+                      <span class="checkmark"></span>
+                    </label>
+                    <label class="price_sel_container" onchange="priceToggle('Yearly')">
+                        <?=__('Jährlich');?><span class="dsic"> ( -20% )</span>
+                      <input type="radio" name="radio" id="yr">
+                      <span class="checkmark"></span>
+                    </label>
+                </div>
         <?php elseif($zeile['inhaltstyp'][0]['acf_fc_layout'] == 'partner_full_width'):?>
             <div class="omt-full-width">
         <?php elseif($zeile['inhaltstyp'][0]['acf_fc_layout'] == 'highlighted-jobs'):?>

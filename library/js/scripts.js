@@ -2078,6 +2078,81 @@ function hide_city(){
 
 
 
+
+
+function priceToggle(price){
+    if(price === 'Monthly'){
+        $('.quarterly').addClass('hide_product')
+        $('.monthly').removeClass('hide_product')
+        $('.halfyearly').addClass('hide_product')
+        $('.yearly').addClass('hide_product')
+
+        $('#quarterly').addClass('hide_product')
+        $('#halfyearly').addClass('hide_product')
+        $('#yearly').addClass('hide_product')
+
+        $('.ann').removeClass('hide_product')
+        
+
+
+    }else if(price === 'Quarterly'){
+        $('.quarterly').removeClass('hide_product')
+        $('.monthly').addClass('hide_product')
+        $('.halfyearly').addClass('hide_product')
+        $('.yearly').addClass('hide_product')
+
+        $('.quarterly_').removeClass('hide_product')
+        $('.halfyearly_').addClass('hide_product')
+        $('.yearly_').addClass('hide_product')
+        $('.ann').addClass('hide_product')
+    }else if(price === 'Halfyearly'){
+        $('.quarterly').addClass('hide_product')
+        $('.monthly').addClass('hide_product')
+        $('.halfyearly').removeClass('hide_product')
+        $('.yearly').addClass('hide_product')
+
+
+        $('.quarterly_').addClass('hide_product')
+        $('.halfyearly_').removeClass('hide_product')
+        $('.yearly_').addClass('hide_product')
+        $('.ann').addClass('hide_product')
+    }else if(price === 'Yearly'){
+        $('.quarterly').addClass('hide_product')
+        $('.monthly').addClass('hide_product')
+        $('.halfyearly').addClass('hide_product')
+        $('.yearly').removeClass('hide_product')
+
+
+        $('.quarterly_').addClass('hide_product')
+        $('.halfyearly_').addClass('hide_product')
+        $('.yearly_').removeClass('hide_product')
+        $('.ann').addClass('hide_product')
+    }
+    
+}
+
+
+
+$( document ).ready(function() {
+    $( ".annual" ).click(function() {
+      
+        $('.quarterly').addClass('hide_product')
+        $('.monthly').addClass('hide_product')
+        $('.halfyearly').addClass('hide_product')
+        $('.yearly').removeClass('hide_product')
+
+
+        $('.quarterly_').addClass('hide_product')
+        $('.halfyearly_').addClass('hide_product')
+        $('.yearly_').removeClass('hide_product')
+
+        $('.ann').addClass('hide_product')
+
+        $("#yr").prop("checked", true);
+    });
+});
+
+
 /*excludes wprocket
 
 wp-includes/js/dist/
