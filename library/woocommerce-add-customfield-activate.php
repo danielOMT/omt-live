@@ -17,10 +17,10 @@ add_action( 'woocommerce_variation_options_pricing', 'add_custom_variation_activ
 
 function add_custom_variation_activate_checkbox( $loop, $variation_data, $variation ) {
     woocommerce_wp_checkbox( array(
-'id' => '_activate_Pro[' . $loop . ']',
+'id' => '_activePro[' . $loop . ']',
 'class' => 'short',
 'label' => __( 'Aktivieren: ', 'woocommerce' ),
-'value' => get_post_meta( $variation->ID, '_activate_Pro', true )
+'value' => get_post_meta( $variation->ID, '_activePro', true )
 )
 );
 }
@@ -31,8 +31,8 @@ function add_custom_variation_activate_checkbox( $loop, $variation_data, $variat
 add_action( 'woocommerce_save_product_variation', 'save_custom_field_variations_activate_checkbox', 10, 2 );
 
 function save_custom_field_variations_activate_checkbox( $variation_id, $i ) {
-$custom_field = $_POST['_activate_Pro'][$i];
-if ( isset( $custom_field ) ) update_post_meta( $variation_id, '_activate_Pro', esc_attr( $custom_field ) );
+$custom_field = $_POST['_activePro'][$i];
+if ( isset( $custom_field ) ) update_post_meta( $variation_id, '_activePro', esc_attr( $custom_field ) );
 }
 
 // -----------------------------------------
@@ -41,6 +41,6 @@ if ( isset( $custom_field ) ) update_post_meta( $variation_id, '_activate_Pro', 
 add_filter( 'woocommerce_available_variation', 'add_custom_field_variation_data_activate_checkbox' );
 
 function add_custom_field_variation_data_activate_checkbox( $variations ) {
-$variations['_activate_Pro'] = '<div class="woocommerce_custom_field">Aktivieren: <span>' . get_post_meta( $variations[ 'variation_id' ], '_activate_Pro', true ) . '</span></div>';
+$variations['_activePro'] = '<div class="woocommerce_custom_field">Aktivieren: <span>' . get_post_meta( $variations[ 'variation_id' ], '_activePro', true ) . '</span></div>';
 return $variations;
 }
