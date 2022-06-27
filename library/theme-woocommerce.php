@@ -488,7 +488,7 @@ require_once("woocommerce-add-customfield-offline-id.php");
 require_once("woocommerce-add-customfield-online-id.php");
 
 ///CUSTOM FIELD ZUR VARIATION HINZUFÜGEN: ProduktAktivieren
-require_once("woocommerce-add-customfield-activate.php");
+//require_once("woocommerce-add-customfield-activate.php");
 
 // Manage "WooCommerce Subscriptions"
 require_once("woocommerce-subscriptions.php");

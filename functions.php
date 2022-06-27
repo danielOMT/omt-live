@@ -920,6 +920,50 @@ function removeLink($str){
 }
 
 
+// Add product activate deactivate checkbox in woocomerece product variation
+function action_woocommerce_variation_options( $loop, $variation_data, $variation ) {
+    $is_checked = get_post_meta( $variation->ID, '_activePro', true );
+    $is_highlighted = get_post_meta( $variation->ID, '_highlighted', true );
+
+    if ( $is_checked == 'yes' ) {
+        $is_checked = 'checked';
+    } else {
+        $is_checked = '';
+    }
+
+    if ( $is_highlighted == 'yes' ) {
+        $is_highlighted = 'checked';
+    } else {
+        $is_highlighted = '';
+    }
+
+    ?>
+    <label class="tips" data-tip="<?php esc_attr_e( 'This is my data tip', 'woocommerce' ); ?>">
+        <?php esc_html_e( 'Active:', 'woocommerce' ); ?>
+        <input type="checkbox" class="checkbox variable_checkbox" name="_activePro[<?php echo esc_attr( $loop ); ?>]"<?php echo $is_checked; ?>/>
+    </label>
+    <label class="tips" data-tip="<?php esc_attr_e( 'This is my data tip', 'woocommerce' ); ?>">
+        <?php esc_html_e( 'Highlighted:', 'woocommerce' ); ?>
+        <input type="checkbox" class="checkbox variable_checkbox" name="_highlighted[<?php echo esc_attr( $loop ); ?>]"<?php echo $is_highlighted; ?>/>
+    </label>
+    <?php
+}
+add_action( 'woocommerce_variation_options', 'action_woocommerce_variation_options', 10, 3);
+
+// Save checkbox
+function action_woocommerce_save_product_variation( $variation_id, $i ) {
+    if ( ! empty( $_POST['_activePro'][$i] ) ) {
+        update_post_meta( $variation_id, '_activePro', 'yes' );
+    } else {
+        update_post_meta( $variation_id, '_activePro', 'no' );
+    }
+    if ( ! empty( $_POST['_highlighted'] ) && ! empty( $_POST['_highlighted'][$i] ) ) {
+        update_post_meta( $variation_id, '_highlighted', 'yes' );
+    } else {
+        update_post_meta( $variation_id, '_highlighted', 'no' );
+    }
+}
+add_action( 'woocommerce_save_product_variation', 'action_woocommerce_save_product_variation', 10, 2 );
 
 //Custom toolbar for URL Insights
 add_filter( 'acf/fields/wysiwyg/toolbars' , 'custom_toolbar'  );
