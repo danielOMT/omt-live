@@ -955,7 +955,7 @@ add_action( 'woocommerce_variation_options', 'action_woocommerce_variation_optio
 
 // Save checkbox
 function action_woocommerce_save_product_variation( $variation_id, $i ) {
-    if ( ! empty( $_POST['_activePro'] ) && ! empty( $_POST['_activePro'][$i] ) ) {
+    if ( ! empty( $_POST['_activePro'][$i] ) ) {
         update_post_meta( $variation_id, '_activePro', 'yes' );
     } else {
         update_post_meta( $variation_id, '_activePro', 'no' );
