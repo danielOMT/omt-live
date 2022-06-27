@@ -36,7 +36,7 @@ foreach ($variations1 as $ticketvariation) {   /*build array with all seminars a
         }
     }
     //Checking if product is active or inactive in prosuct variation
-    if( $active_product == 'yes' ){ $active = true; $lager = 999; }else{ $active = false; }
+    if ( "yes" == $active_product ){ $active = true; $lager = 999; }else{ $active = false; }
 
     // if ( ( 279962 == $ticket_variation_id OR 279961 == $ticket_variation_id OR 279964 == $ticket_variation_id OR 254476 == $ticket_variation_id) ) {
     //     $active = true;
@@ -44,7 +44,7 @@ foreach ($variations1 as $ticketvariation) {   /*build array with all seminars a
     // } else { $active = false; }
     if ( $lager <1 OR $active != true) { $inactive_class = "ticket-inactive"; }
     ?>
-    <div class="teaser teaser-<?php print $teaser_size;?> ticket <?php if ($lager<1 OR $active != true) { print "ticket-inactive"; } ?>" <?php print $style; ?>>
+    <div data-active="<?php print $active_product;?>" class="teaser teaser-<?php print $teaser_size;?> ticket <?php if ($lager<1 OR $active != true) { print "ticket-inactive"; } ?>" <?php print $style; ?>>
         <?php if ($lager > 0 && $active == true) { ?>
         <a data-ticket-type="<?php print $ticketkategorie;?>" href="/kasse/?add-to-cart=<?php print $ticket_variation_id;?>&attribute_pa_leistungszeitraum=<?php print $leistungszeitraum;?>&attribute_pa_ticketkategorie=<?php print $ticketkategorie;?>&attribute_pa_typ=<?php print $typ;?>" title="<?php the_title_attribute(); ?>">
             <?php } ?>
