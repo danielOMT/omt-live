@@ -8,7 +8,7 @@ $active = true;
 $countdown_im_header = get_field('countdown_im_header');
 $countdown_download_button_url = $countdown_im_header ? getPost()->field('countdown_download_button_url') : '';
 $countdown_download_button_label = $countdown_im_header ? getPost()->field('countdown_download_button_label') : '';
-
+$i=0;
 foreach ($variations1 as $ticketvariation) {   /*build array with all seminars and all repeater date fields*/
     //collecting data
     $single_variation = new WC_Product_Variation($ticketvariation);
@@ -25,7 +25,7 @@ foreach ($variations1 as $ticketvariation) {   /*build array with all seminars a
     $ticket_variation_id = $single_variation->get_variation_id();
     $ticket_img_id = $single_variation->get_image_id();
     $stock_max = get_post_meta( $ticket_variation_id, 'stock_max', true );
-    $active_product = get_post_meta( $ticket_variation_id, '_activePro', true );
+    $active_product = get_post_meta( $ticket_variation_id, '_activePro["' . $i . '"]', true );
     $produktvariationen_beschreibungen = get_field('produktvariationen_beschreibungen', 'options');
     $beschreibungselemente = 0;
     $teaser_size = "xsmall";
@@ -36,7 +36,7 @@ foreach ($variations1 as $ticketvariation) {   /*build array with all seminars a
         }
     }
     //Checking if product is active or inactive in prosuct variation
-    if ( "yes" == $active_product ){ $active = true; $lager = 999; }else{ $active = false; }
+    if ( "yes" == $active_product ){ $active = true; }else{ $active = false; }
 
     // if ( ( 279962 == $ticket_variation_id OR 279961 == $ticket_variation_id OR 279964 == $ticket_variation_id OR 254476 == $ticket_variation_id) ) {
     //     $active = true;
@@ -75,4 +75,6 @@ foreach ($variations1 as $ticketvariation) {   /*build array with all seminars a
             </a>
         <?php endif ?>
     </div>
-<?php } ?>
+<?php
+$i++;
+} ?>
