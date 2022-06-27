@@ -25,6 +25,7 @@ foreach ($variations1 as $ticketvariation) {   /*build array with all seminars a
     $ticket_variation_id = $single_variation->get_variation_id();
     $ticket_img_id = $single_variation->get_image_id();
     $stock_max = get_post_meta( $ticket_variation_id, 'stock_max', true );
+    $active_product = get_post_meta( $ticket_variation_id, '_activePro', true );
     $produktvariationen_beschreibungen = get_field('produktvariationen_beschreibungen', 'options');
     $beschreibungselemente = 0;
     $teaser_size = "xsmall";
@@ -34,10 +35,14 @@ foreach ($variations1 as $ticketvariation) {   /*build array with all seminars a
             $beschreibungselemente = $variationsbeschreibung['beschreibungselemente'];
         }
     }
-   if ( ( 279961 == $ticket_variation_id OR 279962 == $ticket_variation_id OR 279964 == $ticket_variation_id OR 254479 == $ticket_variation_id) ) {
-        $active = true;
-        //$lager = 999;
-    } else { $active = false; }
+    //Checking if product is active or inactive in prosuct variation
+    if( ( $active_product == 'yes' ) ) { $active = true; }else { $active = false; }
+
+    // if ( ( 279962 == $ticket_variation_id OR 279961 == $ticket_variation_id OR 279964 == $ticket_variation_id OR 254476 == $ticket_variation_id) ) {
+    //     $active = true;
+    //     //$lager = 999;
+    // } else { $active = false; }
+    if ( $lager <1 OR $active != true) { $inactive_class = "ticket-inactive"; }
     ?>
     <div class="teaser teaser-<?php print $teaser_size;?> ticket <?php if ($lager<1 OR $active != true) { print "ticket-inactive"; } ?>" <?php print $style; ?>>
     <?php if ($lager > 0 && $active == true) { ?>
