@@ -25,7 +25,7 @@ foreach ($variations1 as $ticketvariation) {   /*build array with all seminars a
     $ticket_variation_id = $single_variation->get_variation_id();
     $ticket_img_id = $single_variation->get_image_id();
     $stock_max = get_post_meta( $ticket_variation_id, 'stock_max', true );
-    $active_product = get_post_meta( $ticket_variation_id, '_activePro', true );
+    $active_product = get_post_meta( $ticket_variation_id, '_activate_Pro', true );
     $produktvariationen_beschreibungen = get_field('produktvariationen_beschreibungen', 'options');
     $beschreibungselemente = 0;
     $teaser_size = "xsmall";
