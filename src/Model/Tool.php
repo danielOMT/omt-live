@@ -208,7 +208,7 @@ class Tool extends PostModel
      *
      * @return array
      */
-    public function toJson(array $tools, $sort = 'rating')
+    public function toJson(array $tools, $sort = 'wert')
     {
         $items = [];
 
