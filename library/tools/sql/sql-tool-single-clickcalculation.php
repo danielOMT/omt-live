@@ -109,6 +109,7 @@ function calculate_clickcosts()
                     }
                 }
             }
+            update_field( 'field_5cab273f5cc8b', $avg, $tool_id); //anzahl bewertungen
         }
     endwhile;
     $conn->close();
