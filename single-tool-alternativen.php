@@ -20,22 +20,61 @@ foreach ($terms as $term) {
     }
 }
 
+//module-toolindex funktionen mit den Ergebnissen aus $tools nutzbar?
+
 $infotext = "Du suchst eine Alternative zu " . $title . "? Hier zeigen wir Dir die besten " . $title . "-Alternativen im Jahr " . date("Y") . " im Vergleich. So findest Du das beste " . $primaryCategoryName . " Tool für Deine aktuellen Bedürfnisse.";
 if (strlen($alternativseite_infotext) > 0) {
     $infotext = $alternativseite_infotext;
 }
 
 $kategorie_name = get_the_title() . " - Alternative";
+
+///BANNERWERBUNG
+$bannerbild = get_field('bannerbild');
+$bannerlink = get_field('bannerlink');
+
+$standardbanner_fur_alle_tools_ausspielen = get_field('standardbanner_fur_alle_tools_ausspielen', 'options');
+
+if (empty($bannerlink) && (get_field('globales_banner_verwenden_desktop') == 1 || $standardbanner_fur_alle_tools_ausspielen == 1)) {
+    $bannerbild = get_field('desktop_standardbanner_tools', 'options');
+    $bannerlink = get_field('desktop_standardbanner_tools_link', 'options');
+}
+
+if (empty($mobile_banner_bild) && (get_field('globales_banner_verwenden_mobile') == 1 || $standardbanner_fur_alle_tools_ausspielen == 1)) {
+    $mobile_banner_bild = get_field('mobile_standardbanner_tools', 'options');
+    $mobile_banner_link = get_field('mobile_standardbanner_tools_link', 'options');
+}
+
 ?>
+<?php if (!empty($bannerlink)) : ?>
+    <div class="tool-info-image">
+        <?php
+        $tool_steckbrief_headline_name = get_field('tool_steckbrief_headline_name', 'options');
+        $profilbild = get_field('profilbild', 'options');
+        $toolsteckbrief_button_linkziel = get_field('toolsteckbrief_button_linkziel', 'options');
+        $toolsteckbrief_button_label = get_field('toolsteckbrief_button_label', 'options');
+        ?>
+        <div class="tools-contact">
+            <div class="widget widget-nochfragen">
+                <?php if (strlen($tool_steckbrief_headline_name)>0) { ?><h4 class="widgettitle"><?php print $tool_steckbrief_headline_name;?></h4><?php } ?>
+                <?php if (strlen($profilbild['url'])>0) { ?><img class="noch-fragen-kontakt" alt="<?php print $profilbild['alt'];?>" title="<?php print $profilbild['alt'];?>" src="<?php print $profilbild['sizes']['350-180'];?>"/><?php } ?>
+                <?php if (strlen($toolsteckbrief_button_linkziel)>0) { ?><a class="button button-350 button-red" href="<?php print $toolsteckbrief_button_linkziel;?>"><?php print $toolsteckbrief_button_label;?></a><?php } ?>
+            </div>
+        </div>
+        <a class="" href="<?php print $bannerlink;?>" target="_blank" rel="nofollow">
+            <img src="<?php print $bannerbild['url'];?>" alt="<?php print $bannerbild['alt'];?>" title="<?php print $bannerbild['alt'];?>"/>
+        </a>
+    </div>
+<?php endif ?>
 
 <div class="tool-header" style="padding-bottom: 30px;">
     <div id="inner-content" class="wrap clearfix">
         <div class="tool-logo-wrap">
             <img
-                class="tool-logo"
-                alt="<?php echo get_the_title();?>"
-                title="<?php echo get_the_title();?>"
-                src="<?php echo $logo['url'] ? $logo['url'] : placeholderImage() ?>"
+                    class="tool-logo"
+                    alt="<?php echo get_the_title();?>"
+                    title="<?php echo get_the_title();?>"
+                    src="<?php echo $logo['url'] ? $logo['url'] : placeholderImage() ?>"
             />
         </div>
         <div class="tool-about">
@@ -56,7 +95,7 @@ $kategorie_name = get_the_title() . " - Alternative";
                                     <?php } else { //dann hat $gesamt nur zwischen x,5 und x,74 => abrunden!?>
                                         <img class="rating rating-header" src="/wp-content/themes/omt/library/images/svg/icon-star-half.svg"/>
                                     <?php } ?>
-                                <?php
+                                    <?php
                                 } else { //$gesamt befindet sich im Bereich 0 bis 0,49 = 0 oder 1/4 sterne
                                     if ($x < round($starvalue + 0.25)) { //wenn $gesamt mindestens x,25 hat, wird ein Wert >x,5 erreicht und somit aufgerundet => 1/4 Sterne?>
                                         <img class="rating rating-header" src="/wp-content/themes/omt/library/images/svg/icon-star-25.svg"/><?php
@@ -82,7 +121,7 @@ $kategorie_name = get_the_title() . " - Alternative";
                     <?php echo do_shortcode('[gravityform ajax=true id="' . $ruckruf_formular_id . '" title="false" description="true" tabindex="0"]'); ?>
                 </div>
             </div>
-        <?php
+            <?php
         } else {
             if (1 == $buttons_anzeigen) { ?>
                 <div class="buttons-wrap">
@@ -104,7 +143,7 @@ $kategorie_name = get_the_title() . " - Alternative";
                     <div class="toolindex">
                         <div class="tool-sort">
                             <span class="sort-label">Sortieren nach:</span>
-                            
+
                             <select id="tool-alternatives-sort-options" name="tool-sort-options" class="tool-sort-options">
                                 <option value="rating" selected>Nach Bewertung</option>
                                 <option value="club_rating">Nach OMT Clubstimmen</option>
