@@ -211,9 +211,9 @@ if ("teasertabelle" == $tools_style ) { ?>
 
     <?php if (1 == $buttons_anzeigen /*AND ( $gebot > 0 )*/ && (strlen($zur_preisubersicht) > 0 || strlen($zur_website) > 0 || strlen($tool_gratis_testen_link) > 0)) { ?>
         <div class="tool-buttons">
-            <?php if (strlen($tool_gratis_testen_link)>0) { ?><a rel="nofollow" id="<?php print $tool_title;?>" class="button button-red" href="<?php print $tool_gratis_testen_link;?>" target="_blank"><?php print $testen_label;?></a><?php } ?>
-            <?php if (strlen($zur_preisubersicht)>0) { ?><a rel="nofollow" id="<?php print $tool_title;?>" class="button button-pricing button-lightgrey" href="<?php print $zur_preisubersicht;?>" target="_blank"><?php print $preise_label;?></a><?php } ?>
-            <?php if (strlen($zur_website)>0) { ?><a rel="nofollow" id="<?php print $tool_title;?>" class="button button-red" href="<?php print $zur_website;?>" target="_blank"><?php print $website_label;?></a><?php } ?>
+            <?php if (strlen($tool_gratis_testen_link)>2) { ?><a rel="nofollow" id="<?php print $tool_title;?>" class="button button-red" href="<?php print $tool_gratis_testen_link;?>" target="_blank"><?php print $testen_label;?></a><?php } ?>
+            <?php if (strlen($zur_preisubersicht)>2) { ?><a rel="nofollow" id="<?php print $tool_title;?>" class="button button-pricing button-lightgrey" href="<?php print $zur_preisubersicht;?>" target="_blank"><?php print $preise_label;?></a><?php } ?>
+            <?php if (strlen($zur_website)>2) { ?><a rel="nofollow" id="<?php print $tool_title;?>" class="button button-red" href="<?php print $zur_website;?>" target="_blank"><?php print $website_label;?></a><?php } ?>
         </div>
     <?php } ?>
 </div>

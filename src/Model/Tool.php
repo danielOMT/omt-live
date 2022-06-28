@@ -224,6 +224,17 @@ class Tool extends PostModel
                 }
             }
 
+
+            $wert = get_field('wert', $tool->ID) ?: 0;
+            $guthaben = get_field('guthaben', $tool->ID) ?: 0;
+            $buttons_anzeigen = get_field('buttons_anzeigen', $tool->ID) ?: 0;
+
+            if ( ( $wert < 1 ) OR ( $guthaben < 1 ) OR ($buttons_anzeigen != 1 ) ) {
+                $wert = 0;
+                $guthaben = 0;
+                $buttons_anzeigen = 0;
+            }
+
             array_push($items, [
                 'ID' => $tool->ID,
                 '$post_status' => 'public',
@@ -238,7 +249,13 @@ class Tool extends PostModel
                 '$toolanbieter' => get_field('toolanbieter', $tool->ID),
                 '$anzahl_bewertungen' => get_field('anzahl_bewertungen', $tool->ID) ?: 0,
                 '$wertung_gesamt' => get_field('gesamt', $tool->ID),
-                '$clubstimmen' => get_field('club_stimmenanzahl', $tool->ID) ?: 0
+                '$clubstimmen' => get_field('club_stimmenanzahl', $tool->ID) ?: 0,
+                '$wert' => $wert,
+                '$guthaben' => $guthaben,
+                '$zur_webseite' => get_field('zur_webseite', $tool->ID) ?: 0,
+                '$tool_preisubersicht' => get_field('tool_preisubersicht', $tool->ID) ?: 0,
+                '$tool_gratis_testen_link' => get_field('tool_gratis_testen_link', $tool->ID) ?: 0,
+                '$buttons_anzeigen' => $buttons_anzeigen
             ]);
         }
 
@@ -376,6 +393,14 @@ class Tool extends PostModel
 
             // Sort by the rating of reviews
             case 'rating':
+                ArraySort::toolsByRating($tools);
+                break;
+
+            // Sort by the sponsored "wert" (gebot) of a given tool
+            case 'wert':
+                ArraySort::toolsBySponsored($tools);
+                break;
+
             default:
                 ArraySort::toolsByRating($tools);
                 break;

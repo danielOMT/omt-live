@@ -79,20 +79,20 @@ class ArraySort
         usort($array, function ($a, $b) {
             $wertA = number_format($a['$wert'], 2);
             $wertB = number_format($b['$wert'], 2);
-//            if ($wertB === $wertA) {
-//                $ratingA = (float)10 * number_format($a['$wertung_gesamt'], 1);
-//                $ratingB = (float)10 * number_format($b['$wertung_gesamt'], 1);
-//
-//                if ($ratingA === $ratingB) {
-//                    if ((int)$a['$anzahl_bewertungen'] === (int)$b['$anzahl_bewertungen']) {
-//                        return strcmp(strtolower($a['$tool_vorschautitel']), strtolower($b['$tool_vorschautitel']));
-//                    }
-//
-//                    return (int)$b['$anzahl_bewertungen'] - (int)$a['$anzahl_bewertungen'];
-//                }
-//
-//                return $ratingB - $ratingA;
-//            }
+            if ($wertB === $wertA) {
+                $ratingA = (float)10 * number_format($a['$wertung_gesamt'], 1);
+                $ratingB = (float)10 * number_format($b['$wertung_gesamt'], 1);
+
+                if ($ratingA === $ratingB) {
+                    if ((int)$a['$anzahl_bewertungen'] === (int)$b['$anzahl_bewertungen']) {
+                        return strcmp(strtolower($a['$tool_vorschautitel']), strtolower($b['$tool_vorschautitel']));
+                    }
+
+                    return (int)$b['$anzahl_bewertungen'] - (int)$a['$anzahl_bewertungen'];
+                }
+
+                return $ratingB - $ratingA;
+            }
 
             return $wertB - $wertA;
         });
