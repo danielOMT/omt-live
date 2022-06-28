@@ -109,7 +109,7 @@ function calculate_clickcosts()
                     }
                 }
             }
-            update_field( 'field_5cab273f5cc8b', $avg, $tool_id); //anzahl bewertungen
+            update_field( 'field_5cab273f5cc8b', $avg, $clicktoolid); //write current average cost into "Wert" field of the given tool
         }
     endwhile;
     $conn->close();
