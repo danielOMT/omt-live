@@ -908,4 +908,39 @@ function omt_add_fraction_variation_data( $variations ) {
 }
 
 
+
+
+
+add_action( 'woocommerce_variation_options_pricing', 'omt_add_var_title_variations', 10, 3 );
+ 
+function omt_add_var_title_variations( $loop, $variation_data, $variation ) {
+   woocommerce_wp_text_input( array(
+'id' => 'variation_title[' . $loop . ']',
+'class' => 'short',
+'label' => __( 'Variation Title', 'woocommerce' ),
+'value' => get_post_meta( $variation->ID, 'variation_title', true )
+   ) );
+}
+ 
+// -----------------------------------------
+// 2. Save custom field on product variation save
+ 
+add_action( 'woocommerce_save_product_variation', 'omt_save_var_title_variations', 10, 2 );
+ 
+function omt_save_var_title_variations( $variation_id, $i ) {
+   $variation_title = $_POST['variation_title'][$i];
+   if ( isset( $variation_title ) ) update_post_meta( $variation_id, 'variation_title', esc_attr( $variation_title ) );
+}
+ 
+// -----------------------------------------
+// 3. Store custom field value into variation data
+ 
+add_filter( 'woocommerce_available_variation', 'omt_add_var_variation_data' );
+ 
+function omt_add_var_variation_data( $variations ) {
+   $variations['variation_title'] = '<div class="woocommerce_custom_field">Variation Title: <span>' . get_post_meta( $variations[ 'variation_id' ], 'variation_title', true ) . '</span></div>';
+   return $variations;
+}
+
+
 /*---------------------------------- custom fields for agenturfinder /---------------------------------*/

@@ -10113,7 +10113,7 @@ input {
 
 /* autopublishing job product  */
 .omt-ticket-auto-row {
-  max-width: 900px !important;
+  max-width: 1200px !important;
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -10145,12 +10145,13 @@ input {
     text-align: center;
     padding-top: 10px;
     text-transform: capitalize;
+    margin-bottom: 10px;
   }
 }
 .autojobs {
   padding-bottom:50px;
   display: flex;
-  flex-wrap: wrap;
+  
   .produkt-beschreibung {
     p {
       &:nth-child(odd) {
@@ -10173,27 +10174,69 @@ input {
     background: @omt_lightblue;
     border: 1px solid @omt_lightblue;
     .highlight-top {
-      background: #31bbda;
+      background: transparant;
       position: relative;
     }
   }
   .highlighted_p{
     p{
-      background:#31bbda !important;
+      background: transparent !important;
       color:#fff !important
     }
   }
 }
-.highlighted {
-  background: #31bbda;
-  box-shadow: 1px 15px 22px rgb(0 68 144 / 30%);
-  p {
-    color: white;
-  }
-  h4 {
-    color: white !important;
-  }
+
+.highlighted:hover .ticket-price{
+    color:#fff !important
 }
+.checkbox-recruiting_video{
+    border: 1px solid #31bbda;
+    padding: 10px !important;
+    background: #31bbda;
+    color: #fff;
+}
+    .rec_video_link{
+        background: transparent;
+        border: navajowhite;
+        font-size: 15px;
+        font-weight: bold;
+        width: 90%;
+        text-align: left;
+        padding-left: 0;
+    }
+    .rec_video_link{
+      text-decoration: none !important;
+    }
+    .rec_vid_p_h{
+        padding-left: 10px;
+        padding-right: 10px;
+        color:#fff !important
+    }
+    .rec_vid_p{
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .video-recrute{
+        padding-right: 0;
+        margin-left: 0;
+        margin-bottom: 0;
+        min-width: 265px;
+        width: 19%;
+        padding: 0px 0px;
+        margin-top: 30px;
+        margin-left: 5px;
+        margin-right: 5px;
+        box-shadow: 1px 15px 22px #d5cece;
+    }
+    .video-rec{
+        font-size: 20px !important;
+        line-height: 24px !important;
+        padding-top: 20px;
+        padding-bottom: 16px;   
+    }
+    .omt_button_f{
+        min-height: 47px;
+    }
 @media only screen and (max-width: 900px) {
   .omt-ticket-auto-row {
     .ticket {
