@@ -375,7 +375,7 @@ function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_ke
         }elseif($product_type =='Agenturfinder'){
             $image_html  = '<style>.checkbox-recruiting_video{display:none !important;}</style><div class="product-item-thumbnail"><img width="350" height="180" src="/uploads/2021/10/OMT-Liebe.jpg" class="woocommerce-placeholder wp-post-image" alt="Placeholder" loading="lazy" srcset="/uploads/2021/10/OMT-Liebe.jpg 350w, /uploads/2021/10/OMT-Liebe.jpg 290w" sizes="(max-width: 350px) 100vw, 350px"></div>';
         }else{
-            $image_html  = '<style>.checkbox-recruiting_video{display:none !important;}<div class="product-item-thumbnail">'.$thumbnail.'</div> ';
+            $image_html  = '<style>.checkbox-recruiting_video{display:none !important;}</style><div class="product-item-thumbnail">'.$thumbnail.'</div> ';
         }
         $product_name = $image_html . $product_name;
     }
