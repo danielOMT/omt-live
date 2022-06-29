@@ -378,7 +378,7 @@ function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_ke
              echo '<style>.checkbox-recruiting_video{display:none !important;}</style>';
         }else{
             echo '<style>.checkbox-recruiting_video{display:none !important;}</style>';
-            $image_html  = '<style>.checkbox-recruiting_video{display:none !important;}</style><div class="product-item-thumbnail">'.$thumbnail.'</div> ';
+            $image_html  = '</style><div class="product-item-thumbnail">'.$thumbnail.'</div> ';
         }
         $product_name = $image_html . $product_name;
     }
