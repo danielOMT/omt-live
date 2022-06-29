@@ -372,7 +372,7 @@ function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_ke
         $product_type = get_post_meta( $cart_item['product_id'], '_custom_product_type', true );
         $thumbnail   = $cart_item['data']->get_image(array( 350, 180));
         if ($product_type == 'job') {
-            $image_html = echo '<style>.checkbox-recruiting_video{display:none !important;}</style>';
+           // $image_html = echo'<style>.checkbox-recruiting_video{display:none !important;}</style>';
         }elseif($product_type =='Agenturfinder'){
             $image_html  = '<style>.checkbox-recruiting_video{display:none !important;}</style><div class="product-item-thumbnail"><img width="350" height="180" src="/uploads/2021/10/OMT-Liebe.jpg" class="woocommerce-placeholder wp-post-image" alt="Placeholder" loading="lazy" srcset="/uploads/2021/10/OMT-Liebe.jpg 350w, /uploads/2021/10/OMT-Liebe.jpg 290w" sizes="(max-width: 350px) 100vw, 350px"></div> ';
         }else{
