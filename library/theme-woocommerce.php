@@ -200,13 +200,13 @@ function custom_override_default_locale_fields( $fields ) {
 //Neue Felder im Checkout hinzufügen
 add_action('woocommerce_before_order_notes', 'customise_checkout_field');
 function customise_checkout_field($checkout)
-{   
+{       
     foreach( WC()->cart->get_cart() as $cart_item ){
         $product_id = $cart_item['product_id'];
     }
     $product_type = get_post_meta( $product_id, '_custom_product_type', true );
-       
-    switch ($product_type) {
+    
+     switch ($product_type) {
         case 'Agenturfinder':
             break;
         default:
@@ -245,7 +245,7 @@ function customise_checkout_field($checkout)
             echo "</div>";
         break;
     }
-        echo '<hr style="margin:30px 0;"/></div>';
+    echo '<hr style="margin:30px 0;"/>';
 
     // TODO: Old programmer code, NOT sure this is needed anymore
     // Old comment "20686 is ID for the if/else abfrage, only orders with this product ID will show the Tshirt"
