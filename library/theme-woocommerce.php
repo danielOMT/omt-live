@@ -363,6 +363,7 @@ function c_custom_checkout_field_process()
 /////END OF Custom Checkout Box for requiring acceptance of nichtantrittsgebühren in case of no-show
 
 
+
 // Product thumbnail in checkout
 add_filter( 'woocommerce_cart_item_name', 'product_thumbnail_in_checkout', 20, 3 );
 function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_key ){
@@ -371,11 +372,11 @@ function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_ke
         $product_type = get_post_meta( $cart_item['product_id'], '_custom_product_type', true );
         $thumbnail   = $cart_item['data']->get_image(array( 350, 180));
         if ($product_type == 'job') {
-            $image_html  = '<div class="product-item-thumbnail"><img width="350" height="180" src="/uploads/2021/10/OMT-Liebe.jpg" class="woocommerce-placeholder wp-post-image" alt="Placeholder" loading="lazy" srcset="/uploads/2021/10/OMT-Liebe.jpg 350w, /uploads/2021/10/OMT-Liebe.jpg 290w" sizes="(max-width: 350px) 100vw, 350px"></div>';
+            $image_html = '<style>.checkbox-recruiting_video{display:block !important;}';
         }elseif($product_type =='Agenturfinder'){
-            $image_html  = '<div class="product-item-thumbnail"><img width="350" height="180" src="/uploads/2021/10/OMT-Liebe.jpg" class="woocommerce-placeholder wp-post-image" alt="Placeholder" loading="lazy" srcset="/uploads/2021/10/OMT-Liebe.jpg 350w, /uploads/2021/10/OMT-Liebe.jpg 290w" sizes="(max-width: 350px) 100vw, 350px"></div>';
+            $image_html  = '<style>.checkbox-recruiting_video{display:none !important;}</style><div class="product-item-thumbnail"><img width="350" height="180" src="/uploads/2021/10/OMT-Liebe.jpg" class="woocommerce-placeholder wp-post-image" alt="Placeholder" loading="lazy" srcset="/uploads/2021/10/OMT-Liebe.jpg 350w, /uploads/2021/10/OMT-Liebe.jpg 290w" sizes="(max-width: 350px) 100vw, 350px"></div> ';
         }else{
-            $image_html  = '<div class="product-item-thumbnail">'.$thumbnail.'</div> ';
+            $image_html  = '<style>.checkbox-recruiting_video{display:none !important;}<div class="product-item-thumbnail">'.$thumbnail.'</div> ';
         }
         $product_name = $image_html . $product_name;
     }
