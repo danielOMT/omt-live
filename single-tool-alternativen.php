@@ -135,10 +135,10 @@ if (empty($mobile_banner_bild) && (get_field('globales_banner_verwenden_mobile')
 <div id="content" xmlns:background="http://www.w3.org/1999/xhtml">
     <div id="inner-content" class="wrap clearfix">
         <div class="omt-row tool-abschnitt tool-alternativen tool-uebersicht wrap toolindex-row-wrap">
-
-            <h2><?php echo count($tools);?> Alternativen zu <?php echo get_the_title();?></h2>
-            <div class="wrap module-headline-wrap"><?php echo $infotext;?></div>
-
+            <div class="wrap module-headline-wrap">
+                <h2><?php echo count($tools);?> Alternativen zu <?php echo get_the_title();?></h2>
+                <?php echo $infotext;?>
+            </div>
             <div class="omt-module toolindex-column-wrap has-margin-top-60">
                 <div class="toolindex-wrap" style="width:1110px;max-width:100vw;">
                     <div class="toolindex-filter-wrap">
