@@ -1214,11 +1214,11 @@ function check_product_type(){
             /*Regular Price and Sale Price*/
 
             if($product_type == 'job'){
-                echo '<style>.checkbox-recruiting_video{display:block !important;}</style>';
+                echo '<style>.wc-gzd-checkbox-placeholder-recruiting_video{display:block !important;}</style>';
             }elseif($product_type == 'Agenturfinder'){
-                echo '<style>.checkbox-recruiting_video{display:none !important;}</style>';
+                echo '<style>.wc-gzd-checkbox-placeholder-recruiting_video{display:none !important;}</style>';
             }else{
-                echo '<style>.checkbox-recruiting_video{display:none !important;}</style>';
+                echo '<style>.wc-gzd-checkbox-placeholder-recruiting_video{display:none !important;}</style>';
             }
         }
      }
