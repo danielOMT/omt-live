@@ -29,25 +29,35 @@ function display_jobs(int $anzahl = 99) { ?>
     <div id="filter_loader" style="display: none;">
         <img src="/uploads/2022/03/loader_.svg">
     </div>
-    
+    <style>
+        .no_b_border{
+            border: none !important;
+        }
+    </style>
+
     <div id="jobs" class="has-margin-bottom-30">
         <?php
         $loop = new WP_Query($args);
         $job_hervorheben_class = '';
+        $color_highlighted_class = '';
         $no_border = '';
+        
         $i=0;
+        
         while ($loop->have_posts()) : $loop->the_post();
             $id = get_the_ID();
             $featured_image = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'full');
             $image = $featured_image[0];
             $arbeitgeber_name = get_field('arbeitgeber_name');
-            $job_hervorheben = get_field('job_hervorheben');
+            $hot_job = get_field('hot_job');
+            $farblich_hervorheben = get_field('farblich_hervorheben');
             $arbeitgeber_logo = get_field('arbeitgeber_logo');
             $arbeitgeber_logo_id = get_field('arbeitgeber_logo_id');
             $stadt = get_field('stadt');
             $date = get_the_date();
-            if($job_hervorheben == 1){ $job_hervorheben_class = 'ribbon_'; $no_border = 'ribbon_link';}else{$job_hervorheben_class = ''; $no_border = '';}
+            if($hot_job == 1){ $job_hervorheben_class = 'ribbon_'; $no_border = 'ribbon_link';}else{$job_hervorheben_class = ''; $no_border = '';}
             if (strlen($arbeitgeber_logo_id)>0) { $arbeitgeber_logo['url'] = $arbeitgeber_logo_id; }
+            if($farblich_hervorheben == 1){$color_highlighted_class = 'color_highlighted';}else{$color_highlighted_class = '';}
             /////////************************************************************************************/////////////////////////////////////////
             /////////************************************************************************************/////////////////////////////////////////
             /////////************************************************************************************/////////////////////////////////////////
@@ -100,7 +110,7 @@ function display_jobs(int $anzahl = 99) { ?>
         ?>  
 
            
-            <div class="omt-job-box jobs <?=$job_hervorheben_class;?>" data-ribbon="Hot Job" >
+            <div class="omt-job-box jobs <?=$job_hervorheben_class;?> <?=$color_highlighted_class;?>" data-ribbon="Hot Job" >
                 <a href="<?php the_permalink() ?>" class="clearfix omt-job <?=$no_border;?>" title="<?php the_title_attribute(); ?>">
                     <div class="omt-job-img">
                       <img title="<?php the_title(); ?>" alt="<?php the_title(); ?>" src="<?php print $arbeitgeber_logo['url']; ?>">
@@ -455,3 +465,5 @@ function display_jobs(int $anzahl = 99) { ?>
     }
 
 ?>
+ 
+<?php ///****end of jobs-content***///?>
