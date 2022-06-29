@@ -135,27 +135,41 @@ if (empty($mobile_banner_bild) && (get_field('globales_banner_verwenden_mobile')
 <div id="content" xmlns:background="http://www.w3.org/1999/xhtml">
     <div id="inner-content" class="wrap clearfix">
         <div class="omt-row tool-abschnitt tool-alternativen tool-uebersicht wrap toolindex-row-wrap">
+
             <h2><?php echo count($tools);?> Alternativen zu <?php echo get_the_title();?></h2>
-            <?php echo $infotext;?>
+            <div class="wrap module-headline-wrap"><?php echo $infotext;?></div>
 
             <div class="omt-module toolindex-column-wrap has-margin-top-60">
-                <div class="toolindex-wrap">
-                    <div class="toolindex">
+                <div class="toolindex-wrap" style="width:1110px;max-width:100vw;">
+                    <div class="toolindex-filter-wrap">
+                        <?php /* <div class="toolindex-filter">
+                            <p class="filter-headline">Ergebnisse filtern</p>
+                            <div class="filter-wrap filter-preis filter-radio">
+                                <h4>Preis</h4>
+                                <p class="filter filter-radio radio-active" data-filter="preis-alle"><i class="fa fa-check-circle"></i>Alle</p>
+                                <p class="filter filter-radio" data-filter="preis-kostenlos"><i class="fa fa-circle"></i>Kostenlos</p>
+                                <p class="filter filter-radio" data-filter="preis-nicht-kostenlos"><i class="fa fa-circle"></i>Nicht Kostenlos</p>
+                                <p class="filter filter-radio" data-filter="preis-testversion"><i class="fa fa-circle"></i>Kostenlose Testversion</p>
+                                <p class="filter filter-radio" data-filter="preis-trial"><i class="fa fa-circle"></i>Kostenlose Testphase</p>
+                            </div>
+                            <div class="filter-wrap filter-testbericht filter-checkbox">
+                                <h4>Testbericht</h4>
+                                <p class="filter filter-checkbox filter-testbericht" data-filter="mit-testbericht"><i class="fa fa-square"></i>mit Testbericht</p>
+                            </div>
+                        </div>*/?>
+                    </div>
+                    <div class="toolindex" style="margin-left:auto;margin-right:auto;" >
                         <div class="tool-sort">
                             <span class="sort-label">Sortieren nach:</span>
 
                             <select id="tool-alternatives-sort-options" name="tool-sort-options" class="tool-sort-options">
-                                <option value="rating" selected>Nach Bewertung</option>
-                                <option value="club_rating">Nach OMT Clubstimmen</option>
-                                <option value="alphabetical">Alphabetisch</option>
+                                <option selected value="sponsored">Sponsored</option>
+                                <option value="beste">Die besten Bewertungen</option>
+                                <option value="meiste">Die meisten Bewertungen</option>
+                                <option value="alphabetisch">Alphabetisch</option>
                             </select>
                         </div>
-                    </div>
-                </div>
-
-                <div class="toolindex-wrap">
-                    <div class="toolindex" style="margin-left:auto;margin-right:auto;" >
-                        <div class="tool-results-collapsed tool-results" data-pageid="<?php echo get_the_ID() ?>">
+                        <div class="tool-results-collapsed tool-results" data-tabelle="0" data-indextype="kategorie" data-taxonomy="0" data-pageid="<?php echo get_the_ID() ?>">
                             <?php foreach ($model->toJson($tools) as $tool) : ?>
                                 <?php include 'library/modules/module-toolindex-part-tools-item.php' ?>
                             <?php endforeach  ?>
