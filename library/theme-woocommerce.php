@@ -200,41 +200,52 @@ function custom_override_default_locale_fields( $fields ) {
 //Neue Felder im Checkout hinzufügen
 add_action('woocommerce_before_order_notes', 'customise_checkout_field');
 function customise_checkout_field($checkout)
-{
-    echo '<div id="customise_checkout_field" class="alternativer-teilnehmer ' . (!Checkout::displayParticipantFields() ? 'display-none' : '') . '"><hr style="margin:30px 0;"/><p class="button button-red">Falls der Teilnehmer vom Rechnungsempfänger abweicht, werden folgende Daten für den reibungslosen Ablauf des Events benötigt:</p>';
-    
-    woocommerce_form_field('teilnehmer_vorname', array(
-        'type' => 'text',
-        'class' => array(
-            'my-field-class form-row-wide'
-        ) ,
-        'label' => __('Teilnehmer Vorname') ,
-        'placeholder' => __('Vorname') ,
-        'required' => true,
-    ) , $checkout->get_value('teilnehmer_vorname'));
-
-    woocommerce_form_field('teilnehmer_nachname', array(
-        'type' => 'text',
-        'class' => array(
-            'my-field-class form-row-wide'
-        ) ,
-        'label' => __('Teilnehmer Nachname') ,
-        'placeholder' => __('Nachname') ,
-        'required' => true,
-    ) , $checkout->get_value('teilnehmer_nachname'));
-
-    woocommerce_form_field('teilnehmer_email', array(
-        'type' => 'text',
-        'class' => array(
-            'my-field-class form-row-wide'
-        ) ,
-        'label' => __('Teilnehmer Email') ,
-        'placeholder' => __('E-Mail Adresse') ,
-        'required' => true,
-    ) , $checkout->get_value('teilnehmer_email'));
-
-    echo "</div>";
-    echo '<hr style="margin:30px 0;"/>';
+{   
+    foreach( WC()->cart->get_cart() as $cart_item ){
+        $product_id = $cart_item['product_id'];
+    }
+    $product_type = get_post_meta( $product_id, '_custom_product_type', true );
+       
+    switch ($product_type) {
+        case 'Agenturfinder':
+            break;
+        default:
+            echo '<div id="customise_checkout_field" class="alternativer-teilnehmer ' . (!Checkout::displayParticipantFields() ? 'display-none' : '') . '"><hr style="margin:30px 0;"/><p class="button button-red">Falls der Teilnehmer vom Rechnungsempfänger abweicht, werden folgende Daten für den reibungslosen Ablauf des Events benötigt:</p>';
+        
+            woocommerce_form_field('teilnehmer_vorname', array(
+                'type' => 'text',
+                'class' => array(
+                    'my-field-class form-row-wide'
+                ) ,
+                'label' => __('Teilnehmer Vorname') ,
+                'placeholder' => __('Vorname') ,
+                'required' => false,
+            ) , $checkout->get_value('teilnehmer_vorname'));
+        
+            woocommerce_form_field('teilnehmer_nachname', array(
+                'type' => 'text',
+                'class' => array(
+                    'my-field-class form-row-wide'
+                ) ,
+                'label' => __('Teilnehmer Nachname') ,
+                'placeholder' => __('Nachname') ,
+                'required' => false,
+            ) , $checkout->get_value('teilnehmer_nachname'));
+        
+            woocommerce_form_field('teilnehmer_email', array(
+                'type' => 'text',
+                'class' => array(
+                    'my-field-class form-row-wide'
+                ) ,
+                'label' => __('Teilnehmer Email') ,
+                'placeholder' => __('E-Mail Adresse') ,
+                'required' => false,
+            ) , $checkout->get_value('teilnehmer_email'));
+        
+            echo "</div>";
+        break;
+    }
+        echo '<hr style="margin:30px 0;"/></div>';
 
     // TODO: Old programmer code, NOT sure this is needed anymore
     // Old comment "20686 is ID for the if/else abfrage, only orders with this product ID will show the Tshirt"
