@@ -200,40 +200,51 @@ function custom_override_default_locale_fields( $fields ) {
 //Neue Felder im Checkout hinzufügen
 add_action('woocommerce_before_order_notes', 'customise_checkout_field');
 function customise_checkout_field($checkout)
-{
-    echo '<div id="customise_checkout_field" class="alternativer-teilnehmer ' . (!Checkout::displayParticipantFields() ? 'display-none' : '') . '"><hr style="margin:30px 0;"/><p class="button button-red">Falls der Teilnehmer vom Rechnungsempfänger abweicht, werden folgende Daten für den reibungslosen Ablauf des Events benötigt:</p>';
+{       
+    foreach( WC()->cart->get_cart() as $cart_item ){
+        $product_id = $cart_item['product_id'];
+    }
+    $product_type = get_post_meta( $product_id, '_custom_product_type', true );
     
-    woocommerce_form_field('teilnehmer_vorname', array(
-        'type' => 'text',
-        'class' => array(
-            'my-field-class form-row-wide'
-        ) ,
-        'label' => __('Teilnehmer Vorname') ,
-        'placeholder' => __('Vorname') ,
-        'required' => true,
-    ) , $checkout->get_value('teilnehmer_vorname'));
-
-    woocommerce_form_field('teilnehmer_nachname', array(
-        'type' => 'text',
-        'class' => array(
-            'my-field-class form-row-wide'
-        ) ,
-        'label' => __('Teilnehmer Nachname') ,
-        'placeholder' => __('Nachname') ,
-        'required' => true,
-    ) , $checkout->get_value('teilnehmer_nachname'));
-
-    woocommerce_form_field('teilnehmer_email', array(
-        'type' => 'text',
-        'class' => array(
-            'my-field-class form-row-wide'
-        ) ,
-        'label' => __('Teilnehmer Email') ,
-        'placeholder' => __('E-Mail Adresse') ,
-        'required' => true,
-    ) , $checkout->get_value('teilnehmer_email'));
-
-    echo "</div>";
+     switch ($product_type) {
+        case 'Agenturfinder':
+            break;
+        default:
+            echo '<div id="customise_checkout_field" class="alternativer-teilnehmer ' . (!Checkout::displayParticipantFields() ? 'display-none' : '') . '"><hr style="margin:30px 0;"/><p class="button button-red">Falls der Teilnehmer vom Rechnungsempfänger abweicht, werden folgende Daten für den reibungslosen Ablauf des Events benötigt:</p>';
+        
+            woocommerce_form_field('teilnehmer_vorname', array(
+                'type' => 'text',
+                'class' => array(
+                    'my-field-class form-row-wide'
+                ) ,
+                'label' => __('Teilnehmer Vorname') ,
+                'placeholder' => __('Vorname') ,
+                'required' => false,
+            ) , $checkout->get_value('teilnehmer_vorname'));
+        
+            woocommerce_form_field('teilnehmer_nachname', array(
+                'type' => 'text',
+                'class' => array(
+                    'my-field-class form-row-wide'
+                ) ,
+                'label' => __('Teilnehmer Nachname') ,
+                'placeholder' => __('Nachname') ,
+                'required' => false,
+            ) , $checkout->get_value('teilnehmer_nachname'));
+        
+            woocommerce_form_field('teilnehmer_email', array(
+                'type' => 'text',
+                'class' => array(
+                    'my-field-class form-row-wide'
+                ) ,
+                'label' => __('Teilnehmer Email') ,
+                'placeholder' => __('E-Mail Adresse') ,
+                'required' => false,
+            ) , $checkout->get_value('teilnehmer_email'));
+        
+            echo "</div>";
+        break;
+    }
     echo '<hr style="margin:30px 0;"/>';
 
     // TODO: Old programmer code, NOT sure this is needed anymore
@@ -363,6 +374,7 @@ function c_custom_checkout_field_process()
 /////END OF Custom Checkout Box for requiring acceptance of nichtantrittsgebühren in case of no-show
 
 
+
 // Product thumbnail in checkout
 add_filter( 'woocommerce_cart_item_name', 'product_thumbnail_in_checkout', 20, 3 );
 function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_key ){
@@ -371,11 +383,13 @@ function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_ke
         $product_type = get_post_meta( $cart_item['product_id'], '_custom_product_type', true );
         $thumbnail   = $cart_item['data']->get_image(array( 350, 180));
         if ($product_type == 'job') {
-            $image_html = '<style>.checkbox-recruiting_video{display:block !important;}</style>';
+           echo '<style>.checkbox-recruiting_video{display:block !important;}</style>';
         }elseif($product_type =='Agenturfinder'){
-            $image_html  = '<style>.checkbox-recruiting_video{display:none !important;}</style><div class="product-item-thumbnail"><img width="350" height="180" src="/uploads/2021/10/OMT-Liebe.jpg" class="woocommerce-placeholder wp-post-image" alt="Placeholder" loading="lazy" srcset="/uploads/2021/10/OMT-Liebe.jpg 350w, /uploads/2021/10/OMT-Liebe.jpg 290w" sizes="(max-width: 350px) 100vw, 350px"></div>';
+            $image_html  = '<div class="product-item-thumbnail"><img width="350" height="180" src="/uploads/2021/10/OMT-Liebe.jpg" class="woocommerce-placeholder wp-post-image" alt="Placeholder" loading="lazy" srcset="/uploads/2021/10/OMT-Liebe.jpg 350w, /uploads/2021/10/OMT-Liebe.jpg 290w" sizes="(max-width: 350px) 100vw, 350px"></div> ';
+             echo '<style>.checkbox-recruiting_video{display:none !important;}</style>';
         }else{
-            $image_html  = '<div class="product-item-thumbnail">'.$thumbnail.'</div> ';
+            echo '<style>.checkbox-recruiting_video{display:none !important;}</style>';
+            $image_html  = '</style><div class="product-item-thumbnail">'.$thumbnail.'</div> ';
         }
         $product_name = $image_html . $product_name;
     }
@@ -904,6 +918,41 @@ add_filter( 'woocommerce_available_variation', 'omt_add_fraction_variation_data'
  
 function omt_add_fraction_variation_data( $variations ) {
    $variations['fraction'] = '<div class="woocommerce_custom_field">Fraction: <span>' . get_post_meta( $variations[ 'variation_id' ], 'fraction', true ) . '</span></div>';
+   return $variations;
+}
+
+
+
+
+
+add_action( 'woocommerce_variation_options_pricing', 'omt_add_var_title_variations', 10, 3 );
+ 
+function omt_add_var_title_variations( $loop, $variation_data, $variation ) {
+   woocommerce_wp_text_input( array(
+'id' => 'variation_title[' . $loop . ']',
+'class' => 'short',
+'label' => __( 'Variation Title', 'woocommerce' ),
+'value' => get_post_meta( $variation->ID, 'variation_title', true )
+   ) );
+}
+ 
+// -----------------------------------------
+// 2. Save custom field on product variation save
+ 
+add_action( 'woocommerce_save_product_variation', 'omt_save_var_title_variations', 10, 2 );
+ 
+function omt_save_var_title_variations( $variation_id, $i ) {
+   $variation_title = $_POST['variation_title'][$i];
+   if ( isset( $variation_title ) ) update_post_meta( $variation_id, 'variation_title', esc_attr( $variation_title ) );
+}
+ 
+// -----------------------------------------
+// 3. Store custom field value into variation data
+ 
+add_filter( 'woocommerce_available_variation', 'omt_add_var_variation_data' );
+ 
+function omt_add_var_variation_data( $variations ) {
+   $variations['variation_title'] = '<div class="woocommerce_custom_field">Variation Title: <span>' . get_post_meta( $variations[ 'variation_id' ], 'variation_title', true ) . '</span></div>';
    return $variations;
 }
 

@@ -22,6 +22,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     $result = '';
     $tax_query = '';
     $ids = [];
+    $color_highlighted_class = '';
     //Get filter data
     $categories = $_POST['categories'];
     $erfahrung = $_POST['erfahrung'];
@@ -67,7 +68,8 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         $featured_image = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'full');
         $image = $featured_image[0];
         $arbeitgeber_name = get_field('arbeitgeber_name');
-        $job_hervorheben = get_field('job_hervorheben');
+        $hot_job = get_field('hot_job');
+        $farblich_hervorheben = get_field('farblich_hervorheben');
         $arbeitgeber_logo = get_field('arbeitgeber_logo');
         $arbeitgeber_logo_id = get_field('arbeitgeber_logo_id');
         $stadt = get_field('stadt');
@@ -75,8 +77,9 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         $wie_arbeiten = get_field('wie_arbeiten');
         $date = get_the_date();
         $jobDate = '';
-        if($job_hervorheben == 1){ $job_hervorheben_class = 'ribbon_'; $no_border = 'ribbon_link';}else{$job_hervorheben_class = ''; $no_border = '';}
+        if($hot_job == 1){ $job_hervorheben_class = 'ribbon_'; $no_border = 'ribbon_link';}else{$job_hervorheben_class = ''; $no_border = '';}
         if (strlen($arbeitgeber_logo_id)>0) { $arbeitgeber_logo['url'] = $arbeitgeber_logo_id; }
+        if($farblich_hervorheben == 1){$color_highlighted_class = 'color_highlighted';}else{$color_highlighted_class = '';}
         $post_categories = wp_get_object_terms( $id, 'jobs-categories' ); //Get current job cattegories
         
         $currentDate = date("Y-m-d");
@@ -102,7 +105,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                                 foreach ($data['occupation'] as $key3 => $value3) {
                                     if($value3 == $wie_arbeiten){
                                         $result .= '
-                                        <div class="omt-job-box jobs '.$job_hervorheben_class.'" data-ribbon="Hot Job" >
+                                        <div class="omt-job-box jobs '.$job_hervorheben_class.' ' . $color_highlighted_class . '" data-ribbon="Hot Job" >
                                             <a href="'.$link.'" class="clearfix omt-job '.$no_border.'" title="'.$title_attribute.'">
                                                 <div class="omt-job-img">
                                                   <img title="'.$title.'" alt="'.$title.'" src="'.$arbeitgeber_logo['url'].'">
@@ -127,7 +130,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                 foreach ($data['erfahrung'] as $key => $value) {
                     if($value == $erfahrung_){
                         $result .= '
-                        <div class="omt-job-box jobs '.$job_hervorheben_class.'" data-ribbon="Hot Job" >
+                        <div class="omt-job-box jobs '.$job_hervorheben_class.' ' . $color_highlighted_class . '" data-ribbon="Hot Job" >
                             <a href="'.$link.'" class="clearfix omt-job '.$no_border.'" title="'.$title_attribute.'">
                                 <div class="omt-job-img">
                                   <img title="'.$title.'" alt="'.$title.'" src="'.$arbeitgeber_logo['url'].'">
@@ -150,7 +153,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                         foreach ($data['occupation'] as $key3 => $value3) {
                             if($value3 == $wie_arbeiten){
                                 $result .= '
-                                <div class="omt-job-box jobs '.$job_hervorheben_class.'" data-ribbon="Hot Job" >
+                                <div class="omt-job-box jobs '.$job_hervorheben_class.' ' . $color_highlighted_class . '" data-ribbon="Hot Job" >
                                     <a href="'.$link.'" class="clearfix omt-job '.$no_border.'" title="'.$title_attribute.'">
                                         <div class="omt-job-img">
                                           <img title="'.$title.'" alt="'.$title.'" src="'.$arbeitgeber_logo['url'].'">
@@ -174,7 +177,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                         foreach ($data['arbeiten'] as $key2 => $value2) {
                             if($value2 == $stadt){
                                 $result .= '
-                                <div class="omt-job-box jobs '.$job_hervorheben_class.'" data-ribbon="Hot Job" >
+                                <div class="omt-job-box jobs '.$job_hervorheben_class.' ' . $color_highlighted_class . '" data-ribbon="Hot Job" >
                                     <a href="'.$link.'" class="clearfix omt-job '.$no_border.'" title="'.$title_attribute.'">
                                         <div class="omt-job-img">
                                           <img title="'.$title.'" alt="'.$title.'" src="'.$arbeitgeber_logo['url'].'">
@@ -199,7 +202,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                         foreach ($data['occupation'] as $key3 => $value3) {
                             if($value3 == $wie_arbeiten){
                                 $result .= '
-                                <div class="omt-job-box jobs '.$job_hervorheben_class.'" data-ribbon="Hot Job" >
+                                <div class="omt-job-box jobs '.$job_hervorheben_class.' ' . $color_highlighted_class . '" data-ribbon="Hot Job" >
                                     <a href="'.$link.'" class="clearfix omt-job '.$no_border.'" title="'.$title_attribute.'">
                                         <div class="omt-job-img">
                                           <img title="'.$title.'" alt="'.$title.'" src="'.$arbeitgeber_logo['url'].'">
@@ -221,7 +224,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                 foreach ($data['occupation'] as $key3 => $value3) {
                     if($value3 == $wie_arbeiten){
                         $result .= '
-                        <div class="omt-job-box jobs '.$job_hervorheben_class.'" data-ribbon="Hot Job" >
+                        <div class="omt-job-box jobs '.$job_hervorheben_class.' ' . $color_highlighted_class . '" data-ribbon="Hot Job" >
                             <a href="'.$link.'" class="clearfix omt-job '.$no_border.'" title="'.$title_attribute.'">
                                 <div class="omt-job-img">
                                   <img title="'.$title.'" alt="'.$title.'" src="'.$arbeitgeber_logo['url'].'">
@@ -241,7 +244,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                 foreach ($data['arbeiten'] as $key2 => $value2) {
                     if($value2 == $stadt){
                         $result .= '
-                        <div class="omt-job-box jobs '.$job_hervorheben_class.'" data-ribbon="Hot Job" >
+                        <div class="omt-job-box jobs '.$job_hervorheben_class.' ' . $color_highlighted_class . '" data-ribbon="Hot Job" >
                             <a href="'.$link.'" class="clearfix omt-job '.$no_border.'" title="'.$title_attribute.'">
                                 <div class="omt-job-img">
                                   <img title="'.$title.'" alt="'.$title.'" src="'.$arbeitgeber_logo['url'].'">
@@ -259,7 +262,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                 }
             }else{
                 $result .= '
-                <div class="omt-job-box jobs '.$job_hervorheben_class.'" data-ribbon="Hot Job" >
+                <div class="omt-job-box jobs '.$job_hervorheben_class.' ' . $color_highlighted_class . '" data-ribbon="Hot Job" >
                     <a href="'.$link.'" class="clearfix omt-job '.$no_border.'" title="'.$title_attribute.'">
                         <div class="omt-job-img">
                           <img title="'.$title.'" alt="'.$title.'" src="'.$arbeitgeber_logo['url'].'">
