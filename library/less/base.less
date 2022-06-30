@@ -10114,6 +10114,18 @@ input {
 
 
 /* autopublishing job product  */
+.omt-ticket-auto-row .ticket   {
+  &:hover {
+    transform: scale(1.1);
+    background: #fff;
+  }
+}
+.highlighted {
+  &:hover{
+    transform: scale(1.1);
+    background: #31bbda !important;
+  }
+}
 .omt-ticket-auto-row {
   max-width: 1200px !important;
   position: relative;
@@ -10142,6 +10154,7 @@ input {
     margin-right: 5px;
     box-shadow: 1px 15px 22px #d5cece;
     //height: fit-content;
+    transition: transform 0.2s;
   }
   .ticket-type {
     text-align: center;
