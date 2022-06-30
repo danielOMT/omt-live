@@ -131,7 +131,14 @@ if (empty($mobile_banner_bild) && (get_field('globales_banner_verwenden_mobile')
             <?php
         } else {
             if (1 == $buttons_anzeigen) { ?>
-                <div class="buttons-wrap">
+                <div class="buttons-wrap" style="
+                margin-top: 0;
+                width: 225px;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                align-content: flex-start;
+            ">
                     <?php if (strlen($tool_gratis_testen_link) > 0) { ?><a rel="nofollow" id="<?php print get_the_title();?>"  target="_blank" class="button button-testen button-red button-350px"  href="<?php print $tool_gratis_testen_link;?>">Gratis testen</a><?php } ?>
                     <?php if (strlen($tool_preisubersicht) > 0) { ?><a rel="nofollow" id="<?php print get_the_title();?>" target="_blank" class="button button-pricing button-lightgrey button-350px"  href="<?php print $tool_preisubersicht;?>">Preisübersicht</a><?php } ?>
                 </div>
