@@ -30,7 +30,7 @@ function display_jobs(int $anzahl = 99) { ?>
         <img src="/uploads/2022/03/loader_.svg">
     </div>
     <style>
-        .no_b_border{
+        .no_b_border a{
             border: none !important;
         }
     </style>
@@ -44,7 +44,13 @@ function display_jobs(int $anzahl = 99) { ?>
         
         $i=0;
         
+        $hotJobs = [];
+
         while ($loop->have_posts()) : $loop->the_post();
+//             echo '<pre>';
+// print_r($loop->posts[ get_field('hot_job') + 1 ]->ID);
+// echo '</pre>';
+
             $id = get_the_ID();
             $featured_image = wp_get_attachment_image_src(get_post_thumbnail_id($id), 'full');
             $image = $featured_image[0];
@@ -55,6 +61,9 @@ function display_jobs(int $anzahl = 99) { ?>
             $arbeitgeber_logo_id = get_field('arbeitgeber_logo_id');
             $stadt = get_field('stadt');
             $date = get_the_date();
+
+            //array_push($test1,$id);
+
             if($hot_job == 1){ $job_hervorheben_class = 'ribbon_'; $no_border = 'ribbon_link';}else{$job_hervorheben_class = ''; $no_border = '';}
             if (strlen($arbeitgeber_logo_id)>0) { $arbeitgeber_logo['url'] = $arbeitgeber_logo_id; }
             if($farblich_hervorheben == 1){$color_highlighted_class = 'color_highlighted';}else{$color_highlighted_class = '';}
@@ -110,7 +119,7 @@ function display_jobs(int $anzahl = 99) { ?>
         ?>  
 
            
-            <div class="omt-job-box jobs <?=$job_hervorheben_class;?> <?=$color_highlighted_class;?>" data-ribbon="Hot Job" >
+            <div class="omt-job-box jobs <?=$job_hervorheben_class;?> <?=$color_highlighted_class;?> <?php remove_border($id)?>" data-ribbon="Hot Job"  >
                 <a href="<?php the_permalink() ?>" class="clearfix omt-job <?=$no_border;?>" title="<?php the_title_attribute(); ?>">
                     <div class="omt-job-img">
                       <img title="<?php the_title(); ?>" alt="<?php the_title(); ?>" src="<?php print $arbeitgeber_logo['url']; ?>">
@@ -150,6 +159,7 @@ function display_jobs(int $anzahl = 99) { ?>
                 </div>
             <?php }
         endwhile; //end
+
         ?> </div> <?php
     wp_reset_postdata();
 } ?>
@@ -158,6 +168,36 @@ function display_jobs(int $anzahl = 99) { ?>
 
 <?php
     
+    function remove_border($value){
+        $j = 0;
+        $jobIDs = [];
+         $args = array(
+                'posts_per_page' => 99,
+                'post_type' => 'jobs',
+                'date_query' => array(
+                    array(
+                        'column' => 'post_date_gmt',
+                        'after'  => '180 days ago',
+                    )
+                ),
+                'order'             => 'DESC',
+            );
+        $loop = new WP_Query($args);
+        while ($loop->have_posts()) : $loop->the_post();
+            $id = get_the_ID();
+            $hot_job = get_field('hot_job');
+            $jobIDs[$j]['id'] = $id;
+            $jobIDs[$j]['job'] = $hot_job;
+            $j++;
+        endwhile;
+        for ($i=0; $i < count($jobIDs); $i++) { 
+            if($jobIDs[$i]['id'] == $value && $jobIDs[$i+1]['job'] == 1)
+                echo 'no_b_border';
+                        
+        }
+       
+    }
+
     function removeSpecialChar($value){
         $result = '';
         $result = preg_replace("/[^a-zA-ZäÄöÖüÜ]+/", "", $value);
