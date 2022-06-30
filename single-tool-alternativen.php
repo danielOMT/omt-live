@@ -115,7 +115,14 @@ if (empty($mobile_banner_bild) && (get_field('globales_banner_verwenden_mobile')
         $rueckruf_button = get_field('rueckruf_button');
         if (1 == $rueckruf_button) {
             $ruckruf_formular_id = get_field('ruckruf_formular_id'); ?>
-            <div class="buttons-wrap">
+            <div class="buttons-wrap" style="
+                margin-top: 0;
+                width: 225px;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+                align-content: flex-start;
+            ">
                 <span data-effect="lightbox" data-id="form-<?php print $ruckruf_formular_id; ?>" href="#" data-backend="toolanbieter-support" class="activate-form tool-lightbox-button button button-testen button-red button-full"><?php print get_the_title(); ?> Demo anfragen</span>
                 <div id="form-<?php print $ruckruf_formular_id; ?>" class="contact-lightbox hidden">
                     <?php echo do_shortcode('[gravityform ajax=true id="' . $ruckruf_formular_id . '" title="false" description="true" tabindex="0"]'); ?>
