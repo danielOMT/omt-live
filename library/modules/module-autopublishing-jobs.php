@@ -108,9 +108,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
 
                     </div>
                 <?php endif; ?>
-                </a><!--data-ticket-type/-->
-
-                    <div class="produkt-beschreibung">
+                <div class="produkt-beschreibung">
                         <?php if( $highlighted == 'yes' ):?>
                         <div class="x-mb-2 rec_vid_p_h">
                          <?php else:?>
@@ -129,6 +127,9 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                             ]) ?>
                         </div>
                     </div>
+                </a><!--data-ticket-type/-->
+
+                    
                     
                 <?php if ($lager > 0 && $active == true && (empty($countdown_download_button_url) || empty($countdown_download_button_label))) : ?>
             
