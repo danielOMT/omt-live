@@ -209,6 +209,8 @@ function customise_checkout_field($checkout)
      switch ($product_type) {
         case 'Agenturfinder':
             break;
+        case 'Job':
+            break;
         default:
             echo '<div id="customise_checkout_field" class="alternativer-teilnehmer ' . (!Checkout::displayParticipantFields() ? 'display-none' : '') . '"><hr style="margin:30px 0;"/><p class="button button-red">Falls der Teilnehmer vom Rechnungsempfänger abweicht, werden folgende Daten für den reibungslosen Ablauf des Events benötigt:</p>';
         
