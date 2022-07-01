@@ -2136,15 +2136,15 @@ function priceToggle(price){
 $( document ).ready(function() {
     $( ".annual" ).click(function() {
       
-       // $('.quarterly').addClass('hide_product')
+        $('.quarterly').addClass('hide_product')
         $('.monthly').addClass('hide_product')
-      //  $('.halfyearly').addClass('hide_product')
-        //$('.yearly').removeClass('hide_product')
+        $('.halfyearly').addClass('hide_product')
+        $('.yearly').removeClass('hide_product')
 
 
-      //  $('.quarterly_').addClass('hide_product')
-      //  $('.halfyearly_').addClass('hide_product')
-     //   $('.yearly_').removeClass('hide_product')
+        $('.quarterly_').addClass('hide_product')
+        $('.halfyearly_').addClass('hide_product')
+        $('.yearly_').removeClass('hide_product')
 
         $('.ann').addClass('hide_product')
 
