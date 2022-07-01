@@ -383,7 +383,7 @@ function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_ke
     if ( is_checkout() )
     {   
         $product_type = get_post_meta( $cart_item['product_id'], '_custom_product_type', true );
-        $thumbnail   = $cart_item['data']->get_image(array( 350, 180));
+        //$thumbnail   = $cart_item['data']->get_image(array( 350, 180));
         if ($product_type == 'job') {
            echo '<style>.checkbox-recruiting_video{display:block !important;}</style>';
         }elseif($product_type =='Agenturfinder'){
@@ -391,7 +391,7 @@ function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_ke
              echo '<style>.checkbox-recruiting_video{display:none !important;}</style>';
         }else{
             echo '<style>.checkbox-recruiting_video{display:none !important;}</style>';
-            $image_html  = '</style><div class="product-item-thumbnail">'.$thumbnail.'</div> ';
+            $image_html  = '</style><div class="product-item-thumbnail">'.$cart_item['data']->get_image(array( 350, 180)).'</div> ';
         }
         $product_name = $image_html . $product_name;
     }
