@@ -98,15 +98,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                                     </span>
                                 <?php endif;?>
                                 
-                                <?php  if($preis != 0 && $m_price > 0 && $product_class != 'monthly'):?>
-
-                                <span class="an_billed"><?=$m_price*12;?>&euro; 
-                                <span class="s_billed quarterly_"><?= __('Jährlich');?></span>
-                                <span class="s_billed halfyearly_"><?= __('Jährlich');?></span>
-                                <span class="s_billed yearly_"><?= __('Jährlich');?></span></span>
-                            <?php else:?>
-
-                            <?php endif;?>
+                             
                             </p>
                         </div>
                         <?=$rec;?>
