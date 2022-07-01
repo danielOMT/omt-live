@@ -119,7 +119,7 @@ function display_jobs(int $anzahl = 99) { ?>
         ?>  
 
            
-            <div class="omt-job-box jobs <?=$job_hervorheben_class;?> <?=$color_highlighted_class;?> <?php remove_border($id)?>" data-ribbon="Hot Job"  >
+            <div class="omt-job-box jobs <?=$job_hervorheben_class;?> <?=$color_highlighted_class;?>" data-ribbon="Hot Job"  >
                 <a href="<?php the_permalink() ?>" class="clearfix omt-job <?=$no_border;?>" title="<?php the_title_attribute(); ?>">
                     <div class="omt-job-img">
                       <img title="<?php the_title(); ?>" alt="<?php the_title(); ?>" src="<?php print $arbeitgeber_logo['url']; ?>">
@@ -192,7 +192,7 @@ function display_jobs(int $anzahl = 99) { ?>
         endwhile;
         for ($i=0; $i < count($jobIDs); $i++) { 
             if($jobIDs[$i]['id'] == $value && $jobIDs[$i+1]['job'] == 1)
-                echo 'no_b_border';
+                return 'no_b_border';
                         
         }
        
