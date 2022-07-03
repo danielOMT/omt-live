@@ -1224,3 +1224,19 @@ function check_product_type(){
      }
 }
 check_product_type();
+
+
+
+function recruiting_video_check_for_admin($order){
+    //echo "<p><strong>Name of pickup person:</strong> " . $order->order_custom_fields['_custom_product_type'][0] . "</p>";
+            echo "<script>
+        jQuery(document).ready(function() {
+            if (jQuery('.dashicons').hasClass('dashicons-no-alt')) {
+                jQuery('.wc-gzdp-legal-checkboxes').css('display', 'none');
+            }
+            else {
+            }
+        });</script>";
+}
+
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'recruiting_video_check_for_admin', 10, 1 );
