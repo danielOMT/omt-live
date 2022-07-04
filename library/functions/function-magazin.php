@@ -163,6 +163,7 @@ function display_magazinartikel(int $anzahl = 12, string $kategorie="alle", int 
                     case "inbound": $post_type_nice = "Inbound Marketing"; break;
                     case "influencer": $post_type_nice = "Influencer Marketing"; break;
                     case "videomarketing": $post_type_nice = "Video Marketing"; break;
+                    case "performance": $post_type_nice = "Performance  Marketing"; break;
                     case "pinterest": $post_type_nice = "Pinterest Marketing"; break;
                     case "pagespeed": $post_type_nice = "Wordpress Pagespeed"; break;
                     case "plugins": $post_type_nice = "Wordpress Plugins"; break;
