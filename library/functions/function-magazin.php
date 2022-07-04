@@ -149,6 +149,7 @@ function display_magazinartikel(int $anzahl = 12, string $kategorie="alle", int 
                     case "links": $post_type_nice = "Linkbuilding"; break;
                     case "ga": $post_type_nice = "Google Analytics"; break;
                     case "content": $post_type_nice = "Content Marketing"; break;
+                    case "direktmarketing": $post_type_nice = "Direktmarketing"; break;
                     case "emailmarketing": $post_type_nice = "E-Mail Marketing"; break;
                     case "social": $post_type_nice = "Social Media Marketing"; break;
                     case "facebook": $post_type_nice = "Facebook Ads"; break;
