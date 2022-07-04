@@ -25,7 +25,7 @@ function omt_locations() {
         'menu_position' => 8, /* this is what order you want it to appear in on the left hand side menu */
         'menu_icon' => get_stylesheet_directory_uri() . '/library/images/custom-post-icon.png', /* the icon for the custom post type menu */
         'rewrite'	=> array( 'slug' => 'locations', 'with_front' => false ), /* you can specify its url slug */
-        'has_archive' => 'locations', /* you can rename the slug here */
+        'has_archive' => false, /* you can rename the slug here */
         'capability_type' => 'post',
         'hierarchical' => false,
         'show_in_menu' => 'omt-seminare',
