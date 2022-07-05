@@ -339,22 +339,31 @@ add_action('woocommerce_after_checkout_billing_form', 'c_custom_checkout_field')
 function c_custom_checkout_field( $checkout )
 {
     foreach (WC()->cart->get_cart() as $cart_item_key => $values) {
+        
         $cart_product = $values['data'];
         $cart_ids[] = $cart_product->id;
-        $price = $cart_product->get_price();
+        $product_id = $cart_product->id;
+        $in_cart = false;
+        $product_type = get_post_meta( $cart_product->id, '_custom_product_type', true );
+        foreach( WC()->cart->get_cart() as $cart_item ) {
+            //echo $cart_item['product_id'];
+            if ( $product_type == 'agency day' OR $product_in_cart === 254476  OR  $product_in_cart === 254478  OR  $product_in_cart === 254479  ) {$in_cart = true;}
+        }
+
+        if ( $in_cart) {
+                 echo '<div id="c_custom_checkout_field" class="hinweis-unkostenpauschale"><h3>' . __('Unkostenpauschale bei kurzfristiger Absage') . '</h3>';
+                 echo '<p style="width: auto; margin:0;">Du akzeptierst, dass Deine E-Mail durch den OMT für Online-Marketing Zwecke erhoben, genutzt und zu diesem Zweck auch an die Sponsoren des Agency Days weitergegeben wird. Dir ist bekannt, dass Du Deine Werbeeinwilligung jederzeit und kostenlos durch eine E-Mail an info@omt.de widerrufen kannst. Im Fall des Widerruf bleibt die bis zum Widerruf erhaltene Werbung rechtmäßig. Weitergehende Informationen findest Du auf in unseren Datenschutzbestimmungen.</p>';
+                 woocommerce_form_field('c_type', array(
+                     'type' => 'checkbox',
+                     'class' => array('my-field-class form-row form-row-wide'),
+                     'label' => __('Mir ist bewusst, dass bei einer Absage innerhalb 14 Tage vor dem Seminar eine Unkostenpauschale in Höhe von 99€ fällig wird.'),
+                     'placeholder' => __(''),
+                     'required'  => true,
+                 ), $checkout->get_value('c_type'));
+                 echo '</div>';
+        }
     }
     // if ($price < 1) {
-
-    //     echo '<div id="c_custom_checkout_field" class="hinweis-unkostenpauschale"><h3>' . __('Unkostenpauschale bei kurzfristiger Absage') . '</h3>';
-    //     echo '<p style="width: auto; margin:0;">Die Organisation und Durchführung unserer Seminare benötigt sehr viel Zeit und wir sind auch bei der Buchung der Räume an Meldefristen gebunden. In der Vergangenheit gab es leider vermehrt kurzfristige Absagen, die zur Entstehung von Kosten zu uns geführt haben. Um weiterhin kostenlose Seminare für die Community anbieten zu können, müssen wir bei kurzfristigen Absagen eine Unkostenpauschale erheben. Bitte bestätige uns kurz, dass Du diese Regelung zur Kenntnis genommen hast:</p>';
-    //     woocommerce_form_field('c_type', array(
-    //         'type' => 'checkbox',
-    //         'class' => array('my-field-class form-row form-row-wide'),
-    //         'label' => __('Mir ist bewusst, dass bei einer Absage innerhalb 14 Tage vor dem Seminar eine Unkostenpauschale in Höhe von 99€ fällig wird.'),
-    //         'placeholder' => __(''),
-    //         'required'  => true,
-    //     ), $checkout->get_value('c_type'));
-    //     echo '</div>';
     // }
 }
 
