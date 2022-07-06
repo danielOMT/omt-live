@@ -1083,7 +1083,20 @@ function get_the_table_of_contents()
     return $tableOfContents;
 }
 
+function remove_recruiting_video_function_name($order){
+    //echo "<p><strong>Name of pickup person:</strong> " . $order->order_custom_fields['_custom_product_type'][0] . "</p>";
+            echo "<script>
+        jQuery(document).ready(function() {
+            if (jQuery('.dashicons').hasClass('dashicons-no-alt')) {
+                jQuery('.wc-gzdp-legal-checkboxes').css('display', 'none');
+            }
+            else {
+                alert('Class does not exist');
+            }
+        });</script>";
+}
 
+add_action( 'woocommerce_admin_order_data_after_billing_address', 'remove_recruiting_video_function_name', 10, 1 );
 
 //add custom field in woocommerce product general section
 add_action('woocommerce_product_options_general_product_data', 'woocommerce_product_custom_fields');
