@@ -1091,7 +1091,7 @@ function remove_recruiting_video_function_name($order){
                 jQuery('.wc-gzdp-legal-checkboxes').css('display', 'none');
             }
             else {
-                alert('Class does not exist');
+                
             }
         });</script>";
 }
