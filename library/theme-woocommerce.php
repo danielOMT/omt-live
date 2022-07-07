@@ -353,13 +353,13 @@ function c_custom_checkout_field( $checkout )
         if ( $in_cart) {
                  echo '<div id="c_custom_checkout_field" class="hinweis-unkostenpauschale">';
                  echo '<p style="width: auto; margin:0;">Du akzeptierst, dass Deine E-Mail durch den OMT für Online-Marketing Zwecke erhoben, genutzt und zu diesem Zweck auch an die Sponsoren des Agency Days weitergegeben wird. Dir ist bekannt, dass Du Deine Werbeeinwilligung jederzeit und kostenlos durch eine E-Mail an info@omt.de widerrufen kannst. Im Fall des Widerruf bleibt die bis zum Widerruf erhaltene Werbung rechtmäßig. Weitergehende Informationen findest Du auf in unseren Datenschutzbestimmungen.*</p>';
-                 woocommerce_form_field('c_type', array(
-                     'type' => 'checkbox',
-                     'class' => array('my-field-class form-row form-row-wide'),
-                     'label' => __('Mir ist bewusst, dass bei einer Absage innerhalb 14 Tage vor dem Seminar eine Unkostenpauschale in Höhe von 99€ fällig wird.'),
-                     'placeholder' => __(''),
-                     'required'  => true,
-                 ), $checkout->get_value('c_type'));
+                //  woocommerce_form_field('c_type', array(
+                //      'type' => 'checkbox',
+                //      'class' => array('my-field-class form-row form-row-wide'),
+                //      'label' => __('Mir ist bewusst, dass bei einer Absage innerhalb 14 Tage vor dem Seminar eine Unkostenpauschale in Höhe von 99€ fällig wird.'),
+                //      'placeholder' => __(''),
+                //      'required'  => true,
+                //  ), $checkout->get_value('c_type'));
                  echo '</div>';
         }
     }
