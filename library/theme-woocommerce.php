@@ -354,7 +354,7 @@ function c_custom_checkout_field( $checkout )
                  echo '<div id="c_custom_checkout_field" class="hinweis-unkostenpauschale">';
                  woocommerce_form_field('c_type', array(
                      'type' => 'checkbox',
-                     'class' => array('my-field-class form-row form-row-wide'),
+                     'class' => array('my-field-class  check_akp form-row form-row-wide'),
                      'label' => __('Du akzeptierst, dass Deine E-Mail durch den OMT für Online-Marketing Zwecke erhoben, genutzt und zu diesem Zweck auch an die Sponsoren des Agency Days weitergegeben wird. Dir ist bekannt, dass Du Deine Werbeeinwilligung jederzeit und kostenlos durch eine E-Mail an info@omt.de widerrufen kannst. Im Fall des Widerruf bleibt die bis zum Widerruf erhaltene Werbung rechtmäßig. Weitergehende Informationen findest Du auf in unseren Datenschutzbestimmungen.'),
                      'placeholder' => __(''),
                      'required'  => true,
