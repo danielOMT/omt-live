@@ -351,8 +351,8 @@ function c_custom_checkout_field( $checkout )
         }
 
         if ( $in_cart) {
-                 echo '<div id="c_custom_checkout_field" class="hinweis-unkostenpauschale"><h3>' . __('Unkostenpauschale bei kurzfristiger Absage') . '</h3>';
-                 echo '<p style="width: auto; margin:0;">Du akzeptierst, dass Deine E-Mail durch den OMT für Online-Marketing Zwecke erhoben, genutzt und zu diesem Zweck auch an die Sponsoren des Agency Days weitergegeben wird. Dir ist bekannt, dass Du Deine Werbeeinwilligung jederzeit und kostenlos durch eine E-Mail an info@omt.de widerrufen kannst. Im Fall des Widerruf bleibt die bis zum Widerruf erhaltene Werbung rechtmäßig. Weitergehende Informationen findest Du auf in unseren Datenschutzbestimmungen.</p>';
+                 echo '<div id="c_custom_checkout_field" class="hinweis-unkostenpauschale">';
+                 echo '<p style="width: auto; margin:0;">Du akzeptierst, dass Deine E-Mail durch den OMT für Online-Marketing Zwecke erhoben, genutzt und zu diesem Zweck auch an die Sponsoren des Agency Days weitergegeben wird. Dir ist bekannt, dass Du Deine Werbeeinwilligung jederzeit und kostenlos durch eine E-Mail an info@omt.de widerrufen kannst. Im Fall des Widerruf bleibt die bis zum Widerruf erhaltene Werbung rechtmäßig. Weitergehende Informationen findest Du auf in unseren Datenschutzbestimmungen.*</p>';
                  woocommerce_form_field('c_type', array(
                      'type' => 'checkbox',
                      'class' => array('my-field-class form-row form-row-wide'),
