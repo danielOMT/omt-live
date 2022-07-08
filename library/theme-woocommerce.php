@@ -391,21 +391,19 @@ function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_ke
     if ( is_checkout() )
     {   
         $product_type = get_post_meta( $cart_item['product_id'], '_custom_product_type', true );
-        //$thumbnail   = $cart_item['data']->get_image(array( 350, 180));
         if ($product_type == 'job') {
            echo '<style>.checkbox-recruiting_video{display:block !important;} .wc-gzd-product-name-left{display:none !important;}</style>';
         }elseif($product_type =='Agenturfinder'){
-            $image_html  = '<div class="product-item-thumbnail"><img width="350" height="180" src="/uploads/2021/10/OMT-Liebe.jpg" class="woocommerce-placeholder wp-post-image" alt="Placeholder" loading="lazy" srcset="/uploads/2021/10/OMT-Liebe.jpg 350w, /uploads/2021/10/OMT-Liebe.jpg 290w" sizes="(max-width: 350px) 100vw, 350px"></div> ';
+            $image_html  = '<div class="product-item-thumbnail">'.$cart_item['data']->get_image(array( 400, 500)).'</div> ';
              echo '<style>.checkbox-recruiting_video{display:none !important;} .wc-gzd-product-name-left{display:none !important;}</style>';
         }else{
             echo '<style>.checkbox-recruiting_video{display:none !important;}</style>';
-            $image_html  = '</style><div class="product-item-thumbnail">'.$cart_item['data']->get_image(array( 350, 180)).'</div> ';
+            $image_html  = '<div class="product-item-thumbnail">'.$cart_item['data']->get_image(array( 350, 180)).'</div> ';
         }
         $product_name = $image_html . $product_name;
     }
     return $product_name;
 }
-
 /**
  * @snippet       Cart subtotal slashed if coupon applied @ WooCommerce Cart
  * @how-to        Watch tutorial @ https://businessbloomer.com/?p=19055
