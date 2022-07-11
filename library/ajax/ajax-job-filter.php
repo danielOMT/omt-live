@@ -809,7 +809,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
 
 
     // echo '<pre>';
-    // print_r($erfahrungResult);
+    // print_r($sortedErfResult);
     // echo '</pre>';
 
 
@@ -818,10 +818,13 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     $count_erf = 0;
     $valsErf = array_count_values($erfahrungResult);
     $result_erf = '';
+
     foreach ($valsErf as $key => $value) {
         array_push($sortedErf, ['name' => $key,'count' =>$value]);
     }
-
+    //  echo '<pre>';
+    // print_r($sortedErf);
+    // echo '</pre>';
     usort($sortedErf, function($a, $b) {
         $retval = $a['count'] <=> $b['count'];
         if ($retval == 0) :
@@ -834,7 +837,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     });
     $sortedErfResult = array_reverse($sortedErf);
 
-
+    if($sortedErfResult[0]['name'] != ''):
     $result_erf .='<div id="erfahrung">';
     foreach ($sortedErfResult as $key => $value) :
         $erfahrung_id = 385;
@@ -846,6 +849,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         $count_erf++;
     endforeach;
     $result_erf .='</div>';
+    endif;
     ///////////////////////////////////// Level /////////////////////////////////////
 
     ///////////////////////////////////// Cities /////////////////////////////////////
