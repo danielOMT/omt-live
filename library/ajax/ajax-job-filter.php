@@ -794,9 +794,10 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         endforeach;
         while ($loop->have_posts()) : $loop->the_post();
 
-            $stadt = get_field('stadt');
-            $erfahrung = get_field('erfahrung');
-            $wie_arbeiten = get_field('wie_arbeiten');
+            // if(get_field('stadt') == ''){$stadt = 0;}else{$stadt = get_field('stadt');}
+            // if(get_field('wie_arbeiten') == ''){$wie_arbeiten = 0;}else{$wie_arbeiten = get_field('wie_arbeiten');}
+            // if(get_field('erfahrung') == ''){$erfahrung = 0;}else{$erfahrung = get_field('erfahrung');}
+
 
             array_push($arbeitenResult, $stadt);
             array_push($occupationResult, $wie_arbeiten);
@@ -804,7 +805,6 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
 
         wp_reset_query();
         endwhile;
-        
     }
 
 
