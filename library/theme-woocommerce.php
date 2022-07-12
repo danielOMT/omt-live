@@ -1017,7 +1017,7 @@ function bbloomer_add_jscript_checkout() {
         })';
         echo '</script>';
         echo '<script type="text/javascript">';
-        echo 'function call_rec_video_modal(){ jQuery(".rec_video_link").trigger("click");  }';
+        echo 'function call_rec_video_modal(){ jQuery(".rec_video_link").trigger("click");  return;}';
         echo '</script>';
    }
 }
