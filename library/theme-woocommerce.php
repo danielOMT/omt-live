@@ -1003,11 +1003,11 @@ function getDescriptionForRecVideo($description){
 }
 
 function test(){
-    echo '<script type="text/javascript"> $( document ).ready(function() {
-    $(".checkbox-rec_vid").append("<span onclick="call_rec_video_modal()" class="rec_video_modal_icon"> &#8505;</span>");
-});
-function call_rec_video_modal(){
-  $(".rec_video_link").trigger("click");  
-}</script>';
+    echo '<script type="text/javascript">';
+    echo '$( document ).ready(function() { $(".checkbox-rec_vid").append("<span onclick="call_rec_video_modal()" class="rec_video_modal_icon"> &#8505;</span>");})';
+    echo '</script>';
+    echo '<script type="text/javascript">';
+    echo 'function call_rec_video_modal(){ $(".rec_video_link").trigger("click");  }';
+    echo '</script>';
 }
 test();
