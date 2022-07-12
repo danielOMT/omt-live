@@ -1256,19 +1256,20 @@ add_action( 'woocommerce_admin_order_data_after_billing_address', 'recruiting_vi
 
 
 
-add_action( 'wp_footer', 'bbloomer_add_jscript_checkout', 9999 );
- 
-function bbloomer_add_jscript_checkout() {
-   global $wp;
-   if ( is_checkout() ) {
-      echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>';
-        echo '<script type="text/javascript">';
-        echo 'jQuery( document ).ready(function() { 
-            jQuery(".checkbox-rec_vid").append("<span onclick="call_rec_video_modal()" class="rec_video_modal_icon"> &#8505;</span>");
-        })';
-        echo '</script>';
-        echo '<script type="text/javascript">';
-        echo 'function call_rec_video_modal(){ jQuery(".rec_video_link").trigger("click");  return;}';
-        echo '</script>';
-   }
+function ti_custom_javascript() {
+  if (is_checkout()) { 
+    ?>  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+        $( document ).ready(function() {
+                $(".checkbox-rec_vid").append("<span onclick='call_rec_video_modal()' class='rec_video_modal_icon'> &#8505;</span>");
+            });
+
+
+            function call_rec_video_modal(e){
+              $(".rec_video_link").trigger("click");  
+            }
+        </script>
+    <?php
+  }
 }
+add_action('wp_head', 'ti_custom_javascript');
