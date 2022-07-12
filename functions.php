@@ -1264,7 +1264,7 @@ function bbloomer_add_jscript_checkout() {
       echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>';
         echo '<script type="text/javascript">';
         echo 'jQuery( document ).ready(function() { 
-            jQuery(".checkbox-rec_vid").append("<span > &#8505;</span>");
+            jQuery(".checkbox-rec_vid").append("<span onclick="call_rec_video_modal()" class="rec_video_modal_icon"> &#8505;</span>");
         })';
         echo '</script>';
         echo '<script type="text/javascript">';
