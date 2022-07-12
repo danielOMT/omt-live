@@ -35,4 +35,6 @@ const alertStatus = (e) => {
 }
 jQuery(document).on("click", "#rec_vid", alertStatus);
 
+alert();
+
 
