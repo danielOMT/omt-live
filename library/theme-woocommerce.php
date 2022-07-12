@@ -498,6 +498,7 @@ add_action('wp_enqueue_scripts', function () {
         // In file /wp-content/plugins/flexible-checkout-fields-pro/assets/js/front.min.js
         // Add "$" backward compatibility for custom scripts
         wp_enqueue_script('jquery-no-conflict', get_stylesheet_directory_uri() . '/library/js/jquery-no-conflict.js', ['inspire_checkout_fields_front_pro_js']);
+        wp_enqueue_script('scripts', get_stylesheet_directory_uri() . '/library/js/scripts.js');
     }
 });
 
