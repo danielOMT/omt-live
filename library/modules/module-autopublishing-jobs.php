@@ -17,6 +17,14 @@ $hubspot_formular_id = $zeile['inhaltstyp'][0]['hubspot_formular_id'];
 $description = $zeile['inhaltstyp'][0]['description'];
 $lightbox_headline = $zeile['inhaltstyp'][0]['lightbox_headline'];
 
+$rec_video_data = array(
+    'spalte_headline' => $spalte_headline,
+    'spalte_text_oben' => $spalte_text_oben,
+    'button_label' => $button_label,
+    'description' => $description,
+    'lightbox_headline' => $lightbox_headline,
+);
+set_transient('rec_video_data', $rec_video_data, 60 * 60 * 12);
 
 $countdown_im_header = get_field('countdown_im_header');
 $countdown_download_button_url = $countdown_im_header ? getPost()->field('countdown_download_button_url') : '';

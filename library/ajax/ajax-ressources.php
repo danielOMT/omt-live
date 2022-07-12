@@ -8,6 +8,7 @@ require_once ('ajax-webinarefilter.php');
 require_once ('ajax-podcasts.php');
 require_once ('ajax-umfrage.php');
 require_once ('ajax-job-filter.php');
+require_once ('ajax-rec-video.php');
 require_once ('ajax-toolkategorien.php');
 require_once('ajax-toolanbieter/ajax-toolanbieter.php');
 require_once('ajax-toolanbieter/ajax-subnav.php');
@@ -170,3 +171,12 @@ function assets_jobFilterajax() {
     ));
 }
 add_action('wp_enqueue_scripts', 'assets_jobFilterajax', 100);
+
+function assets_recVideoajax() {
+    wp_enqueue_script('ajax-rec-video', get_stylesheet_directory_uri() . '/library/ajax/ajax-rec-video.js', ['jquery'], null, true);
+    wp_localize_script('ajax-rec-video', 'recvideo', array(
+        'nonce' => wp_create_nonce('recvideo'),
+        'ajax_url' => admin_url('admin-ajax.php')
+    ));
+}
+add_action('wp_enqueue_scripts', 'assets_recVideoajax', 100);
