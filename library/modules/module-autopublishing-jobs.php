@@ -110,25 +110,25 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                 <?php endif; ?>
                 </a><!--data-ticket-type/-->
 
-                    <div class="produkt-beschreibung">
-                        <?php if( $highlighted == 'yes' ):?>
-                        <div class="x-mb-2 rec_vid_p_h">
-                         <?php else:?>
-                        <div class="x-mb-2 rec_vid_p">
-                        <?php endif;?>
-                            <span>&#8505;</span> 
-                            <!-- [if lte IE 8]>
-                                <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
-                            <![endif]-->
-                             <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script> 
-                            <?php echo ModalView::loadTemplate('default', [
-                               'title' => $lightbox_headline,
-                               'buttonTitle' => $button_label,
-                               'buttonClass' => 'rec_video_link',
-                               'content' => '<div><h4>'.$spalte_headline.'</h4><h5>'.$spalte_text_oben.'</h5><div class="produkt-beschreibung ">'.$rec_video_bull.'</div></div>'
-                            ]) ?>
-                        </div>
+                <div class="produkt-beschreibung">
+                    <?php if( $highlighted == 'yes' ):?>
+                    <div class="x-mb-2 rec_vid_p_h">
+                     <?php else:?>
+                    <div class="x-mb-2 rec_vid_p">
+                    <?php endif;?>
+                        <span>&#8505;</span> 
+                        <!-- [if lte IE 8]>
+                            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                        <![endif]-->
+                         <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script> 
+                        <?php echo ModalView::loadTemplate('default', [
+                           'title' => $lightbox_headline,
+                           'buttonTitle' => $button_label,
+                           'buttonClass' => 'rec_video_link',
+                           'content' => '<div><h4>'.$spalte_headline.'</h4><h5>'.$spalte_text_oben.'</h5><div class="produkt-beschreibung ">'.$rec_video_bull.'</div></div>'
+                        ]) ?>
                     </div>
+                </div>
                     
                 <?php if ($lager > 0 && $active == true && (empty($countdown_download_button_url) || empty($countdown_download_button_label))) : ?>
             
@@ -137,3 +137,15 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
 
 
 <?php endforeach; ?> 
+<style>
+    .noHover{
+        transform: initial !important;
+    }
+</style>
+<script>
+    $(document).ready(function(){
+        $('.rec_video_link').click(function(){
+            $('.ticket').addClass('noHover');
+        })
+    })
+</script>

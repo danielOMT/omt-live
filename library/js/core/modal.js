@@ -5,13 +5,16 @@ function xModal(name = null) {
 
         open(name = null) {
             if (!name || name == this.name) {
-                this.showModal = true;
+                setTimeout(() => {
+                    this.showModal = true; 
+                }, 200);
             }
         },
 
         close(name = null) {
             if (!name || name == this.name) {
                 this.showModal = false;
+                $('.ticket').removeClass('noHover');
             }
         }
     };
