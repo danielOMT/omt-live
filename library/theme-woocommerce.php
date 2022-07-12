@@ -1003,6 +1003,7 @@ function getDescriptionForRecVideo($description){
 }
 
 function test(){
+    echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>';
     echo '<script type="text/javascript">';
     echo 'jQuery( document ).ready(function() { 
         jQuery(".checkbox-rec_vid").append("<span > &#8505;</span>");
