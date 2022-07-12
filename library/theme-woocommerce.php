@@ -1005,20 +1005,4 @@ function getDescriptionForRecVideo($description){
 
 
 
-add_action( 'wp_footer', 'bbloomer_add_jscript_checkout', 9999 );
- 
-function bbloomer_add_jscript_checkout() {
-   global $wp;
-   if ( is_checkout() ) {
-      echo '<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>';
-        echo '<script type="text/javascript">';
-        echo 'jQuery( document ).ready(function() { 
-            jQuery(".checkbox-rec_vid").append("<span > &#8505;</span>");
-        })';
-        echo '</script>';
-        echo '<script type="text/javascript">';
-        echo 'function call_rec_video_modal(){ jQuery(".rec_video_link").trigger("click");  return;}';
-        echo '</script>';
-   }
-}
 
