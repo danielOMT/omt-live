@@ -2152,9 +2152,7 @@ $( document ).ready(function() {
     });
 });
 
-$( document ).ready(function() {
-    alert();
-});
+
 
 $( document ).ready(function() {
     $(".checkbox-rec_vid").append("<span onclick='call_rec_video_modal()' class='rec_video_modal_icon'> &#8505;</span>");
