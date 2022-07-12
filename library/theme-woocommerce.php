@@ -1010,7 +1010,7 @@ add_action( 'wp_footer', 'bbloomer_add_jscript_checkout', 9999 );
 function bbloomer_add_jscript_checkout() {
    global $wp;
    if ( is_checkout() ) {
-      echo '<script>paste your script here!</script>';
+      echo '<script>alert()</script>';
    }
 }
 
