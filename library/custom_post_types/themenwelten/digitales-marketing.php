@@ -1,8 +1,8 @@
 <?php
 add_submenu_page( 'themenwelten', 'Digital Marketing', 'Digital Marketing',
-    'read', 'edit.php?post_type=ditigalesmarketing');
+    'read', 'edit.php?post_type=digitalesmarketing');
 function digitales_marketing() {
-    register_post_type('ditigalesmarketing', array(
+    register_post_type('digitalesmarketing', array(
         'labels' => array(
             'name' => __('Digital Marketing', 'bonestheme'), /* This is the Title of the Group */
             'singular_name' => __('Artikel', 'bonestheme'), /* This is the individual type */
