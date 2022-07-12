@@ -124,7 +124,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                      <?php else:?>
                     <div class="x-mb-2 rec_vid_p">
                     <?php endif;?>
-                        <span>&#10003;</span>
+                        <b><span>&#10003;</span></b>
                         <!-- [if lte IE 8]>
                             <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
                         <![endif]-->
