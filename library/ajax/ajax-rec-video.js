@@ -38,6 +38,7 @@ jQuery(document).on("click", "#rec_vid", alertStatus);
 
 
 $( document ).ready(function() {
+    alert();
     $(".checkbox-rec_vid").append("<span onclick='call_rec_video_modal()' class='rec_video_modal_icon'> &#8505;</span>");
 });
 function call_rec_video_modal(){
