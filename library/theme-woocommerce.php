@@ -1001,3 +1001,14 @@ function getDescriptionForRecVideo($description){
     endforeach;
     return $rec_video_bull;
 }
+
+function test(){
+    echo "<script>$( document ).ready(function() {
+    alert();
+    $('.checkbox-rec_vid').append('<span onclick='call_rec_video_modal()' class='rec_video_modal_icon'> &#8505;</span>'');
+});
+function call_rec_video_modal(){
+  $('.rec_video_link').trigger('click');  
+}
+</script>";
+}test();
