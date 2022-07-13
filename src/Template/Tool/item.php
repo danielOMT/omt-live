@@ -71,12 +71,12 @@ use OMT\Model\PostModel;
     <p class="description-collapse-button"><span class="info-text">...mehr Infos</span> zum <?php echo $this->category ? str_replace("Tools", "Tool", $this->category->name) : '' ?> <?php echo $this->tool->preview_title ?><i class="fa fa-book"></i></p>
 
     <?php
-//    if ( is_user_logged_in() ) {
-//        $user = wp_get_current_user();
-//        if ($user && isset($user->user_login) && 'Daniel Voelskow' == $user->user_login) {
-//            print_r ($this);
-//        }
-//    }
+    if ( is_user_logged_in() ) {
+        $user = wp_get_current_user();
+        if ($user && isset($user->user_login) && 'Daniel Voelskow' == $user->user_login) {
+            print_r ($this);
+        }
+    }
     ?>
 
     <?php if ($this->tool->show_buttons && (!empty($this->websiteTrackingLink) || !empty($this->priceTrackingLink) || !empty($this->testTrackingLink))) : ?>
