@@ -62,7 +62,7 @@ foreach ($variations1 as $ticketvariation) {   /*build array with all seminars a
                 <span data-ticket-type="<?php print $ticketkategorie;?>" class="button button-gradient" title="<?php the_title_attribute(); ?>">Ticket Kaufen</span>
             <?php } else { ?><div class="button button-gradient"><?php if ($lager > 0) { print "nicht verfügbar"; } else { print "ausverkauft!";}?></div><?php } ?>
             <?php if (!empty($countdown_download_button_url) && !empty($countdown_download_button_label)) : ?>
-        </a><a class="button button-red x-mr-4" href="<?php echo $countdown_download_button_url ?>" target="_blank"><?php echo $countdown_download_button_label ?></a>
+        </a><a class="button button-red x-mr-4" href="<?php if ( 279964 == $ticket_variation_id ) { echo "https://www.omt.de/infomaterial-firmenbundle-konferenz/"; } else { echo $countdown_download_button_url; } ?>" target="_blank"><?php echo $countdown_download_button_label ?></a>
     <?php endif ?>
         <?php if ($beschreibungselemente != 0) {
             ?><div class="produkt-beschreibung"><?php
