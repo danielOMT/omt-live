@@ -1,6 +1,36 @@
 /////CHANGE BIDS FOR CLICKS, BUDGETS COME BELOW
 $(document).on('click', '.change-bid', function(e) {
-    $(this).parent().html('<input style="width:100%;" type="number" step="0.01" min="2" max="25" placeholder="neues Gebot"><span class="go">bestätigen</span><span class="cancel">abbrechen</span>');
+    // $(this).parent().html('<span class="input-number-decrement">–</span><input class="input-number" style="width:100%;" type="number" step=".50" min="2" max="100" placeholder="0"><span class="input-number-increment">+</span><span class="go">bestätigen</span><span class="cancel">abbrechen</span>');
+    $(this).parent().html('<input class="input-number" style="width:100%; height:30px; margin-right: 10px;" type="number" step=".50" min="2" max="100" placeholder="0"><span class="go">bestätigen</span><span class="cancel">abbrechen</span>');
+    $(".input-number").keypress(function (evt) {
+        evt.preventDefault();
+    });
+    // var min = 2;
+    // var max = 50;
+    //
+    // $('.input-number-decrement').click(function () {
+    //     var value = $(this).parent().find('.input-number').val();
+    //     if( value <= min) {
+    //         $(this).parent().find('.input-number').val(0);
+    //     } else {
+    //         $(this).parent().find('.input-number').val(value-0.5);
+    //     }
+    // });
+    //
+    // $('.input-number-increment').click(function () {
+    //     var value = $(this).parent().find('.input-number').val();
+    //     var numberFields = $(this).parent().find('.input-number'),
+    //         len = numberFields.length,
+    //         numberField = null;
+    //     if( value < min) {
+    //         $(this).parent().find('.input-number').val(min);
+    //     } else {
+    //         var num = new Number(value);
+    //         newValue = parseInt(num, 10) + 0.5;
+    //         console.log(newValue);
+    //         $(this).parent().find('.input-number').val(newValue);
+    //     }
+    // });
 });
 
 $(document).on('click', '.gebote-wrap tr td .cancel', function(e) {
