@@ -68,7 +68,7 @@ use OMT\Model\PostModel;
         <?php echo removeLink($this->previewText) ?>
     </div>
 
-    <p class="description-collapse-button"><span class="info-text">...mehr Infos</span> zum <?php echo $this->category ? str_replace("Tools", "Tool", $this->category->name) : '' ?> <?php echo $this->tool->preview_title ?><i class="fa fa-book"></i></p>
+    <p class="description-collapse-button"><span class="info-text">...mehr Infos</span> zum <?php echo str_replace("Tools", "Tool", $this->category->name) . " "; ?> <?php echo $this->tool->preview_title ?><i class="fa fa-book"></i></p>
 
     <?php
     if ( is_user_logged_in() ) {
