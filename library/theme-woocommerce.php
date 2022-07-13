@@ -5,6 +5,8 @@ use OMT\Model\WooCart;
 use OMT\Model\WooProduct;
 use OMT\Services\Checkout;
 use OMT\Services\Order;
+use OMT\View\Components\ModalView;
+use OMT\View\View;
 
 //declaring woocommerce support
 function mytheme_add_woocommerce_support() {
@@ -392,12 +394,12 @@ function product_thumbnail_in_checkout( $product_name, $cart_item, $cart_item_ke
     {   
         $product_type = get_post_meta( $cart_item['product_id'], '_custom_product_type', true );
         if ($product_type == 'job') {
-           echo '<style>.checkbox-recruiting_video{display:block !important;} .wc-gzd-product-name-left{display:none !important;}</style>';
+           echo '<style>.wc-gzd-checkbox-placeholder-rec_vid{display:block !important;} .wc-gzd-product-name-left{display:none !important;}</style>';
         }elseif($product_type =='Agenturfinder'){
             $image_html  = '<div class="product-item-thumbnail">'.$cart_item['data']->get_image(array( 400, 500)).'</div> ';
-             echo '<style>.checkbox-recruiting_video{display:none !important;} .wc-gzd-product-name-left{display:none !important;}</style>';
+             echo '<style>.wc-gzd-checkbox-placeholder-rec_vid{display:none !important;} .wc-gzd-product-name-left{display:none !important;}</style>';
         }else{
-            echo '<style>.checkbox-recruiting_video{display:none !important;}</style>';
+            echo '<style>.wc-gzd-checkbox-placeholder-rec_vid{display:none !important;}</style>';
             $image_html  = '<div class="product-item-thumbnail">'.$cart_item['data']->get_image(array( 350, 180)).'</div> ';
         }
         $product_name = $image_html . $product_name;
@@ -966,3 +968,41 @@ function omt_add_var_variation_data( $variations ) {
 
 
 /*---------------------------------- custom fields for agenturfinder /---------------------------------*/
+
+
+// Add custom checkout field: woocommerce_review_order_before_submit
+add_action( 'woocommerce_review_order_before_submit', 'my_custom_checkout_field' );
+function my_custom_checkout_field() {
+    $data = get_transient('rec_video_data');
+    echo '<div id="my_custom_checkout_field">';
+        echo '<div class="x-mb-2 rec_vid_p">
+                        <span class="for_ceck_b">&#8505;</span> 
+                        <!-- [if lte IE 8]>
+                            <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
+                        <![endif]-->
+                         <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script>';
+        echo ModalView::loadTemplate('default', [
+                          'title' => $data['spalte_headline'],
+                           'buttonTitle' => 'open',
+                           'buttonClass' => 'rec_video_link for_ceck_b',
+                           'content' => '<div><h4>'.$data['spalte_headline'].'</h4><h5>'.$data['spalte_text_oben'].'</h5><div class="produkt-beschreibung ">'.getDescriptionForRecVideo($data['description']).'</div></div>'
+                        ]) ;
+                    echo '</div>';
+    
+    echo '</div>';
+}
+
+
+function getDescriptionForRecVideo($description){
+    foreach ($description as $key => $descriptions) :
+        foreach ($descriptions as $key2 => $value) :
+        $rec_video_bull .= "<p class='check_b'><span>&#10003;</span>" . $value . "</p>";
+        endforeach;
+    endforeach;
+    return $rec_video_bull;
+}
+
+
+
+
+

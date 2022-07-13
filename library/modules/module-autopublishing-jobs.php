@@ -17,6 +17,14 @@ $hubspot_formular_id = $zeile['inhaltstyp'][0]['hubspot_formular_id'];
 $description = $zeile['inhaltstyp'][0]['description'];
 $lightbox_headline = $zeile['inhaltstyp'][0]['lightbox_headline'];
 
+$rec_video_data = array(
+    'spalte_headline' => $spalte_headline,
+    'spalte_text_oben' => $spalte_text_oben,
+    'button_label' => $button_label,
+    'description' => $description,
+    'lightbox_headline' => $lightbox_headline,
+);
+set_transient('rec_video_data', $rec_video_data, 60 * 60 * 12);
 
 $countdown_im_header = get_field('countdown_im_header');
 $countdown_download_button_url = $countdown_im_header ? getPost()->field('countdown_download_button_url') : '';
@@ -116,17 +124,18 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                      <?php else:?>
                     <div class="x-mb-2 rec_vid_p">
                     <?php endif;?>
-                        <span>&#8505;</span> 
+                        <span style="font-weight:bold">&#10003;</span>
                         <!-- [if lte IE 8]>
                             <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2-legacy.js"></script>
                         <![endif]-->
                          <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/v2.js"></script> 
                         <?php echo ModalView::loadTemplate('default', [
                            'title' => $lightbox_headline,
-                           'buttonTitle' => $button_label,
+                           'buttonTitle' => $button_label . '<span> &#8505;</span>',
                            'buttonClass' => 'rec_video_link',
                            'content' => '<div><h4>'.$spalte_headline.'</h4><h5>'.$spalte_text_oben.'</h5><div class="produkt-beschreibung ">'.$rec_video_bull.'</div></div>'
                         ]) ?>
+
                     </div>
                 </div>
                     
