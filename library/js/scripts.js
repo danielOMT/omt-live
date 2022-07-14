@@ -2190,16 +2190,9 @@ $( document ).ready(function() {
 
 
 
-// $( document ).ready(function() {
-    
-// });
 
-$(document).on('load', function(){
-    var text = $('.variation-AgenturfinderProdukte').text();
-    if(text.indexOf("Agenturfinder") >= 0){
-        $('.woocommerce-gzd-legal-checkbox-text a:first').attr("href", "/agb#agenturfinder");
-    }
-});
+
+
 
 /*excludes wprocket
 
