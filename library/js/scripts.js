@@ -1062,39 +1062,39 @@ function lazy_youtube() {
 }
 
 
-// function lazy_youtube_on_load() {
-//     $(window).on('load', function() {
-//         $('.helper-youtube').each(function() {
-//                 if (!$(this).hasClass('lazy-youtube-visible')) {
-//                     var youtube = document.querySelectorAll(".lazy-youtube");
+function lazy_youtube_on_load() {
+    $(window).on('load', function() {
+        $('.helper-youtube').each(function() {
+                if (!$(this).hasClass('lazy-youtube-visible')) {
+                    var youtube = document.querySelectorAll(".lazy-youtube");
 
-//                     for (var i = 0; i < youtube.length; i++) {
-//                         // thumbnail image source.
-//                         var source = "https://img.youtube.com/vi/" + youtube[i].dataset.embed + "/sddefault.jpg";
-//                         // Load the image asynchronously
-//                         var image = new Image();
-//                         image.src = source;
-//                         image.addEventListener("load", function () {
-//                             //  youtube[i].appendChild(image);
-//                         }(i));
-//                         //youtube[i].addEventListener("click", function () { //create youtube from screenshot on click - disabled this so the video is created when frame is visible
-//                         var iframe = document.createElement("iframe");
+                    for (var i = 0; i < youtube.length; i++) {
+                        // thumbnail image source.
+                        var source = "https://img.youtube.com/vi/" + youtube[i].dataset.embed + "/sddefault.jpg";
+                        // Load the image asynchronously
+                        var image = new Image();
+                        image.src = source;
+                        image.addEventListener("load", function () {
+                            //  youtube[i].appendChild(image);
+                        }(i));
+                        //youtube[i].addEventListener("click", function () { //create youtube from screenshot on click - disabled this so the video is created when frame is visible
+                        var iframe = document.createElement("iframe");
 
-//                         iframe.setAttribute("frameborder", "0");
-//                         iframe.setAttribute("allowfullscreen", "");
-//                         iframe.setAttribute("src", "https://www.youtube.com/embed/" + this.dataset.embed + "?rel=0&showinfo=0&autoplay=0");
+                        iframe.setAttribute("frameborder", "0");
+                        iframe.setAttribute("allowfullscreen", "");
+                        iframe.setAttribute("src", "https://www.youtube.com/embed/" + this.dataset.embed + "?rel=0&showinfo=0&autoplay=0");
 
-//                         this.innerHTML = "";
-//                         this.appendChild(iframe);
-//                         // });
-//                     }
-//                     $(this).addClass('lazy-youtube-visible');
-//                 }
+                        this.innerHTML = "";
+                        this.appendChild(iframe);
+                        // });
+                    }
+                    $(this).addClass('lazy-youtube-visible');
+                }
             
-//         });
-//     });
-// }
-// lazy_youtube_on_load();
+        });
+    });
+}
+lazy_youtube_on_load();
 
 
 function lazy_tiktok() {
