@@ -2190,7 +2190,12 @@ $( document ).ready(function() {
 
 
 
-
+$( document ).ready(function() {
+    var text = $('.variation-AgenturfinderProducts').text();
+    if(text.indexOf("Agenturfinder") >= 0){
+        $('.woocommerce-gzd-legal-checkbox-text a:first').attr("href", "/agb#agenturfinder");
+    }
+});
 
 
 
