@@ -1280,11 +1280,13 @@ add_action( 'wp_footer', 'bbloomer_add_jscript_checkout', 9999 );
 function bbloomer_add_jscript_checkout() {
    global $wp;
    if ( is_checkout() ) {
-      echo "$( document ).ready(function() {
-        var text = $('.variation-AgenturfinderProdukte').text();
-        if(text.indexOf('Agenturfinder') >= 0){
-            $('.woocommerce-gzd-legal-checkbox-text a:first').attr('href', '/agb#agenturfinder');
-        }
-    });";
+      ?>
+      <script>$( document ).ready(function() {
+    var text = $('.variation-AgenturfinderProdukte').text();
+    if(text.indexOf("Agenturfinder") >= 0){
+        $('.woocommerce-gzd-legal-checkbox-text a:first').attr("href", "/agb#agenturfinder");
+    }
+});</script>
+    <?php
    }
 }
