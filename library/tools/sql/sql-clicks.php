@@ -65,14 +65,12 @@ function get_api_all_clicks() {
                 $getbidssql = "SELECT * FROM `omt_bids` WHERE `timestamp_valid_from`<$timestamp_unix AND `timestamp_valid_until`>$timestamp_unix AND `toolkategorie_id`=" . $trackingLink->toolkategorie_id . " AND `tool_id` != " . $trackingLink->tool_id . " AND `bid_kosten` <= " . $bid_kosten . " ORDER BY `bid_kosten` DESC";
                 $allbidsquery = $conn->query($getbidssql); //check query if we have found any
                 //testing: https://www.omt.de/json-test/
-                print "<hr style='width:100%;display:block;'>";
-                print "<p style='width:100%;display:block;'>allbidquery:</p>";
-                print "<p style='width:100%;display:block;'>Toolkategorie: " . $trackingLink->toolkategorie_id . "</p>";
-                print "<p style='width:100%;display:block;'>timestamp Click: " . $timestamp_unix . "</p>";
-                print "<p style='width:100%;display:block;'>timestamp xovibidstart: 1657557338</p>";
-                print "<p style='width:100%;display:block;'>timestamp xovibidend: 9999999999</p>";
-                print "<p style='width:100%;display:block;'>current click costs: " . $bid_kosten . "</p>";
-                print "<hr style='width:100%;display:block;'>";
+//                print "<hr style='width:100%;display:block;'>";
+//                print "<p style='width:100%;display:block;'>allbidquery:</p>";
+//                print "<p style='width:100%;display:block;'>Toolkategorie: " . $trackingLink->toolkategorie_id . "</p>";
+//                print "<p style='width:100%;display:block;'>timestamp Click: " . $timestamp_unix . "</p>";
+//                print "<p style='width:100%;display:block;'>current click costs: " . $bid_kosten . "</p>";
+//                print "<hr style='width:100%;display:block;'>";
 
                 if (mysqli_num_rows($allbidsquery) > 0) {
                     $foundbid = 0; //we will only continue if no valid bid has been found yet! A bid will only be valid if the current tool_id has show_buttons set to 1!
@@ -84,26 +82,26 @@ function get_api_all_clicks() {
                             $isactivesqlquery = $conn->query($isactivesql); //check query if we have found any
                             if (mysqli_num_rows($isactivesqlquery) > 0) { //if the tool is show_buttons=1, we can go on, else go to next one
                                 $foundbid = 1;
-                                print "<hr style='width:100%;display:block;'>";
+                              //  print "<hr style='width:100%;display:block;'>";
                                 $bid_kosten_next = $allbidsrow['bid_kosten']; //next highest
-                                print "<p style='width:100%;display:block;'>bid_kosten_next: " . $bid_kosten_next . "</p>";
+                            //    print "<p style='width:100%;display:block;'>bid_kosten_next: " . $bid_kosten_next . "</p>";
                                 $bid_kosten_diff = $bid_kosten - $bid_kosten_next; //difference between current click bidding and next highest (or equally high) bid
-                                print "<p style='width:100%;display:block;'>bid_kosten_diff: " . $bid_kosten_diff . "</p>";
+                             //  print "<p style='width:100%;display:block;'>bid_kosten_diff: " . $bid_kosten_diff . "</p>";
                                 if ($bid_kosten_diff > 0.5) { //if difference is greater than 0.5 (else no action necessary as its either equal or already 0.5 higher)
-                                    $bid_kosten_new = $bid_kosten_next + 0.5; // set current click cost to next lowest bid cost plus 0.5 (biddings operate in 0.5 steps)
-                                    print "<p style='width:100%;display:block;'>diff is bigger than 0.5, new bid_kost = next highest+0.5: " . $bid_kosten_new . "</p>";
+                                    $bid_kosten = $bid_kosten_next + 0.5; // set current click cost to next lowest bid cost plus 0.5 (biddings operate in 0.5 steps)
+                            //        print "<p style='width:100%;display:block;'>diff is bigger than 0.5, new bid_kost = next highest+0.5: " . $bid_kosten_new . "</p>";
                                 } //(else no action necessary as current click bid cost is either equal or already only 0.5 higher compared to next highest bid)
                             }  ///END OF check ef2sv_tools table if the current tool_id is active:
                         } //end of while checking allbids in the category of the active click
                     } //end of checking if active bid has been found
                     if (0 == $foundbid ) { //if after checking through all found bids, no valid bid was included because all of them were expired or below budget or w/e
-                        $bid_kosten_new = 2; //in this case we also set bid_kosten to 2, because the current click has NO ACTIVE competition! Same as on the else 2 lines later where no competition bids would have been found at all, while here no ACTIVE competition bid was found!
+                        $bid_kosten = 2; //in this case we also set bid_kosten to 2, because the current click has NO ACTIVE competition! Same as on the else 2 lines later where no competition bids would have been found at all, while here no ACTIVE competition bid was found!
                     }
                 } else { //no alternative bids found in category of the active click:
-                    $bid_kosten_new = 2;
-                    print "<p style='width:100%;display:block;'>No alternative bid, setting bid cost to 2:" . $bid_kosten_new . "</p>";
+                    $bid_kosten = 2;
+                  //  print "<p style='width:100%;display:block;'>No alternative bid, setting bid cost to 2:" . $bid_kosten . "</p>";
                 } // if there is no concurrenting bid in the category, the user only pays the minimum cost of 2€ no matter how high his max bid is!
-                print "<hr style='width:100%;display:block;'>";
+             //   print "<hr style='width:100%;display:block;'>";
 
             } // end of query if $trackingLink->toolkategorie_id != 0 to make sure we only change category bids!
             ///END OF zweithöchste gebot system:
