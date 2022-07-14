@@ -15,7 +15,7 @@ function omt_youtube( $atts ) {
             <div class="vidembed">
                 <iframe title="YouTube video player" src="https://www.youtube.com/embed/'.$atts['id'].'?enablejsapi=1&origin=' . get_the_permalink() . '" frameborder="0"  allowfullscreen></iframe>
             </div></div>';*/
-   return '<div class="vidembed_wrap "><div class="youtube lazy-youtube" data-embed="' . $atts['id'] . '">
+   return '<div class="vidembed_wrap "><div class="youtube lazy-youtube helper-youtube" data-embed="' . $atts['id'] . '">
 <div class="play-button"></div>
 </div></div>';
 
