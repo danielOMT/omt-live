@@ -225,7 +225,7 @@ if ( ( !isset($toolid) ) OR ("budget" == $toolid) ) {
     <table class="gebote-wrap">
         <tr>
             <th style="width: 250px;">Kategorie</th>
-            <th style="width: 200px;">Aktuelles Gebot</th>
+            <th style="width: 200px;">Aktuelles Maximalgebot<div class="tooltip"><sup>(?)</sup><span class="tooltiptext">Leg hier Dein Maximalgebot fest, welches Du pro Klick zu zahlen bereit bist. Die tatsächlichen Kosten pro Klick werden jedoch an dem nächst-niedrigerem Gebot der Konkurrenz berechnet. Beispiel: Wenn Du 5€ bietest und das nächste Gebot bei 3€ liegen sollte, wird das System nur 3,50€ anstelle der vollen 5€ für diesen Klick berechnen.</span></div></th>
             <th style="width: 125px;">Klicks / <?php print date('M');?><div class="tooltip"><sup>(?)</sup><span class="tooltiptext">Summe ALLER Klicks auf dieser Kategorie im aktuellen Monat</span></div></th>
             <th style="width: 125px;">Kosten / <?php print date('M');?><div class="tooltip"><sup>(?)</sup><span class="tooltiptext">Summe ALLER Klick-Kosten dieser Kategorie im aktuellen Monat</span></div></th>
         </tr>
