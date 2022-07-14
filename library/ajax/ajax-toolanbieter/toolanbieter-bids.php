@@ -318,7 +318,7 @@ if ( ( !isset($toolid) ) OR ("budget" == $toolid) ) {
         <table class="bid-history">
             <tr>
                 <th class="">Kategorie</th>
-                <th class="">Gebot</th>
+                <th class="">Maximalgebot</th>
                 <th class="">Klicks</th>
                 <th class="">Kosten</th>
                 <th class="">Start</th>
