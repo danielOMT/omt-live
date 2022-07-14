@@ -58,37 +58,42 @@ function get_api_all_clicks() {
             }
 
             ///zweithöchste gebot system:
-            //get all the next highest or equal high bid compared to our current click, from the same tool category:
-            $getbidssql = "SELECT * FROM `omt_bids` WHERE `timestamp_valid_from`<$timestamp_unix AND `timestamp_valid_until`>$timestamp_unix AND `toolkategorie_id`=" . $trackingLink->toolkategorie_id . " AND `tool_id` != " . $trackingLink->tool_id . " AND `bid_kosten` <= " . $bid_kosten . " ORDER BY `bid_kosten` DESC LIMIT 1";
-            $allbidsquery = $conn->query($getbidssql); //check query if we have found any
-            //testing: https://www.omt.de/json-test/
-            print "<hr style='width:100%;display:block;'>";
-            print "<p style='width:100%;display:block;'>allbidquery:</p>";
-            print "<p style='width:100%;display:block;'>Toolkategorie: " . $trackingLink->toolkategorie_id . "</p>";
-            print "<p style='width:100%;display:block;'>timestamp Click: " . $timestamp_unix . "</p>";
-            print "<p style='width:100%;display:block;'>timestamp xovibidstart: 1657557338</p>";
-            print "<p style='width:100%;display:block;'>timestamp xovibidend: 9999999999</p>";
-            print "<p style='width:100%;display:block;'>current click costs: " . $bid_kosten . "</p>";
-            print "<hr style='width:100%;display:block;'>";
+            ///
+            /// if $trackingLink->toolkategorie_id is not 0 - which means is NOT a profile or alternative page click but a bidded one:
+            if ( 0 != $trackingLink->toolkategorie_id ) {
+                //get all the next highest or equal high bid compared to our current click, from the same tool category:
+                $getbidssql = "SELECT * FROM `omt_bids` WHERE `timestamp_valid_from`<$timestamp_unix AND `timestamp_valid_until`>$timestamp_unix AND `toolkategorie_id`=" . $trackingLink->toolkategorie_id . " AND `tool_id` != " . $trackingLink->tool_id . " AND `bid_kosten` <= " . $bid_kosten . " ORDER BY `bid_kosten` DESC LIMIT 1";
+                $allbidsquery = $conn->query($getbidssql); //check query if we have found any
+                //testing: https://www.omt.de/json-test/
+                print "<hr style='width:100%;display:block;'>";
+                print "<p style='width:100%;display:block;'>allbidquery:</p>";
+                print "<p style='width:100%;display:block;'>Toolkategorie: " . $trackingLink->toolkategorie_id . "</p>";
+                print "<p style='width:100%;display:block;'>timestamp Click: " . $timestamp_unix . "</p>";
+                print "<p style='width:100%;display:block;'>timestamp xovibidstart: 1657557338</p>";
+                print "<p style='width:100%;display:block;'>timestamp xovibidend: 9999999999</p>";
+                print "<p style='width:100%;display:block;'>current click costs: " . $bid_kosten . "</p>";
+                print "<hr style='width:100%;display:block;'>";
 
-            if (mysqli_num_rows($allbidsquery) > 0) {
-                while ($allbidsrow = mysqli_fetch_assoc($allbidsquery)) {
-                    print "<hr style='width:100%;display:block;'>";
+                if (mysqli_num_rows($allbidsquery) > 0) {
+                    while ($allbidsrow = mysqli_fetch_assoc($allbidsquery)) {
+                        print "<hr style='width:100%;display:block;'>";
 
-                    $bid_kosten_next = $allbidsrow['bid_kosten']; //next highest
-                    print "<p style='width:100%;display:block;'>bid_kosten_next: " . $bid_kosten_next . "</p>";
-                    $bid_kosten_diff = $bid_kosten - $bid_kosten_next; //difference between current click bidding and next highest (or equally high) bid
-                    print "<p style='width:100%;display:block;'>bid_kosten_diff: " . $bid_kosten_diff . "</p>";
-                    if ($bid_kosten_diff > 0.5) { //if difference is greater than 0.5 (else no action necessary as its either equal or already 0.5 higher)
-                        $bid_kosten_new = $bid_kosten_next + 0.5; // set current click cost to next lowest bid cost plus 0.5 (biddings operate in 0.5 steps)
-                        print "<p style='width:100%;display:block;'>diff is bigger than 0.5, new bid_kost = next highest+0.5: " . $bid_kosten_new . "</p>";
-                    } //(else no action necessary as current click bid cost is either equal or already only 0.5 higher compared to next highest bid)
-                }
-            } else {
-                $bid_kosten_new = 2;
-                print "<p style='width:100%;display:block;'>No alternative bid, setting bid cost to 2:" . $bid_kosten_new . "</p>";
-            } // if there is no concurrenting bid in the category, the user only pays the minimum cost of 2€ no matter how high his max bid is!
-            print "<hr style='width:100%;display:block;'>";
+                        $bid_kosten_next = $allbidsrow['bid_kosten']; //next highest
+                        print "<p style='width:100%;display:block;'>bid_kosten_next: " . $bid_kosten_next . "</p>";
+                        $bid_kosten_diff = $bid_kosten - $bid_kosten_next; //difference between current click bidding and next highest (or equally high) bid
+                        print "<p style='width:100%;display:block;'>bid_kosten_diff: " . $bid_kosten_diff . "</p>";
+                        if ($bid_kosten_diff > 0.5) { //if difference is greater than 0.5 (else no action necessary as its either equal or already 0.5 higher)
+                            $bid_kosten_new = $bid_kosten_next + 0.5; // set current click cost to next lowest bid cost plus 0.5 (biddings operate in 0.5 steps)
+                            print "<p style='width:100%;display:block;'>diff is bigger than 0.5, new bid_kost = next highest+0.5: " . $bid_kosten_new . "</p>";
+                        } //(else no action necessary as current click bid cost is either equal or already only 0.5 higher compared to next highest bid)
+                    }
+                } else {
+                    $bid_kosten_new = 2;
+                    print "<p style='width:100%;display:block;'>No alternative bid, setting bid cost to 2:" . $bid_kosten_new . "</p>";
+                } // if there is no concurrenting bid in the category, the user only pays the minimum cost of 2€ no matter how high his max bid is!
+                print "<hr style='width:100%;display:block;'>";
+
+            } // end of query if $trackingLink->toolkategorie_id != 0 to make sure we only change category bids!
             ///END OF zweithöchste gebot system:
 
     
