@@ -251,17 +251,17 @@ if ( ( !isset($toolid) ) OR ("budget" == $toolid) ) {
                     while($row = mysqli_fetch_assoc($clicks_query)) {
                         $timestamp_unix = $row['timestamp_unix'];
                         if(date('Y-m', $timestamp_unix) === date('Y-m')) { //check if click is im current month!
-                            $bid_kosten = $row['bid_kosten'];
+                            $this_bid_kosten = $row['bid_kosten'];
                             $tool_id = $row['tool_id'];
                             $toolkategorie_id = $row['toolkategorie_id'];
                             $arr_data = array(
                                 "timestamp" => $timestamp_unix,
-                                "kosten" => $bid_kosten,
+                                "kosten" => $this_bid_kosten,
                                 "catid" => $toolkategorie_id
                             );
                             array_push($allclicks, $arr_data); //array im Moment not in use
                             $count++;
-                            $sumcosts += $bid_kosten;
+                            $sumcosts += $this_bid_kosten;
                         }
                     }
                 }
