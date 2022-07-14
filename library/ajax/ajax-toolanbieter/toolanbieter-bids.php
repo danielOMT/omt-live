@@ -225,7 +225,7 @@ if ( ( !isset($toolid) ) OR ("budget" == $toolid) ) {
     <table class="gebote-wrap">
         <tr>
             <th style="width: 250px;">Kategorie</th>
-            <th style="width: 200px;">Aktuelles Gebot</th>
+            <th style="width: 200px;">Aktuelles Maximalgebot<div class="tooltip"><sup>(?)</sup><span class="tooltiptext" style="width:450px;height:auto;white-space:break-spaces;line-height:2em;hyphens:auto;word-break:break-word;">Lege hier Dein Maximalgebot fest, welches Du pro Klick zu zahlen bereit bist. Die tatsächlichen Kosten pro Klick werden jedoch an dem nächst-niedrigerem Gebot der Konkurrenz berechnet. Beispiel: Wenn Du 5€ bietest und das nächste Gebot bei 3€ liegen sollte, wird das System nur 3,50€ anstelle der vollen 5€ für diesen Klick berechnen.</span></div></th>
             <th style="width: 125px;">Klicks / <?php print date('M');?><div class="tooltip"><sup>(?)</sup><span class="tooltiptext">Summe ALLER Klicks auf dieser Kategorie im aktuellen Monat</span></div></th>
             <th style="width: 125px;">Kosten / <?php print date('M');?><div class="tooltip"><sup>(?)</sup><span class="tooltiptext">Summe ALLER Klick-Kosten dieser Kategorie im aktuellen Monat</span></div></th>
         </tr>
@@ -251,17 +251,17 @@ if ( ( !isset($toolid) ) OR ("budget" == $toolid) ) {
                     while($row = mysqli_fetch_assoc($clicks_query)) {
                         $timestamp_unix = $row['timestamp_unix'];
                         if(date('Y-m', $timestamp_unix) === date('Y-m')) { //check if click is im current month!
-                            $bid_kosten = $row['bid_kosten'];
+                            $this_bid_kosten = $row['bid_kosten'];
                             $tool_id = $row['tool_id'];
                             $toolkategorie_id = $row['toolkategorie_id'];
                             $arr_data = array(
                                 "timestamp" => $timestamp_unix,
-                                "kosten" => $bid_kosten,
+                                "kosten" => $this_bid_kosten,
                                 "catid" => $toolkategorie_id
                             );
                             array_push($allclicks, $arr_data); //array im Moment not in use
                             $count++;
-                            $sumcosts += $bid_kosten;
+                            $sumcosts += $this_bid_kosten;
                         }
                     }
                 }
@@ -318,7 +318,7 @@ if ( ( !isset($toolid) ) OR ("budget" == $toolid) ) {
         <table class="bid-history">
             <tr>
                 <th class="">Kategorie</th>
-                <th class="">Gebot</th>
+                <th class="">Maximalgebot</th>
                 <th class="">Klicks</th>
                 <th class="">Kosten</th>
                 <th class="">Start</th>
@@ -341,6 +341,16 @@ if ( ( !isset($toolid) ) OR ("budget" == $toolid) ) {
                         $sqlclicks = "SELECT * FROM `omt_clicks` WHERE `bid_id`=$bidid";
                         $clicks_query = $conn->query($sqlclicks);
                         $clickscount = mysqli_num_rows($clicks_query);
+                        //calculate actual cost for current bid (coult be lower than actual bidding price!)
+                        $sumcosts = 0;
+                        while($costrow = mysqli_fetch_assoc($clicks_query)) {
+                                $this_bid_kosten = $costrow['bid_kosten'];
+                                $sumcosts += $this_bid_kosten;
+                        }
+
+                        //end of actual cost calculation!
+
+
                         um_fetch_user($row['user_id']);
                         if ($row['user_id'] >0) { $display_name = um_user('display_name'); } else { $display_name = ""; }
                         ?>
@@ -348,7 +358,7 @@ if ( ( !isset($toolid) ) OR ("budget" == $toolid) ) {
                             <td><?php print get_the_category_by_ID($row['toolkategorie_id']); ?></td>
                             <td><?php print $row['bid_kosten']; ?> € / Klick</td>
                             <td><?php print $clickscount;?></td>
-                            <td><?php print $row['bid_kosten']*$clickscount;?></td>
+                            <td><?php print $sumcosts;?></td>
                             <td><?php
                                 $validfromoffset = $row['timestamp_valid_from']+7200; //UTC is 2hours behind, so we fix the displayed timezone according to GMT=> +2hours;
                                 //Databank values will be kept in UTC to stay unified/comparable!
