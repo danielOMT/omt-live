@@ -48,7 +48,7 @@ function get_api_all_clicks() {
                 $bid_kosten = 0;
             }
     
-            $clicksql = "SELECT * FROM `omt_clicks` WHERE `timestamp_unix`=$timestamp_unix";
+/*            $clicksql = "SELECT * FROM `omt_clicks` WHERE `timestamp_unix`=$timestamp_unix";
             $clickquery = $conn->query($clicksql);
             if (mysqli_num_rows($clickquery) > 0) {
                 while ($singleclickrow = mysqli_fetch_assoc($clickquery)) {
@@ -56,7 +56,7 @@ function get_api_all_clicks() {
                     $bid_kosten = $singleclickrow['bid_kosten'];
                 }
             }
-
+*/
             ///zweithöchste gebot system:
             //get all the next highest or equal high bid compared to our current click, from the same tool category:
             $getbidssql = "SELECT * FROM `omt_bids` WHERE `timestamp_valid_from`<$timestamp_unix AND `timestamp_valid_until`>$timestamp_unix AND `toolkategorie_id`=" . $trackingLink->toolkategorie_id . " AND `tool_id` != " . $trackingLink->tool_id . " AND `bid_kosten` <= " . $bid_kosten . " ORDER BY `bid_kosten` DESC LIMIT 1";
