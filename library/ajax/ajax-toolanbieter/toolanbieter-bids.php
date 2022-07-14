@@ -341,6 +341,16 @@ if ( ( !isset($toolid) ) OR ("budget" == $toolid) ) {
                         $sqlclicks = "SELECT * FROM `omt_clicks` WHERE `bid_id`=$bidid";
                         $clicks_query = $conn->query($sqlclicks);
                         $clickscount = mysqli_num_rows($clicks_query);
+                        //calculate actual cost for current bid (coult be lower than actual bidding price!)
+                        $sumcosts = 0;
+                        while($costrow = mysqli_fetch_assoc($clicks_query)) {
+                                $this_bid_kosten = $costrow['bid_kosten'];
+                                $sumcosts += $this_bid_kosten;
+                        }
+
+                        //end of actual cost calculation!
+
+
                         um_fetch_user($row['user_id']);
                         if ($row['user_id'] >0) { $display_name = um_user('display_name'); } else { $display_name = ""; }
                         ?>
@@ -348,7 +358,7 @@ if ( ( !isset($toolid) ) OR ("budget" == $toolid) ) {
                             <td><?php print get_the_category_by_ID($row['toolkategorie_id']); ?></td>
                             <td><?php print $row['bid_kosten']; ?> € / Klick</td>
                             <td><?php print $clickscount;?></td>
-                            <td><?php print $row['bid_kosten']*$clickscount;?></td>
+                            <td><?php print $sumcosts;?></td>
                             <td><?php
                                 $validfromoffset = $row['timestamp_valid_from']+7200; //UTC is 2hours behind, so we fix the displayed timezone according to GMT=> +2hours;
                                 //Databank values will be kept in UTC to stay unified/comparable!
