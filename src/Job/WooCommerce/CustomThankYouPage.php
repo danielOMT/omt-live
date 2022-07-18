@@ -44,9 +44,8 @@ class CustomThankYouPage extends Job
         }
     }
 
-    //Gets all the product ids and assigned thank you pages from custom module
     protected function getCustomThankYouPage(WC_Order $order)
-    {   
+    {
         global $woocomerce;
         foreach ($order->get_items() as $item) {
             $product = $item->get_product();
@@ -76,7 +75,7 @@ class CustomThankYouPage extends Job
     }
 
     protected function orderContainsProduct(WC_Order $order, int $productId)
-    {   
+    {
         foreach ($order->get_items() as $item) {
             $product = $item->get_product();
 
