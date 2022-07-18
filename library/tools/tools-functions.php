@@ -110,6 +110,12 @@ function compare_budgets_costs()
                     if ($restMonthlyBudget > 0 && ($balance > 0 || get_field('enable_ads_on_negative_balance', $tool->ID))) {
                         // Enable ACF "Buttons anzeigen" (buttons_anzeigen) field
                         update_field("field_5e9db691d44b0", true, $tool->ID);
+                        //set show_buttons to 1 on tool table
+                        $tool_id = $tool->ID;
+                        $update_ef2sv_tools_buttons_yes = "UPDATE `ef2sv_tools` SET `show_buttons` = 1 WHERE `id` = " . $tool_id;
+                        if ($conn->query($update_ef2sv_tools_buttons_yes) === false) {
+                            echo "Error: " . $conn->error;
+                        } else { /*echo "success!";*/}
                     } else {
                         // Disable ACF "Buttons anzeigen" (buttons_anzeigen) field
                         update_field("field_5e9db691d44b0", false, $tool->ID);
@@ -123,6 +129,12 @@ function compare_budgets_costs()
                         //set worth to zero on tool table
                         $update_ef2sv_tools_worth = "UPDATE `ef2sv_tools` SET `worth` = 0 WHERE `id` = " . $tool_id;
                         if ($conn->query($update_ef2sv_tools_worth) === false) {
+                            echo "Error: " . $conn->error;
+                        } else { /*echo "success!";*/}
+                        //set show_buttons to zero on tool table
+                        $tool_id = $tool->ID;
+                        $update_ef2sv_tools_buttons_yes = "UPDATE `ef2sv_tools` SET `show_buttons` = 0 WHERE `id` = " . $tool_id;
+                        if ($conn->query($update_ef2sv_tools_buttons_yes) === false) {
                             echo "Error: " . $conn->error;
                         } else { /*echo "success!";*/}
                     }
