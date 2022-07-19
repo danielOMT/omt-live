@@ -21,7 +21,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
     ?>
     <span class="anchor" id="ticket"></span>
     <?php
-    $mainTitle = $single_variation->attributes['pa_agenturfinder-products'];
+    $mainTitle = $single_variation->attributes['pa_agenturfinder-produkte'];
     $ticketstatus = $single_variation->attributes['status'];
     $preis = $single_variation->price;
     $lager = $single_variation->stock_quantity;
@@ -81,9 +81,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                                 $replace = array('', '', '');
                                 $string = $mainTitle;
                                 $for_oldP = str_replace($search, $replace, $string, $count);
-                                echo(str_replace($search, $replace, $string, $count));
-                                echo $mainTitle;
-                                ?>
+                                echo(str_replace($search, $replace, $string, $count));?>
                             </h4>
                             <p class="small-desc"><?php echo $beschreibung;?></p>
                             <p class="ticket-price">
@@ -100,15 +98,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                                     </span>
                                 <?php endif;?>
                                 
-                                <?php  if($preis != 0 && $m_price > 0 && $product_class != 'monthly'):?>
-
-                                <span class="an_billed"><?=$m_price*12;?>&euro; 
-                                <span class="s_billed quarterly_"><?= __('Jährlich');?></span>
-                                <span class="s_billed halfyearly_"><?= __('Jährlich');?></span>
-                                <span class="s_billed yearly_"><?= __('Jährlich');?></span></span>
-                            <?php else:?>
-
-                            <?php endif;?>
+                             
                             </p>
                         </div>
                         <?=$rec;?>
