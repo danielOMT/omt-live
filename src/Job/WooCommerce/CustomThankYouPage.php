@@ -44,13 +44,34 @@ class CustomThankYouPage extends Job
         }
     }
 
+    //Gets all the product ids and assigned thank you pages from custom module
     protected function getCustomThankYouPage(WC_Order $order)
-    {
-        foreach ((array) get_field('products_thank_you_pages', 'options') as $value) {
-            if ($this->orderContainsProduct($order, (int) $value['product'])) {
-                return $value['page'];
+    {   
+        global $woocomerce;
+        foreach ($order->get_items() as $item) {
+            $product = $item->get_product();
+            $id = $product->get_id();
+        }
+        //Gettin product variations if exists
+        if($variation = wc_get_product($id)){
+            $parentId = wc_get_product( $variation->get_parent_id() );
+            $parentId->id;
+            //First it checks if product has variationos
+            foreach ((array) get_field('products_thank_you_pages', 'options') as $value) {
+                if($parentId->id == $value['product']){
+                    return $value['page'];
+                }
+            }
+        }else{
+            foreach ((array) get_field('products_thank_you_pages', 'options') as $value) {
+                if ($this->orderContainsProduct($order, (int) $value['product'])) {
+                    return $value['page'];
+                }
             }
         }
+
+        
+        
 
         foreach ((array) get_field('categories_thank_you_pages', 'options') as $value) {
             if ($this->orderContainsCategory($order, (int) $value['category'])) {
@@ -62,7 +83,7 @@ class CustomThankYouPage extends Job
     }
 
     protected function orderContainsProduct(WC_Order $order, int $productId)
-    {
+    {   
         foreach ($order->get_items() as $item) {
             $product = $item->get_product();
 

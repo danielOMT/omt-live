@@ -537,44 +537,6 @@ function mysite_woocommerce_payment_complete( $order_id )
         //   $product_name = $item->get_title();
         $parent_id = wp_get_post_parent_id($product_id);
         //Geting product type
-        $product_type = get_post_meta( $parent_id, '_custom_product_type', true );
-
-        if($product_type == 'Agenturfinder'){
-            $guthabenaufladung = true;
-            $total = $toolorder->get_subtotal();
-
-            ////WRITE ORDER VALUE INTO SQL:
-            // SQL CONNECTION COMES FIRWST
-            $conn = new mysqli(DATAHOST_DB_HOST, DATAHOST_DB_USER, DATAHOST_DB_PASSWORD, DATAHOST_DB_NAME);
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            //END OF SQL CONNECTION + TEST
-
-            $sql = "INSERT INTO omt_einzahlungen (user_id, betrag, order_time, woocommerce_order_id, gutschein)
-            VALUES ('$user_id', '$total', '$order_time', '$order_id', '')";
-            if ($conn->query($sql) === TRUE) {
-                //    echo "New tool record created or updated successfully";
-            } else {
-                // echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-            $user = get_userdata($user_id);
-            // Get display name from user object
-            $user_email = $user->user_email;
-            $to = 'marcel.friedrich@omt.de';
-            $subject = 'OMT Agenturfinder';
-            $body = "<h1>Vielen Dank für Deine Bestellung beim OMT:</h1><hr/><table><tbody><tr><td>Bestellnummer: </td><td>" . $order_id . "</td></tr><tr><td>Nutzer:</td><td>" . $user_login . "</td></tr><tr><td>Summe:</td><td>" . $total . "€</td></tr></tbody></table><h3>Das Guthaben wurde Deinem Account gutgeschrieben und ist ab sofort nutzbar.</h3><a href='https://www.omt.de/toolanbieter/'>Jetzt einloggen</a>";
-            //$headers = array('Content-Type: text/html; charset=UTF-8');
-            $headers = "From: info@omt.de\r\n";
-            $headers .= "Reply-To: info@omt.de\r\n";
-            $headers .= "CC: info@omt.de\r\n";
-            $headers .= "CC: christos.pipsos@omt.de\r\n";
-            $headers .= "MIME-Version: 1.0\r\n";
-            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-            wp_mail($to, $subject, $body, $headers);
-            print "Guthabenbenachrichtigung sent";
-        }
         if ($product_id === 201855) {
             $guthabenaufladung = true;
             $total = $toolorder->get_subtotal();
@@ -1043,5 +1005,63 @@ function getDescriptionForRecVideo($description){
 
 
 
+//Sending email after Agenturfinder Products purchase
+add_action('woocommerce_checkout_order_processed', 'rudr_pre_complete', 10, 1);
+function rudr_pre_complete( $order_id ) {
+    var_dump('rame');
+    
+    $toolorder = wc_get_order($order_id);
+    $user = $toolorder->get_user();
+    $user_id = $toolorder->get_user_id();
+    $guthabenaufladung = false;
+    $total = 0;
+    $items = $toolorder->get_items();
+    $order_time = $toolorder->get_date_modified();
+    foreach ($items as $item_id => $item) {
+        $product_id = $item->get_variation_id() ? $item->get_variation_id() : $item->get_product_id();
+        //   $product_name = $item->get_title();
+        $parent_id = wp_get_post_parent_id($product_id);
+        //Geting product type
+        $product_type = get_post_meta( $parent_id, '_custom_product_type', true );
 
+        if($product_type == 'Agenturfinder'){
+            $guthabenaufladung = true;
+            $total = $toolorder->get_subtotal();
+
+            ////WRITE ORDER VALUE INTO SQL:
+            // SQL CONNECTION COMES FIRWST
+            $conn = new mysqli(DATAHOST_DB_HOST, DATAHOST_DB_USER, DATAHOST_DB_PASSWORD, DATAHOST_DB_NAME);
+            // Check connection
+            if ($conn->connect_error) {
+                die("Connection failed: " . $conn->connect_error);
+            }
+            //END OF SQL CONNECTION + TEST
+
+            $sql = "INSERT INTO omt_einzahlungen (user_id, betrag, order_time, woocommerce_order_id, gutschein)
+            VALUES ('$user_id', '$total', '$order_time', '$order_id', '')";
+            if ($conn->query($sql) === TRUE) {
+                //    echo "New tool record created or updated successfully";
+            } else {
+                // echo "Error: " . $sql . "<br>" . $conn->error;
+            }
+            $user = get_userdata($user_id);
+            // Get display name from user object
+            $user_email = $user->user_email;
+            $to = 'marcel.friedrich@omt.de';
+            $subject = 'OMT Agenturfinder';
+            $body = "<h1>Vielen Dank für Deine Bestellung beim OMT:</h1><hr/><table><tbody><tr><td>Bestellnummer: </td><td>" . $order_id . "</td></tr><tr><td>Nutzer:</td><td>" . $user_login . "</td></tr><tr><td>Summe:</td><td>" . $total . "€</td></tr></tbody></table><h3>Das Guthaben wurde Deinem Account gutgeschrieben und ist ab sofort nutzbar.</h3><a href='https://www.omt.de/toolanbieter/'>Jetzt einloggen</a>";
+            //$headers = array('Content-Type: text/html; charset=UTF-8');
+            $headers = "From: info@omt.de\r\n";
+            $headers .= "Reply-To: info@omt.de\r\n";
+            $headers .= "CC: info@omt.de\r\n";
+            $headers .= "CC: christos.pipsos@omt.de\r\n";
+            $headers .= "MIME-Version: 1.0\r\n";
+            $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+            wp_mail($to, $subject, $body, $headers);
+            print "Guthabenbenachrichtigung sent";
+        }
+        
+    }
+    
+}
 

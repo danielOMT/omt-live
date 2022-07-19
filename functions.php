@@ -1217,26 +1217,23 @@ function clean($value) {
 
 
 function check_product_type(){
-     if ( is_checkout() ){
-        global $woocommerce;
-        $items = $woocommerce->cart->get_cart();
+     if ( is_page('kasse') ){
+        if(WC()->cart->get_cart()){
+            foreach($items as $item => $values) { 
+                $product_type = get_post_meta($values['product_id'] , '_custom_product_type', true);
+                /*Regular Price and Sale Price*/
 
-        foreach($items as $item => $values) { 
-
-            $product_type = get_post_meta($values['product_id'] , '_custom_product_type', true);
-            /*Regular Price and Sale Price*/
-
-            if($product_type == 'job'){
-                echo '<style>.wc-gzd-checkbox-placeholder-recruiting_video{display:block !important;}</style>';
-            }elseif($product_type == 'Agenturfinder'){
-                echo '<style>.wc-gzd-checkbox-placeholder-recruiting_video{display:none !important;}</style>';
-            }else{
-                echo '<style>.wc-gzd-checkbox-placeholder-recruiting_video{display:none !important;}</style>';
+                if($product_type == 'job'){
+                    echo '<style>.wc-gzd-checkbox-placeholder-recruiting_video{display:block !important;}</style>';
+                }elseif($product_type == 'Agenturfinder'){
+                    echo '<style>.wc-gzd-checkbox-placeholder-recruiting_video{display:none !important;}</style>';
+                }else{
+                    echo '<style>.wc-gzd-checkbox-placeholder-recruiting_video{display:none !important;}</style>';
+                }
             }
         }
-     }
-}
-check_product_type();
+    }
+}check_product_type();
 
 
 
@@ -1273,3 +1270,20 @@ function ti_custom_javascript() {
   }
 }
 add_action('wp_head', 'ti_custom_javascript');
+
+
+add_action( 'wp_footer', 'bbloomer_add_jscript_checkout', 9999 );
+ 
+function bbloomer_add_jscript_checkout() {
+   global $wp;
+   if ( is_checkout() ) {
+      ?>
+      <script>$( document ).ready(function() {
+    var text = $('.variation-AgenturfinderProdukte').text();
+    if(text.indexOf("Agenturfinder") >= 0){
+        $('.woocommerce-gzd-legal-checkbox-text a:first').attr("href", "/agb#agenturfinder");
+    }
+});</script>
+    <?php
+   }
+}
