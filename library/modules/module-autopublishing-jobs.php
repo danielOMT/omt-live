@@ -133,7 +133,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                            'title' => $lightbox_headline,
                            'buttonTitle' => $button_label . '<span> &#8505;</span>',
                            'buttonClass' => 'rec_video_link',
-                           'content' => '<div><h4>'.$spalte_headline.'</h4><h5>'.$spalte_text_oben.'</h5><div class="produkt-beschreibung ">'.$rec_video_bull.'</div></div>'
+                           'content' => '<div><h4>'.$spalte_headline.'</h4><div class="produkt-beschreibung ">'.$rec_video_bull.'</div><h5>'.$spalte_text_oben.'</h5></div>'
                         ]) ?>
 
                     </div>
