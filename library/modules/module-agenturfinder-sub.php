@@ -21,7 +21,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
     ?>
     <span class="anchor" id="ticket"></span>
     <?php
-    $test_job = $single_variation->attributes['pa_agenturfinder-produkte'];
+    $mainTitle = $single_variation->attributes['pa_agenturfinder-products'];
     $ticketstatus = $single_variation->attributes['status'];
     $preis = $single_variation->price;
     $lager = $single_variation->stock_quantity;
@@ -79,9 +79,11 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                             <h4 class="ticket-type"><?php
                                 $search = array('-quarterly', '-yearly', '-halfyearly');
                                 $replace = array('', '', '');
-                                $string = $test_job;
+                                $string = $mainTitle;
                                 $for_oldP = str_replace($search, $replace, $string, $count);
-                                echo(str_replace($search, $replace, $string, $count));?>
+                                echo(str_replace($search, $replace, $string, $count));
+                                echo $mainTitle;
+                                ?>
                             </h4>
                             <p class="small-desc"><?php echo $beschreibung;?></p>
                             <p class="ticket-price">
@@ -90,7 +92,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                                 <?php endif;?>
                                  <?php print round($m_price);?>&euro; <span>/ <?= __('Monat');?></span><br>
 
-                                <?php if($test_job != 'free'):?>
+                                <?php if($mainTitle != 'free'):?>
                                     <span class="ann">
                                         <span> <?= __('auf jährliche Abrechnung');?> </span>
                                         <span class="annual"><?=__('wechseln');?></span>
@@ -98,14 +100,24 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                                     </span>
                                 <?php endif;?>
                                 
-                             
+                                <?php  if($preis != 0 && $m_price > 0 && $product_class != 'monthly'):?>
+
+                                <span class="an_billed"><?=$m_price*12;?>&euro; 
+                                <span class="s_billed quarterly_"><?= __('Jährlich');?></span>
+                                <span class="s_billed halfyearly_"><?= __('Jährlich');?></span>
+                                <span class="s_billed yearly_"><?= __('Jährlich');?></span></span>
+                            <?php else:?>
+
+                            <?php endif;?>
                             </p>
                         </div>
                         <?=$rec;?>
                       
                         
-                        <?php if ($lager > 0 && $active == true) : ?>
+                        <?php if ($lager > 0 && $active == true && $mainTitle != 'free') : ?>
                             <a  href="/kasse/?add-to-cart=<?php print $ticket_variation_id;?>" class="button button-red sub-button" title="<?php the_title_attribute(); ?>"><?=$button;?></a>
+                        <?php elseif($mainTitle == 'free'):?>
+                            <a  href="/agentur-finden/agentureintrag/" class="button button-red sub-button" title="<?php the_title_attribute(); ?>"><?=$button;?></a>
                         <?php else: ?>
                             <div class="button button-gradient">
                                 <?php if ($lager > 0) : print "nicht verfügbar";  else : print "ausverkauft!";endif;?>
