@@ -4,7 +4,7 @@ $product = $zeile['inhaltstyp'][0]['agenturfinder'];
 $additional_text = $zeile['inhaltstyp'][0]['additional_text'];
 $button_text = $zeile['inhaltstyp'][0]['button_text'];
 
-$empfehlung_text = 'test';
+$empfehlung_text = 'Unsere Empfehlung';
 $handle=new WC_Product_Variable($product->ID);
 $available_variations = $handle->get_available_variations();
 $variations1=$handle->get_children();
@@ -21,7 +21,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
     ?>
     <span class="anchor" id="ticket"></span>
     <?php
-    $test_job = $single_variation->attributes['pa_agenturfinder-produkte'];
+    $mainTitle = $single_variation->attributes['pa_agenturfinder-produkte'];
     $ticketstatus = $single_variation->attributes['status'];
     $preis = $single_variation->price;
     $lager = $single_variation->stock_quantity;
@@ -64,7 +64,7 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
     //     //$lager = 999;
     // } else { $active = false; }
     if ( $lager <1 OR $active != true) { $inactive_class = "ticket-inactive"; }
-    if( $highlighted == 'yes' ){ $extra_class = 'highlighted'; $rec = '<p class="ticket-recomend">'.$empfehlung_text.'</p>'; }else{ $recom_up_class = 'recom_up_class'; }
+    if( $highlighted == 'yes' ){ $extra_class = 'highlighted'; $description_style = 'highlighted_p'; $rec = '<div class="ribbon job-ribbon"><span>'.$empfehlung_text.'</span></div>'; }//else{ $recom_up_class = 'recom_up_class'; }
     ?>
         
             
@@ -75,43 +75,48 @@ foreach ($variations1 as $ticketvariation) :   /*build array with all seminars a
                         href="javascript:void(0)" 
                         title="<?php the_title_attribute(); ?>">
                     <?php } ?><!--$lager > 0 && $active == true/-->
-                        <div class="pro_top_side">
-                            <h4 class="ticket-type"><?php
-                                $search = array('-quarterly', '-yearly', '-halfyearly');
-                                $replace = array('', '', '');
-                                $string = $test_job;
-                                $for_oldP = str_replace($search, $replace, $string, $count);
-                                echo(str_replace($search, $replace, $string, $count));?>
-                            </h4>
-                            <p class="small-desc"><?php echo $beschreibung;?></p>
-                            <p class="ticket-price">
-                                <?php  if($m_price > 0 && $product_class != 'monthly'):?>
-                                <span class="old_p"> <?php print round($fraction/12);?>&euro;</span>
-                                <?php endif;?>
-                                 <?php print round($m_price);?>&euro; <span>/ <?= __('Monat');?></span><br>
+                    
+                        <?php if( $highlighted == 'yes' ){ ?> <div class="highlight-top"> <?php } ?>
+                            <div class="pro_top_side">
+                                <h4 class="ticket-type"><?php
+                                    $search = array('-quarterly', '-yearly', '-halfyearly');
+                                    $replace = array('', '', '');
+                                    $string = $mainTitle;
+                                    $for_oldP = str_replace($search, $replace, $string, $count);
+                                    echo(str_replace($search, $replace, $string, $count));?>
+                                </h4>
+                                <p class="small-desc"><?php echo $beschreibung;?></p>
+                                <p class="ticket-price">
+                                    <?php  if($m_price > 0 && $product_class != 'monthly'):?>
+                                    <span class="old_p"> <?php print round($fraction/12);?>&euro;</span>
+                                    <?php endif;?>
+                                     <?php print round($m_price);?>&euro; <span>/ <?= __('Monat');?></span><br>
 
-                                <?php if($test_job != 'free'):?>
-                                    <span class="ann">
-                                        <span> <?= __('auf jährliche Abrechnung');?> </span>
-                                        <span class="annual"><?=__('wechseln');?></span>
-                                        <span class="save_p"> <?=$additional_text;?></span>
-                                    </span>
-                                <?php endif;?>
-                                
-                             
-                            </p>
-                        </div>
-                        <?=$rec;?>
-                      
-                        
-                        <?php if ($lager > 0 && $active == true) : ?>
-                            <a  href="/kasse/?add-to-cart=<?php print $ticket_variation_id;?>" class="button button-red sub-button" title="<?php the_title_attribute(); ?>"><?=$button;?></a>
-                        <?php else: ?>
-                            <div class="button button-gradient">
-                                <?php if ($lager > 0) : print "nicht verfügbar";  else : print "ausverkauft!";endif;?>
+                                    <?php if($mainTitle != 'free'):?>
+                                        <span class="ann">
+                                            <span> <?= __('auf jährliche Abrechnung');?> </span>
+                                            <span class="annual"><?=__('wechseln');?></span>
+                                            <span class="save_p"> <?=$additional_text;?></span>
+                                        </span>
+                                    <?php endif;?>
+                                    
+                                 
+                                </p>
                             </div>
-                        <?php endif; ?>
+                            <?=$rec;?>
+                          
+                            
+                            <?php if ($lager > 0 && $active == true && $mainTitle != 'free') : ?>
+                                <a  href="/kasse/?add-to-cart=<?php print $ticket_variation_id;?>" class="button button-red sub-button" title="<?php the_title_attribute(); ?>"><?=$button;?></a>
+                            <?php elseif($mainTitle == 'free'):?>
+                                <a  href="/agentur-finden/agentureintrag/" class="button button-red sub-button" title="<?php the_title_attribute(); ?>"><?=$button;?></a>
+                            <?php else: ?>
+                                <div class="button button-gradient">
+                                    <?php if ($lager > 0) : print "nicht verfügbar";  else : print "ausverkauft!";endif;?>
+                                </div>
+                            <?php endif; ?>
 
+                        <?php if( $highlighted == 'yes' ){ ?> </div><?php } ?>
                         <?php if ($beschreibungselemente != 0) :?>
                             <div class="produkt-beschreibung " id="more_<?=$ticket_variation_id?>">
                                 <?php
