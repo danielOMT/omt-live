@@ -99,7 +99,7 @@ if ($kategorie[0] == "alle") {
                         while ($loop->have_posts()) {
                             $loop->the_post() ?>
                             <a class="button teaser teaser-small"
-                               href="<?php print get_the_permalink(); ?>"><?php print $headline . "&nbsp;" . get_the_title(); ?></a>
+                               href="<?php print str_replace("www.omt.de", "agenturfinder.omt.de", get_the_permalink()); ?>"><?php print $headline . "&nbsp;" . get_the_title(); ?></a>
                             <?php $artikelcount++;
                         }; //from the loop
                         ?>
