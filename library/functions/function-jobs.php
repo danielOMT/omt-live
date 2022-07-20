@@ -27,7 +27,7 @@ function display_jobs(int $anzahl = 99) { ?>
     );
     ?>
     <div id="filter_loader" style="display: none;">
-        <img src="/uploads/2022/03/loader_.svg">
+        <img src="/uploads/2018/12/loader_.svg">
     </div>
     <style>
         .no_b_border a{
