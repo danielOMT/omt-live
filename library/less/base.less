@@ -10628,9 +10628,117 @@ span.button, .sticky-buttons span {
 
 /*------------------------------------- agenture product ----------------------------------------*/
 .agenturfinder {
+  padding-bottom:50px;
+  display: flex;
+  
+  .ribbon {
+    position: absolute;
+    right: -36px;
+    top: -47px;
+    z-index: 1;
+    overflow: hidden;
+    width: 87px;
+    height: 78px;
+    text-align: right;
+  }
+  .ribbon span {
+    font-size: 10px;
+    font-weight: bold;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 13px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    width: 99px;
+    display: block;
+    background: #79a70a;
+    background: linear-gradient(#004590 0%,#31bbda 100%);
+    position: absolute;
+    top: 12px;
+    right: -20px;
+    padding-bottom: 4px;
+    padding-top: 2px;
+  }
+
+  .produkt-beschreibung {
+    p {
+      &:nth-child(odd) {
+        font-size: 15px;
+        margin: 0px;
+        background: #fff;
+        color: #004590;
+        padding: 10px;
+      }
+      &:nth-child(even) {
+        font-size: 15px;
+        margin: 0px;
+        background: #fff;
+        color: #004590;
+        padding: 10px;
+      }
+    }
+  }
+  .highlighted {
+    background: @omt_lightblue;
+    border: 1px solid @omt_lightblue;
+    .highlight-top {
+      background: transparant;
+      position: relative;
+    }
+    .small-desc{
+      color:#fff !important;
+    }
+    .ticket-price{
+      color:#fff !important;
+    }
+    .ann{
+      color:#fff !important;
+    }
+    .produkt-beschreibung p:nth-child(even){
+      background: #31bbda;
+      color:#fff !important;
+    }
+    .check_b span{
+        color:#fff !important;
+    }
+  }
+  .highlighted_p{
+    p{
+      background: transparent !important;
+      color:#fff !important
+    }
+  }
+}
+.agenturfinder {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    margin-top:90px;
+    .produkt-beschreibung {
+      p {
+        &:nth-child(odd) {
+          font-size: 15px;
+          margin: 0px;
+          background: #fff;
+          color: #004590;
+          padding-left:10px;
+          padding-right:10px;
+          padding-bottom:20px;
+          padding-top: 0;
+        }
+        &:nth-child(even) {
+          font-size: 15px;
+          margin: 0px;
+          background: #fff;
+          color: #004590;
+          padding-left:10px;
+          padding-right:10px;
+          padding-bottom:20px;
+          padding-top: 0;
+        }
+      }
+    }
     .ticket {
         padding-left: 25px;
         padding-right: 25px;
