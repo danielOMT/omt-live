@@ -25,7 +25,7 @@ class ToolsSync extends Job
         add_action('wp_ajax_sync_all_tools', [$this, 'saveAll']);
     }
 
-    function save_acf($postId, WP_Post $post, bool $update) {
+    function save_acf($postId, WP_Post $post) {
 //do action if acf_form is saved to update some fields so we can save category changes into the database!
         // bail early if not a contact_form post
         // bail early if editing in admin
