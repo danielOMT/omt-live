@@ -1287,3 +1287,26 @@ function bbloomer_add_jscript_checkout() {
     <?php
    }
 }
+
+//do action if acf_form is saved to update some fields so we can save category changes into the database!
+add_filter('acf/pre_save_post' , 'my_pre_save_post', 10, 1 );
+function my_pre_save_post( $post_id ) {
+    // bail early if not a contact_form post
+    // bail early if editing in admin
+    if( is_admin() ) {
+        return;
+    }
+    // vars
+    $post = get_post( $post_id );
+    // get custom fields (field group exists for content_form)
+    $name = "OMT saving post!";
+    $email = "info@omt.de";
+    $
+    // email data
+    $to = 'daniel.voelskow@reachx.de';
+    $headers = 'From: ' . $name . ' <' . $email . '>' . "\r\n";
+    $subject = "post was saved!";
+    $body = "some body content";
+    // send email
+    wp_mail($to, $subject, $body, $headers );
+}
