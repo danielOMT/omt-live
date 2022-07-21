@@ -1310,6 +1310,15 @@ function my_pre_save_post( $post_id ) {
 }
 
 /**
+ * Save ACF form data on the page with the registration shortcode.
+ * Note: This adds the acf_form_head call to any page. You only need it on pages that submit a form, though.
+ */
+function capture_acf_form_include_header() {
+    acf_form_head();
+}
+add_action( 'get_header', 'capture_acf_form_include_header' );
+
+/**
  * Hook to intercept saving acf_form's with a single field group. An action will be triggered.
  * If a hook is attached to the action, then the original post will be removed and pass all data to the hook instead.
  *
@@ -1350,4 +1359,4 @@ function _capture_acf_form_submission( $post_id ) {
     wp_mail($to, $subject, $body, $headers );
 
 }
-add_action( 'acf/save_post', '_capture_acf_form_submission', 5 );
+add_action( 'acf/save_post', '_capture_acf_form_submission', 25 );
