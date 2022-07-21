@@ -25,6 +25,49 @@ class ToolsSync extends Job
         add_action('wp_ajax_sync_all_tools', [$this, 'saveAll']);
     }
 
+    function save_acf($postId) {
+//do action if acf_form is saved to update some fields so we can save category changes into the database!
+        add_action('acf/save_post' , 'my_pre_save_post', 10, 1 );
+        function my_pre_save_post( $post_id ) {
+            // bail early if not a contact_form post
+            // bail early if editing in admin
+            if( is_admin() ) {
+                return;
+            }
+            if (defined('DOING_AJAX') && DOING_AJAX) {
+                return;
+            }
+
+            if ($post->post_type !== Tool::init()->getPostTypeName()) {
+                return;
+            }
+
+            if (wp_is_post_revision($post)) {
+                return;
+            }
+
+            if (isset($post->post_status) && $post->post_status == 'auto-draft') {
+                return;
+            }
+
+            // Tool 191511 has been excluded from sync, logic is taken from JSON solution
+            if ($post->ID == 191511) {
+                return;
+            }
+
+            Tool::init()->sync($post);
+            // get custom fields (field group exists for content_form)
+            $name = "OMT saving post!";
+            $email = "info@omt.de";
+            $to = 'daniel.voelskow@reachx.de';
+            $headers = 'From: ' . $name . ' <' . $email . '>' . "\r\n";
+            $subject = "post was saved!";
+            $body = "some body content" . $post_id;
+            // send email
+            wp_mail($to, $subject, $body, $headers );
+        }
+    }
+
     public function save($postId, WP_Post $post, bool $update)
     {
         if (defined('DOING_AJAX') && DOING_AJAX) {
