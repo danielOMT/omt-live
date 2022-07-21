@@ -16,7 +16,7 @@ class ToolsSync extends Job
         // Initialize hook later (priority = 15) to have all the actual data from other plugins like ACF
         add_action('save_post', [$this, 'save'], 15, 3);
 
-        add_action('acf/save_post' , [$this, 'save'], 10, 1 );
+        add_action('acf/save_post' , [$this, 'save_acf'], 10, 1 );
 
         // Sync deletion (destroy) when the corresponding post has been deleted
         add_action('deleted_post', [$this, 'destroy'], 15, 2);
