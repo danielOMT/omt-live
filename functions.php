@@ -1289,7 +1289,7 @@ function bbloomer_add_jscript_checkout() {
 }
 
 //do action if acf_form is saved to update some fields so we can save category changes into the database!
-//add_filter('acf/pre_save_post' , 'my_pre_save_post', 10, 1 );
+add_filter('acf/pre_save_post' , 'my_pre_save_post', 10, 1 );
 function my_pre_save_post( $post_id ) {
     // bail early if not a contact_form post
     // bail early if editing in admin
@@ -1310,20 +1310,11 @@ function my_pre_save_post( $post_id ) {
 }
 
 /**
- * Save ACF form data on the page with the registration shortcode.
- * Note: This adds the acf_form_head call to any page. You only need it on pages that submit a form, though.
- */
-function capture_acf_form_include_header() {
-    acf_form_head();
-}
-add_action( 'get_header', 'capture_acf_form_include_header' );
-
-/**
  * Hook to intercept saving acf_form's with a single field group. An action will be triggered.
  * If a hook is attached to the action, then the original post will be removed and pass all data to the hook instead.
  *
  * @param $post_id
- */
+ *//*
 function _capture_acf_form_submission( $post_id ) {
     if ( !is_numeric($post_id) ) return; // This should only work for items created as a post.
     if ( empty($GLOBALS['acf_form']['field_groups']) ) return;
@@ -1348,15 +1339,22 @@ function _capture_acf_form_submission( $post_id ) {
     }
 
     // Trigger our action
-    //do_action( $action_name, $fields, $field_group, $acf_form );
-    $name = "OMT saving post!";
-    $email = "info@omt.de";
-    $to = 'daniel.voelskow@reachx.de';
-    $headers = 'From: ' . $name . ' <' . $email . '>' . "\r\n";
-    $subject = "post was saved!";
-    $body = "some body content";
-    // send email
-    wp_mail($to, $subject, $body, $headers );
+    do_action( $action_name, $fields, $field_group, $acf_form );
 
+    // Should we delete the post that ACF created?
+    if ( apply_filters( 'delete-acf-form-post', true ) ) {
+        wp_delete_post( $post_id, true );
+        unset($GLOBALS['acf_form']);
+        remove_all_actions( 'acf/save_post' );
+    }
+
+    // Should we redirect the user?
+    $return_url = empty($acf_form['return']) ? false : $acf_form['return'];
+    $return_url = apply_filters( 'acf-form-return-url', $return_url );
+
+    if ( $return_url ) {
+        wp_redirect( $return_url );
+        exit;
+    }
 }
-add_action( 'acf/save_post', '_capture_acf_form_submission', 25 );
+add_action( 'acf/save_post', '_capture_acf_form_submission', 25 );*/
