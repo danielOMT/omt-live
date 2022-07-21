@@ -32,9 +32,6 @@ class ToolsSync extends Job
         if( is_admin() ) {
             return;
         }
-        if (defined('DOING_AJAX') && DOING_AJAX) {
-            return;
-        }
 
         Tool::init()->sync($post);
         // get custom fields (field group exists for content_form)
