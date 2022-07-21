@@ -1350,4 +1350,4 @@ function _capture_acf_form_submission( $post_id ) {
     wp_mail($to, $subject, $body, $headers );
 
 }
-add_action( 'acf/save_post', '_capture_acf_form_submission', 25 );
+add_action( 'acf/save_post', '_capture_acf_form_submission', 5 );
