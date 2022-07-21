@@ -1289,7 +1289,7 @@ function bbloomer_add_jscript_checkout() {
 }
 
 //do action if acf_form is saved to update some fields so we can save category changes into the database!
-add_filter('acf/pre_save_post' , 'my_pre_save_post', 10, 1 );
+add_action('acf/pre_save_post' , 'my_pre_save_post', 10, 1 );
 function my_pre_save_post( $post_id ) {
     // bail early if not a contact_form post
     // bail early if editing in admin
