@@ -16,7 +16,7 @@ class ToolsSync extends Job
         // Initialize hook later (priority = 15) to have all the actual data from other plugins like ACF
         add_action('save_post', [$this, 'save'], 15, 3);
 
-        add_action('acf/save_post' , 'save_acf', 10, 1 );
+        add_action('acf/save_post' , [$this, 'save_acf'], 10, 1 );
 
         // Sync deletion (destroy) when the corresponding post has been deleted
         add_action('deleted_post', [$this, 'destroy'], 15, 2);
@@ -25,7 +25,8 @@ class ToolsSync extends Job
         add_action('wp_ajax_sync_all_tools', [$this, 'saveAll']);
     }
 
-    function save_acf($postId) {
+    function save_acf($postId, WP_Post $post, bool $update)
+    {
 //do action if acf_form is saved to update some fields so we can save category changes into the database!
         // bail early if not a contact_form post
         // bail early if editing in admin
