@@ -121,7 +121,8 @@ if (!defined('USE_JSON_POSTS_SYNC') || USE_JSON_POSTS_SYNC === false) {
                             <?php print $anzahl_der_mitarbeiter . " Mitarbeiter"; ?>
                         </div>
                         <?php print $beschreibung;?>
-                        <div class="social-media">
+                        <?php /* // add a conditional later on for premium agenturen who can have this be visible again then
+                            <div class="social-media">
                             <?php if (strlen($homepage)>0) { $icon = "fa fa-home"; $link = $homepage; ?> <a target="_blank" class="social-icon" href="<?php print trim($link) ?>"><i class="<?php print $icon;?>"></i></a><?php } ?>
                             <?php if (strlen($facebook)>0) { $icon = "fa fa-facebook"; $link = $facebook; ?> <a target="_blank" class="social-icon" href="<?php print trim($link) ?>"><i class="<?php print $icon;?>"></i></a><?php } ?>
                             <?php if (strlen($linkedin_profil)>0) { $icon = "fa fa-linkedin"; $link = $linkedin_profil; ?> <a target="_blank" class="social-icon" href="<?php print trim($link) ?>"><i class="<?php print $icon;?>"></i></a><?php } ?>
@@ -131,7 +132,7 @@ if (!defined('USE_JSON_POSTS_SYNC') || USE_JSON_POSTS_SYNC === false) {
                             <?php if (strlen($twitter)>0) { $icon = "fa fa-twitter"; $link = $twitter; ?> <a target="_blank" class="social-icon" href="<?php print trim($link) ?>"><i class="<?php print $icon;?>"></i></a><?php } ?>
                             <?php if (strlen($xing)>0) { $icon = "fa fa-xing"; $link = $xing; ?> <a target="_blank" class="social-icon" href="<?php print trim($link) ?>"><i class="<?php print $icon;?>"></i></a><?php } ?>
                             <?php if (strlen($snapchat)>0) { $icon = "fa fa-snapchat"; $link = $snapchat; ?> <a target="_blank" class="social-icon" href="<?php print trim($link) ?>"><i class="<?php print $icon;?>"></i></a><?php } ?>
-                        </div>
+                        </div>*/?>
 
                         <div class="kompetenzen">
                             <?php foreach ($branchen as $kompetenz) { ?>
