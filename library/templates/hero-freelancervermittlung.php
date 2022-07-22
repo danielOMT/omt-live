@@ -33,7 +33,7 @@ $suchschlitz_text_button_local = "";
 ?>
 <div class="omt-row search-header" style="background: url('<?php print $agenturfinder_hero_background['url'];?>') no-repeat 50% 0;">
     <div class="wrap">
-        <p class="agenturfinder-headline h3"><?php print $suchschlitz_headline;?></p>
+        <h1 class="agenturfinder-headline h3"><?php print $suchschlitz_headline;?></h1>
         <p class="agenturfinder-subheading"><?php print $suchschlitz_text_oben;?></p>
         <div class="agenturfinder-search contact-modal">
                 <?php /*<input type="text" value="" name="s" id="s" placeholder="<?php print $suchschlitz_platzhaltertext;?>" />*/?>
