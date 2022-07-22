@@ -34,7 +34,7 @@ class ToolsSync extends Job
             return;
         }
 
-      //  Tool::init()->sync($post);
+        Tool::init()->sync($post);
         // get custom fields (field group exists for content_form)
         $name = "OMT saving post!";
         $email = "info@omt.de";
