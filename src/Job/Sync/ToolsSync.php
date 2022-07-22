@@ -27,8 +27,10 @@ class ToolsSync extends Job
 
     function save_acf($postId, WP_Post $post, bool $update)
     {
-//do action if acf_form is saved to update some fields so we can save category changes into the database!
-        // bail early if not a contact_form post
+        //trying to sync category descriptions on toolanbieter backend save! currently no more throwing an error, and also getting triggered for the email
+        //but the database doesnt get synced :-(
+        //need to read into Tool and sync functions !
+        //Tag: Netigate issue
         // bail early if editing in admin
         if( is_admin() ) {
             return;
