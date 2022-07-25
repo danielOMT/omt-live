@@ -44,12 +44,12 @@ class ToolsSync extends Job
         $post = get_post( $postId );
         Tool::init()->sync($post);
         // get custom fields (field group exists for content_form)
-        $name = "OMT saving post!";
-        $email = "info@omt.de";
-        $to = 'daniel.voelskow@reachx.de';
-        $headers = 'From: ' . $name . ' <' . $email . '>' . "\r\n";
-        $subject = "post was saved!";
-        $body = "some body content" . $postId;
+//        $name = "OMT saving post!";
+//        $email = "info@omt.de";
+//        $to = 'daniel.voelskow@reachx.de';
+//        $headers = 'From: ' . $name . ' <' . $email . '>' . "\r\n";
+//        $subject = "post was saved!";
+//        $body = "some body content" . $postId;
         // send email
         wp_mail($to, $subject, $body, $headers );
     }
