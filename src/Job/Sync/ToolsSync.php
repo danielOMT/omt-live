@@ -25,7 +25,7 @@ class ToolsSync extends Job
         add_action('wp_ajax_sync_all_tools', [$this, 'saveAll']);
     }
 
-    function save_acf($postId, WP_Post $post, bool $update)
+    function save_acf($postId)
     {
         //trying to sync category descriptions on toolanbieter backend save! currently no more throwing an error, and also getting triggered for the email
         //but the database doesnt get synced :-(
@@ -41,6 +41,7 @@ class ToolsSync extends Job
             return;
         }
 
+        $post = get_post( $postId );
         Tool::init()->sync($post);
         // get custom fields (field group exists for content_form)
         $name = "OMT saving post!";
