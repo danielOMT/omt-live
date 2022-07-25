@@ -51,7 +51,7 @@ class ToolsSync extends Job
 //        $subject = "post was saved!";
 //        $body = "some body content" . $postId;
         // send email
-        wp_mail($to, $subject, $body, $headers );
+       // wp_mail($to, $subject, $body, $headers );
     }
 
     public function save($postId, WP_Post $post, bool $update)
