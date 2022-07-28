@@ -866,7 +866,9 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     });
     $sortedErfResult = array_reverse($sortedErf);
     //sortedErfResult 
-
+         echo '<pre>';
+    print_r($sortedErf);
+    echo '</pre>';
 
     $sortedArb = [];
     $count = 0;
@@ -942,9 +944,9 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     // print_r($sortedCatResult);
     // echo '</pre>';
     ///////////////////////////////////// Level Erfahrung/////////////////////////////////////
-         echo '<pre>';
-    print_r($sortedErfResult);
-    echo '</pre>';
+    //      echo '<pre>';
+    // print_r($sortedErfResult);
+    // echo '</pre>';
     if($sortedErfResult[0]['name'] != ''):
         $result_erf .='<div id="erfahrung">';
             foreach ($sortedErfResult as $key => $value) :
