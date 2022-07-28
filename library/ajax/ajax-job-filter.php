@@ -867,7 +867,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     $sortedErfResult = array_reverse($sortedErf);
     //sortedErfResult 
          echo '<pre>';
-    print_r($sortedErf);
+    print_r($valsErf);
     echo '</pre>';
 
     $sortedArb = [];
