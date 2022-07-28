@@ -1176,7 +1176,7 @@ function cleanFilterData($value){
         $result = '';
 
         foreach($cats as $cat):
-            array_push($sorted, ['name' => $cat->slug,'count' =>$cat->count, 'id' => $cat->term_id]);
+            array_push($sorted, ['name' => $cat->name,'count' =>$cat->count, 'id' => $cat->term_id, 'slug' => $cat->slug,]);
         endforeach;
 
         usort($sorted, function($a, $b) {
@@ -1205,9 +1205,9 @@ function cleanFilterData($value){
             // }
 
             $result .=  '  <div style="display:block">
-                    <input type="checkbox"  name="category" value="'.$value['name'].'" id="'.$value['id'].'" class="omt-input jobs_filter cat_f '.$hide_cat.'"  onchange="filterJobs()"/>
+                    <input type="checkbox"  name="category" value="'.$value['slug'].'" id="'.$value['id'].'" class="omt-input jobs_filter cat_f '.$hide_cat.'"  onchange="filterJobs()"/>
                     <label class="cat_f '.$hide_cat.'" for="'.$value['id'].'">'.$value['name'].' 
-                        <label id="showCat_'.$value['id'].'" data-selector="'.$value['name'].'"  class="post_count category_c '.$value['name'].'">('.$value['count'].')</label>
+                        <label id="showCat_'.$value['id'].'" data-selector="'.$value['slug'].'"  class="post_count category_c '.$value['slug'].'">('.$value['count'].')</label>
                     </label></div>
               
             ';
@@ -1386,5 +1386,5 @@ function cleanFilterData($value){
 
 
         return $result;
-    } 
+    }
 
