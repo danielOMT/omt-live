@@ -11,7 +11,7 @@ $('.jobs_filterd').change(function() {
 
         var resultArbeiten = [];
         var resultOccupation = [];
-
+ 
         var result = [];
         for (var i = 0; i < category.length; i++) {
             if (category[i].checked) {

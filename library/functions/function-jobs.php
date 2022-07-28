@@ -10,7 +10,7 @@ Function to Display Webinare by Parameters given from user.
 //teaser_link
 //teaser_button_text
  */
-
+ 
 function display_jobs(int $anzahl = 99) { ?>
 
     <?php ////*****code to get job****/

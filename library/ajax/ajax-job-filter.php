@@ -1386,5 +1386,5 @@ function cleanFilterData($value){
 
 
         return $result;
-    }
+    } 
 
