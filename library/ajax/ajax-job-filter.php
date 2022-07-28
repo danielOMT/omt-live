@@ -325,7 +325,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -334,7 +334,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                
                     foreach ($data['erfahrung'] as $key => $value) :
                         if($erfahrung == $value):
-                            array_push($categoriesResult, $cat->name);
+                            array_push($categoriesResult, $cat->slug);
                         else:endif;;
                     endforeach;
                     
@@ -365,7 +365,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -377,7 +377,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                     foreach ($data['erfahrung'] as $key => $value) :
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens) :
                             if($erfahrung == $value && $stadt == $arbeitens):
-                                array_push($categoriesResult, $cat->name );
+                                array_push($categoriesResult, $cat->slug );
                             endif;
                         endforeach;
                     endforeach;
@@ -406,7 +406,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -418,7 +418,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                     foreach ($data['erfahrung'] as $key => $value) :
                         foreach ($data['occupation'] as $asarbkey => $arbeitens) :
                             if($erfahrung == $value && $wie_arbeiten == $arbeitens):
-                                array_push($categoriesResult, $cat->name );
+                                array_push($categoriesResult, $cat->slug );
                             endif;
                         endforeach;
                     endforeach;
@@ -449,7 +449,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -462,7 +462,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                             foreach ($data['occupation'] as $occup => $occupations):
                                 if($erfahrung == $value && $stadt == $arbeitens && $wie_arbeiten == $occupations):
-                                    array_push($categoriesResult, $cat->name );
+                                    array_push($categoriesResult, $cat->slug );
                                 endif;
                             endforeach;
                         endforeach;
@@ -476,7 +476,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -487,10 +487,10 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
 
                     foreach ($data['erfahrung'] as $key => $value) :
                         foreach ($data['categories'] as $cates => $cate):
-                            if($erfahrung == $value && $cat->name == $cate):
+                            if($erfahrung == $value && $cat->slug == $cate):
                                 array_push($arbeitenResult, $stadt );
                                 array_push($occupationResult, $wie_arbeiten );
-                                array_push($categoriesResult, $cat->name );
+                                array_push($categoriesResult, $cat->slug );
                                 array_push($erfahrungResult, $erfahrung );
                             endif;
                         endforeach;
@@ -504,7 +504,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -516,10 +516,10 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                     foreach ($data['erfahrung'] as $key => $value) :
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                             foreach ($data['categories'] as $cates => $cate):
-                                if($erfahrung == $value && $stadt == $arbeitens  && $cat->name == $cate):
+                                if($erfahrung == $value && $stadt == $arbeitens  && $cat->slug == $cate):
                                     array_push($arbeitenResult,  $stadt );
                                     array_push($occupationResult, $wie_arbeiten );
-                                    array_push($categoriesResult, $cat->name );
+                                    array_push($categoriesResult, $cat->slug );
                                     array_push($erfahrungResult, $erfahrung );
                                 endif;
                             endforeach;
@@ -534,7 +534,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -546,10 +546,10 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                     foreach ($data['erfahrung'] as $key => $value) :
                         foreach ($data['occupation'] as $occup => $occupations):
                             foreach ($data['categories'] as $cates => $cate):
-                                if($erfahrung == $value  && $wie_arbeiten == $occupations && $cat->name == $cate):
+                                if($erfahrung == $value  && $wie_arbeiten == $occupations && $cat->slug == $cate):
                                     array_push($arbeitenResult, $stadt );
                                     array_push($occupationResult,  $wie_arbeiten );
-                                    array_push($categoriesResult, $cat->name );
+                                    array_push($categoriesResult, $cat->slug );
                                     array_push($erfahrungResult,  $erfahrung );
                                 endif;
                             endforeach;
@@ -564,7 +564,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -573,11 +573,10 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                     $erfahrung = get_field('erfahrung');
                     $wie_arbeiten = get_field('wie_arbeiten');
                         foreach ($data['categories'] as $cates => $cate):
-                            //echo $cat->name;
-                            if($cat->name == $cate):
+                            if($cat->slug == $cate):
                                 array_push($arbeitenResult,  $stadt);
                                 array_push($occupationResult, $wie_arbeiten);
-                                array_push($categoriesResult, $cat->name );
+                                array_push($categoriesResult, $cat->slug );
                                 array_push($erfahrungResult, $erfahrung);
                             endif;
                         endforeach;
@@ -585,16 +584,12 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
             endif;
         wp_reset_query();
         endforeach;
-    //            echo '<pre>';
-    // print_r($erfahrungResult);
-    // echo '</pre>';
-
 
     }elseif(empty($data['erfahrung']) && !empty($data['categories']) && !empty($data['arbeiten']) && empty($data['occupation'])){
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -605,10 +600,10 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
 
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                                 foreach ($data['categories'] as $cates => $cate):
-                                    if($stadt == $arbeitens &&  $cat->name == $cate):
+                                    if($stadt == $arbeitens &&  $cat->slug == $cate):
                                         array_push($arbeitenResult,  $stadt);
                                         array_push($occupationResult, $wie_arbeiten);
-                                        array_push($categoriesResult, $cat->name);
+                                        array_push($categoriesResult, $cat->slug);
                                         array_push($erfahrungResult, $erfahrung);
                                     endif;
                                 endforeach;
@@ -634,7 +629,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -644,7 +639,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                     $wie_arbeiten = get_field('wie_arbeiten');
                     foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                         if($stadt == $arbeitens):
-                            array_push($categoriesResult, $cat->name );
+                            array_push($categoriesResult, $cat->slug );
                         endif;
                     endforeach;
                 endwhile; 
@@ -670,7 +665,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -681,7 +676,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                             foreach ($data['occupation'] as $occup => $occupations):
                                 if($stadt == $arbeitens && $wie_arbeiten == $occupations):
-                                    array_push($categoriesResult, $cat->name );
+                                    array_push($categoriesResult, $cat->slug );
                                 endif;
                             endforeach;
                         endforeach;
@@ -694,7 +689,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -704,10 +699,10 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                     $wie_arbeiten = get_field('wie_arbeiten');
                         foreach ($data['occupation'] as $occup => $occupations):
                             foreach ($data['categories'] as $cates => $cate):
-                                if($wie_arbeiten == $occupations && $cat->name == $cate):
+                                if($wie_arbeiten == $occupations && $cat->slug == $cate):
                                     array_push($arbeitenResult, $stadt);
                                     array_push($occupationResult, $wie_arbeiten);
-                                    array_push($categoriesResult, $cat->name );
+                                    array_push($categoriesResult, $cat->slug );
                                     array_push($erfahrungResult, $erfahrung);
                                 endif;
                             endforeach;
@@ -733,7 +728,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -743,7 +738,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                     $wie_arbeiten = get_field('wie_arbeiten');
                     foreach ($data['occupation'] as $occup => $occupations):
                         if($wie_arbeiten == $occupations):
-                            array_push($categoriesResult, $cat->name );
+                            array_push($categoriesResult, $cat->slug );
                         endif;
                     endforeach;
                 endwhile; 
@@ -755,7 +750,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -768,10 +763,10 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                             foreach ($data['occupation'] as $occup => $occupations):
                                 foreach ($data['categories'] as $cates => $cate):
-                                    if($erfahrung == $value && $stadt == $arbeitens && $wie_arbeiten == $occupations && $cat->name == $cate):
+                                    if($erfahrung == $value && $stadt == $arbeitens && $wie_arbeiten == $occupations && $cat->slug == $cate):
                                         array_push($arbeitenResult, $stadt);
                                         array_push($occupationResult, $wie_arbeiten);
-                                        array_push($categoriesResult, $cat->name );
+                                        array_push($categoriesResult, $cat->slug );
                                         array_push($erfahrungResult, $erfahrung);
                                     endif;
                                 endforeach;
@@ -787,7 +782,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -799,10 +794,10 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                         foreach ($data['arbeiten'] as $asarbkey => $arbeitens):
                             foreach ($data['occupation'] as $occup => $occupations):
                                 foreach ($data['categories'] as $cates => $cate):
-                                    if($stadt == $arbeitens && $wie_arbeiten == $occupations && $cat->name == $cate):
+                                    if($stadt == $arbeitens && $wie_arbeiten == $occupations && $cat->slug == $cate):
                                         array_push($arbeitenResult, $stadt);
                                         array_push($occupationResult, $wie_arbeiten);
-                                        array_push($categoriesResult, $cat->name );
+                                        array_push($categoriesResult, $cat->slug );
                                         array_push($erfahrungResult, $erfahrung);
                                     endif;
                                 endforeach;
@@ -817,12 +812,12 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->name
+                    'jobs-categories' => $cat->slug
                 )
             );
             if ($cpt_query_args->have_posts()) : 
                 while ($cpt_query_args->have_posts()) : $cpt_query_args->the_post();
-                    array_push($categoriesResult, $cat->name);
+                    array_push($categoriesResult, $cat->slug);
                 endwhile; 
             endif;
         wp_reset_query();
@@ -871,6 +866,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     });
     $sortedErfResult = array_reverse($sortedErf);
     //sortedErfResult 
+
 
     $sortedArb = [];
     $count = 0;
@@ -928,7 +924,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     $result_Cat = '';
 
     foreach ($valsCat as $key => $value) {
-        array_push($sortedCat, ['name' => $key,'count' =>$value]);
+        array_push($sortedCat, ['slug' => $key,'count' =>$value]);
     }
     usort($sortedCat, function($a, $b) {
         $retval = $a['count'] <=> $b['count'];
@@ -1005,6 +1001,8 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     ///////////////////////////////////// Categories /////////////////////////////////////
         foreach ($sortedCatResult as $key => $value) :
             $category_id = 125;
+            $catObj = get_category_by_slug($value['slug']); 
+            $catName = $catObj->name;
             $calculated = $category_id+$count_cat;
                 if($count_cat > 2): 
                     $hide_cat = 'hide_cat'; 
@@ -1014,9 +1012,9 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
 
                 $result_Cat .= '
                     <div id="category_id">
-                        <input type="checkbox"  name="category" value="'.$value['name'].'" id="'.$calculated.'" class="omt-input jobs_filter cat_f '.$hide_cat.'" onchange="filterJobs()" />
-                        <label class="cat_f '.$hide_cat.'" for="'.$calculated.'">'.$value['name'].' 
-                            <label id="showCat_'.$calculated.'" data-selector="'.$value['name'].'"  class="post_count category_c '.$value['name'].'">('.$value['count'].')</label>
+                        <input type="checkbox"  name="category" value="'.$value['slug'].'" id="'.$calculated.'" class="omt-input jobs_filter cat_f '.$hide_cat.'" onchange="filterJobs()" />
+                        <label class="cat_f '.$hide_cat.'" for="'.$calculated.'">'.$catName.' 
+                            <label id="showCat_'.$calculated.'" data-selector="'.$value['slug'].'"  class="post_count category_c '.$value['slug'].'">('.$value['count'].')</label>
                         </label>
                    </div>
 
@@ -1178,7 +1176,7 @@ function cleanFilterData($value){
         $result = '';
 
         foreach($cats as $cat):
-            array_push($sorted, ['name' => $cat->name,'count' =>$cat->count, 'id' => $cat->term_id]);
+            array_push($sorted, ['name' => $cat->slug,'count' =>$cat->count, 'id' => $cat->term_id]);
         endforeach;
 
         usort($sorted, function($a, $b) {
