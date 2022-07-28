@@ -42,7 +42,7 @@ if ($countdown_im_header) {
         <div class="wrap <?php echo getPost()->field('center_headline', 'bool') ? 'x-text-center' : '' ?>">
             <h1><?php print $h1;?></h1>
             <?php if (true == $has_sidebar AND "jobs" == $sidebar_welche) { ?>
-                <a class="activate-form button button-red header-jobs-button" href="#" data-effect="lightbox" data-id="form-24">Jobangebot erstellen!</a>
+                <a class="activate-form button button-red header-jobs-button" href="https://www.omt.de/jobangebot-erstellen/">Jobangebot erstellen!</a>
             <?php }?>
         </div>
     </div>
