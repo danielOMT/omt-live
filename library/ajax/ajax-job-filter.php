@@ -570,7 +570,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
             if ($cpt_query_args->have_posts()) : 
                 while ($cpt_query_args->have_posts()) : $cpt_query_args->the_post();
                     $stadt = get_field('stadt');
-                    $erfahrung = get_field('erfahrung');
+                    echo $erfahrung = get_field('erfahrung');
                     $wie_arbeiten = get_field('wie_arbeiten');
                         foreach ($data['categories'] as $cates => $cate):
                             if($cat->name == $cate):
@@ -584,9 +584,9 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
             endif;
         wp_reset_query();
         endforeach;
-               echo '<pre>';
-    print_r($erfahrungResult);
-    echo '</pre>';
+    //            echo '<pre>';
+    // print_r($erfahrungResult);
+    // echo '</pre>';
 
 
     }elseif(empty($data['erfahrung']) && !empty($data['categories']) && !empty($data['arbeiten']) && empty($data['occupation'])){
