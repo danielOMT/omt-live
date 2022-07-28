@@ -584,6 +584,10 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
             endif;
         wp_reset_query();
         endforeach;
+               echo '<pre>';
+    print_r($erfahrungResult);
+    echo '</pre>';
+
 
     }elseif(empty($data['erfahrung']) && !empty($data['categories']) && !empty($data['arbeiten']) && empty($data['occupation'])){
         foreach ($cats as $cat) : // loop through each cat
@@ -866,9 +870,6 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     });
     $sortedErfResult = array_reverse($sortedErf);
     //sortedErfResult 
-         echo '<pre>';
-    print_r($valsErf);
-    echo '</pre>';
 
     $sortedArb = [];
     $count = 0;
