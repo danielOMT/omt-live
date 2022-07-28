@@ -30,7 +30,7 @@ class CustomThankYouPage extends Job
     public function redirect($orderId)
     {
         $order = wc_get_order($orderId);
-
+        
         if (!$order->has_status('failed')) {
             $page = $this->getCustomThankYouPage($order);
 
@@ -42,6 +42,10 @@ class CustomThankYouPage extends Job
                 exit;
             }
         }
+        
+
+
+        
     }
 
     //Gets all the product ids and assigned thank you pages from custom module
@@ -51,7 +55,12 @@ class CustomThankYouPage extends Job
         foreach ($order->get_items() as $item) {
             $product = $item->get_product();
             $id = $product->get_id();
+            break;
         }
+
+        $items_count = count( $order->get_items() );
+        echo 'ra,e';
+
         //Gettin product variations if exists
         if($variation = wc_get_product($id)){
             $parentId = wc_get_product( $variation->get_parent_id() );
