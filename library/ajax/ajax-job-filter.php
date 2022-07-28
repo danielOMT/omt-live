@@ -573,7 +573,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
                     $erfahrung = get_field('erfahrung');
                     $wie_arbeiten = get_field('wie_arbeiten');
                         foreach ($data['categories'] as $cates => $cate):
-                            echo $cat->name;
+                            //echo $cat->name;
                             if($cat->name == $cate):
                                 array_push($arbeitenResult,  $stadt);
                                 array_push($occupationResult, $wie_arbeiten);
