@@ -64,7 +64,7 @@ $('.jobs_filterd').change(function() {
                     //console.log(data);
                     $("#filter_loader").hide();
                     $('#jobs').html(data.content).show();
-
+                    console.log(data.arbeiten);
                    
                     if(data.checkedCat !== null && data.checkedErf === null && data.checkedArb === null && data.checkedOcc === null){
                         //Occupation count
