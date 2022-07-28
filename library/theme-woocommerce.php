@@ -986,7 +986,7 @@ function my_custom_checkout_field() {
                           'title' => $data['spalte_headline'],
                            'buttonTitle' => 'open',
                            'buttonClass' => 'rec_video_link for_ceck_b',
-                           'content' => '<div><h4>'.$data['spalte_headline'].'</h4><h5>'.$data['spalte_text_oben'].'</h5><div class="produkt-beschreibung ">'.getDescriptionForRecVideo($data['description']).'</div></div>'
+                           'content' => '<div><h4>'.$data['spalte_headline'].'</h4><div class="produkt-beschreibung ">'.getDescriptionForRecVideo($data['description']).'</div><h5>'.$data['spalte_text_oben'].'</h5></div>'
                         ]) ;
                     echo '</div>';
     
