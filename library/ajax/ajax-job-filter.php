@@ -865,7 +865,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         return $retval;
     });
     $sortedErfResult = array_reverse($sortedErf);
-    //sortedErfResult
+    //sortedErfResult 
 
 
     $sortedArb = [];
@@ -890,7 +890,12 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     });
 
     $sortedArbResult = array_reverse($sortedArb);
-    //Cities
+    //   echo '<pre>';
+    // print_r($sortedArbResult);
+    // echo '</pre>';
+
+
+    //Art der Beschäftigung
     $sortedOcc = [];
     $count_der = 0;
     $valsOcc = array_count_values($occupationResult);
@@ -899,6 +904,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     foreach ($valsOcc as $key => $value) {
         array_push($sortedOcc, ['name' => $key,'count' =>$value]);
     }
+
     usort($sortedOcc, function($a, $b) {
         $retval = $a['count'] <=> $b['count'];
         if ($retval == 0) :
@@ -932,9 +938,13 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     });
     $sortedCatResult = array_reverse($sortedCat);
 
-
-    ///////////////////////////////////// Level /////////////////////////////////////
-   
+    //  echo '<pre>';
+    // print_r($sortedCatResult);
+    // echo '</pre>';
+    ///////////////////////////////////// Level Erfahrung/////////////////////////////////////
+    //      echo '<pre>';
+    // print_r($sortedErfResult);
+    // echo '</pre>';
     if($sortedErfResult[0]['name'] != ''):
         $result_erf .='<div id="erfahrung">';
             foreach ($sortedErfResult as $key => $value) :
@@ -954,10 +964,10 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     ///////////////////////////////////// Cities /////////////////////////////////////
     foreach ($sortedArbResult as $key => $value) {
         $conc_id = $stadt_id+$count;
-        if($count > 2){ $hide_cat = 'hide_city'; }
+        if($count > 2){ $hide_city = 'hide_city'; }
         $result_Arb .= '<div id="cities__">
-                <input type="checkbox" name="stadt" value="'.$value['name'].'" class="omt-input jobs_filter '.$hide_cat.'" id="'.$conc_id.'" onchange="filterJobs()"/>
-                <label for="'.$conc_id.'"  class="'.$hide_cat.'">'.$value['name'].'
+                <input type="checkbox" name="stadt" value="'.$value['name'].'" class="omt-input jobs_filter '.$hide_city.'" id="'.$conc_id.'" onchange="filterJobs()"/>
+                <label for="'.$conc_id.'"  class="'.$hide_city.'">'.$value['name'].'
                     <label id="showstadt_'.$conc_id.'" data-selector="'.$value['name'].'" class="post_count stadt_c '.$value['name'].'">('.$value['count'].')</label>
                 </label> </div>'; 
     $count ++;
@@ -971,9 +981,9 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         
 
 
-    ///////////////////////////////////// Ocupation /////////////////////////////////////
+    ///////////////////////////////////// Ocupation Art der Beschäftigung /////////////////////////////////////
+    
         
-
         $result_Occ .= '<div id="occup">';
         foreach ($sortedOccResult as $key => $value) :
             $occupation_id = 825;
