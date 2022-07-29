@@ -1024,79 +1024,40 @@ function rudr_pre_complete( $order_id ) {
         //Geting product type
         $product_type = get_post_meta( $parent_id, '_custom_product_type', true );
 
+
+        //agenturfinder product mail
         if($product_type == 'Agenturfinder'){
             $guthabenaufladung = true;
             $total = $toolorder->get_subtotal();
-
-            ////WRITE ORDER VALUE INTO SQL:
-            // SQL CONNECTION COMES FIRWST
-            $conn = new mysqli(DATAHOST_DB_HOST, DATAHOST_DB_USER, DATAHOST_DB_PASSWORD, DATAHOST_DB_NAME);
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            //END OF SQL CONNECTION + TEST
-
-            $sql = "INSERT INTO omt_einzahlungen (user_id, betrag, order_time, woocommerce_order_id, gutschein)
-            VALUES ('$user_id', '$total', '$order_time', '$order_id', '')";
-            if ($conn->query($sql) === TRUE) {
-                //    echo "New tool record created or updated successfully";
-            } else {
-                // echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-            $user = get_userdata($user_id);
             // Get display name from user object
-            $user_email = $user->user_email;
             $to = 'marcel.friedrich@omt.de';
-            $subject = 'OMT Agenturfinder';
-            $body = "<h1>Vielen Dank für Deine Bestellung beim OMT:</h1><hr/><table><tbody><tr><td>Bestellnummer: </td><td>" . $order_id . "</td></tr><tr><td>Nutzer:</td><td>" . $user_login . "</td></tr><tr><td>Summe:</td><td>" . $total . "€</td></tr></tbody></table><h3>Das Guthaben wurde Deinem Account gutgeschrieben und ist ab sofort nutzbar.</h3><a href='https://www.omt.de/toolanbieter/'>Jetzt einloggen</a>";
+            $subject = 'OMT Agenturfinder Bestellung';
+            $body = "<h1>Neue Bestellung beim OMT Agenturfinder:</h1><hr/><table><tbody><tr><td>Bestellnummer: </td><td>" . $order_id . "</td></tr><tr><td>Summe:</td><td>" . $total . "€</td></tr></tbody></table>";
             //$headers = array('Content-Type: text/html; charset=UTF-8');
             $headers = "From: info@omt.de\r\n";
             $headers .= "Reply-To: info@omt.de\r\n";
             $headers .= "CC: info@omt.de\r\n";
-            $headers .= "CC: christos.pipsos@omt.de\r\n";
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
             wp_mail($to, $subject, $body, $headers);
-            print "Guthabenbenachrichtigung sent";
         }
+
+        //job bestellung mail
         if($product_type == 'job'){
             $guthabenaufladung = true;
             $total = $toolorder->get_subtotal();
-
-            ////WRITE ORDER VALUE INTO SQL:
-            // SQL CONNECTION COMES FIRWST
-            $conn = new mysqli(DATAHOST_DB_HOST, DATAHOST_DB_USER, DATAHOST_DB_PASSWORD, DATAHOST_DB_NAME);
-            // Check connection
-            if ($conn->connect_error) {
-                die("Connection failed: " . $conn->connect_error);
-            }
-            //END OF SQL CONNECTION + TEST
-
-            $sql = "INSERT INTO omt_einzahlungen (user_id, betrag, order_time, woocommerce_order_id, gutschein)
-            VALUES ('$user_id', '$total', '$order_time', '$order_id', '')";
-            if ($conn->query($sql) === TRUE) {
-                //    echo "New tool record created or updated successfully";
-            } else {
-                // echo "Error: " . $sql . "<br>" . $conn->error;
-            }
-            $user = get_userdata($user_id);
             // Get display name from user object
-            $user_email = $user->user_email;
             $to = 'william.henry@omt.de';
-            $subject = 'OMT Agenturfinder';
-            $body = "<h1>Vielen Dank für Deine Bestellung beim OMT:</h1><hr/><table><tbody><tr><td>Bestellnummer: </td><td>" . $order_id . "</td></tr><tr><td>Nutzer:</td><td>" . $user_login . "</td></tr><tr><td>Summe:</td><td>" . $total . "€</td></tr></tbody></table><h3>Das Guthaben wurde Deinem Account gutgeschrieben und ist ab sofort nutzbar.</h3><a href='https://www.omt.de/toolanbieter/'>Jetzt einloggen</a>";
+            $subject = 'OMT Stellenanzeige Bestellung';
+            $body = "<h1>Neue Stellenanzeigen Bestellung:</h1><hr/><table><tbody><tr><td>Bestellnummer: </td><td>" . $order_id . "</td></tr><tr><td>Summe:</td><td>" . $total . "€</td></tr></tbody></table>";
             //$headers = array('Content-Type: text/html; charset=UTF-8');
             $headers = "From: info@omt.de\r\n";
             $headers .= "Reply-To: info@omt.de\r\n";
             $headers .= "CC: info@omt.de\r\n";
-            $headers .= "CC: christos.pipsos@omt.de\r\n";
             $headers .= "MIME-Version: 1.0\r\n";
             $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
             wp_mail($to, $subject, $body, $headers);
-            print "Guthabenbenachrichtigung sent";
         }
-        
     }
     
 }
