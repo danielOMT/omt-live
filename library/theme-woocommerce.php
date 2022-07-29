@@ -1008,7 +1008,6 @@ function getDescriptionForRecVideo($description){
 //Sending email after Agenturfinder Products purchase
 add_action('woocommerce_checkout_order_processed', 'rudr_pre_complete', 10, 1);
 function rudr_pre_complete( $order_id ) {
-    var_dump('rame');
     
     $toolorder = wc_get_order($order_id);
     $user = $toolorder->get_user();
@@ -1017,6 +1016,11 @@ function rudr_pre_complete( $order_id ) {
     $total = 0;
     $items = $toolorder->get_items();
     $order_time = $toolorder->get_date_modified();
+     if(wc_gzdp_legal_checkbox_is_checked ( 'recruiting_video' , $order )){
+        $recruiting_video = '&#10004;';
+    }else{
+        $recruiting_video = '&times;';
+    }
     foreach ($items as $item_id => $item) {
         $product_id = $item->get_variation_id() ? $item->get_variation_id() : $item->get_product_id();
         //   $product_name = $item->get_title();
@@ -1027,12 +1031,42 @@ function rudr_pre_complete( $order_id ) {
 
         //agenturfinder product mail
         if($product_type == 'Agenturfinder'){
+            $order_data = $order->get_data();
+
+            $item_name    = $item->get_name();
+            $quantity     = $item->get_quantity();  
+            $order_total = $order_data['total'];
+            $order_billing_first_name = $order_data['billing']['first_name'];
+            $order_billing_last_name = $order_data['billing']['last_name'];
+
+            $order_billing_address_1 = $order_data['billing']['address_1'];
+            $order_billing_city = $order_data['billing']['city'];
+
+            $order_billing_state = $order_data['billing']['state'];
+            $order_billing_postcode = $order_data['billing']['postcode'];
+
+            $order_billing_country = $order_data['billing']['country'];
+            $order_billing_email = $order_data['billing']['email'];
+            $order_billing_phone = $order_data['billing']['phone'];
+
             $guthabenaufladung = true;
-            $total = $toolorder->get_subtotal();
+            $total = $order->get_subtotal();
             // Get display name from user object
             $to = 'marcel.friedrich@omt.de';
             $subject = 'OMT Agenturfinder Bestellung';
-            $body = "<h1>Neue Bestellung beim OMT Agenturfinder:</h1><hr/><table><tbody><tr><td>Bestellnummer: </td><td>" . $order_id . "</td></tr><tr><td>Summe:</td><td>" . $total . "€</td></tr></tbody></table>";
+            $body = "<h1>Neue Bestellung beim OMT Agenturfinder:</h1><hr/><table><tbody><tr><td>Bestellnummer: </td><td>" . $order_id . "</td></tr><tr><td>Summe:</td><td>" . $total . "€</td></tr></tbody></table>
+                <table><tbody>
+                    <tr><td style='font-weight:bold'>Product title: </td><td>" . $item_name . "</td></tr>
+                    <tr><td style='font-weight:bold'>Quantity:</td><td>" . $quantity . "</td></tr>
+                    </tbody></table>
+                <h2>Billing Information</h2>
+                <table><tbody>
+                <tr><td style='font-weight:bold'>First Name: </td><td>" . $order_billing_first_name . "</td></tr><tr><td style='font-weight:bold'>Last Name:</td><td>" . $order_billing_last_name . "</td></tr>
+                <tr><td style='font-weight:bold'>Address: </td><td>" . $order_billing_address_1 . "</td></tr><tr><td style='font-weight:bold'>City:</td><td>" . $order_billing_city . "</td></tr>
+                <tr><td style='font-weight:bold'>State: </td><td>" . $order_billing_state . "</td></tr><tr><td style='font-weight:bold'>Post Code:</td><td>" . $order_billing_postcode . "</td></tr>
+                <tr><td style='font-weight:bold'>Country: </td><td>" . $order_billing_country . "</td></tr><tr><td style='font-weight:bold'>Email:</td><td>" . $order_billing_email . "</td></tr>
+                <tr><td style='font-weight:bold'>Phone Number: </td><td style='font-weight:bold'>" . $order_billing_phone . "</td></tr>
+                </tbody></table>";
             //$headers = array('Content-Type: text/html; charset=UTF-8');
             $headers = "From: info@omt.de\r\n";
             $headers .= "Reply-To: info@omt.de\r\n";
@@ -1044,12 +1078,45 @@ function rudr_pre_complete( $order_id ) {
 
         //job bestellung mail
         if($product_type == 'job'){
+            $order_data = $order->get_data();
+
+            $item_name    = $item->get_name();
+            $quantity     = $item->get_quantity();  
+            $order_total = $order_data['total'];
+            $order_billing_first_name = $order_data['billing']['first_name'];
+            $order_billing_last_name = $order_data['billing']['last_name'];
+
+            $order_billing_address_1 = $order_data['billing']['address_1'];
+            $order_billing_city = $order_data['billing']['city'];
+
+            $order_billing_state = $order_data['billing']['state'];
+            $order_billing_postcode = $order_data['billing']['postcode'];
+
+            $order_billing_country = $order_data['billing']['country'];
+            $order_billing_email = $order_data['billing']['email'];
+            $order_billing_phone = $order_data['billing']['phone'];
+
             $guthabenaufladung = true;
-            $total = $toolorder->get_subtotal();
+            $total = $order->get_subtotal();
             // Get display name from user object
             $to = 'william.henry@omt.de';
             $subject = 'OMT Stellenanzeige Bestellung';
-            $body = "<h1>Neue Stellenanzeigen Bestellung:</h1><hr/><table><tbody><tr><td>Bestellnummer: </td><td>" . $order_id . "</td></tr><tr><td>Summe:</td><td>" . $total . "€</td></tr></tbody></table>";
+            $body = "<h1>Neue OMT Stellenanzeigen Bestellung:</h1><hr/><table><tbody><tr><td style='font-weight:bold'>Bestellnummer: </td><td>" . $order_id . "</td></tr><tr><td style='font-weight:bold'>Summe:</td><td>" . $total . "€</td></tr></tbody></table>
+
+            <table><tbody>
+                <tr><td style='font-weight:bold'>Product title: </td><td>" . $item_name . "</td></tr>
+                <tr><td style='font-weight:bold'>Quantity:</td><td>" . $quantity . "</td></tr>
+                <tr><td style='font-weight:bold'>Recruiting video:</td><td>" . $recruiting_video . "</td></tr>
+                </tbody></table>
+            <h2>Billing Information</h2>
+            <table><tbody>
+            <tr><td style='font-weight:bold'>First Name: </td><td>" . $order_billing_first_name . "</td></tr><tr><td style='font-weight:bold'>Last Name:</td><td>" . $order_billing_last_name . "</td></tr>
+            <tr><td style='font-weight:bold'>Address: </td><td>" . $order_billing_address_1 . "</td></tr><tr><td style='font-weight:bold'>City:</td><td>" . $order_billing_city . "</td></tr>
+            <tr><td style='font-weight:bold'>State: </td><td>" . $order_billing_state . "</td></tr><tr><td style='font-weight:bold'>Post Code:</td><td>" . $order_billing_postcode . "</td></tr>
+            <tr><td style='font-weight:bold'>Country: </td><td>" . $order_billing_country . "</td></tr><tr><td style='font-weight:bold'>Email:</td><td>" . $order_billing_email . "</td></tr>
+            <tr><td style='font-weight:bold'>Phone Number: </td><td style='font-weight:bold'>" . $order_billing_phone . "</td></tr>
+            </tbody></table>
+            ";
             //$headers = array('Content-Type: text/html; charset=UTF-8');
             $headers = "From: info@omt.de\r\n";
             $headers .= "Reply-To: info@omt.de\r\n";
