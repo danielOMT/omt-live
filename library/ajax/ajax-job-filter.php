@@ -325,7 +325,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -365,7 +365,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -406,7 +406,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -449,7 +449,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -476,7 +476,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -504,7 +504,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -534,7 +534,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -564,7 +564,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -589,7 +589,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -629,7 +629,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -665,7 +665,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -689,7 +689,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -728,7 +728,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -750,7 +750,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -782,7 +782,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -812,7 +812,7 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         foreach ($cats as $cat) : // loop through each cat
             $cpt_query_args = new WP_Query( array(
                     'post_type' => 'jobs',
-                    'jobs-categories' => $cat->slug
+                    'jobs-categories' => $cat->name
                 )
             );
             if ($cpt_query_args->have_posts()) : 
@@ -923,9 +923,15 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     $valsCat = array_count_values($categoriesResult);
     $result_Cat = '';
 
+
     foreach ($valsCat as $key => $value) {
         array_push($sortedCat, ['slug' => $key,'count' =>$value]);
     }
+
+
+
+
+
     usort($sortedCat, function($a, $b) {
         $retval = $a['count'] <=> $b['count'];
         if ($retval == 0) :
@@ -937,6 +943,8 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
         return $retval;
     });
     $sortedCatResult = array_reverse($sortedCat);
+
+
 
     //  echo '<pre>';
     // print_r($sortedCatResult);
@@ -1001,8 +1009,8 @@ add_action( 'wp_enqueue_scripts', 'my_scripts_method' );
     ///////////////////////////////////// Categories /////////////////////////////////////
         foreach ($sortedCatResult as $key => $value) :
             $category_id = 125;
-            $catObj = get_category_by_slug($value['slug']); 
-            $catName = $catObj->name;
+            $category = get_term_by( 'slug', $value['slug'], 'jobs-categories' );
+            $catName = $category->name;
             $calculated = $category_id+$count_cat;
                 if($count_cat > 2): 
                     $hide_cat = 'hide_cat'; 
